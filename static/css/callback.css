@@ -1,0 +1,132 @@
+/*======== GOOGLE FONTS ========*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/*======== VARIABLES ========*/
+:root {
+    /*======== COLORS ========*/
+    --blue-color: #24486C;
+    --gray-color: #F7F7F7;
+    --brown-color: #906D4F;
+
+    /*======== FONT & TYPOGRAPHY ========*/
+    --body-font: 'Open Sans', sans-serif;
+    --biggest-font-size: 32px;
+    --normal-font-size: 16px;
+    --small-font-size: 8px;
+
+    /*======== FONT WEIGHT ========*/
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    --font-extra-bold: 800;
+
+    /*======== INDEX ========*/
+    --z-relative: 1000;
+    --z-fixed-background: 999;
+}
+
+/*======== RESPONSIVE TYPOGRAPHY ========*/
+@media screen and (min-width: 1401px){
+    :root{
+        --biggest-font-size: 64px;
+        --normal-font-size: 32px;
+        --small-font-size: 16px;
+    }
+}
+
+.background__callback {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: var(--z-fixed-background);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.callback {
+    background-color: white;
+    z-index: var(--z-relative);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: var(--blue-color);
+}
+
+.callback__header{
+    width: 100%;
+    height: 100%;
+    max-height: 100px;
+    padding: 28px 35px;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 2px var(--blue-color);
+}
+
+.close__callback{
+    margin-left: auto;
+    font-size: var(--normal-font-size);
+}
+
+.close__callback i{
+    cursor: pointer;
+    margin-bottom: auto;
+}
+
+.callback__main{
+    padding: 20px 35px;
+}
+
+.main__input{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.input__title{
+    font-size: var(--small-font-size);
+    margin-bottom: 5px;
+}
+
+.main__input input{
+    background-color: var(--gray-color);
+    border: solid 1px var(--blue-color);
+    padding: 10px 15px;
+    outline: none;
+}
+
+.main__input::placeholder {
+    color: var(--blue-color);
+    font-family: 'Open Sans';
+}
+
+.main__check{
+    font-size: var(--small-font-size);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.main__check span{
+    padding-left: 5px;
+}
+
+.main__check a{
+    color: var(--blue-color);
+    text-decoration:underline;
+}
+
+.main__bottom{
+    color: white;
+    background-color: var(--blue-color);
+    font-size: var(--small-font-size);
+    width: fit-content;
+    font-weight: var(--font-bold);
+    padding: 10px;
+    cursor: pointer;
+}

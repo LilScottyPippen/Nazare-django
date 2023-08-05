@@ -1,0 +1,235 @@
+/*======== GOOGLE FONTS ========*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/*======== VARIABLES ========*/
+:root {
+    /*======== COLORS ========*/
+    --blue-color: #24486C;
+    --gray-color: #F8F8F8;
+    --brown-color: #906D4F;
+
+    /*======== FONT & TYPOGRAPHY ========*/
+    --body-font: 'Open Sans', sans-serif;
+    --biggest-font-size: 32px;
+    --normal-font-size: 16px;
+    --small-font-size: 8px;
+
+    /*======== FONT WEIGHT ========*/
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    --font-extra-bold: 800;
+
+    /*======== INDEX ========*/
+    --z-fixed: 100;
+}
+
+/*======== RESPONSIVE TYPOGRAPHY ========*/
+@media screen and (min-width: 1401px){
+    :root{
+        --biggest-font-size: 64px;
+        --normal-font-size: 32px;
+        --small-font-size: 16px;
+    }
+}
+
+/*======== BASE ========*/
+.footer-main{
+    padding: 0 250px;
+}
+
+.footer__secondary{
+    padding: 0 300px;
+}
+
+a{
+    color: #fff
+}
+
+/*======== RESPONSIVE BASE ========*/
+@media (max-width: 1401px) {
+    .footer-main{
+        padding: 0 66px;
+    }
+
+    .footer__secondary{
+        padding: 0 100px;
+    }
+}
+@media (max-width: 900px) {
+    .footer-main{
+        padding: 0 10px;
+    }
+
+    .footer__secondary{
+        padding: 0 20px;
+    }
+}
+
+/* ======== FOOTER MAIN ======== */
+.footer-main{
+    background-color: var(--blue-color);
+    margin-top: 100px;
+    font-size: var(--small-font-size);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.footer__items{
+    display: flex;
+}
+
+.footer__item{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 50px;
+}
+
+.item__logo{
+    display: flex;
+    justify-content: center;
+}
+
+.item__logo img{
+    height: 200px;
+}
+
+.item__payments {
+    display: flex;
+    align-items: center;
+}
+
+.payment {
+    font-size: var(--biggest-font-size);
+    margin: 30px 2px 0 2px;
+}
+
+.svg-container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg-container svg {
+    width: 89px;
+    height: 100px;
+}
+
+.footer__nav__item{
+    padding: 5px;
+}
+
+.footer__item_container{
+    margin: 5px 0;
+}
+
+.item__title{
+    font-weight: var(--font-bold);
+}
+
+.item__container_input{
+    border: none;
+    font-family: 'Open Sans';
+    width: 70%;
+    border-bottom: 2px solid white;
+    background-color: var(--blue-color);
+    color: #fff;
+    font-weight: var(--font-bold);
+    outline: none;
+    font-size: var(--small-font-size);
+}
+
+.item__container_input::placeholder {
+    color: #fff;
+    font-family: 'Open Sans';
+}
+
+.footer-main .fa-arrow-right{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.item_socials i{
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.item__container_contacts{
+    display: flex;
+    align-items: center;
+}
+
+.container__contacts_icons{
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.container__contacts_icons i{
+    cursor: pointer;
+}
+
+/* ======== RESPONSIVE FOOTER MAIN ========*/
+@media (max-width: 1700px) {
+    .footer__items{
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 1401px){
+    .footer__item{
+        margin: 13px 33px;
+    }
+
+    .item__logo img{
+        height: 133px;
+    }
+
+    .svg-container svg {
+        width: 45px;
+        height:30px;
+    }
+
+    .item_socials i{
+        margin: 0 5px;
+        cursor: pointer;
+        font-size: 15px;
+    }    
+}
+
+@media (max-width: 900px){
+    .footer__item{
+        margin: 10px 25px;
+    }
+}
+
+/* ======== FOOTER SECONDARY ======== */
+.footer__secondary{
+    background-color: #fff;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--small-font-size);
+    align-items: center;
+    font-weight: var(--font-regular);
+    color: var(--blue-color);
+}
+
+.footer__developer{
+    color: var(--blue-color);
+}
+
+@media (max-width: 900px){
+    .footer__secondary{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .footer__secondary span,
+    .footer__developer{
+        padding-bottom: 5px;
+    }
+}
