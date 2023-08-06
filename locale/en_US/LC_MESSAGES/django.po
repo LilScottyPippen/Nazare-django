@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-06 22:29+0300\n"
+"POT-Creation-Date: 2023-08-06 23:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,52 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/basic/footer.html:23 templates/basic/header.html:55
-#: templates/basic/header.html:312
+#: templates/basic/callback.html:7
+msgid "Заказать звонок"
+msgstr "Order a call"
+
+#: templates/basic/callback.html:15
+msgid "Ваше имя"
+msgstr "Your name"
+
+#: templates/basic/callback.html:22
+msgid "Телефон"
+msgstr "Phone"
+
+#: templates/basic/callback.html:29
+msgid "Я согласен на "
+msgstr "I agree to "
+
+#: templates/basic/callback.html:29
+msgid "обработку персональных данных"
+msgstr "processing of personal data"
+
+#: templates/basic/callback.html:33
+msgid "Заказать"
+msgstr "To order"
+
+#: templates/basic/footer.html:23 templates/basic/header.html:58
+#: templates/basic/header.html:315
 msgid "О нас"
 msgstr "About us"
 
-#: templates/basic/footer.html:27 templates/basic/header.html:79
-#: templates/basic/header.html:200
+#: templates/basic/footer.html:27 templates/basic/header.html:82
+#: templates/basic/header.html:203
 msgid "Апартаменты"
 msgstr "Apartments"
 
-#: templates/basic/footer.html:31 templates/basic/header.html:103
-#: templates/basic/header.html:224 templates/basic/header.html:325
+#: templates/basic/footer.html:31 templates/basic/header.html:106
+#: templates/basic/header.html:227 templates/basic/header.html:328
 msgid "Услуги"
 msgstr "Services"
 
-#: templates/basic/footer.html:35 templates/basic/header.html:155
-#: templates/basic/header.html:276
+#: templates/basic/footer.html:35 templates/basic/header.html:158
+#: templates/basic/header.html:279 templates/basic/header.html:336
 msgid "Галерея"
 msgstr "Gallery"
 
-#: templates/basic/footer.html:39 templates/basic/header.html:175
-#: templates/basic/header.html:296
+#: templates/basic/footer.html:39 templates/basic/header.html:178
+#: templates/basic/header.html:299
 msgid "Контакты"
 msgstr "Contacts"
 
@@ -70,99 +94,99 @@ msgstr "Developed by"
 msgid "Политика конфендециальности"
 msgstr "Confendeciality policy"
 
-#: templates/basic/header.html:21 templates/basic/header.html:343
+#: templates/basic/header.html:21 templates/basic/header.html:346
 msgid "ЗАКАЗАТЬ ЗВОНОК"
-msgstr "ORDER CALLBACK"
+msgstr "ORDER A CALL"
 
-#: templates/basic/header.html:22 templates/basic/header.html:342
+#: templates/basic/header.html:22 templates/basic/header.html:345
 #: templates/index/index.html:39 templates/index/index.html:111
 msgid "БРОНИРОВАНИЕ"
 msgstr "BOOKING"
 
-#: templates/basic/header.html:60 templates/basic/header.html:317
+#: templates/basic/header.html:63 templates/basic/header.html:320
 msgid "Бронирование и оплата"
 msgstr "Booking and payment"
 
-#: templates/basic/header.html:64 templates/basic/header.html:321
+#: templates/basic/header.html:67 templates/basic/header.html:324
 msgid "Территория"
 msgstr "Territory"
 
-#: templates/basic/header.html:68 templates/basic/header.html:337
+#: templates/basic/header.html:71 templates/basic/header.html:340
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: templates/basic/header.html:72
+#: templates/basic/header.html:75
 msgid "О компании"
 msgstr "About the company"
 
-#: templates/basic/header.html:84 templates/basic/header.html:88
-#: templates/basic/header.html:92 templates/basic/header.html:205
-#: templates/basic/header.html:209 templates/basic/header.html:213
+#: templates/basic/header.html:87 templates/basic/header.html:91
+#: templates/basic/header.html:95 templates/basic/header.html:208
+#: templates/basic/header.html:212 templates/basic/header.html:216
 msgid "Дом"
 msgstr "House"
 
-#: templates/basic/header.html:96 templates/basic/header.html:217
+#: templates/basic/header.html:99 templates/basic/header.html:220
 msgid "Гостиница"
 msgstr "Hotel"
 
-#: templates/basic/header.html:108 templates/basic/header.html:229
+#: templates/basic/header.html:111 templates/basic/header.html:232
 msgid "Прокат и аренда"
 msgstr "Renatal and lease"
 
-#: templates/basic/header.html:112 templates/basic/header.html:233
+#: templates/basic/header.html:115 templates/basic/header.html:236
 msgid "Ресторан"
 msgstr "Restaurant"
 
-#: templates/basic/header.html:116 templates/basic/header.html:237
+#: templates/basic/header.html:119 templates/basic/header.html:240
 msgid "Доставка еды"
 msgstr "Delivery eat"
 
-#: templates/basic/header.html:120 templates/basic/header.html:241
+#: templates/basic/header.html:123 templates/basic/header.html:244
 msgid "Трансфер"
 msgstr "Transfer"
 
-#: templates/basic/header.html:127 templates/basic/header.html:248
-#: templates/basic/header.html:329 templates/basic/header.html:333
+#: templates/basic/header.html:130 templates/basic/header.html:251
+#: templates/basic/header.html:332
 msgid "Мероприятия"
 msgstr "Events"
 
-#: templates/basic/header.html:132 templates/basic/header.html:253
+#: templates/basic/header.html:135 templates/basic/header.html:256
 msgid "Свадьба"
 msgstr "Wedding"
 
-#: templates/basic/header.html:136 templates/basic/header.html:257
+#: templates/basic/header.html:139 templates/basic/header.html:260
 msgid "Корпоратив"
 msgstr "Company party"
 
-#: templates/basic/header.html:140 templates/basic/header.html:261
+#: templates/basic/header.html:143 templates/basic/header.html:264
 msgid "Конференция"
 msgstr "The conference"
 
-#: templates/basic/header.html:144 templates/basic/header.html:265
+#: templates/basic/header.html:147 templates/basic/header.html:268
 msgid "День рождения"
 msgstr "Birthday"
 
-#: templates/basic/header.html:148 templates/basic/header.html:269
+#: templates/basic/header.html:151 templates/basic/header.html:272
 msgid "Спортивные мероприятия"
 msgstr "Sports events"
 
-#: templates/basic/header.html:160 templates/basic/header.html:281
+#: templates/basic/header.html:163 templates/basic/header.html:284
 msgid "Фотогалерея"
 msgstr "Photo Gallery"
 
-#: templates/basic/header.html:164 templates/basic/header.html:285
+#: templates/basic/header.html:167 templates/basic/header.html:288
 msgid "Видеогалерея"
 msgstr "Video Gallery"
 
-#: templates/basic/header.html:168 templates/basic/header.html:289
+#: templates/basic/header.html:171 templates/basic/header.html:292
 msgid "Виртуальный тур"
 msgstr "Virtual tour"
 
-#: templates/basic/header.html:301
+#: templates/basic/header.html:304
 msgid "Телефоны"
 msgstr "Phones"
 
-#: templates/basic/header.html:305
+#: templates/basic/header.html:308
 msgid "Как добраться"
 msgstr "How to get"
 
@@ -201,15 +225,21 @@ msgstr "GALLERY"
 msgid "ВАШЕ ИДЕАЛЬНОЕ ПРОСТРАНСТВО"
 msgstr "YOUR IDEAL SPACE"
 
-#: templates/index/index.html:88 templates/index/index.html:91
-#: templates/index/index.html:94 templates/index/index.html:97
-#: templates/index/index.html:100
-msgid "ДОМ"
-msgstr "HOME"
+#: templates/index/index.html:88 templates/index/index.html:97
+msgid "ДОМ OLIVE"
+msgstr "OLIVE HOUSE"
+
+#: templates/index/index.html:91 templates/index/index.html:100
+msgid "ДОМ OBSIDIAN"
+msgstr "OBSIDIAN HOUSE"
+
+#: templates/index/index.html:94
+msgid "ДОМ TERRA"
+msgstr "TERRA HOUSE"
 
 #: templates/index/index.html:115
 msgid "ВАШ ОТДЫХ В ОДИН КЛИК: БРОНИРУЙТЕ СЕЙЧАС!"
-msgstr "YOUR VACATION IN ONE CLICK: BOOK NOW!"
+msgstr "YUR VACATION IN ONE CLICK: BOOK NOW!"
 
 #: templates/index/index.html:121
 msgid ""
