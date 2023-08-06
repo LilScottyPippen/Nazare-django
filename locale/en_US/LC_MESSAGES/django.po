@@ -1,0 +1,430 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-06 22:29+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/basic/footer.html:23 templates/basic/header.html:55
+#: templates/basic/header.html:312
+msgid "О нас"
+msgstr "About us"
+
+#: templates/basic/footer.html:27 templates/basic/header.html:79
+#: templates/basic/header.html:200
+msgid "Апартаменты"
+msgstr "Apartments"
+
+#: templates/basic/footer.html:31 templates/basic/header.html:103
+#: templates/basic/header.html:224 templates/basic/header.html:325
+msgid "Услуги"
+msgstr "Services"
+
+#: templates/basic/footer.html:35 templates/basic/header.html:155
+#: templates/basic/header.html:276
+msgid "Галерея"
+msgstr "Gallery"
+
+#: templates/basic/footer.html:39 templates/basic/header.html:175
+#: templates/basic/header.html:296
+msgid "Контакты"
+msgstr "Contacts"
+
+#: templates/basic/footer.html:48
+msgid "Витебский район, Мазоловский сельсовет"
+msgstr "Vitebsk district, Mazolovsky village Council"
+
+#: templates/basic/footer.html:69
+msgid "Подписка на рассылку"
+msgstr "Subscribe to the newsletter"
+
+#: templates/basic/footer.html:72
+msgid "Будьте в курсе выгодного предложения"
+msgstr "Be aware of the best offer"
+
+#: templates/basic/footer.html:79
+msgid "Следи за нами"
+msgstr "Follow us"
+
+#: templates/basic/footer.html:94
+msgid "Все права защищены"
+msgstr "All rights reserved"
+
+#: templates/basic/footer.html:95
+msgid "Разработано"
+msgstr "Developed by"
+
+#: templates/basic/footer.html:96
+msgid "Политика конфендециальности"
+msgstr "Confendeciality policy"
+
+#: templates/basic/header.html:21 templates/basic/header.html:343
+msgid "ЗАКАЗАТЬ ЗВОНОК"
+msgstr "ORDER CALLBACK"
+
+#: templates/basic/header.html:22 templates/basic/header.html:342
+#: templates/index/index.html:39 templates/index/index.html:111
+msgid "БРОНИРОВАНИЕ"
+msgstr "BOOKING"
+
+#: templates/basic/header.html:60 templates/basic/header.html:317
+msgid "Бронирование и оплата"
+msgstr "Booking and payment"
+
+#: templates/basic/header.html:64 templates/basic/header.html:321
+msgid "Территория"
+msgstr "Territory"
+
+#: templates/basic/header.html:68 templates/basic/header.html:337
+msgid "Отзывы"
+msgstr "Reviews"
+
+#: templates/basic/header.html:72
+msgid "О компании"
+msgstr "About the company"
+
+#: templates/basic/header.html:84 templates/basic/header.html:88
+#: templates/basic/header.html:92 templates/basic/header.html:205
+#: templates/basic/header.html:209 templates/basic/header.html:213
+msgid "Дом"
+msgstr "House"
+
+#: templates/basic/header.html:96 templates/basic/header.html:217
+msgid "Гостиница"
+msgstr "Hotel"
+
+#: templates/basic/header.html:108 templates/basic/header.html:229
+msgid "Прокат и аренда"
+msgstr "Renatal and lease"
+
+#: templates/basic/header.html:112 templates/basic/header.html:233
+msgid "Ресторан"
+msgstr "Restaurant"
+
+#: templates/basic/header.html:116 templates/basic/header.html:237
+msgid "Доставка еды"
+msgstr "Delivery eat"
+
+#: templates/basic/header.html:120 templates/basic/header.html:241
+msgid "Трансфер"
+msgstr "Transfer"
+
+#: templates/basic/header.html:127 templates/basic/header.html:248
+#: templates/basic/header.html:329 templates/basic/header.html:333
+msgid "Мероприятия"
+msgstr "Events"
+
+#: templates/basic/header.html:132 templates/basic/header.html:253
+msgid "Свадьба"
+msgstr "Wedding"
+
+#: templates/basic/header.html:136 templates/basic/header.html:257
+msgid "Корпоратив"
+msgstr "Company party"
+
+#: templates/basic/header.html:140 templates/basic/header.html:261
+msgid "Конференция"
+msgstr "The conference"
+
+#: templates/basic/header.html:144 templates/basic/header.html:265
+msgid "День рождения"
+msgstr "Birthday"
+
+#: templates/basic/header.html:148 templates/basic/header.html:269
+msgid "Спортивные мероприятия"
+msgstr "Sports events"
+
+#: templates/basic/header.html:160 templates/basic/header.html:281
+msgid "Фотогалерея"
+msgstr "Photo Gallery"
+
+#: templates/basic/header.html:164 templates/basic/header.html:285
+msgid "Видеогалерея"
+msgstr "Video Gallery"
+
+#: templates/basic/header.html:168 templates/basic/header.html:289
+msgid "Виртуальный тур"
+msgstr "Virtual tour"
+
+#: templates/basic/header.html:301
+msgid "Телефоны"
+msgstr "Phones"
+
+#: templates/basic/header.html:305
+msgid "Как добраться"
+msgstr "How to get"
+
+#: templates/index/index.html:8
+msgid "Парк-отель ZORKA"
+msgstr "Park hotel ZORKA"
+
+#: templates/index/index.html:37
+msgid "ПАРК-ОТЕЛЬ ZORKA"
+msgstr "PARK HOTEL ZORKA"
+
+#: templates/index/index.html:38
+msgid ""
+"Это идеальное место для отдыха и проведения свободного времени. Мы "
+"предлагаем уютные апартаменты, красивый парк живописными аллеями и озером, а "
+"также различные услуги."
+msgstr ""
+"It is an ideal place to relax and spend free time. We offer cozy apartments, "
+"a beautiful park with picturesque alleys and a lake, as well as various "
+"services."
+
+#: templates/index/index.html:50 templates/index/index.html:77
+#: templates/index/index.html:271
+msgid "АПАРТАМЕНТЫ"
+msgstr "APARTMENTS"
+
+#: templates/index/index.html:58 templates/index/index.html:211
+msgid "УСЛУГИ"
+msgstr "SERVICES"
+
+#: templates/index/index.html:66 templates/index/index.html:259
+msgid "ГАЛЕРЕЯ"
+msgstr "GALLERY"
+
+#: templates/index/index.html:81
+msgid "ВАШЕ ИДЕАЛЬНОЕ ПРОСТРАНСТВО"
+msgstr "YOUR IDEAL SPACE"
+
+#: templates/index/index.html:88 templates/index/index.html:91
+#: templates/index/index.html:94 templates/index/index.html:97
+#: templates/index/index.html:100
+msgid "ДОМ"
+msgstr "HOME"
+
+#: templates/index/index.html:115
+msgid "ВАШ ОТДЫХ В ОДИН КЛИК: БРОНИРУЙТЕ СЕЙЧАС!"
+msgstr "YOUR VACATION IN ONE CLICK: BOOK NOW!"
+
+#: templates/index/index.html:121
+msgid ""
+"Всего в несколько простых шагов вы сможете забронировать свои апартаменты "
+"или номер в нашем роскошном парк-отеле, чтобы открыть для себя новые места, "
+"познакомиться с удивительными культурами и насладиться уникальными "
+"впечатлениями."
+msgstr ""
+"In just a few simple steps, you will be able to book your apartment or a "
+"room in our luxury park hotel to discover new places, get to know amazing "
+"cultures and enjoy unique experiences."
+
+#: templates/index/index.html:122
+msgid ""
+"Наша онлайн-бронирование предлагает удобный и интуитивно понятный интерфейс, "
+"где вы можете легко выбрать даты вашего пребывания, узнать доступные "
+"варианты апартаментов и уточнить все детали для вашего специального отдыха. "
+"Мы ценим ваше время и стремимся обеспечить максимальное удовольствие от "
+"планирования вашей поездки."
+msgstr ""
+"Our online booking service offers a convenient and intuitive interface, "
+"where you can easily choose the dates of your stay, find out the available "
+"apartment options and clarify all the details for your special holiday. We "
+"value your time and strive to ensure maximum enjoyment from planning your "
+"trip."
+
+#: templates/index/index.html:123
+msgid ""
+"Не упустите возможность создать незабываемые моменты. Забронируйте свою "
+"мечту с нами, и позвольте вашим мечтам сбыться. Доверьтесь нам свои планы, и "
+"мы сделаем все, чтобы сделать ваш отдых по-настоящему особенным. Оставьте "
+"заботы за пределами - вы заслуживаете только самое лучшее."
+msgstr ""
+"Don't miss the opportunity to create unforgettable moments. Book your dream "
+"with us and let your dreams come true. Trust us with your plans, and we will "
+"do everything to make your holiday truly special. Leave worries outside - "
+"you deserve only the best."
+
+#: templates/index/index.html:124 templates/index/index.html:202
+msgid "СМОТРЕТЬ"
+msgstr "SEE"
+
+#: templates/index/index.html:133
+msgid "ОТЗЫВЫ"
+msgstr "REVIEWS"
+
+#: templates/index/index.html:137
+msgid "ВАШИ ОТЗЫВЫ - НАШЕ ВДОХНОВЕНИЕ!"
+msgstr "YOUR FEEDBACK IS OUR INSPIRATION!"
+
+#: templates/index/index.html:145
+msgid "ОЛЕГ"
+msgstr "OLEG"
+
+#: templates/index/index.html:146
+msgid ""
+"Я просто восхищен нашим пребыванием в вашем удивительном парк-отеле! "
+"Отличное место для романтического уикенда. Апартаменты просто потрясающие - "
+"так стильно и уютно! Завтраки были восхитительными, а персонал - невероятно "
+"заботливым и дружелюбным. Мы провели незабываемое время, наслаждаясь "
+"прогулками по живописным тропинкам парка и расслабляясь в спа-центре. "
+"Определенно, вернемся снова! Благодарим за такой прекрасный опыт."
+msgstr ""
+"I am simply delighted with our stay at your amazing park hotel! A great "
+"place for a romantic weekend. The apartments are simply amazing - so stylish "
+"and cozy! The breakfasts were delicious and the staff was incredibly caring "
+"and friendly. We spent an unforgettable time enjoying  walks along the "
+"picturesque paths of the park and relaxing in the spa center. Definitely "
+"back again! Thank you for such a wonderful experience."
+
+#: templates/index/index.html:153
+msgid "ЕЛЕНА"
+msgstr "ELENA"
+
+#: templates/index/index.html:154
+msgid ""
+"Замечательный опыт отдыха в парк-отеле ZORKA! Провели здесь прекрасные "
+"выходные в компании друзей. Виллы, которые мы арендовали, были просто "
+"потрясающими: просторные, удобные и современные. Отличное обслуживание, "
+"дружелюбный персонал, всегда готовый помочь с любым вопросом. Мы "
+"наслаждались купанием в чистейшем бассейне и ужинами на террасе с прекрасным "
+"видом на парк. Это место точно оставит яркие воспоминания. Спасибо, ZORKA, "
+"за гостеприимство!"
+msgstr ""
+"A wonderful vacation experience at the ZORKA Park Hotel! We spent a "
+"wonderful weekend here in the company of friends. The villas we rented were "
+"simply amazing: spacious, comfortable and modern. Excellent service, "
+"friendly staff, always ready to help with any question. We  enjoyed swimming "
+"in the cleanest pool and dining on the terrace with a beautiful view of the "
+"park. This place will definitely leave vivid memories. Thank you, ZORKA, for "
+"the hospitality!"
+
+#: templates/index/index.html:161
+msgid "АЛЕКСЕЙ"
+msgstr "ALEXEY"
+
+#: templates/index/index.html:162
+msgid ""
+"Очень понравился отдых в парк-отеле ZORKA! Бронировал номер для семейного "
+"отпуска и не разочаровался. Атмосфера уюта и спокойствия настолько "
+"восхитительна, что хотелось остаться здесь еще на несколько недель. Номер "
+"был чистым, красиво оформленным и оборудован всем необходимым. Мои дети были "
+"в восторге от игровой площадки и аквапарка. А нам с женой понравилась "
+"романтическая прогулка по парку вечером. Отдельное спасибо персоналу за "
+"радушный прием и заботу! Вернемся сюда обязательно!"
+msgstr ""
+"I really enjoyed my stay at the ZORKA Park Hotel! I booked a room for a "
+"family vacation and was not disappointed. The atmosphere of comfort and "
+"tranquility is so delightful that I wanted to stay here for a few more "
+"weeks. The room  was clean, beautifully decorated and equipped with "
+"everything you need. My children were delighted with the playground and the "
+"water park. And my wife and I liked a romantic walk in the park in the "
+"evening. Special thanks to the staff for the warm welcome and care! We will "
+"definitely come back here!"
+
+#: templates/index/index.html:169
+msgid "МАРИНА"
+msgstr "MARINA"
+
+#: templates/index/index.html:170
+msgid ""
+"Я провела волшебные выходные в парк-отеле ZORKA! Сразу по приезду меня "
+"встретила атмосфера спокойствия и красоты природы. Мой номер был просто "
+"идеальным местом для отдыха - просторный, с шикарным видом на окружающий "
+"парк и с уютной террасой. Завтраки были разнообразными и вкусными, а "
+"вечерние прогулки по парку наполнили меня умиротворением и гармонией. "
+"Отдельное спасибо спа-центру за расслабляющий массаж! Уезжать не хотелось "
+"вообще. С удовольствием рекомендую."
+msgstr ""
+"I spent a magical weekend at the ZORKA Park Hotel! Immediately upon arrival, "
+"I was greeted by an atmosphere of tranquility and beauty of nature. My room "
+"was just the perfect place to relax - spacious, with a gorgeous view of the "
+"surrounding parks with a cozy terrace. The breakfasts were varied and "
+"delicious, and evening walks in the park filled me with peace and harmony. "
+"Special thanks to the spa center for a relaxing massage! I didn't want to "
+"leave at all. I would be happy to recommend it."
+
+#: templates/index/index.html:188
+msgid "ДОСУГ И РАЗВЛЕЧЕНИЯ"
+msgstr "LEISURE AND ENTERTAINMENT"
+
+#: templates/index/index.html:192
+msgid "РАЗВЛЕЧЕНИЯ НА МАКСИМУМЕ: ВАШ ИДЕАЛЬНЫЙ ДОСУГ!"
+msgstr "ENTERTAINMENT AT THE MAXIMUM: YOUR PERFECT LEISURE TIME!"
+
+#: templates/index/index.html:198
+msgid ""
+"Добро пожаловать в мир радости и удовольствия нашего парк-отеля! Здесь вас "
+"ждет невероятный досуг и множество развлечений. Откройте для себя уникальные "
+"апартаменты, где комфорт сочетается с изысканным стилем."
+msgstr ""
+"Welcome to the world of joy and pleasure of our park hotel! Here you are "
+"waiting for an incredible leisure and a lot of entertainment. Discover "
+"unique apartments where comfort is combined with refined style."
+
+#: templates/index/index.html:199
+msgid ""
+"Наши веселые вечеринки и разнообразные активности позабавят вас круглый год. "
+"Не упустите шанс насладиться вкусом изысканных блюд в наших ресторанах и "
+"попробовать уникальные кулинарные мастер-классы."
+msgstr ""
+"Our fun parties and various activities will amuse you all year round. Don't "
+"miss the chance to enjoy the taste of delicious dishes in our restaurants "
+"and try unique culinary workshops."
+
+#: templates/index/index.html:200
+msgid ""
+"Для любителей активного отдыха у нас есть великолепные возможности для "
+"проведения времени на природе. Приглашаем вас на пешие прогулки, "
+"велосипедные пробежки и наслаждение красотой природы."
+msgstr ""
+"Our fun parties and various activities will amuse you all year round. Don't "
+"miss the chance to enjoy the taste of delicious dishes in our restaurants "
+"and try unique culinary workshops."
+
+#: templates/index/index.html:201
+msgid ""
+"Приглашаем вас открыть двери к незабываемым моментам в нашем парк-отеле, где "
+"досуг и развлечения станут для вас сокровищем радости!"
+msgstr ""
+"We invite you to open the doors to unforgettable moments in our park hotel, "
+"where leisure and entertainment will be a treasure of joy for you!"
+
+#: templates/index/index.html:215
+msgid "ИЗЫСКАННЫЙ СЕРВИС, НЕЗАБЫВАЕМЫЕ ВПЕЧАТЛЕНИЯ."
+msgstr "EXQUISITE SERVICE, AN UNFORGETTABLE EXPERIENCE."
+
+#: templates/index/index.html:225
+msgid "ЛОДКА"
+msgstr "A BOAT"
+
+#: templates/index/index.html:231
+msgid "СПОРТИВНЫЙ ИНВЕНТАРЬ"
+msgstr "SPORTS EQUIPMENT"
+
+#: templates/index/index.html:237
+msgid "КОМАНДНЫЕ ИГРЫ"
+msgstr "TEAM GAMES"
+
+#: templates/index/index.html:243
+msgid "БАРБЕКЮ"
+msgstr "BARBECUE"
+
+#: templates/index/index.html:248
+msgid "ВСЕ УСЛУГИ"
+msgstr "ALL SERVICES"
+
+#: templates/index/index.html:263
+msgid "ПЛЕНИТЕЛЬНАЯ КРАСОТА В КАЖДОМ КАДРЕ."
+msgstr "CAPTIVATING BEAUTY IN EVERY FRAME."
+
+#: templates/index/index.html:275
+msgid "ТЕРРИТОРИЯ"
+msgstr "TERRITORY"
+
+#: templates/index/index.html:279
+msgid "УДОБСТВА"
+msgstr "CONVENIENCES"
