@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-64v1-9f#f-s0@-x+b@88hzy2@*)s8xws7^dp)+$qvtdzs(4u-(
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'nazore.by', 'www.nazore.by']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'nazare.by', 'www.nazare.by']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
