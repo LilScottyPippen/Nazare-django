@@ -14,22 +14,22 @@
                 <span class="input__title">
                     {% trans 'Ваше имя' %}<span style="color: red;">*</span>
                 </span>
-                <input type="text">
+                <input type="text" id='input_name'>
             </div>
 
             <div class="main__input">
                 <span class="input__title">
                     {% trans 'Телефон' %}<span style="color: red;">*</span>
                 </span>
-                <input type="text">
+                <input type="text" id="input_phone">
             </div>
 
             <div class="main__check">
-                <input type="checkbox" name="" id="">
+                <input type="checkbox" name="" id="input_checkbox">
                 <span>{% trans 'Я согласен на ' %}<a href="#">{% trans 'обработку персональных данных' %}</a></span>
             </div>
 
-            <div class="main__bottom">
+            <div class="main__bottom" id="callback_submit">
                 <span>{% trans 'Заказать' %}</span>
             </div>
         </div>
@@ -37,5 +37,53 @@
 </div>
 
 <script>
-    
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    $('body').on('click', '#callback_submit', function(event) {
+        if(document.getElementById("input_checkbox").checked){
+            $.ajax({
+                url: '{% url 'orderCallFunc' %}',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    'name': document.getElementById('input_name').value,
+                    'phone': document.getElementById('input_phone').value
+                },
+                success: function(response) {
+                    if(response.success === true) {
+                        Toast.fire({
+                            icon: 'success',
+                            title: response.message
+                        })
+                    }else{
+                            Toast.fire({
+                            icon: 'error',
+                            title: response.message
+                        })
+                    }
+                },
+                error: function(err) {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'ERROR'
+                    })
+                }
+            })
+        }else{
+            Toast.fire({
+                icon: 'error',
+                title: '{% trans 'Вы не приняли пользовательское соглашение!' %}'
+            })
+        }
+    })
 </script>

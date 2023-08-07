@@ -1,11 +1,30 @@
-from django.shortcuts import render
-from urllib.parse import urlparse
+import re
+from .models import *
 from django.conf import settings
+from urllib.parse import urlparse
+from django.shortcuts import render
+from django.utils import translation
+from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 from django.urls.base import resolve, reverse
 from django.urls.exceptions import Resolver404
-from django.utils import translation
+from django.utils.translation import gettext_lazy as _
+from django.views.decorators.csrf import csrf_exempt
 
+ERROR_MESSAGES = {
+    'invalid_request': _('Недействительный запрос! Попробуйте еще раз.'),
+
+    # CALLBACK
+    'empty_name': _("Поле 'Ваше имя': пустое!"),
+    'empty_phone': _("Поле 'Телефон': пустое!"),
+    'invalid_name': _('Введите корректное имя!'),
+    'invalid_phone': _('Введите корректный номер!')
+}
+
+SUCCESS_MESSAGES = {
+    # CALLBACK
+    'success_callback': _("Форма успешно отправлена!")
+}
 
 def set_language(request, language):
     for lang, _ in settings.LANGUAGES:
@@ -33,3 +52,38 @@ def indexPage(request):
         'cur_lang': current_language
     }
     return render(request, 'index/index.html', context)
+
+
+@csrf_exempt
+def orderCall(request):
+    try:
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+
+        if len(name) > 0 and len(phone) > 0:
+            for n in name:
+                if n.isdigit():
+                    return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_name']})
+
+            for p in phone:
+                if p.isalpha():
+                    return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
+
+            belarus_pattern = r'^(?:\+375|375)?\d{9}$'
+            russia_pattern = r'^(?:\+7|7)?\d{10}$'
+
+            is_belarus_number = re.match(belarus_pattern, phone)
+            is_russian_number = re.match(russia_pattern, phone)
+
+            if is_belarus_number or is_russian_number:
+                Callback.objects.create(name=name, phone=phone)
+                return JsonResponse({'success': True, 'message': SUCCESS_MESSAGES['success_callback']}, safe=False)
+            else:
+                return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
+        else:
+            if len(name) == 0:
+                return JsonResponse({'success': False, 'message': ERROR_MESSAGES['empty_name']}, safe=False)
+            if len(phone) == 0:
+                return JsonResponse({'success': False, 'message': ERROR_MESSAGES['empty_phone']}, safe=False)
+    except:
+        return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})

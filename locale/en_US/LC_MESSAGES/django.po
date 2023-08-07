@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-06 23:30+0300\n"
+"POT-Creation-Date: 2023-08-07 15:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,30 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: index/views.py:14
+msgid "Недействительный запрос! Попробуйте еще раз."
+msgstr "Invalid request! Try again."
+
+#: index/views.py:17
+msgid "Поле 'Ваше имя': пустое!"
+msgstr "Field 'Your name': empty!"
+
+#: index/views.py:18
+msgid "Поле 'Телефон': пустое!"
+msgstr "'Phone' field: empty!"
+
+#: index/views.py:19
+msgid "Введите корректное имя!"
+msgstr "Enter the correct name!"
+
+#: index/views.py:20
+msgid "Введите корректный номер!"
+msgstr "Enter the correct number!"
+
+#: index/views.py:25
+msgid "Форма успешно отправлена!"
+msgstr "The form has been sent successfully!"
 
 #: templates/basic/callback.html:7
 msgid "Заказать звонок"
@@ -40,6 +64,10 @@ msgstr "processing of personal data"
 #: templates/basic/callback.html:33
 msgid "Заказать"
 msgstr "To order"
+
+#: templates/basic/callback.html:85
+msgid "Вы не приняли пользовательское соглашение!"
+msgstr "You have not accepted the user agreement!"
 
 #: templates/basic/footer.html:23 templates/basic/header.html:58
 #: templates/basic/header.html:315
@@ -99,7 +127,7 @@ msgid "ЗАКАЗАТЬ ЗВОНОК"
 msgstr "ORDER A CALL"
 
 #: templates/basic/header.html:22 templates/basic/header.html:345
-#: templates/index/index.html:39 templates/index/index.html:111
+#: templates/index/index.html:47 templates/index/index.html:119
 msgid "БРОНИРОВАНИЕ"
 msgstr "BOOKING"
 
@@ -194,11 +222,11 @@ msgstr "How to get"
 msgid "Парк-отель ZORKA"
 msgstr "Park hotel ZORKA"
 
-#: templates/index/index.html:37
+#: templates/index/index.html:45
 msgid "ПАРК-ОТЕЛЬ ZORKA"
 msgstr "PARK HOTEL ZORKA"
 
-#: templates/index/index.html:38
+#: templates/index/index.html:46
 msgid ""
 "Это идеальное место для отдыха и проведения свободного времени. Мы "
 "предлагаем уютные апартаменты, красивый парк живописными аллеями и озером, а "
@@ -208,40 +236,40 @@ msgstr ""
 "a beautiful park with picturesque alleys and a lake, as well as various "
 "services."
 
-#: templates/index/index.html:50 templates/index/index.html:77
-#: templates/index/index.html:271
+#: templates/index/index.html:58 templates/index/index.html:85
+#: templates/index/index.html:279
 msgid "АПАРТАМЕНТЫ"
 msgstr "APARTMENTS"
 
-#: templates/index/index.html:58 templates/index/index.html:211
+#: templates/index/index.html:66 templates/index/index.html:219
 msgid "УСЛУГИ"
 msgstr "SERVICES"
 
-#: templates/index/index.html:66 templates/index/index.html:259
+#: templates/index/index.html:74 templates/index/index.html:267
 msgid "ГАЛЕРЕЯ"
 msgstr "GALLERY"
 
-#: templates/index/index.html:81
+#: templates/index/index.html:89
 msgid "ВАШЕ ИДЕАЛЬНОЕ ПРОСТРАНСТВО"
 msgstr "YOUR IDEAL SPACE"
 
-#: templates/index/index.html:88 templates/index/index.html:97
+#: templates/index/index.html:96 templates/index/index.html:105
 msgid "ДОМ OLIVE"
 msgstr "OLIVE HOUSE"
 
-#: templates/index/index.html:91 templates/index/index.html:100
+#: templates/index/index.html:99 templates/index/index.html:108
 msgid "ДОМ OBSIDIAN"
 msgstr "OBSIDIAN HOUSE"
 
-#: templates/index/index.html:94
+#: templates/index/index.html:102
 msgid "ДОМ TERRA"
 msgstr "TERRA HOUSE"
 
-#: templates/index/index.html:115
+#: templates/index/index.html:123
 msgid "ВАШ ОТДЫХ В ОДИН КЛИК: БРОНИРУЙТЕ СЕЙЧАС!"
 msgstr "YUR VACATION IN ONE CLICK: BOOK NOW!"
 
-#: templates/index/index.html:121
+#: templates/index/index.html:129
 msgid ""
 "Всего в несколько простых шагов вы сможете забронировать свои апартаменты "
 "или номер в нашем роскошном парк-отеле, чтобы открыть для себя новые места, "
@@ -252,7 +280,7 @@ msgstr ""
 "room in our luxury park hotel to discover new places, get to know amazing "
 "cultures and enjoy unique experiences."
 
-#: templates/index/index.html:122
+#: templates/index/index.html:130
 msgid ""
 "Наша онлайн-бронирование предлагает удобный и интуитивно понятный интерфейс, "
 "где вы можете легко выбрать даты вашего пребывания, узнать доступные "
@@ -266,7 +294,7 @@ msgstr ""
 "value your time and strive to ensure maximum enjoyment from planning your "
 "trip."
 
-#: templates/index/index.html:123
+#: templates/index/index.html:131
 msgid ""
 "Не упустите возможность создать незабываемые моменты. Забронируйте свою "
 "мечту с нами, и позвольте вашим мечтам сбыться. Доверьтесь нам свои планы, и "
@@ -278,23 +306,23 @@ msgstr ""
 "do everything to make your holiday truly special. Leave worries outside - "
 "you deserve only the best."
 
-#: templates/index/index.html:124 templates/index/index.html:202
+#: templates/index/index.html:132 templates/index/index.html:210
 msgid "СМОТРЕТЬ"
 msgstr "SEE"
 
-#: templates/index/index.html:133
+#: templates/index/index.html:141
 msgid "ОТЗЫВЫ"
 msgstr "REVIEWS"
 
-#: templates/index/index.html:137
+#: templates/index/index.html:145
 msgid "ВАШИ ОТЗЫВЫ - НАШЕ ВДОХНОВЕНИЕ!"
 msgstr "YOUR FEEDBACK IS OUR INSPIRATION!"
 
-#: templates/index/index.html:145
+#: templates/index/index.html:153
 msgid "ОЛЕГ"
 msgstr "OLEG"
 
-#: templates/index/index.html:146
+#: templates/index/index.html:154
 msgid ""
 "Я просто восхищен нашим пребыванием в вашем удивительном парк-отеле! "
 "Отличное место для романтического уикенда. Апартаменты просто потрясающие - "
@@ -310,11 +338,11 @@ msgstr ""
 "picturesque paths of the park and relaxing in the spa center. Definitely "
 "back again! Thank you for such a wonderful experience."
 
-#: templates/index/index.html:153
+#: templates/index/index.html:161
 msgid "ЕЛЕНА"
 msgstr "ELENA"
 
-#: templates/index/index.html:154
+#: templates/index/index.html:162
 msgid ""
 "Замечательный опыт отдыха в парк-отеле ZORKA! Провели здесь прекрасные "
 "выходные в компании друзей. Виллы, которые мы арендовали, были просто "
@@ -332,11 +360,11 @@ msgstr ""
 "park. This place will definitely leave vivid memories. Thank you, ZORKA, for "
 "the hospitality!"
 
-#: templates/index/index.html:161
+#: templates/index/index.html:169
 msgid "АЛЕКСЕЙ"
 msgstr "ALEXEY"
 
-#: templates/index/index.html:162
+#: templates/index/index.html:170
 msgid ""
 "Очень понравился отдых в парк-отеле ZORKA! Бронировал номер для семейного "
 "отпуска и не разочаровался. Атмосфера уюта и спокойствия настолько "
@@ -355,11 +383,11 @@ msgstr ""
 "evening. Special thanks to the staff for the warm welcome and care! We will "
 "definitely come back here!"
 
-#: templates/index/index.html:169
+#: templates/index/index.html:177
 msgid "МАРИНА"
 msgstr "MARINA"
 
-#: templates/index/index.html:170
+#: templates/index/index.html:178
 msgid ""
 "Я провела волшебные выходные в парк-отеле ZORKA! Сразу по приезду меня "
 "встретила атмосфера спокойствия и красоты природы. Мой номер был просто "
@@ -377,15 +405,15 @@ msgstr ""
 "Special thanks to the spa center for a relaxing massage! I didn't want to "
 "leave at all. I would be happy to recommend it."
 
-#: templates/index/index.html:188
-msgid "ДОСУГ И РАЗВЛЕЧЕНИЯ"
-msgstr "LEISURE AND ENTERTAINMENT"
+#: templates/index/index.html:196
+msgid "МЕРОПРИЯТИЯ"
+msgstr "EVENTS"
 
-#: templates/index/index.html:192
+#: templates/index/index.html:200
 msgid "РАЗВЛЕЧЕНИЯ НА МАКСИМУМЕ: ВАШ ИДЕАЛЬНЫЙ ДОСУГ!"
 msgstr "ENTERTAINMENT AT THE MAXIMUM: YOUR PERFECT LEISURE TIME!"
 
-#: templates/index/index.html:198
+#: templates/index/index.html:206
 msgid ""
 "Добро пожаловать в мир радости и удовольствия нашего парк-отеля! Здесь вас "
 "ждет невероятный досуг и множество развлечений. Откройте для себя уникальные "
@@ -395,7 +423,7 @@ msgstr ""
 "waiting for an incredible leisure and a lot of entertainment. Discover "
 "unique apartments where comfort is combined with refined style."
 
-#: templates/index/index.html:199
+#: templates/index/index.html:207
 msgid ""
 "Наши веселые вечеринки и разнообразные активности позабавят вас круглый год. "
 "Не упустите шанс насладиться вкусом изысканных блюд в наших ресторанах и "
@@ -405,7 +433,7 @@ msgstr ""
 "miss the chance to enjoy the taste of delicious dishes in our restaurants "
 "and try unique culinary workshops."
 
-#: templates/index/index.html:200
+#: templates/index/index.html:208
 msgid ""
 "Для любителей активного отдыха у нас есть великолепные возможности для "
 "проведения времени на природе. Приглашаем вас на пешие прогулки, "
@@ -415,7 +443,7 @@ msgstr ""
 "miss the chance to enjoy the taste of delicious dishes in our restaurants "
 "and try unique culinary workshops."
 
-#: templates/index/index.html:201
+#: templates/index/index.html:209
 msgid ""
 "Приглашаем вас открыть двери к незабываемым моментам в нашем парк-отеле, где "
 "досуг и развлечения станут для вас сокровищем радости!"
@@ -423,38 +451,41 @@ msgstr ""
 "We invite you to open the doors to unforgettable moments in our park hotel, "
 "where leisure and entertainment will be a treasure of joy for you!"
 
-#: templates/index/index.html:215
+#: templates/index/index.html:223
 msgid "ИЗЫСКАННЫЙ СЕРВИС, НЕЗАБЫВАЕМЫЕ ВПЕЧАТЛЕНИЯ."
 msgstr "EXQUISITE SERVICE, AN UNFORGETTABLE EXPERIENCE."
 
-#: templates/index/index.html:225
+#: templates/index/index.html:233
 msgid "ЛОДКА"
 msgstr "A BOAT"
 
-#: templates/index/index.html:231
+#: templates/index/index.html:239
 msgid "СПОРТИВНЫЙ ИНВЕНТАРЬ"
 msgstr "SPORTS EQUIPMENT"
 
-#: templates/index/index.html:237
+#: templates/index/index.html:245
 msgid "КОМАНДНЫЕ ИГРЫ"
 msgstr "TEAM GAMES"
 
-#: templates/index/index.html:243
+#: templates/index/index.html:251
 msgid "БАРБЕКЮ"
 msgstr "BARBECUE"
 
-#: templates/index/index.html:248
+#: templates/index/index.html:256
 msgid "ВСЕ УСЛУГИ"
 msgstr "ALL SERVICES"
 
-#: templates/index/index.html:263
+#: templates/index/index.html:271
 msgid "ПЛЕНИТЕЛЬНАЯ КРАСОТА В КАЖДОМ КАДРЕ."
 msgstr "CAPTIVATING BEAUTY IN EVERY FRAME."
 
-#: templates/index/index.html:275
+#: templates/index/index.html:283
 msgid "ТЕРРИТОРИЯ"
 msgstr "TERRITORY"
 
-#: templates/index/index.html:279
+#: templates/index/index.html:287
 msgid "УДОБСТВА"
 msgstr "CONVENIENCES"
+
+#~ msgid "ДОСУГ И РАЗВЛЕЧЕНИЯ"
+#~ msgstr "LEISURE AND ENTERTAINMENT"
