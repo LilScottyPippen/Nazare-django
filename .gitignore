@@ -1,0 +1,11 @@
+*.pyc
+venv/
+env/
+*.DS_Store
+Thumbs.db
+.env
+db.sqlite3
+*.log
+package-lock.json
+__pycache__
+/.idea

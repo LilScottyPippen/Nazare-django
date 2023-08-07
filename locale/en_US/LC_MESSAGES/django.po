@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-07 15:21+0300\n"
+"POT-Creation-Date: 2023-08-07 17:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,29 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: index/views.py:14
+#: index/views.py:15
 msgid "Недействительный запрос! Попробуйте еще раз."
 msgstr "Invalid request! Try again."
 
-#: index/views.py:17
+#: index/views.py:18
 msgid "Поле 'Ваше имя': пустое!"
 msgstr "Field 'Your name': empty!"
 
-#: index/views.py:18
+#: index/views.py:19
 msgid "Поле 'Телефон': пустое!"
 msgstr "'Phone' field: empty!"
 
-#: index/views.py:19
+#: index/views.py:20
 msgid "Введите корректное имя!"
 msgstr "Enter the correct name!"
 
-#: index/views.py:20
+#: index/views.py:21
 msgid "Введите корректный номер!"
 msgstr "Enter the correct number!"
 
-#: index/views.py:25
-msgid "Форма успешно отправлена!"
-msgstr "The form has been sent successfully!"
+#: index/views.py:26
+msgid "Спасибо за Вашу заявку. Мы скоро Вам перезвоним."
+msgstr "Thank you for your application. We'll call you back soon."
 
 #: templates/basic/callback.html:7
 msgid "Заказать звонок"
@@ -486,6 +486,3 @@ msgstr "TERRITORY"
 #: templates/index/index.html:287
 msgid "УДОБСТВА"
 msgstr "CONVENIENCES"
-
-#~ msgid "ДОСУГ И РАЗВЛЕЧЕНИЯ"
-#~ msgstr "LEISURE AND ENTERTAINMENT"

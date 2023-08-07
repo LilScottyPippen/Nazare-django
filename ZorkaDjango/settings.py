@@ -1,9 +1,12 @@
 from pathlib import Path
 import os
+import dotenv
+
+dotenv.load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-64v1-9f#f-s0@-x+b@88hzy2@*)s8xws7^dp)+$qvtdzs(4u-('
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
@@ -50,20 +53,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ZorkaDjango.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'neondb',
-    'USER': 'LilScottyPippen',
-    'PASSWORD': 'KZQV2BnwMvd3',
-    'HOST': 'ep-bitter-feather-56384720.eu-central-1.aws.neon.tech',
+    'USER': os.getenv('DB_USER'),
+    'PASSWORD': os.getenv('DB_PASSWORD'),
+    'HOST': os.getenv('DB_HOST'),
     'PORT': '5432',
   }
 }

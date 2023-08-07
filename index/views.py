@@ -23,7 +23,7 @@ ERROR_MESSAGES = {
 
 SUCCESS_MESSAGES = {
     # CALLBACK
-    'success_callback': _("Форма успешно отправлена!")
+    'success_callback': _("Спасибо за Вашу заявку. Мы скоро Вам перезвоним.")
 }
 
 def set_language(request, language):
