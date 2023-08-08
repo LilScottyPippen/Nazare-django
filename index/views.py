@@ -5,11 +5,14 @@ from urllib.parse import urlparse
 from django.shortcuts import render
 from django.utils import translation
 from django.http import JsonResponse
+from django.core.mail import send_mail
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls.base import resolve, reverse
 from django.urls.exceptions import Resolver404
-from django.utils.translation import gettext_lazy as _
+from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.translation import gettext_lazy as _
 
 ERROR_MESSAGES = {
     'invalid_request': _('Недействительный запрос! Попробуйте еще раз.'),
@@ -24,6 +27,10 @@ ERROR_MESSAGES = {
 SUCCESS_MESSAGES = {
     # CALLBACK
     'success_callback': _("Спасибо за Вашу заявку. Мы скоро Вам перезвоним.")
+}
+
+MESSAGE_TYPE = {
+    'callback': 'callback'
 }
 
 def set_language(request, language):
@@ -76,7 +83,8 @@ def orderCall(request):
             is_russian_number = re.match(russia_pattern, phone)
 
             if is_belarus_number or is_russian_number:
-                Callback.objects.create(name=name, phone=phone)
+                callback = Callback.objects.create(name=name, phone=phone)
+                sendMail(MESSAGE_TYPE['callback'], name, phone, callback.created_at)
                 return JsonResponse({'success': True, 'message': SUCCESS_MESSAGES['success_callback']}, safe=False)
             else:
                 return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
@@ -85,5 +93,18 @@ def orderCall(request):
                 return JsonResponse({'success': False, 'message': ERROR_MESSAGES['empty_name']}, safe=False)
             if len(phone) == 0:
                 return JsonResponse({'success': False, 'message': ERROR_MESSAGES['empty_phone']}, safe=False)
-    except:
+    except Exception as e:
+        if 'callback' in locals():
+            callback.delete()
         return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
+    
+
+def sendMail(type, name, phone, created):
+    try:
+        if type == MESSAGE_TYPE['callback']:
+            message = render_to_string('mailing/admin_callback.html', {'name': name, 'phone': phone, 'created': created})
+            print(message)
+            recipient_list = [admin.email for admin in User.objects.filter(is_superuser=True)]
+            send_mail(MESSAGE_TYPE['callback'], message, settings.EMAIL_HOST_USER, recipient_list, fail_silently=False)
+    except:
+        return JsonResponse({'success': False, 'message': ERROR_MESSAGES["invalid_request"]}, safe=False)
