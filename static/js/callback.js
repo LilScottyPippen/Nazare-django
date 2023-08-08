@@ -17,6 +17,7 @@ function openCallbackForm() {
 }
 
 document.getElementById('navCall').addEventListener('click', openCallbackForm);
+document.getElementById('navCallDev').addEventListener('click', openCallbackForm);
 document.getElementById('navCallMobile').addEventListener('click', openCallbackForm);
 
 document.getElementById('closeCallback').addEventListener('click', function() {

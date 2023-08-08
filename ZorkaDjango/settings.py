@@ -10,7 +10,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'nazare.by', 'www.nazare.by']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'nazare.by', 'www.nazare.by', '.ngrok-free.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',

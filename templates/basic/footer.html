@@ -4,7 +4,7 @@
 <footer class="footer-main">
     <div class="footer__items">
         <div class="footer__item">
-            <div class="item__logo"><img src="/static/img/LogoZORKA-White.png" alt=""></div>
+            <div class="item__logo" onclick="window.location='{% url 'indexPage' %}'"><img src="/static/img/LogoZORKA-White.png" alt=""></div>
             <div class="item__payments">
                 <i class="fa-brands fa-cc-mastercard payment"></i>
                 <i class="fa-brands fa-cc-visa payment"></i>
@@ -20,23 +20,23 @@
             <div class="item__nav">
                 <ul class="footer__nav_list">
                     <li class="footer__nav__item">
-                        <a href="#" class="nav__link">{% trans 'О нас' %}</a>
+                        <a href="#" class="nav__link" onclick="window.location='{% url 'developPage' 'all' %}'">{% trans 'О нас' %}</a>
                     </li>
 
                     <li class="footer__nav__item">
-                        <a href="#" class="nav__link">{% trans 'Апартаменты' %}</a>
+                        <a href="#" class="nav__link" onclick="window.location='{% url 'developPage' 'apartments' %}'">{% trans 'Апартаменты' %}</a>
                     </li>
 
                     <li class="footer__nav__item">
-                        <a href="#" class="nav__link">{% trans 'Услуги' %}</a>
+                        <a href="#" class="nav__link" onclick="window.location='{% url 'developPage' 'services' %}'">{% trans 'Услуги' %}</a>
                     </li>
 
                     <li class="footer__nav__item">
-                        <a href="#" class="nav__link">{% trans 'Галерея' %}</a>
+                        <a href="#" class="nav__link" onclick="window.location='{% url 'developPage' 'all' %}'">{% trans 'Галерея' %}</a>
                     </li>
 
                     <li class="footer__nav__item">
-                        <a href="#" class="nav__link">{% trans 'Контакты' %}</a>
+                        <a href="#" class="nav__link" onclick="window.location='{% url 'developPage' 'all' %}'">{% trans 'Контакты' %}</a>
                     </li>
                 </ul>
             </div>
@@ -45,7 +45,7 @@
         <div class="footer__item">
             <div class="footer__item_container">
                 <i class="fa-solid fa-location-dot"></i>
-                <span>{% trans 'Витебский район, Мазоловский сельсовет' %}</span>
+                <span>{% trans 'Витебский район, Мазоловский сельсовет' %} 64</span>
             </div>
             <div class="footer__item_container">
                 <div class="item__container_contacts">
@@ -93,5 +93,5 @@
 <footer class="footer__secondary">
     <span>© ZORKA 2023 {% trans 'Все права защищены' %}</span>
     <a class="footer__developer" href="https://github.com/LilScottyPippen">{% trans 'Разработано' %}: LilScottyPippen</a>
-    <span style="cursor: pointer;">{% trans 'Политика конфендециальности' %}</span>
+    <span style="cursor: pointer;" onclick="window.location='{% url 'developPage' 'all' %}'">{% trans 'Политика конфендециальности' %}</span>
 </footer>

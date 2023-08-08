@@ -1,0 +1,38 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        {% include 'basic/head.html' %}
+
+        <!-- ======== CSS ======== -->
+        <link rel="stylesheet" href="{% static 'css/development.css' %}">
+    </head>
+
+    {% include 'basic/header.html' %}
+    <body>
+        <!-- ======== PRELOADER ======== -->
+        <div class="preloader" id="preloader">
+            <img src="/static/img/LogoZORKA-White.png" alt="Preloader">
+        </div>
+
+        {% include 'basic/callback.html' %}
+
+        <main class="main">
+            <section class='info'>
+                <span class="info__title">{% trans 'СТРАНИЦА В РАЗРАБОТКЕ' %}</span><br><br>
+                <span class="info__description">
+                    <span class="info__description">{% trans 'По вопросам' %} {{ description }} {% trans 'звоните на номер:' %}
+                    <a href="tel:+375291699106" style="color: black;" id="contactLinkDev">+375 29 169 91 06</a></span><br>
+                <span class="info__description">{% trans 'или заполните форму и мы с вами свяжемся' %}</span><br><br>
+                <span class="info__button" id="navCallDev">{% trans 'ЗАКАЗАТЬ ЗВОНОК' %}</span>
+                <script src="{% static 'js/copyMobile.js' %}"></script>
+            </section>
+        </main>
+
+        <!-- ======== JS ======== -->
+        <script src="{% static 'js/callback.js' %}"></script>
+
+        {% include 'basic/footer.html'%}
+    </body>
+</html>

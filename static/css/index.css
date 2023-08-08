@@ -380,7 +380,6 @@
 .service__item_button{
     display: flex;
     justify-content: center;
-    cursor: pointer;
     margin-top: 80px;
 }
 
@@ -388,6 +387,7 @@
     color: var(--brown-color);
     border: solid var(--brown-color) 1px;
     padding: 20px;
+    cursor: pointer;
 }
 
 /* ======== CONTENT GALLERY ======== */

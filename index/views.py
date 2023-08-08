@@ -61,6 +61,23 @@ def indexPage(request):
     return render(request, 'index/index.html', context)
 
 
+def developPage(request, pageType):
+    current_language = request.LANGUAGE_CODE
+    description = ''
+    if pageType == 'apartments':
+        description = _('аренды апартаментов')
+    if pageType == 'services':
+        description = _('оказываемых услуг')
+    if pageType == 'events':
+        description = _('проведения мероприятий')
+
+    context = {
+        'cur_lang': current_language,
+        'description': description
+    }
+    return render(request, 'index/development.html', context)
+
+
 @csrf_exempt
 def orderCall(request):
     try:

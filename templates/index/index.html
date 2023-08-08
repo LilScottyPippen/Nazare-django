@@ -3,48 +3,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% trans 'Парк-отель ZORKA' %}</title>
-
-    <!-- ======== ICON ======== -->
-    <link rel="icon" href="/static/img/LogoZORKA-White.png" media="(prefers-color-scheme: dark)">
-    <link rel="icon" href="/static/img/LogoZORKA.png" media="(prefers-color-scheme: light)">
-
-    <!-- ======== FONT AWESOME ======== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- ======== SWEETALERT2 ======== -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
-
-    <!-- ======== JQUERY ======== -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- ======== CSS ======== -->
-    <link rel="stylesheet" href="{% static 'css/preloader.css' %}">
-    <link rel="stylesheet" href="{% static 'css/header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
-    <link rel="stylesheet" href="{% static 'css/slider.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'css/callback.css' %}">
-
-    <script type="text/javascript" >
-        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-     
-        ym(94565440, "init", {
-             clickmap:true,
-             trackLinks:true,
-             accurateTrackBounce:true,
-             webvisor:true
-        });
-     </script>
-     <noscript><div><img src="https://mc.yandex.ru/watch/94565440" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    {% include 'basic/head.html'%}
 </head>
 <body>
     <!-- ======== PRELOADER ======== -->
@@ -66,7 +25,7 @@
 
     <!-- ======== HOME FOOTER ======== -->
     <section class="home__footer">
-        <div class="home__footer_item">
+        <div class="home__footer_item" onclick="window.location='{% url 'developPage' 'apartments' %}'">
             <div class="footer__item_img">
                 <i class="fa-solid fa-building"></i>
             </div>
@@ -74,7 +33,7 @@
                 {% trans 'АПАРТАМЕНТЫ' %}
             </div>
         </div>
-        <div class="home__footer_item">
+        <div class="home__footer_item" onclick="window.location='{% url 'developPage' 'services' %}'">
             <div class="footer__item_img">
                 <i class="fa-solid fa-sailboat"></i>
             </div>
@@ -82,7 +41,7 @@
                 {% trans 'УСЛУГИ' %}
             </div>
         </div>
-        <div class="home__footer_item">
+        <div class="home__footer_item" onclick="window.location='{% url 'developPage' 'all' %}'">
             <div class="footer__item_img">
                 <i class="fa-solid fa-image"></i>
             </div>
@@ -108,19 +67,19 @@
             <!-- ======== GALLERY ======== -->
             <div class="gallery">
                 <div class="gallery-container">
-                    <div class="gallery-item gallery-item-1" data-index="1" style="background-image: url(/static/img/HomeBackground.png); background-repeat: no-repeat; background-size: cover;">
+                    <div class="gallery-item gallery-item-1" data-index="1" style="background-image: url(/static/img/HomeBackground.png); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
                         <span class="gallery-item-description">{% trans 'ДОМ OLIVE' %}</span>
                     </div>
-                    <div class="gallery-item gallery-item-2" data-index="2" style="background-image: url(/static/img/photo1690230727.jpeg); background-repeat: no-repeat; background-size: cover;">
+                    <div class="gallery-item gallery-item-2" data-index="2" style="background-image: url(/static/img/photo1690230727.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
                         <span class="gallery-item-description">{% trans 'ДОМ OBSIDIAN' %}</span>
                     </div>
-                    <div class="gallery-item gallery-item-3 active" data-index="3" style="background-image: url(/static/img/photo1690230738.jpeg); background-repeat: no-repeat; background-size: cover;">
+                    <div class="gallery-item gallery-item-3 active" data-index="3" style="background-image: url(/static/img/photo1690230738.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
                         <span class="gallery-item-description">{% trans 'ДОМ TERRA' %}</span>
                     </div>
-                    <div class="gallery-item gallery-item-4" data-index="4" style="background-image: url(/static/img/photo1690230677.jpeg); background-repeat: no-repeat; background-size: cover;">
+                    <div class="gallery-item gallery-item-4" data-index="4" style="background-image: url(/static/img/photo1690230677.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
                         <span class="gallery-item-description">{% trans 'ДОМ OLIVE' %}</span>
                     </div>
-                    <div class="gallery-item gallery-item-5" data-index="5" style="background-image: url(/static/img/photo1690230887.jpeg); background-repeat: no-repeat; background-size: cover;">
+                    <div class="gallery-item gallery-item-5" data-index="5" style="background-image: url(/static/img/photo1690230887.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
                         <span class="gallery-item-description">{% trans 'ДОМ OBSIDIAN' %}</span>
                     </div>
                 </div>
@@ -145,7 +104,7 @@
                     <span class="content__description_text">{% trans 'Всего в несколько простых шагов вы сможете забронировать свои апартаменты или номер в нашем роскошном парк-отеле, чтобы открыть для себя новые места, познакомиться с удивительными культурами и насладиться уникальными впечатлениями.' %}</span><br><br>
                     <span class="content__description_text">{% trans 'Наша онлайн-бронирование предлагает удобный и интуитивно понятный интерфейс, где вы можете легко выбрать даты вашего пребывания, узнать доступные варианты апартаментов и уточнить все детали для вашего специального отдыха. Мы ценим ваше время и стремимся обеспечить максимальное удовольствие от планирования вашей поездки.' %}</span><br><br>
                     <span class="content__description_text">{% trans 'Не упустите возможность создать незабываемые моменты. Забронируйте свою мечту с нами, и позвольте вашим мечтам сбыться. Доверьтесь нам свои планы, и мы сделаем все, чтобы сделать ваш отдых по-настоящему особенным. Оставьте заботы за пределами - вы заслуживаете только самое лучшее.' %}</span><br><br>
-                    <br><br><span class="content__description_button">{% trans 'СМОТРЕТЬ' %}</span>
+                    <br><br><span class="content__description_button" onclick="window.location='{% url 'developPage' 'apartments' %}'">{% trans 'СМОТРЕТЬ' %}</span>
                 </div>
             </div>
         </section>
@@ -223,7 +182,7 @@
                     <span class="content__description_text">{% trans 'Наши веселые вечеринки и разнообразные активности позабавят вас круглый год. Не упустите шанс насладиться вкусом изысканных блюд в наших ресторанах и попробовать уникальные кулинарные мастер-классы.' %}</span><br><br>
                     <span class="content__description_text">{% trans 'Для любителей активного отдыха у нас есть великолепные возможности для проведения времени на природе. Приглашаем вас на пешие прогулки, велосипедные пробежки и наслаждение красотой природы.' %}</span><br><br>
                     <span class="content__description_text">{% trans 'Приглашаем вас открыть двери к незабываемым моментам в нашем парк-отеле, где досуг и развлечения станут для вас сокровищем радости!' %}</span><br><br>
-                    <br><br><span class="content__description_button">{% trans 'СМОТРЕТЬ' %}</span>
+                    <br><br><span class="content__description_button" onclick="window.location='{% url 'developPage' 'events' %}'">{% trans 'СМОТРЕТЬ' %}</span>
                 </div>
             </div>
         </section>
@@ -242,25 +201,25 @@
             <div class="container__content">
                 <div class="content__service">
                     <div class="content__service_items">
-                        <div class="content__service_item">
+                        <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
                             <div class="service__item_img">
                                 <i class="fa-solid fa-sailboat"></i>
                             </div>
                             <div class="service__item_description">{% trans 'ЛОДКА' %}</div>
                         </div>
-                        <div class="content__service_item">
+                        <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
                             <div class="service__item_img">
                                 <i class="fa-regular fa-futbol"></i>
                             </div>
                             <div class="service__item_description">{% trans 'СПОРТИВНЫЙ ИНВЕНТАРЬ' %}</div>
                         </div>
-                        <div class="content__service_item">
+                        <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
                             <div class="service__item_img">
                                 <i class="fa-solid fa-people-group"></i>
                             </div>
                             <div class="service__item_description">{% trans 'КОМАНДНЫЕ ИГРЫ' %}</div>
                         </div>
-                        <div class="content__service_item">
+                        <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
                             <div class="service__item_img">
                                 <i class="fa-solid fa-hotdog"></i>
                             </div>
@@ -268,7 +227,7 @@
                         </div>
                     </div>
                     <div class="service__item_button">
-                        <span>
+                        <span onclick="window.location='{% url 'developPage' 'all' %}'">
                             {% trans 'ВСЕ УСЛУГИ' %}
                         </span>
                     </div>
@@ -290,15 +249,15 @@
             <div class="container__content">
                 <div class="content__gallery">
                     <div class="content__gallery_items">
-                        <div class="content__gallery_item">
+                        <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
                             <div class="gallery__item_img"><img src="/static/img/photo1690230633.jpeg" alt=""></div>
                             <div class="gallery__item_description">{% trans 'АПАРТАМЕНТЫ' %}</div>
                         </div>
-                        <div class="content__gallery_item">
+                        <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
                             <div class="gallery__item_img"><img src="/static/img/CuTbIniWIAAbbaE.jfif" alt=""></div>
                             <div class="gallery__item_description">{% trans 'ТЕРРИТОРИЯ' %}</div>
                         </div>
-                        <div class="content__gallery_item">
+                        <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
                             <div class="gallery__item_img"><img src="/static/img/featured_5reasonswhyyoumightretireearlierthanyouplanned.jpg" alt=""></div>
                             <div class="gallery__item_description">{% trans 'УДОБСТВА' %}</div>
                         </div>
@@ -311,7 +270,6 @@
     {% include 'basic/footer.html' %}
 
     <!-- ======== JS ======== -->
-    <script src="{% static 'js/preloader.js' %}"></script>
     <script src="{% static 'js/header.js' %}"></script>
     <script src="{% static 'js/gallery.js' %}"></script>
     <script src="{% static 'js/slider.js' %}"></script>

@@ -65,6 +65,7 @@ a{
     z-index: var(--z-fixed);
     font-size: var(--small-font-size);
     font-weight: var(--font-regular);
+    background-color: var(--blue-color);
 }
 
 .nav{
