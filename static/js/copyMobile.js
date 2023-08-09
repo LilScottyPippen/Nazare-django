@@ -34,5 +34,9 @@ function copyMobile(){
     event.preventDefault();
 }
 
-document.getElementById('contactLink').addEventListener('click', copyMobile);
-document.getElementById('contactLinkDev').addEventListener('click', copyMobile);
+try{
+    document.getElementById('contactLink').addEventListener('click', copyMobile);
+} catch (error){}
+try{
+    document.getElementById('contactLinkDev').addEventListener('click', copyMobile);
+} catch (error){}

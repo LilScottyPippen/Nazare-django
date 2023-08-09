@@ -1,6 +1,8 @@
-from pathlib import Path
 import os
 import dotenv
+import sentry_sdk
+from pathlib import Path
+from sentry_sdk.integrations.django import DjangoIntegration
 
 dotenv.load_dotenv()
 
@@ -8,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'nazare.by', 'www.nazare.by', '.ngrok-free.app']
 
@@ -90,15 +92,17 @@ LANGUAGES = [
     ('en', 'English'),
 ]
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATIC_URL = '/static/'
+if DEBUG:
+    STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -109,3 +113,11 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+
+# SENTRY
+sentry_sdk.init(
+  dsn=os.getenv('SENTRY_DSN'),
+  integrations=[DjangoIntegration()],
+  traces_sample_rate=1.0,
+  send_default_pii=True
+)
