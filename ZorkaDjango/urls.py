@@ -3,9 +3,7 @@ from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
 from index.views import set_language
 from django.conf import settings
-from django.views.static import serve
 from django.conf.urls.static import static
-from django.urls import re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
