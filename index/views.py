@@ -33,18 +33,28 @@ MESSAGE_TYPE = {
     'callback': 'callback'
 }
 
+HOME_NUMBER = [1, 2, 3]
+
+
 def set_language(request, language):
+    view = None
     for lang, _ in settings.LANGUAGES:
         translation.activate(lang)
         try:
-            view = resolve(urlparse(request.META.get("HTTP_REFERER")).path)
+            referer_path = urlparse(request.META.get("HTTP_REFERER")).path
+            view = resolve(referer_path)
         except Resolver404:
-            view = None
-        if view:
-            break
+            continue
+        break
+    
     if view:
         translation.activate(language)
-        next_url = reverse(view.url_name, args=view.args, kwargs=view.kwargs)
+        if hasattr(view, 'url_name'):
+            url_name = view.url_name
+        else:
+            url_name = None
+
+        next_url = reverse(url_name, args=view.args, kwargs=view.kwargs) if url_name else "/"
         response = HttpResponseRedirect(next_url)
         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
     else:
@@ -77,6 +87,24 @@ def developPage(request, pageType):
     }
     return render(request, 'index/development.html', context)
 
+
+def apartHomePage(request, num):
+    current_language = request.LANGUAGE_CODE
+
+    isHomeNumber = False
+    for n in HOME_NUMBER:
+        if num is n:
+            isHomeNumber = True
+
+    if isHomeNumber == True:
+        context = {
+            'homeTitle': num,
+            'cur_lang': current_language
+        }
+        return render(request, 'index/apartment-home.html', context)
+    else:
+        return render(request, 'index/development.html')
+    
 
 @csrf_exempt
 def orderCall(request):

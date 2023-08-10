@@ -2,276 +2,275 @@
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    {% include 'basic/head.html'%}
-</head>
-<body>
-    <!-- ======== PRELOADER ======== -->
-    <div class="preloader" id="preloader">
-        <img src="/static/img/LogoZORKA-White.png" alt="Preloader">
-    </div>
-
-    {% include 'basic/callback.html' %}
-    {% include 'basic/header.html' %}
-
-    <!-- ======== HOME ======== -->
-    <section class="background">
-        <div class="home">
-            <span class="home__title">{% trans 'ПАРК-ОТЕЛЬ ZORKA' %}</span>
-            <span class="home__description">{% trans 'Это идеальное место для отдыха и проведения свободного времени. Мы предлагаем уютные апартаменты, красивый парк живописными аллеями и озером, а также различные услуги.' %}</span>
-            <span class="home__book">{% trans 'БРОНИРОВАНИЕ' %}<i class="fa-solid fa-arrow-right"></i></span>
+    <head>
+        {% include 'basic/head.html'%}
+    </head>
+    <body>
+        <!-- ======== PRELOADER ======== -->
+        <div class="preloader" id="preloader">
+            <img src="/static/img/LogoZORKA-White.png" alt="Preloader">
         </div>
-    </section>
 
-    <!-- ======== HOME FOOTER ======== -->
-    <section class="home__footer">
-        <div class="home__footer_item" onclick="window.location='{% url 'developPage' 'apartments' %}'">
-            <div class="footer__item_img">
-                <i class="fa-solid fa-building"></i>
-            </div>
-            <div class="footer__item_description">
-                {% trans 'АПАРТАМЕНТЫ' %}
-            </div>
-        </div>
-        <div class="home__footer_item" onclick="window.location='{% url 'developPage' 'services' %}'">
-            <div class="footer__item_img">
-                <i class="fa-solid fa-sailboat"></i>
-            </div>
-            <div class="footer__item_description">
-                {% trans 'УСЛУГИ' %}
-            </div>
-        </div>
-        <div class="home__footer_item" onclick="window.location='{% url 'developPage' 'all' %}'">
-            <div class="footer__item_img">
-                <i class="fa-solid fa-image"></i>
-            </div>
-            <div class="footer__item_description">
-                {% trans 'ГАЛЕРЕЯ' %}
-            </div>
-        </div>
-    </section>
+        {% include 'basic/callback.html' %}
+        {% include 'basic/header.html' %}
 
-    <!-- ======== MAIN ======== -->
-    <main class="main">
-        <!-- ======== CONTENT CONTAINER ======== -->
-        <section class="content__container">
-            <!-- ======== CONTENT TITLE ======== -->
-            <div class="content__title">
-                <span class="content__title_dot">•</span><span>{% trans 'АПАРТАМЕНТЫ' %}</span><span class="content__title_dot">•</span>
-            </div>
-            <!-- ======== CONTENT DESCRIPTION ======== -->
-            <div class="content__description">
-                <span>{% trans 'ВАШЕ ИДЕАЛЬНОЕ ПРОСТРАНСТВО' %}</span>
-            </div>
-
-            <!-- ======== GALLERY ======== -->
-            <div class="gallery">
-                <div class="gallery-container">
-                    <div class="gallery-item gallery-item-1" data-index="1" style="background-image: url(/static/img/HomeBackground.png); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
-                        <span class="gallery-item-description">{% trans 'ДОМ OLIVE' %}</span>
-                    </div>
-                    <div class="gallery-item gallery-item-2" data-index="2" style="background-image: url(/static/img/photo1690230727.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
-                        <span class="gallery-item-description">{% trans 'ДОМ OBSIDIAN' %}</span>
-                    </div>
-                    <div class="gallery-item gallery-item-3 active" data-index="3" style="background-image: url(/static/img/photo1690230738.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
-                        <span class="gallery-item-description">{% trans 'ДОМ TERRA' %}</span>
-                    </div>
-                    <div class="gallery-item gallery-item-4" data-index="4" style="background-image: url(/static/img/photo1690230677.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
-                        <span class="gallery-item-description">{% trans 'ДОМ OLIVE' %}</span>
-                    </div>
-                    <div class="gallery-item gallery-item-5" data-index="5" style="background-image: url(/static/img/photo1690230887.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
-                        <span class="gallery-item-description">{% trans 'ДОМ OBSIDIAN' %}</span>
-                    </div>
-                </div>
-                <div class="gallery-controls"></div>
+        <!-- ======== HOME ======== -->
+        <section class="background">
+            <div class="home">
+                <span class="home__title">{% trans 'ПАРК-ОТЕЛЬ ZORKA' %}</span>
+                <span class="home__description">{% trans 'Это идеальное место для отдыха и проведения свободного времени. Мы предлагаем уютные апартаменты, красивый парк живописными аллеями и озером, а также различные услуги.' %}</span>
+                <span class="home__book">{% trans 'БРОНИРОВАНИЕ' %}<i class="fa-solid fa-arrow-right"></i></span>
             </div>
         </section>
 
-        <!-- ======== CONTENT CONTAINER ======== -->
-        <section class="content__container">
-            <!-- ======== CONTENT TITLE ======== -->
-            <div class="content__title">
-                <span class="content__title_dot">•</span><span>{% trans 'БРОНИРОВАНИЕ' %}</span><span class="content__title_dot">•</span>
+        <!-- ======== HOME FOOTER ======== -->
+        <section class="home__footer">
+            <div class="home__footer_item" onclick="window.location='{% url 'developPage' 'apartments' %}'">
+                <div class="footer__item_img">
+                    <i class="fa-solid fa-building"></i>
+                </div>
+                <div class="footer__item_description">
+                    {% trans 'АПАРТАМЕНТЫ' %}
+                </div>
             </div>
-            <!-- ======== CONTENT DESCRIPTION ======== -->
-            <div class="content__description">
-                <span>{% trans 'ВАШ ОТДЫХ В ОДИН КЛИК: БРОНИРУЙТЕ СЕЙЧАС!' %}</span>
+            <div class="home__footer_item" onclick="window.location='{% url 'developPage' 'services' %}'">
+                <div class="footer__item_img">
+                    <i class="fa-solid fa-sailboat"></i>
+                </div>
+                <div class="footer__item_description">
+                    {% trans 'УСЛУГИ' %}
+                </div>
             </div>
-
-            <div class="container__content">
-                <div class="container__content_image" style="background: url('/static/img/photo1690230727.jpeg'); background-position: 50% 50%; background-size: 234.974% 100.037%;"></div>
-                <div class="container__content_description">
-                    <span class="content__description_text">{% trans 'Всего в несколько простых шагов вы сможете забронировать свои апартаменты или номер в нашем роскошном парк-отеле, чтобы открыть для себя новые места, познакомиться с удивительными культурами и насладиться уникальными впечатлениями.' %}</span><br><br>
-                    <span class="content__description_text">{% trans 'Наша онлайн-бронирование предлагает удобный и интуитивно понятный интерфейс, где вы можете легко выбрать даты вашего пребывания, узнать доступные варианты апартаментов и уточнить все детали для вашего специального отдыха. Мы ценим ваше время и стремимся обеспечить максимальное удовольствие от планирования вашей поездки.' %}</span><br><br>
-                    <span class="content__description_text">{% trans 'Не упустите возможность создать незабываемые моменты. Забронируйте свою мечту с нами, и позвольте вашим мечтам сбыться. Доверьтесь нам свои планы, и мы сделаем все, чтобы сделать ваш отдых по-настоящему особенным. Оставьте заботы за пределами - вы заслуживаете только самое лучшее.' %}</span><br><br>
-                    <br><br><span class="content__description_button" onclick="window.location='{% url 'developPage' 'apartments' %}'">{% trans 'СМОТРЕТЬ' %}</span>
+            <div class="home__footer_item" onclick="window.location='{% url 'developPage' 'all' %}'">
+                <div class="footer__item_img">
+                    <i class="fa-solid fa-image"></i>
+                </div>
+                <div class="footer__item_description">
+                    {% trans 'ГАЛЕРЕЯ' %}
                 </div>
             </div>
         </section>
 
-        <!-- ======== CONTENT CONTAINER ======== -->
-        <section class="content__container">
-            <!-- ======== CONTENT TITLE ======== -->
-            <div class="content__title">
-                <span class="content__title_dot">•</span><span>{% trans 'ОТЗЫВЫ' %}</span><span class="content__title_dot">•</span>
-            </div>
-            <!-- ======== CONTENT DESCRIPTION ======== -->
-            <div class="content__description">
-                <span>{% trans 'ВАШИ ОТЗЫВЫ - НАШЕ ВДОХНОВЕНИЕ!' %}</span>
-            </div>
-
-            <!-- ======== SLIDER ======== -->
-            <section class="slider__wrapper">
-                <div class="content_carousel">
-                    <div class="container__content feedback">
-                        <div class="container__content_description-right">
-                            <span class="content__description_title">{% trans 'ОЛЕГ' %}</span><br>
-                            <span class="content__description_text">{% trans 'Я просто восхищен нашим пребыванием в вашем удивительном парк-отеле! Отличное место для романтического уикенда. Апартаменты просто потрясающие - так стильно и уютно! Завтраки были восхитительными, а персонал - невероятно заботливым и дружелюбным. Мы провели незабываемое время, наслаждаясь прогулками по живописным тропинкам парка и расслабляясь в спа-центре. Определенно, вернемся снова! Благодарим за такой прекрасный опыт.' %}</span><br><br>
-                        </div>
-                        <div class="container__content_image-right" style="background: url('/static/img/image\ 3.png') no-repeat; background-size: cover; background-position: center;"></div>
-                    </div>
-
-                    <div class="container__content feedback">
-                        <div class="container__content_description-right">
-                            <span class="content__description_title">{% trans 'ЕЛЕНА' %}</span><br>
-                            <span class="content__description_text">{% trans 'Замечательный опыт отдыха в парк-отеле ZORKA! Провели здесь прекрасные выходные в компании друзей. Виллы, которые мы арендовали, были просто потрясающими: просторные, удобные и современные. Отличное обслуживание, дружелюбный персонал, всегда готовый помочь с любым вопросом. Мы наслаждались купанием в чистейшем бассейне и ужинами на террасе с прекрасным видом на парк. Это место точно оставит яркие воспоминания. Спасибо, ZORKA, за гостеприимство!' %}</span><br><br>
-                        </div>
-                        <div class="container__content_image-right" style="background: url('/static/img/i\ \(2\).webp') no-repeat; background-size: cover; background-position: center;"></div>
-                    </div>
-
-                    <div class="container__content feedback">
-                        <div class="container__content_description-right">
-                            <span class="content__description_title">{% trans 'АЛЕКСЕЙ' %}</span><br>
-                            <span class="content__description_text">{% trans 'Очень понравился отдых в парк-отеле ZORKA! Бронировал номер для семейного отпуска и не разочаровался. Атмосфера уюта и спокойствия настолько восхитительна, что хотелось остаться здесь еще на несколько недель. Номер был чистым, красиво оформленным и оборудован всем необходимым. Мои дети были в восторге от игровой площадки и аквапарка. А нам с женой понравилась романтическая прогулка по парку вечером. Отдельное спасибо персоналу за радушный прием и заботу! Вернемся сюда обязательно!' %}</span><br><br>
-                        </div>
-                        <div class="container__content_image-right" style="background: url('/static/img/D9qUWCJXoAAmNFg.jpg') no-repeat; background-size: cover; background-position: center;"></div>
-                    </div>
-
-                    <div class="container__content feedback">
-                        <div class="container__content_description-right">
-                            <span class="content__description_title">{% trans 'МАРИНА' %}</span><br>
-                            <span class="content__description_text">{% trans 'Я провела волшебные выходные в парк-отеле ZORKA! Сразу по приезду меня встретила атмосфера спокойствия и красоты природы. Мой номер был просто идеальным местом для отдыха - просторный, с шикарным видом на окружающий парк и с уютной террасой. Завтраки были разнообразными и вкусными, а вечерние прогулки по парку наполнили меня умиротворением и гармонией. Отдельное спасибо спа-центру за расслабляющий массаж! Уезжать не хотелось вообще. С удовольствием рекомендую.' %}</span><br><br>
-                        </div>
-                        <div class="container__content_image-right" style="background: url('/static/img/i\ \(3\).webp') no-repeat; background-size: cover;background-position: center;"></div>
-                    </div>
+        <!-- ======== MAIN ======== -->
+        <main class="main">
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{% trans 'АПАРТАМЕНТЫ' %}</span><span class="content__title_dot">•</span>
+                </div>
+                <!-- ======== CONTENT DESCRIPTION ======== -->
+                <div class="content__description">
+                    <span>{% trans 'ВАШЕ ИДЕАЛЬНОЕ ПРОСТРАНСТВО' %}</span>
                 </div>
 
-                <div class="item__container_control">
-                    <i class="fa-solid fa-chevron-left button" id="prev"></i>
-                    <div class="control__paginator"></div>
-                    <i class="fa-solid fa-chevron-right button" id="next"></i>
+                <!-- ======== GALLERY ======== -->
+                <div class="gallery">
+                    <div class="gallery-container">
+                        <div class="gallery-item gallery-item-1" data-index="1" style="background-image: url(/static/img/HomeBackground.png); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
+                            <span class="gallery-item-description">{% trans 'ДОМ OLIVE' %}</span>
+                        </div>
+                        <div class="gallery-item gallery-item-2" data-index="2" style="background-image: url(/static/img/photo1690230727.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
+                            <span class="gallery-item-description">{% trans 'ДОМ OBSIDIAN' %}</span>
+                        </div>
+                        <div class="gallery-item gallery-item-3 active" data-index="3" style="background-image: url(/static/img/photo1690230738.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
+                            <span class="gallery-item-description">{% trans 'ДОМ TERRA' %}</span>
+                        </div>
+                        <div class="gallery-item gallery-item-4" data-index="4" style="background-image: url(/static/img/photo1690230677.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
+                            <span class="gallery-item-description">{% trans 'ДОМ OLIVE' %}</span>
+                        </div>
+                        <div class="gallery-item gallery-item-5" data-index="5" style="background-image: url(/static/img/photo1690230887.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'developPage' 'apartments' %}'">
+                            <span class="gallery-item-description">{% trans 'ДОМ OBSIDIAN' %}</span>
+                        </div>
+                    </div>
+                    <div class="gallery-controls"></div>
                 </div>
             </section>
-        </section>
 
-        <!-- ======== CONTENT CONTAINER ======== -->
-        <section class="content__container">
-            <!-- ======== CONTENT TITLE ======== -->
-            <div class="content__title">
-                <span class="content__title_dot">•</span><span>{% trans 'МЕРОПРИЯТИЯ' %}</span><span class="content__title_dot">•</span>
-            </div>
-            <!-- ======== CONTENT DESCRIPTION ======== -->
-            <div class="content__description">
-                <span>{% trans 'РАЗВЛЕЧЕНИЯ НА МАКСИМУМЕ: ВАШ ИДЕАЛЬНЫЙ ДОСУГ!' %}</span>
-            </div>
-
-            <div class="container__content">
-                <div class="container__content_image" style="background: url('/static/img/friends-trying-to-catch-volley-ball-sunny-day-68295814.webp') lightgray 50% / cover no-repeat;"></div>
-                <div class="container__content_description">
-                    <span class="content__description_text">{% trans 'Добро пожаловать в мир радости и удовольствия нашего парк-отеля! Здесь вас ждет невероятный досуг и множество развлечений. Откройте для себя уникальные апартаменты, где комфорт сочетается с изысканным стилем.' %}</span><br><br>
-                    <span class="content__description_text">{% trans 'Наши веселые вечеринки и разнообразные активности позабавят вас круглый год. Не упустите шанс насладиться вкусом изысканных блюд в наших ресторанах и попробовать уникальные кулинарные мастер-классы.' %}</span><br><br>
-                    <span class="content__description_text">{% trans 'Для любителей активного отдыха у нас есть великолепные возможности для проведения времени на природе. Приглашаем вас на пешие прогулки, велосипедные пробежки и наслаждение красотой природы.' %}</span><br><br>
-                    <span class="content__description_text">{% trans 'Приглашаем вас открыть двери к незабываемым моментам в нашем парк-отеле, где досуг и развлечения станут для вас сокровищем радости!' %}</span><br><br>
-                    <br><br><span class="content__description_button" onclick="window.location='{% url 'developPage' 'events' %}'">{% trans 'СМОТРЕТЬ' %}</span>
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{% trans 'БРОНИРОВАНИЕ' %}</span><span class="content__title_dot">•</span>
                 </div>
-            </div>
-        </section>
+                <!-- ======== CONTENT DESCRIPTION ======== -->
+                <div class="content__description">
+                    <span>{% trans 'ВАШ ОТДЫХ В ОДИН КЛИК: БРОНИРУЙТЕ СЕЙЧАС!' %}</span>
+                </div>
 
-        <!-- ======== CONTENT CONTAINER ======== -->
-        <section class="content__container">
-            <!-- ======== CONTENT TITLE ======== -->
-            <div class="content__title">
-                <span class="content__title_dot">•</span><span>{% trans 'УСЛУГИ' %}</span><span class="content__title_dot">•</span>
-            </div>
-            <!-- ======== CONTENT DESCRIPTION ======== -->
-            <div class="content__description">
-                <span>{% trans 'ИЗЫСКАННЫЙ СЕРВИС, НЕЗАБЫВАЕМЫЕ ВПЕЧАТЛЕНИЯ.' %}</span>
-            </div>
-
-            <div class="container__content">
-                <div class="content__service">
-                    <div class="content__service_items">
-                        <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
-                            <div class="service__item_img">
-                                <i class="fa-solid fa-sailboat"></i>
-                            </div>
-                            <div class="service__item_description">{% trans 'ЛОДКА' %}</div>
-                        </div>
-                        <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
-                            <div class="service__item_img">
-                                <i class="fa-regular fa-futbol"></i>
-                            </div>
-                            <div class="service__item_description">{% trans 'СПОРТИВНЫЙ ИНВЕНТАРЬ' %}</div>
-                        </div>
-                        <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
-                            <div class="service__item_img">
-                                <i class="fa-solid fa-people-group"></i>
-                            </div>
-                            <div class="service__item_description">{% trans 'КОМАНДНЫЕ ИГРЫ' %}</div>
-                        </div>
-                        <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
-                            <div class="service__item_img">
-                                <i class="fa-solid fa-hotdog"></i>
-                            </div>
-                            <div class="service__item_description">{% trans 'БАРБЕКЮ' %}</div>
-                        </div>
-                    </div>
-                    <div class="service__item_button">
-                        <span onclick="window.location='{% url 'developPage' 'all' %}'">
-                            {% trans 'ВСЕ УСЛУГИ' %}
-                        </span>
+                <div class="container__content">
+                    <div class="container__content_image" style="background: url('/static/img/photo1690230727.jpeg'); background-position: 50% 50%; background-size: 234.974% 100.037%;"></div>
+                    <div class="container__content_description">
+                        <span class="content__description_text">{% trans 'Всего в несколько простых шагов вы сможете забронировать свои апартаменты или номер в нашем роскошном парк-отеле, чтобы открыть для себя новые места, познакомиться с удивительными культурами и насладиться уникальными впечатлениями.' %}</span><br><br>
+                        <span class="content__description_text">{% trans 'Наша онлайн-бронирование предлагает удобный и интуитивно понятный интерфейс, где вы можете легко выбрать даты вашего пребывания, узнать доступные варианты апартаментов и уточнить все детали для вашего специального отдыха. Мы ценим ваше время и стремимся обеспечить максимальное удовольствие от планирования вашей поездки.' %}</span><br><br>
+                        <span class="content__description_text">{% trans 'Не упустите возможность создать незабываемые моменты. Забронируйте свою мечту с нами, и позвольте вашим мечтам сбыться. Доверьтесь нам свои планы, и мы сделаем все, чтобы сделать ваш отдых по-настоящему особенным. Оставьте заботы за пределами - вы заслуживаете только самое лучшее.' %}</span><br><br>
+                        <br><br><span class="content__description_button" onclick="window.location='{% url 'developPage' 'apartments' %}'">{% trans 'СМОТРЕТЬ' %}</span>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- ======== CONTENT CONTAINER ======== -->
-        <section class="content__container">
-            <!-- ======== CONTENT TITLE ======== -->
-            <div class="content__title">
-                <span class="content__title_dot">•</span><span>{% trans 'ГАЛЕРЕЯ' %}</span><span class="content__title_dot">•</span>
-            </div>
-            <!-- ======== CONTENT DESCRIPTION ======== -->
-            <div class="content__description">
-                <span>{% trans 'ПЛЕНИТЕЛЬНАЯ КРАСОТА В КАЖДОМ КАДРЕ.' %}</span>
-            </div>
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{% trans 'ОТЗЫВЫ' %}</span><span class="content__title_dot">•</span>
+                </div>
+                <!-- ======== CONTENT DESCRIPTION ======== -->
+                <div class="content__description">
+                    <span>{% trans 'ВАШИ ОТЗЫВЫ - НАШЕ ВДОХНОВЕНИЕ!' %}</span>
+                </div>
 
-            <div class="container__content">
-                <div class="content__gallery">
-                    <div class="content__gallery_items">
-                        <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
-                            <div class="gallery__item_img"><img src="/static/img/photo1690230633.jpeg" alt=""></div>
-                            <div class="gallery__item_description">{% trans 'АПАРТАМЕНТЫ' %}</div>
+                <!-- ======== SLIDER ======== -->
+                <section class="slider__wrapper">
+                    <div class="content_carousel">
+                        <div class="container__content feedback">
+                            <div class="container__content_description-right">
+                                <span class="content__description_title">{% trans 'ОЛЕГ' %}</span><br>
+                                <span class="content__description_text">{% trans 'Я просто восхищен нашим пребыванием в вашем удивительном парк-отеле! Отличное место для романтического уикенда. Апартаменты просто потрясающие - так стильно и уютно! Завтраки были восхитительными, а персонал - невероятно заботливым и дружелюбным. Мы провели незабываемое время, наслаждаясь прогулками по живописным тропинкам парка и расслабляясь в спа-центре. Определенно, вернемся снова! Благодарим за такой прекрасный опыт.' %}</span><br><br>
+                            </div>
+                            <div class="container__content_image-right" style="background: url('/static/img/image\ 3.png') no-repeat; background-size: cover; background-position: center;"></div>
                         </div>
-                        <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
-                            <div class="gallery__item_img"><img src="/static/img/CuTbIniWIAAbbaE.jfif" alt=""></div>
-                            <div class="gallery__item_description">{% trans 'ТЕРРИТОРИЯ' %}</div>
+
+                        <div class="container__content feedback">
+                            <div class="container__content_description-right">
+                                <span class="content__description_title">{% trans 'ЕЛЕНА' %}</span><br>
+                                <span class="content__description_text">{% trans 'Замечательный опыт отдыха в парк-отеле ZORKA! Провели здесь прекрасные выходные в компании друзей. Виллы, которые мы арендовали, были просто потрясающими: просторные, удобные и современные. Отличное обслуживание, дружелюбный персонал, всегда готовый помочь с любым вопросом. Мы наслаждались купанием в чистейшем бассейне и ужинами на террасе с прекрасным видом на парк. Это место точно оставит яркие воспоминания. Спасибо, ZORKA, за гостеприимство!' %}</span><br><br>
+                            </div>
+                            <div class="container__content_image-right" style="background: url('/static/img/i\ \(2\).webp') no-repeat; background-size: cover; background-position: center;"></div>
                         </div>
-                        <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
-                            <div class="gallery__item_img"><img src="/static/img/featured_5reasonswhyyoumightretireearlierthanyouplanned.jpg" alt=""></div>
-                            <div class="gallery__item_description">{% trans 'УДОБСТВА' %}</div>
+
+                        <div class="container__content feedback">
+                            <div class="container__content_description-right">
+                                <span class="content__description_title">{% trans 'АЛЕКСЕЙ' %}</span><br>
+                                <span class="content__description_text">{% trans 'Очень понравился отдых в парк-отеле ZORKA! Бронировал номер для семейного отпуска и не разочаровался. Атмосфера уюта и спокойствия настолько восхитительна, что хотелось остаться здесь еще на несколько недель. Номер был чистым, красиво оформленным и оборудован всем необходимым. Мои дети были в восторге от игровой площадки и аквапарка. А нам с женой понравилась романтическая прогулка по парку вечером. Отдельное спасибо персоналу за радушный прием и заботу! Вернемся сюда обязательно!' %}</span><br><br>
+                            </div>
+                            <div class="container__content_image-right" style="background: url('/static/img/D9qUWCJXoAAmNFg.jpg') no-repeat; background-size: cover; background-position: center;"></div>
+                        </div>
+
+                        <div class="container__content feedback">
+                            <div class="container__content_description-right">
+                                <span class="content__description_title">{% trans 'МАРИНА' %}</span><br>
+                                <span class="content__description_text">{% trans 'Я провела волшебные выходные в парк-отеле ZORKA! Сразу по приезду меня встретила атмосфера спокойствия и красоты природы. Мой номер был просто идеальным местом для отдыха - просторный, с шикарным видом на окружающий парк и с уютной террасой. Завтраки были разнообразными и вкусными, а вечерние прогулки по парку наполнили меня умиротворением и гармонией. Отдельное спасибо спа-центру за расслабляющий массаж! Уезжать не хотелось вообще. С удовольствием рекомендую.' %}</span><br><br>
+                            </div>
+                            <div class="container__content_image-right" style="background: url('/static/img/i\ \(3\).webp') no-repeat; background-size: cover;background-position: center;"></div>
+                        </div>
+                    </div>
+
+                    <div class="item__container_control">
+                        <i class="fa-solid fa-chevron-left button" id="prev"></i>
+                        <div class="control__paginator"></div>
+                        <i class="fa-solid fa-chevron-right button" id="next"></i>
+                    </div>
+                </section>
+            </section>
+
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{% trans 'МЕРОПРИЯТИЯ' %}</span><span class="content__title_dot">•</span>
+                </div>
+                <!-- ======== CONTENT DESCRIPTION ======== -->
+                <div class="content__description">
+                    <span>{% trans 'РАЗВЛЕЧЕНИЯ НА МАКСИМУМЕ: ВАШ ИДЕАЛЬНЫЙ ДОСУГ!' %}</span>
+                </div>
+
+                <div class="container__content">
+                    <div class="container__content_image" style="background: url('/static/img/friends-trying-to-catch-volley-ball-sunny-day-68295814.webp') lightgray 50% / cover no-repeat;"></div>
+                    <div class="container__content_description">
+                        <span class="content__description_text">{% trans 'Добро пожаловать в мир радости и удовольствия нашего парк-отеля! Здесь вас ждет невероятный досуг и множество развлечений. Откройте для себя уникальные апартаменты, где комфорт сочетается с изысканным стилем.' %}</span><br><br>
+                        <span class="content__description_text">{% trans 'Наши веселые вечеринки и разнообразные активности позабавят вас круглый год. Не упустите шанс насладиться вкусом изысканных блюд в наших ресторанах и попробовать уникальные кулинарные мастер-классы.' %}</span><br><br>
+                        <span class="content__description_text">{% trans 'Для любителей активного отдыха у нас есть великолепные возможности для проведения времени на природе. Приглашаем вас на пешие прогулки, велосипедные пробежки и наслаждение красотой природы.' %}</span><br><br>
+                        <span class="content__description_text">{% trans 'Приглашаем вас открыть двери к незабываемым моментам в нашем парк-отеле, где досуг и развлечения станут для вас сокровищем радости!' %}</span><br><br>
+                        <br><br><span class="content__description_button" onclick="window.location='{% url 'developPage' 'events' %}'">{% trans 'СМОТРЕТЬ' %}</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{% trans 'УСЛУГИ' %}</span><span class="content__title_dot">•</span>
+                </div>
+                <!-- ======== CONTENT DESCRIPTION ======== -->
+                <div class="content__description">
+                    <span>{% trans 'ИЗЫСКАННЫЙ СЕРВИС, НЕЗАБЫВАЕМЫЕ ВПЕЧАТЛЕНИЯ.' %}</span>
+                </div>
+
+                <div class="container__content">
+                    <div class="content__service">
+                        <div class="content__service_items">
+                            <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
+                                <div class="service__item_img">
+                                    <i class="fa-solid fa-sailboat"></i>
+                                </div>
+                                <div class="service__item_description">{% trans 'ЛОДКА' %}</div>
+                            </div>
+                            <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
+                                <div class="service__item_img">
+                                    <i class="fa-regular fa-futbol"></i>
+                                </div>
+                                <div class="service__item_description">{% trans 'СПОРТИВНЫЙ ИНВЕНТАРЬ' %}</div>
+                            </div>
+                            <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
+                                <div class="service__item_img">
+                                    <i class="fa-solid fa-people-group"></i>
+                                </div>
+                                <div class="service__item_description">{% trans 'КОМАНДНЫЕ ИГРЫ' %}</div>
+                            </div>
+                            <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
+                                <div class="service__item_img">
+                                    <i class="fa-solid fa-hotdog"></i>
+                                </div>
+                                <div class="service__item_description">{% trans 'БАРБЕКЮ' %}</div>
+                            </div>
+                        </div>
+                        <div class="service__item_button">
+                            <span onclick="window.location='{% url 'developPage' 'all' %}'">
+                                {% trans 'ВСЕ УСЛУГИ' %}
+                            </span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
 
-    {% include 'basic/footer.html' %}
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{% trans 'ГАЛЕРЕЯ' %}</span><span class="content__title_dot">•</span>
+                </div>
+                <!-- ======== CONTENT DESCRIPTION ======== -->
+                <div class="content__description">
+                    <span>{% trans 'ПЛЕНИТЕЛЬНАЯ КРАСОТА В КАЖДОМ КАДРЕ.' %}</span>
+                </div>
 
-    <!-- ======== JS ======== -->
-    <script src="{% static 'js/header.js' %}"></script>
-    <script src="{% static 'js/gallery.js' %}"></script>
-    <script src="{% static 'js/slider.js' %}"></script>
-</body>
+                <div class="container__content">
+                    <div class="content__gallery">
+                        <div class="content__gallery_items">
+                            <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
+                                <div class="gallery__item_img"><img src="/static/img/photo1690230633.jpeg" alt=""></div>
+                                <div class="gallery__item_description">{% trans 'АПАРТАМЕНТЫ' %}</div>
+                            </div>
+                            <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
+                                <div class="gallery__item_img"><img src="/static/img/CuTbIniWIAAbbaE.jfif" alt=""></div>
+                                <div class="gallery__item_description">{% trans 'ТЕРРИТОРИЯ' %}</div>
+                            </div>
+                            <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
+                                <div class="gallery__item_img"><img src="/static/img/featured_5reasonswhyyoumightretireearlierthanyouplanned.jpg" alt=""></div>
+                                <div class="gallery__item_description">{% trans 'УДОБСТВА' %}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script src="{% static 'js/header.js' %}"></script>
+        {% include 'basic/footer.html' %}
+
+        <!-- ======== JS ======== -->
+        <script src="{% static 'js/gallery.js' %}"></script>
+        <script src="{% static 'js/slider.js' %}"></script>
+    </body>
 </html>

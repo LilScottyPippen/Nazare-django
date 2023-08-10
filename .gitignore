@@ -11,3 +11,4 @@ __pycache__
 /.idea
 .vscode
 /staticfiles_build
+apartment-home.html
