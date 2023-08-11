@@ -1,7 +1,6 @@
 from .views import *
 from django.urls import path
-
-
+from django.conf.urls.static import static
 
 urlpatterns = [
     # PAGES
@@ -11,4 +10,5 @@ urlpatterns = [
 
     # FUNCTIONS
     path('order-call/', orderCall, name='orderCallFunc')
-]
+] 
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
