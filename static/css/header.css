@@ -94,7 +94,6 @@ a{
 .nav__logo{
     display: flex;
     height: 100px;
-    width: 50px;
     justify-content: center;
 }
 
@@ -261,7 +260,7 @@ a{
 }
 
 .mobile__nav_list{
-    padding: 20px 100px;
+    padding: 20px 20px;
     row-gap: 16px;
     font-size: var(--normal-font-size);
 }
@@ -292,9 +291,6 @@ a{
 
 /* ======== RESPONSIVE MENU MOBILE ======== */
 @media (max-width: 900px) {
-    .mobile__nav_list{
-        padding: 20px 20px;
-    }
     .mobile__header{
         padding: 0 20px;
     }

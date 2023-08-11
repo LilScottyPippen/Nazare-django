@@ -33,7 +33,11 @@ MESSAGE_TYPE = {
     'callback': 'callback'
 }
 
-HOME_NUMBER = [1, 2, 3]
+HOME_TITLE = {
+    'olive': _('ДОМ OLIVE'),
+    'terra': _('ДОМ TERRA'),
+    'obsidian': _('ДОМ OBSIDIAN')
+}
 
 
 def set_language(request, language):
@@ -88,17 +92,17 @@ def developPage(request, pageType):
     return render(request, 'index/development.html', context)
 
 
-def apartHomePage(request, num):
+def apartHomePage(request, title):
     current_language = request.LANGUAGE_CODE
 
-    isHomeNumber = False
-    for n in HOME_NUMBER:
-        if num is n:
-            isHomeNumber = True
-
-    if isHomeNumber == True:
+    if title in HOME_TITLE:
+        apartment = Apartment.objects.get(title=title)
         context = {
-            'homeTitle': num,
+            'homeTitle': HOME_TITLE[title],
+            'homeGuests': apartment.guests,
+            'homeSquare': apartment.square,
+            'homeSleep': apartment.sleepPlace,
+            'homeWiFi': apartment.isWifi,
             'cur_lang': current_language
         }
         return render(request, 'index/apartment-home.html', context)
