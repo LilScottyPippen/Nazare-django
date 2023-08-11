@@ -27,7 +27,7 @@
 }
 
 /*======== RESPONSIVE TYPOGRAPHY ========*/
-@media screen and (min-width: 1401px){
+@media screen and (min-width: 1402px){
     :root{
         --biggest-font-size: 64px;
         --normal-font-size: 32px;
@@ -56,7 +56,7 @@
     display: flex;
     justify-content: center;
     color: var(--blue-color);
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .item__container_control .fa-solid{
@@ -72,7 +72,10 @@
 /* ======== RESPONSIVE SLIDER ======== */
 @media (max-width: 1401px) {
     .item__container_control{
-        margin-top: 50px;
-        font-size: 10px;
+        margin-top: 25px;
+    }
+
+    .control__paginator i{
+        font-size: var(--normal-font-size);
     }
 }

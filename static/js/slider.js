@@ -1,6 +1,6 @@
 const wrapper = document.querySelector('.content__item_container');
 const carousel = document.querySelector('.content_carousel');
-const items = document.querySelectorAll('.feedback');
+const items = document.querySelectorAll('.container__content_slider');
 const buttons = document.querySelectorAll('.button');
 
 let itemIndex = 0;

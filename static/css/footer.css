@@ -27,7 +27,7 @@
 }
 
 /*======== RESPONSIVE TYPOGRAPHY ========*/
-@media screen and (min-width: 1401px){
+@media screen and (min-width: 1402px){
     :root{
         --biggest-font-size: 64px;
         --normal-font-size: 32px;
@@ -71,7 +71,6 @@ a{
 /* ======== FOOTER MAIN ======== */
 .footer-main{
     background-color: var(--blue-color);
-    margin-top: 100px;
     font-size: var(--small-font-size);
     color: #fff;
     display: flex;

@@ -26,7 +26,7 @@
 }
 
 /*======== RESPONSIVE TYPOGRAPHY ========*/
-@media screen and (min-width: 1401px){
+@media screen and (min-width: 1402px){
     :root{
         --biggest-font-size: 64px;
         --normal-font-size: 32px;
