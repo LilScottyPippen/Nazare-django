@@ -7,6 +7,7 @@ urlpatterns = [
     path('', indexPage, name='indexPage'),
     path('development/<str:pageType>', developPage, name='developPage'),
     path('apartments/home/<str:title>', apartHomePage, name='apartHomePage'),
+    path('privacy/', privacyPage, name='privacyPage'),
 
     # FUNCTIONS
     path('order-call/', orderCall, name='orderCallFunc')

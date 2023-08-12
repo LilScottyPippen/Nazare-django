@@ -92,6 +92,10 @@ def developPage(request, pageType):
     return render(request, 'index/development.html', context)
 
 
+def privacyPage(request):
+    return render(request, 'index/privacy.html')
+
+
 def apartHomePage(request, title):
     current_language = request.LANGUAGE_CODE
 
