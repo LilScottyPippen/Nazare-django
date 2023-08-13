@@ -36,9 +36,8 @@
 
 /* ======== BASE ======== */
 .main{
-    padding: 200px 300px 100px 300px;
-    justify-content: center;
     display: flex;
+    justify-content: center;
 }
 
 /*======== RESPONSIVE BASE ========*/

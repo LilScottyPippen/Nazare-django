@@ -61,7 +61,7 @@
                 </div>
                 <div class="footer__item_container">
                     <i class="fa-solid fa-envelope"></i>
-                    <span>zorka@otel.by</span>
+                    <span>info@nazare.by</span>
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
                     <span>{% trans 'Будьте в курсе выгодного предложения' %}</span>
                 </div>
                 <div class="footer__item_container">
-                    <input class="item__container_input" type="text" placeholder="E-mail">
+                    <input class="item__container_input" type="text" inputmode="email" placeholder="E-mail">
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
                 <div class="footer__item_container">
@@ -94,7 +94,7 @@
     <section class="footer__secondary">
         <span>© ZORKA 2023 {% trans 'Все права защищены' %}</span>
         <a class="footer__developer" href="https://github.com/LilScottyPippen">{% trans 'Разработано' %}: LilScottyPippen</a>
-        <span style="cursor: pointer;" onclick="window.location='{% url 'developPage' 'all' %}'">{% trans 'Политика конфендециальности' %}</span>
+        <span style="cursor: pointer;" onclick="window.location='{% url 'privacyPage' %}'">{% trans 'Политика конфендециальности' %}</span>
     </section>
 </footer>
 

@@ -93,7 +93,12 @@ def developPage(request, pageType):
 
 
 def privacyPage(request):
-    return render(request, 'index/privacy.html')
+    current_language = request.LANGUAGE_CODE
+
+    context = {
+        'cur_lang': current_language,
+    }
+    return render(request, 'index/privacy.html', context)
 
 
 def apartHomePage(request, title):

@@ -14,19 +14,19 @@
                 <span class="input__title">
                     {% trans 'Ваше имя' %}<span style="color: red;">*</span>
                 </span>
-                <input type="text" id='input_name'>
+                <input type="text" inputmode="text" id='input_name'>
             </div>
 
             <div class="main__input">
                 <span class="input__title">
                     {% trans 'Телефон' %}<span style="color: red;">*</span>
                 </span>
-                <input type="text" id="input_phone">
+                <input type="text" inputmode="tel" id="input_phone">
             </div>
 
             <div class="main__check">
                 <input type="checkbox" name="" id="input_checkbox">
-                <span>{% trans 'Я согласен на ' %}<a href="#">{% trans 'обработку персональных данных' %}</a></span>
+                <span>{% trans 'Я согласен на ' %}<a href="{% url 'privacyPage' %}">{% trans 'обработку персональных данных' %}</a></span>
             </div>
 
             <div class="main__bottom" id="callback_submit">

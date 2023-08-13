@@ -1,0 +1,100 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        {% include 'basic/head.html'%}
+    </head>
+    <body>
+        <!-- ======== PRELOADER ======== -->
+        <div class="preloader" id="preloader">
+            <img src="/static/img/LogoZORKA-White.png" alt="Preloader">
+        </div>
+
+        {% include 'basic/callback.html' %}
+        {% include 'basic/header.html' %}
+
+        <main class="main">
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{{ homeTitle }}</span><span class="content__title_dot">•</span>
+                </div>
+                <section class="apartments">
+                    <!-- ======== SLIDER ======== -->
+                    <!--
+                    <section class="slider__wrapper">
+                        <div class="content_carousel">
+                            <div class="container__content_slider apartment">
+                                <div class="container__content_image-center" style="background: url('/static/img/photo1690230727.jpeg') no-repeat; background-size: cover; background-position: center;"></div>
+                            </div>
+
+                            <div class="container__content_slider apartment">
+                                <div class="container__content_image-center" style="background: url('/static/img/photo1690230633.jpeg') no-repeat; background-size: cover; background-position: center;"></div>
+                            </div>
+
+                            <div class="container__content_slider apartment">
+                                <div class="container__content_image-center" style="background: url('/static/img/photo1690230738.jpeg') no-repeat; background-size: cover; background-position: center;"></div>
+                            </div>
+
+                            <div class="container__content_slider apartment">
+                                <div class="container__content apartment">
+                                    <div class="container__content_image-center" style="background: url('/static/img/photo1690230887.jpeg') no-repeat; background-size: cover; background-position: center;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item__container_control">
+                            <i class="fa-solid fa-chevron-left button" id="prev"></i>
+                            <div class="control__paginator"></div>
+                            <i class="fa-solid fa-chevron-right button" id="next"></i>
+                        </div>
+                    </section>
+                    -->
+                    <div class="apartments__right">
+                        <section class="apartment__info">
+                            <span class="apartment__info_title">{% trans "ИНФОРМАЦИЯ" %}</span>
+                            <div class="apartment__items">
+                                <div class="apartment__item">
+                                    <i class="fa-solid fa-people-group"></i> {% trans "Количество гостей" %}: {{ homeGuests }}
+                                </div>
+                                <div class="apartment__item">
+                                    <i class="fa-regular fa-square"></i> {% trans "Площадь" %}: {{ homeSquare }} м²
+                                </div>
+                                <div class="apartment__item">
+                                    <i class="fa-solid fa-bed"></i> {% trans "Спальные места" %}: {{ homeSleep }}
+                                </div>
+                                <div class="apartment__item">
+                                    <i class="fa-solid fa-wifi"></i> Wi-Fi: 
+                                    {% if homeWiFi == True %}
+                                        {% trans 'есть' %}
+                                    {% else %}
+                                        {% trans "нет" %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </section>
+                        <span class="apartments__book" id="navCallDev">
+                            {% trans "ЗАБРОНИРОВАТЬ" %}
+                        </span>
+                        <div class="apartments__share">
+                            {% trans 'Поделиться'%}: 
+                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-brands fa-linkedin"></i>
+                            <i class="fa-brands fa-vk"></i>
+                            <i class="fa-brands fa-square-odnoklassniki"></i>
+                            <i class="fa-brands fa-telegram"></i>
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        {% include 'basic/footer.html' %}
+
+        <!-- ======== JS ======== -->
+        <script src="{% static 'js/slider.js' %}"></script>
+    </body>
+</html>
