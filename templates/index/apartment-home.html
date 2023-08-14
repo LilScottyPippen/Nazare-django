@@ -6,11 +6,7 @@
         {% include 'basic/head.html'%}
     </head>
     <body>
-        <!-- ======== PRELOADER ======== -->
-        <div class="preloader" id="preloader">
-            <img src="/static/img/LogoZORKA-White.png" alt="Preloader">
-        </div>
-
+        {% include 'basic/preloader.html' %}
         {% include 'basic/callback.html' %}
         {% include 'basic/header.html' %}
 
@@ -23,35 +19,26 @@
                 </div>
                 <section class="apartments">
                     <!-- ======== SLIDER ======== -->
-                    <!--
-                    <section class="slider__wrapper">
-                        <div class="content_carousel">
-                            <div class="container__content_slider apartment">
-                                <div class="container__content_image-center" style="background: url('/static/img/photo1690230727.jpeg') no-repeat; background-size: cover; background-position: center;"></div>
+                    <div class="apartments__left">
+                        <section class="slider__wrapper">
+                            <div class="content_carousel">
+                                {% for imageFiles in imageFiles %}
+                                    <div class="container__content_slider apartment">
+                                        <div class="container__content_image-center" style="background: url('{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}') no-repeat; background-size: cover; background-position: center;"></div>
+                                    </div>
+                                {% endfor %}
                             </div>
-
-                            <div class="container__content_slider apartment">
-                                <div class="container__content_image-center" style="background: url('/static/img/photo1690230633.jpeg') no-repeat; background-size: cover; background-position: center;"></div>
-                            </div>
-
-                            <div class="container__content_slider apartment">
-                                <div class="container__content_image-center" style="background: url('/static/img/photo1690230738.jpeg') no-repeat; background-size: cover; background-position: center;"></div>
-                            </div>
-
-                            <div class="container__content_slider apartment">
-                                <div class="container__content apartment">
-                                    <div class="container__content_image-center" style="background: url('/static/img/photo1690230887.jpeg') no-repeat; background-size: cover; background-position: center;"></div>
+                            
+                            {% if imageFiles|length > 1 %}
+                                <div class="item__container_control">
+                                    <i class="fa-solid fa-chevron-left button" id="prev"></i>
+                                    <div class="control__paginator"></div>
+                                    <i class="fa-solid fa-chevron-right button" id="next"></i>
                                 </div>
-                            </div>
-                        </div>
+                            {% endif %}
+                        </section>
+                    </div>
 
-                        <div class="item__container_control">
-                            <i class="fa-solid fa-chevron-left button" id="prev"></i>
-                            <div class="control__paginator"></div>
-                            <i class="fa-solid fa-chevron-right button" id="next"></i>
-                        </div>
-                    </section>
-                    -->
                     <div class="apartments__right">
                         <section class="apartment__info">
                             <span class="apartment__info_title">{% trans "ИНФОРМАЦИЯ" %}</span>

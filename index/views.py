@@ -1,3 +1,4 @@
+import os
 import re
 from .models import *
 from django.conf import settings
@@ -106,14 +107,21 @@ def apartHomePage(request, title):
 
     if title in HOME_TITLE:
         apartment = Apartment.objects.get(title=title)
+        imageFolderPath = os.path.join(settings.STATIC_ROOT, 'img', 'apartments', title)
+        imageFiles = os.listdir(imageFolderPath)
+        print(imageFiles)
         context = {
             'homeTitle': HOME_TITLE[title],
             'homeGuests': apartment.guests,
             'homeSquare': apartment.square,
             'homeSleep': apartment.sleepPlace,
             'homeWiFi': apartment.isWifi,
-            'cur_lang': current_language
+            'cur_lang': current_language,
+            'imageFolderPath': imageFolderPath,
+            'imageFiles': imageFiles,
+            'title': title
         }
+
         return render(request, 'index/apartment-home.html', context)
     else:
         return render(request, 'index/development.html')

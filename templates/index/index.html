@@ -6,11 +6,7 @@
         {% include 'basic/head.html'%}
     </head>
     <body>
-        <!-- ======== PRELOADER ======== -->
-        <div class="preloader" id="preloader">
-            <img src="/static/img/LogoZORKA-White.png" alt="Preloader">
-        </div>
-
+        {% include 'basic/preloader.html' %}
         {% include 'basic/callback.html' %}
         {% include 'basic/header.html' %}
 
@@ -67,19 +63,19 @@
                 <!-- ======== GALLERY ======== -->
                 <div class="gallery">
                     <div class="gallery-container">
-                        <div class="gallery-item gallery-item-1" data-index="1" style="background-image: url(/static/img/HomeBackground.png); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'apartHomePage' 'olive' %}'">
+                        <div class="gallery-item gallery-item-1" data-index="1" style="background-image: url({% static 'img/source/HomeBackground.png' %}); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'apartHomePage' 'olive' %}'">
                             <span class="gallery-item-description">{% trans 'ДОМ OLIVE' %}</span>
                         </div>
-                        <div class="gallery-item gallery-item-2" data-index="2" style="background-image: url(/static/img/photo1690230727.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'apartHomePage' 'obsidian' %}'">
+                        <div class="gallery-item gallery-item-2" data-index="2" style="background-image: url({% static 'img/source/photo1690230727.jpeg' %}); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'apartHomePage' 'obsidian' %}'">
                             <span class="gallery-item-description">{% trans 'ДОМ OBSIDIAN' %}</span>
                         </div>
-                        <div class="gallery-item gallery-item-3 active" data-index="3" style="background-image: url(/static/img/photo1690230738.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'apartHomePage' 'terra' %}'">
+                        <div class="gallery-item gallery-item-3 active" data-index="3" style="background-image: url({% static 'img/source/photo1690230738.jpeg' %}); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'apartHomePage' 'terra' %}'">
                             <span class="gallery-item-description">{% trans 'ДОМ TERRA' %}</span>
                         </div>
-                        <div class="gallery-item gallery-item-4" data-index="4" style="background-image: url(/static/img/photo1690230677.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'apartHomePage' 'olive' %}'">
+                        <div class="gallery-item gallery-item-4" data-index="4" style="background-image: url({% static 'img/source/photo1690230677.jpeg' %}); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'apartHomePage' 'olive' %}'">
                             <span class="gallery-item-description">{% trans 'ДОМ OLIVE' %}</span>
                         </div>
-                        <div class="gallery-item gallery-item-5" data-index="5" style="background-image: url(/static/img/photo1690230887.jpeg); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'apartHomePage' 'obsidian' %}'">
+                        <div class="gallery-item gallery-item-5" data-index="5" style="background-image: url({% static 'img/source/photo1690230887.jpeg' %}); background-repeat: no-repeat; background-size: cover;" onclick="window.location='{% url 'apartHomePage' 'obsidian' %}'">
                             <span class="gallery-item-description">{% trans 'ДОМ OBSIDIAN' %}</span>
                         </div>
                     </div>
@@ -99,7 +95,7 @@
                 </div>
 
                 <div class="container__content">
-                    <div class="container__content_image" style="background: url('/static/img/photo1690230727.jpeg'); background-position: 50% 50%; background-size: 234.974% 100.037%;"></div>
+                    <div class="container__content_image" style="background: url('{% static 'img/source/photo1690230727.jpeg' %}'); background-position: 50% 50%; background-size: 234.974% 100.037%;"></div>
                     <div class="container__content_description">
                         <span class="content__description_text">{% trans 'Всего в несколько простых шагов вы сможете забронировать свои апартаменты или номер в нашем роскошном парк-отеле, чтобы открыть для себя новые места, познакомиться с удивительными культурами и насладиться уникальными впечатлениями.' %}</span><br><br>
                         <span class="content__description_text">{% trans 'Наша онлайн-бронирование предлагает удобный и интуитивно понятный интерфейс, где вы можете легко выбрать даты вашего пребывания, узнать доступные варианты апартаментов и уточнить все детали для вашего специального отдыха. Мы ценим ваше время и стремимся обеспечить максимальное удовольствие от планирования вашей поездки.' %}</span><br><br>
@@ -128,7 +124,7 @@
                                 <span class="content__description_title">{% trans 'ОЛЕГ' %}</span><br>
                                 <span class="content__description_text">{% trans 'Я просто восхищен нашим пребыванием в вашем удивительном парк-отеле! Отличное место для романтического уикенда. Апартаменты просто потрясающие - так стильно и уютно! Завтраки были восхитительными, а персонал - невероятно заботливым и дружелюбным. Мы провели незабываемое время, наслаждаясь прогулками по живописным тропинкам парка и расслабляясь в спа-центре. Определенно, вернемся снова! Благодарим за такой прекрасный опыт.' %}</span><br><br>
                             </div>
-                            <div class="container__content_image-right" style="background: url('/static/img/image\ 3.png') no-repeat; background-size: cover; background-position: center;"></div>
+                            <div class="container__content_image-right" style="background: url('{% static 'img/reviews/review1.png' %}') no-repeat; background-size: cover; background-position: center;"></div>
                         </div>
 
                         <div class="container__content_slider feedback">
@@ -136,7 +132,7 @@
                                 <span class="content__description_title">{% trans 'ЕЛЕНА' %}</span><br>
                                 <span class="content__description_text">{% trans 'Замечательный опыт отдыха в парк-отеле ZORKA! Провели здесь прекрасные выходные в компании друзей. Виллы, которые мы арендовали, были просто потрясающими: просторные, удобные и современные. Отличное обслуживание, дружелюбный персонал, всегда готовый помочь с любым вопросом. Мы наслаждались купанием в чистейшем бассейне и ужинами на террасе с прекрасным видом на парк. Это место точно оставит яркие воспоминания. Спасибо, ZORKA, за гостеприимство!' %}</span><br><br>
                             </div>
-                            <div class="container__content_image-right" style="background: url('/static/img/i\ \(2\).webp') no-repeat; background-size: cover; background-position: center;"></div>
+                            <div class="container__content_image-right" style="background: url('{% static 'img/reviews/review2.webp' %}') no-repeat; background-size: cover; background-position: center;"></div>
                         </div>
 
                         <div class="container__content_slider feedback">
@@ -144,7 +140,7 @@
                                 <span class="content__description_title">{% trans 'АЛЕКСЕЙ' %}</span><br>
                                 <span class="content__description_text">{% trans 'Очень понравился отдых в парк-отеле ZORKA! Бронировал номер для семейного отпуска и не разочаровался. Атмосфера уюта и спокойствия настолько восхитительна, что хотелось остаться здесь еще на несколько недель. Номер был чистым, красиво оформленным и оборудован всем необходимым. Мои дети были в восторге от игровой площадки и аквапарка. А нам с женой понравилась романтическая прогулка по парку вечером. Отдельное спасибо персоналу за радушный прием и заботу! Вернемся сюда обязательно!' %}</span><br><br>
                             </div>
-                            <div class="container__content_image-right" style="background: url('/static/img/D9qUWCJXoAAmNFg.jpg') no-repeat; background-size: cover; background-position: center;"></div>
+                            <div class="container__content_image-right" style="background: url('{% static 'img/reviews/review3.jpg' %}') no-repeat; background-size: cover; background-position: center;"></div>
                         </div>
 
                         <div class="container__content_slider feedback">
@@ -152,7 +148,7 @@
                                 <span class="content__description_title">{% trans 'МАРИНА' %}</span><br>
                                 <span class="content__description_text">{% trans 'Я провела волшебные выходные в парк-отеле ZORKA! Сразу по приезду меня встретила атмосфера спокойствия и красоты природы. Мой номер был просто идеальным местом для отдыха - просторный, с шикарным видом на окружающий парк и с уютной террасой. Завтраки были разнообразными и вкусными, а вечерние прогулки по парку наполнили меня умиротворением и гармонией. Отдельное спасибо спа-центру за расслабляющий массаж! Уезжать не хотелось вообще. С удовольствием рекомендую.' %}</span><br><br>
                             </div>
-                            <div class="container__content_image-right" style="background: url('/static/img/i\ \(3\).webp') no-repeat; background-size: cover;background-position: center;"></div>
+                            <div class="container__content_image-right" style="background: url('{% static 'img/reviews/review4.webp' %}') no-repeat; background-size: cover;background-position: center;"></div>
                         </div>
                     </div>
 
@@ -176,7 +172,7 @@
                 </div>
 
                 <div class="container__content">
-                    <div class="container__content_image" style="background: url('/static/img/friends-trying-to-catch-volley-ball-sunny-day-68295814.webp') lightgray 50% / cover no-repeat;"></div>
+                    <div class="container__content_image" style="background: url('{% static 'img/source/friends-trying-to-catch-volley-ball-sunny-day-68295814.webp' %}') lightgray 50% / cover no-repeat;"></div>
                     <div class="container__content_description">
                         <span class="content__description_text">{% trans 'Добро пожаловать в мир радости и удовольствия нашего парк-отеля! Здесь вас ждет невероятный досуг и множество развлечений. Откройте для себя уникальные апартаменты, где комфорт сочетается с изысканным стилем.' %}</span><br><br>
                         <span class="content__description_text">{% trans 'Наши веселые вечеринки и разнообразные активности позабавят вас круглый год. Не упустите шанс насладиться вкусом изысканных блюд в наших ресторанах и попробовать уникальные кулинарные мастер-классы.' %}</span><br><br>
@@ -250,15 +246,15 @@
                     <div class="content__gallery">
                         <div class="content__gallery_items">
                             <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
-                                <div class="gallery__item_img"><img src="/static/img/photo1690230633.jpeg" alt=""></div>
+                                <div class="gallery__item_img"><img src="{% static 'img/source/photo1690230633.jpeg' %}" alt=""></div>
                                 <div class="gallery__item_description">{% trans 'АПАРТАМЕНТЫ' %}</div>
                             </div>
                             <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
-                                <div class="gallery__item_img"><img src="/static/img/CuTbIniWIAAbbaE.jfif" alt=""></div>
+                                <div class="gallery__item_img"><img src="{% static 'img/source/CuTbIniWIAAbbaE.jfif' %}" alt=""></div>
                                 <div class="gallery__item_description">{% trans 'ТЕРРИТОРИЯ' %}</div>
                             </div>
                             <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
-                                <div class="gallery__item_img"><img src="/static/img/featured_5reasonswhyyoumightretireearlierthanyouplanned.jpg" alt=""></div>
+                                <div class="gallery__item_img"><img src="{% static 'img/source/featured_5reasonswhyyoumightretireearlierthanyouplanned.jpg' %}" alt=""></div>
                                 <div class="gallery__item_description">{% trans 'УДОБСТВА' %}</div>
                             </div>
                         </div>

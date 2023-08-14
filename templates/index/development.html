@@ -7,11 +7,7 @@
         <link rel="stylesheet" href="{% static 'css/development.css' %}">
     </head>
     <body>
-        <!-- ======== PRELOADER ======== -->
-        <div class="preloader" id="preloader">
-            <img src="/static/img/LogoZORKA-White.png" alt="Preloader">
-        </div>
-
+        {% include 'basic/preloader.html' %}
         {% include 'basic/callback.html' %}
         {% include 'basic/header.html' %}
 

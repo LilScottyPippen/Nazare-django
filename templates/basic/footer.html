@@ -5,7 +5,9 @@
     <section class="footer-main">
         <div class="footer__items">
             <div class="footer__item">
-                <div class="item__logo" onclick="window.location='{% url 'indexPage' %}'"><img src="/static/img/LogoZORKA-White.png" alt=""></div>
+                <div class="item__logo" onclick="window.location='{% url 'indexPage' %}'">
+                    <img src="{% static 'img/logo/LogoZORKA-White.png' %}" alt="">
+                </div>
                 <div class="item__payments">
                     <i class="fa-brands fa-cc-mastercard payment"></i>
                     <i class="fa-brands fa-cc-visa payment"></i>
