@@ -23,9 +23,9 @@
                     <span class="content__title_dot-policy">•</span><span class="content__title_policy">{% trans 'ПОЛИТИКА КОНФЕНДЕЦИАЛЬНОСТИ' %}</span><span class="content__title_dot-policy">•</span>
                 </div>
                 {% if cur_lang == 'ru' %}
-                    <iframe src="{% static 'doc/Privacy.htm' %}" width="100%" height="600px" frameborder="0" style="margin-top: 20px"></iframe>
+                    <object data="{% static 'doc/Privacy.html' %}" width="100%" height="600px" style="margin-top: 20px"></object>
                 {% else %}
-                    <iframe src="{% static 'doc/PrivacyEn.htm' %}" width="100%" height="600px" frameborder="0" style="margin-top: 20px"></iframe>
+                    <object data="{% static 'doc/PrivacyEn.html' %}" width="100%" height="600px" style="margin-top: 20px"></object>
                 {% endif %}
             </section>
         </main>
