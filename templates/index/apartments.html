@@ -1,0 +1,57 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'basic/head.html' %} 
+    </head>
+    <body>
+        {% include 'basic/preloader.html'%}
+        {% include 'basic/header.html' %}
+        {% include 'basic/callback.html' %}
+
+        <!-- ======== MAIN ======== -->
+        <main class="main">
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{% trans 'АПАРТАМЕНТЫ' %}</span><span class="content__title_dot">•</span>
+                </div>
+
+                <div class="container__content" style="margin-top: 50px">
+                    <div class="content__service">
+                        <div class="content__service_items">
+                            <div class="content__service_item" onclick="window.location='{% url 'apartHomePage' 'olive' %}'">
+                                <div class="service__item_img">
+                                    <i class="fa-solid fa-house"></i>
+                                </div>
+                                <div class="service__item_description">{% trans 'ДОМ' %} 1</div>
+                            </div>
+                            <div class="content__service_item" onclick="window.location='{% url 'apartHomePage' 'terra' %}'">
+                                <div class="service__item_img">
+                                    <i class="fa-solid fa-house-chimney"></i>
+                                </div>
+                                <div class="service__item_description">{% trans 'ДОМ' %} 2</div>
+                            </div>
+                            <div class="content__service_item" onclick="window.location='{% url 'apartHomePage' 'obsidian' %}'">
+                                <div class="service__item_img">
+                                    <i class="fa-solid fa-house-chimney-window"></i>
+                                </div>
+                                <div class="service__item_description">{% trans 'ДОМ' %} 3</div>
+                            </div>
+                            <div class="content__service_item" onclick="window.location='{% url 'developPage' 'all' %}'">
+                                <div class="service__item_img">
+                                    <i class="fa-solid fa-hotel"></i>
+                                </div>
+                                <div class="service__item_description">{% trans 'ГОСТИНИЦА' %}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        {% include 'basic/footer.html'%}
+    </body>
+</html>

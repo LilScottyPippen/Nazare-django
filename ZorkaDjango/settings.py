@@ -93,7 +93,7 @@ LANGUAGES = [
     ('en', 'English'),
 ]
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Minsk'
 
 USE_I18N = True
 

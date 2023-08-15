@@ -24,18 +24,18 @@
                             <div class="content_carousel">
                                 {% for imageFiles in imageFiles %}
                                     <div class="container__content_slider apartment">
-                                        <div class="container__content_image-center" style="background: url('{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}') no-repeat; background-size: cover; background-position: center;"></div>
+                                        <a data-fancybox="gallery" href="{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}"><div class="container__content_image-center" style="background: url('{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}') no-repeat; background-size: cover; background-position: center;"></div></a>
                                     </div>
                                 {% endfor %}
                             </div>
                             
-                            {% if imageFiles|length > 1 %}
+                            {% comment %} {% if imageFiles|length > 1 %}
                                 <div class="item__container_control">
                                     <i class="fa-solid fa-chevron-left button" id="prev"></i>
                                     <div class="control__paginator"></div>
                                     <i class="fa-solid fa-chevron-right button" id="next"></i>
                                 </div>
-                            {% endif %}
+                            {% endif %} {% endcomment %}
                         </section>
                     </div>
 

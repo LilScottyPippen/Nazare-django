@@ -1,93 +1,89 @@
 {% load static %}
 {% load i18n %}
-<!-- ======== CALLBACK ======== -->
-<div class="background__callback" id="callbackForm">
-    <div class="callback">
-        <div class="callback__header">
-            <span class="header__title">{% trans 'Заказать звонок' %}</span>
-            <div class="close__callback">
-                <i class="fa-solid fa-xmark" id="closeCallback"></i>
+        <!-- ======== CALLBACK ======== -->
+        <div class="background__callback" id="callbackForm">
+            <div class="callback">
+                <div class="callback__header">
+                    <span class="header__title">{% trans 'Заказать звонок' %}</span>
+                    <div class="close__callback">
+                        <i class="fa-solid fa-xmark" id="closeCallback"></i>
+                    </div>
+                </div>
+                <div class="callback__main">
+                    <div class="main__input">
+                        <span class="input__title">
+                            {% trans 'Ваше имя' %}<span style="color: red;">*</span>
+                        </span>
+                        <input type="text" inputmode="text" id='input_name'>
+                    </div>
+
+                    <div class="main__input">
+                        <span class="input__title">
+                            {% trans 'Телефон' %}<span style="color: red;">*</span>
+                        </span>
+                        <input type="text" inputmode="tel" id="input_phone">
+                    </div>
+
+                    <div class="main__check">
+                        <input type="checkbox" name="" id="input_checkbox">
+                        <span>{% trans 'Я согласен на ' %}<a href="{% url 'privacyPage' %}">{% trans 'обработку персональных данных' %}</a></span>
+                    </div>
+
+                    <div class="main__bottom" id="callback_submit">
+                        <span>{% trans 'Заказать' %}</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="callback__main">
-            <div class="main__input">
-                <span class="input__title">
-                    {% trans 'Ваше имя' %}<span style="color: red;">*</span>
-                </span>
-                <input type="text" inputmode="text" id='input_name'>
-            </div>
 
-            <div class="main__input">
-                <span class="input__title">
-                    {% trans 'Телефон' %}<span style="color: red;">*</span>
-                </span>
-                <input type="text" inputmode="tel" id="input_phone">
-            </div>
-
-            <div class="main__check">
-                <input type="checkbox" name="" id="input_checkbox">
-                <span>{% trans 'Я согласен на ' %}<a href="{% url 'privacyPage' %}">{% trans 'обработку персональных данных' %}</a></span>
-            </div>
-
-            <div class="main__bottom" id="callback_submit">
-                <span>{% trans 'Заказать' %}</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ======== CALLBACK NOTIFICATION SWEEATALERT2 ======== -->
-<script>
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'bottom-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    })
-
-    $('body').on('click', '#callback_submit', function(event) {
-        if(document.getElementById("input_checkbox").checked){
-            $.ajax({
-                url: '{% url 'orderCallFunc' %}',
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    'name': document.getElementById('input_name').value,
-                    'phone': document.getElementById('input_phone').value
-                },
-                success: function(response) {
-                    if(response.success === true) {
-                        Toast.fire({
-                            icon: 'success',
-                            title: response.message
-                        })
-                    }else{
-                            Toast.fire({
-                            icon: 'error',
-                            title: response.message
-                        })
-                    }
-                },
-                error: function(err) {
-                    Toast.fire({
-                        icon: 'error',
-                        title: 'ERROR'
-                    })
+        <!-- ======== CALLBACK NOTIFICATION NOTYFY ======== -->
+        <script>
+            function showNotification(status, text) {
+                new Notify({
+                    status: status,
+                    text: text,
+                    effect: 'fade',
+                    speed: 300,
+                    customClass: null,
+                    customIcon: null,
+                    showIcon: true,
+                    showCloseButton: true,
+                    autoclose: true,
+                    autotimeout: 3000,
+                    gap: 20,
+                    distance: 20,
+                    type: 1,
+                    position: 'right bottom'
+                });
+            }
+            
+            $('body').on('click', '#callback_submit', function(event) {
+                if (document.getElementById("input_checkbox").checked) {
+                    $.ajax({
+                        url: '{% url 'orderCallFunc' %}',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            'name': document.getElementById('input_name').value,
+                            'phone': document.getElementById('input_phone').value
+                        },
+                        success: function(response) {
+                            if (response.success === true) {
+                                showNotification('success', response.message);
+                            } else {
+                                showNotification('error', response.message);
+                            }
+                        },
+                        error: function(err) {
+                            showNotification('error', err.message);
+                        }
+                    });
+                } else {
+                    showNotification('error', '{% trans 'Вы не приняли пользовательское соглашение!' %}');
                 }
-            })
-        }else{
-            Toast.fire({
-                icon: 'error',
-                title: '{% trans 'Вы не приняли пользовательское соглашение!' %}'
-            })
-        }
-    })
-</script>
+            });
+        </script>
 
-<!-- ======== JS ======== -->
-<script src="{% static 'js/callback.js' %}"></script>
+        <!-- ======== JS ======== -->
+        <script src="{% static 'js/callback.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>

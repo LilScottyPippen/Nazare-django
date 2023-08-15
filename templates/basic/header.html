@@ -1,363 +1,363 @@
 {% load static %}
 {% load i18n %}
-<!-- ======== HEADER ======== -->
-<header class="header" id="header">
-    <nav class="nav container">
-        <div class="nav__left">
-            <!-- ======== NAVIGATION TOGGLE ======== -->
-            <div class="nav__menu" id="nav-toggle">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-            <!-- ======== HEADER LOGO ======== -->
-            <a href="{% url 'indexPage' %}" class="nav__logo">
-                <img src="{% static 'img/logo/LogoZORKA-White.png' %}" alt="logo">
-            </a>
-        </div>
+        <!-- ======== HEADER ======== -->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <div class="nav__left">
+                    <!-- ======== NAVIGATION TOGGLE ======== -->
+                    <div class="nav__menu" id="nav-toggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <!-- ======== HEADER LOGO ======== -->
+                    <a href="{% url 'indexPage' %}" class="nav__logo">
+                        <img src="{% static 'img/logo/LogoZORKA-White.png' %}" alt="logo">
+                    </a>
+                </div>
 
-        <!-- ======== NAVIGATION MENU ======== -->
-        <div class="nav__menu" id="nav-menu">
-            <!-- ======== TOP MENU ======== -->
-            <div class="nav__menu_top">
-                <span class="nav__call" id="navCall">{% trans 'ЗАКАЗАТЬ ЗВОНОК' %}</span>
-                <span class="nav__book" onclick="window.location='{% url 'developPage' 'apartments' %}'">{% trans 'БРОНИРОВАНИЕ' %}</span>
-                <a href="tel:+375291699106" class="nav__contact" id="contactLink">+375 29 169 91 06</a>
-                <script src="{% static 'js/copyMobile.js' %}"></script>
-                <div class="nav__column_mobile">
-                    <div class="nav__socials">
-                        <i class="fab fa-viber" onclick="window.location='viber://chat?number=%2B375291699106'" id="viber-icon"></i>
-                        <i class="fab fa-telegram" onclick="window.location='https://t.me/nazareby'"></i>
-                        <i class="fab fa-whatsapp" onclick="window.location='https://wa.me/375291699106'"></i>
+                <!-- ======== NAVIGATION MENU ======== -->
+                <div class="nav__menu" id="nav-menu">
+                    <!-- ======== TOP MENU ======== -->
+                    <div class="nav__menu_top">
+                        <span class="nav__call" id="navCall">{% trans 'ЗАКАЗАТЬ ЗВОНОК' %}</span>
+                        <span class="nav__book" onclick="window.location='{% url 'apartmentsPage' %}'">{% trans 'БРОНИРОВАНИЕ' %}</span>
+                        <a href="tel:+375291699106" class="nav__contact" id="contactLink">+375 29 169 91 06</a>
+                        <script src="{% static 'js/copyMobile.js' %}"></script>
+                        <div class="nav__column_mobile">
+                            <div class="nav__socials">
+                                <i class="fab fa-viber" onclick="window.location='viber://chat?number=%2B375291699106'" id="viber-icon"></i>
+                                <i class="fab fa-telegram" onclick="window.location='https://t.me/nazareby'"></i>
+                                <i class="fab fa-whatsapp" onclick="window.location='https://wa.me/375291699106'"></i>
+                            </div>
+
+                            <script>
+                                document.getElementById("viber-icon").addEventListener("click", function() {
+                                    Swal.fire({
+                                        title: 'Скопируйте qr код в приложении Viber',
+                                        imageUrl: 'static/svg/qr-code-viber.svg',
+                                        imageWidth: 200,
+                                        imageHeight: 200,
+                                        imageAlt: 'Custom image',
+                                    })
+                                })
+                            </script>
+
+                            <!-- ======== CHOOSE LANGUAGE ======== -->
+                            <div class="nav__lang">
+                                <ul>
+                                    <li class="dropdown__lang">
+                                        <div class="nav__link">
+                                            <span class="nav__lang_selected" id="nav-lang-selected">{{ cur_lang }}</span>
+                                            <span class="nav__lang_arrow"><i class="fa-solid fa-caret-down"></i></span>
+                                        </div>
+
+                                        <ul class="dropdown__lang_menu">
+                                            {% if cur_lang == 'en' %}
+                                                <a href="{% url 'set_language' 'ru' %}" class="dropdown__link">ru</a>
+                                            {% else %}
+                                                <a href="{% url 'set_language' 'en' %}" class="dropdown__link">en</a>
+                                            {% endif %}
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
-                    <script>
-                        document.getElementById("viber-icon").addEventListener("click", function() {
-                            Swal.fire({
-                                title: 'Скопируйте qr код в приложении Viber',
-                                imageUrl: 'static/svg/qr-code-viber.svg',
-                                imageWidth: 200,
-                                imageHeight: 200,
-                                imageAlt: 'Custom image',
-                            })
-                        })
-                    </script>
-
-                    <!-- ======== CHOOSE LANGUAGE ======== -->
-                    <div class="nav__lang">
-                        <ul>
-                            <li class="dropdown__lang">
+                    <!-- ======== BOTTOM MENU ======== -->
+                    <div class="nav__menu_bottom">
+                        <ul class="nav__list">
+                            <li class="dropdown__item">
                                 <div class="nav__link">
-                                    <span class="nav__lang_selected" id="nav-lang-selected">{{ cur_lang }}</span>
-                                    <span class="nav__lang_arrow"><i class="fa-solid fa-caret-down"></i></span>
+                                    <a href="{% url 'developPage' 'all' %}">{% trans 'О нас' %} <i class="fa-solid fa-caret-down"></i></a>
                                 </div>
 
-                                <ul class="dropdown__lang_menu">
-                                    {% if cur_lang == 'en' %}
-                                        <a href="{% url 'set_language' 'ru' %}" class="dropdown__link">ru</a>
-                                    {% else %}
-                                        <a href="{% url 'set_language' 'en' %}" class="dropdown__link">en</a>
-                                    {% endif %}
+                                <ul class="dropdown__menu">
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-money-bill"></i> {% trans 'Бронирование и оплата' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-earth-europe"></i> {% trans 'Территория' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-regular fa-comment-dots"></i> {% trans 'Отзывы' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-circle-info"></i> {% trans 'О компании' %}
+                                    </a>
                                 </ul>
+                            </li>
+
+                            <li class="dropdown__item">
+                                <div class="nav__link">
+                                    <a href="{% url 'apartmentsPage' %}">{% trans 'Апартаменты' %} <i class="fa-solid fa-caret-down"></i></a>
+                                </div>
+
+                                <ul class="dropdown__menu">
+                                    <a href="{% url 'apartHomePage' 'olive' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-house"></i>{% trans 'Дом' %} 1
+                                    </a>
+
+                                    <a href="{% url 'apartHomePage' 'terra' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-house-chimney"></i> {% trans 'Дом' %} 2
+                                    </a>
+
+                                    <a href="{% url 'apartHomePage' 'obsidian' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-house-chimney-window"></i> {% trans 'Дом' %} 3
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'apartments' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-hotel"></i> {% trans 'Гостиница' %}
+                                    </a>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown__item">
+                                <div class="nav__link">
+                                    <a href="{% url 'developPage' 'services' %}">{% trans 'Услуги' %} <i class="fa-solid fa-caret-down"></i></a>
+                                </div>
+
+                                <ul class="dropdown__menu">
+                                    <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-clock"></i> {% trans 'Прокат и аренда' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-utensils"></i> {% trans 'Ресторан' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-truck"></i> {% trans 'Доставка еды' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-arrow-right-arrow-left"></i> {% trans 'Трансфер' %}
+                                    </a>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown__item">
+                                <div class="nav__link">
+                                    <a href="{% url 'developPage' 'events' %}">{% trans 'Мероприятия' %} <i class="fa-solid fa-caret-down"></i></a>
+                                </div>
+
+                                <ul class="dropdown__menu">
+                                    <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-ring"></i> {% trans 'Свадьба' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-champagne-glasses"></i> {% trans 'Корпоратив' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-people-line"></i> {% trans 'Конференция' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-cake-candles"></i> {% trans 'День рождения' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-person-biking"></i> {% trans 'Спортивные мероприятия' %}
+                                    </a>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown__item">
+                                <div class="nav__link">
+                                    <a href="{% url 'developPage' 'all' %}">{% trans 'Галерея' %} <i class="fa-solid fa-caret-down"></i></a>
+                                </div>
+
+                                <ul class="dropdown__menu">
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-image"></i> {% trans 'Фотогалерея' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-film"></i> {% trans 'Видеогалерея' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-panorama"></i> {% trans 'Виртуальный тур' %}
+                                    </a>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown__item">
+                                <a href="{% url 'developPage' 'all' %}" class="nav__link">
+                                    {% trans 'Контакты' %}
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
-            </div>
 
-            <!-- ======== BOTTOM MENU ======== -->
-            <div class="nav__menu_bottom">
-                <ul class="nav__list">
-                    <li class="dropdown__item">
-                        <div class="nav__link">
-                            <a href="{% url 'developPage' 'all' %}">{% trans 'О нас' %} <i class="fa-solid fa-caret-down"></i></a>
-                        </div>
-
-                        <ul class="dropdown__menu">
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-money-bill"></i> {% trans 'Бронирование и оплата' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-earth-europe"></i> {% trans 'Территория' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-regular fa-comment-dots"></i> {% trans 'Отзывы' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-circle-info"></i> {% trans 'О компании' %}
-                            </a>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown__item">
-                        <div class="nav__link">
-                            <a href="{% url 'developPage' 'apartments' %}">{% trans 'Апартаменты' %} <i class="fa-solid fa-caret-down"></i></a>
-                        </div>
-
-                        <ul class="dropdown__menu">
-                            <a href="{% url 'apartHomePage' 'olive' %}" class="dropdown__link">
-                                <i class="fa-solid fa-house"></i>{% trans 'Дом' %} 1
-                            </a>
-
-                            <a href="{% url 'apartHomePage' 'terra' %}" class="dropdown__link">
-                                <i class="fa-solid fa-house-chimney"></i> {% trans 'Дом' %} 2
-                            </a>
-
-                            <a href="{% url 'apartHomePage' 'obsidian' %}" class="dropdown__link">
-                                <i class="fa-solid fa-house-chimney-window"></i> {% trans 'Дом' %} 3
-                            </a>
-
-                            <a href="{% url 'developPage' 'apartments' %}" class="dropdown__link">
-                                <i class="fa-solid fa-hotel"></i> {% trans 'Гостиница' %}
-                            </a>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown__item">
-                        <div class="nav__link">
-                            <a href="{% url 'developPage' 'services' %}">{% trans 'Услуги' %} <i class="fa-solid fa-caret-down"></i></a>
-                        </div>
-
-                        <ul class="dropdown__menu">
-                            <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
-                                <i class="fa-solid fa-clock"></i> {% trans 'Прокат и аренда' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
-                                <i class="fa-solid fa-utensils"></i> {% trans 'Ресторан' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
-                                <i class="fa-solid fa-truck"></i> {% trans 'Доставка еды' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i> {% trans 'Трансфер' %}
-                            </a>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown__item">
-                        <div class="nav__link">
-                            <a href="{% url 'developPage' 'events' %}">{% trans 'Мероприятия' %} <i class="fa-solid fa-caret-down"></i></a>
-                        </div>
-
-                        <ul class="dropdown__menu">
-                            <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
-                                <i class="fa-solid fa-ring"></i> {% trans 'Свадьба' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
-                                <i class="fa-solid fa-champagne-glasses"></i> {% trans 'Корпоратив' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
-                                <i class="fa-solid fa-people-line"></i> {% trans 'Конференция' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
-                                <i class="fa-solid fa-cake-candles"></i> {% trans 'День рождения' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
-                                <i class="fa-solid fa-person-biking"></i> {% trans 'Спортивные мероприятия' %}
-                            </a>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown__item">
-                        <div class="nav__link">
-                            <a href="{% url 'developPage' 'all' %}">{% trans 'Галерея' %} <i class="fa-solid fa-caret-down"></i></a>
-                        </div>
-
-                        <ul class="dropdown__menu">
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-image"></i> {% trans 'Фотогалерея' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-film"></i> {% trans 'Видеогалерея' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-panorama"></i> {% trans 'Виртуальный тур' %}
-                            </a>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown__item">
-                        <a href="{% url 'developPage' 'all' %}" class="nav__link">
-                            {% trans 'Контакты' %}
+                <!-- ======== NAVIGATION MENU MOBILE ======== -->
+                <div class="nav__menu_mobile" id="menu-mobile">
+                    <div class="mobile__header">
+                        <!-- ======== MENU LOGO ======== -->
+                        <a href="{% url 'indexPage' %}" class="nav__logo">
+                            <img src="{% static 'img/logo/LogoZORKA-White.png' %}" alt="logo">
                         </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                        <!-- ======== MENU CLOSE ======== -->
+                        <div class="mobile__close" id="nav-close">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
 
-        <!-- ======== NAVIGATION MENU MOBILE ======== -->
-        <div class="nav__menu_mobile" id="menu-mobile">
-            <div class="mobile__header">
-                <!-- ======== MENU LOGO ======== -->
-                <a href="{% url 'indexPage' %}" class="nav__logo">
-                    <img src="{% static 'img/logo/LogoZORKA-White.png' %}" alt="logo">
-                </a>
-                <!-- ======== MENU CLOSE ======== -->
-                <div class="mobile__close" id="nav-close">
-                    <i class="fa-solid fa-xmark"></i>
+                    <!-- ======== MOBILE NAVIGATION ======== -->
+                    <div class="mobile__container">
+                        <ul class="mobile__nav_list">
+                            <li class="dropdown__item">
+                                <div class="nav__link">
+                                    {% trans 'Апартаменты' %} <i class="fa-solid fa-caret-down"></i>
+                                </div>
+
+                                <ul class="dropdown__menu">
+                                    <a href="{% url 'apartHomePage' 'olive' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-house"></i>{% trans 'Дом' %} 1
+                                    </a>
+
+                                    <a href="{% url 'apartHomePage' 'terra' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-house-chimney"></i> {% trans 'Дом' %} 2
+                                    </a>
+
+                                    <a href="{% url 'apartHomePage' 'obsidian' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-house-chimney-window"></i> {% trans 'Дом' %} 3
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'apartments' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-hotel"></i> {% trans 'Гостиница' %}
+                                    </a>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown__item">
+                                <div class="nav__link">
+                                    {% trans 'Услуги' %} <i class="fa-solid fa-caret-down"></i>
+                                </div>
+
+                                <ul class="dropdown__menu">
+                                    <a href="{% url 'developPage' 'sevices' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-clock"></i> {% trans 'Прокат и аренда' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-utensils"></i> {% trans 'Ресторан' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-truck"></i> {% trans 'Доставка еды' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-arrow-right-arrow-left"></i> {% trans 'Трансфер' %}
+                                    </a>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown__item">
+                                <div class="nav__link">
+                                    {% trans 'Мероприятия' %} <i class="fa-solid fa-caret-down"></i>
+                                </div>
+
+                                <ul class="dropdown__menu">
+                                    <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-ring"></i> {% trans 'Свадьба' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-champagne-glasses"></i> {% trans 'Корпоратив' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-people-line"></i> {% trans 'Конференция' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-cake-candles"></i> {% trans 'День рождения' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'aevents' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-person-biking"></i> {% trans 'Спортивные мероприятия' %}
+                                    </a>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown__item">
+                                <div class="nav__link">
+                                    {% trans 'Галерея' %} <i class="fa-solid fa-caret-down"></i>
+                                </div>
+
+                                <ul class="dropdown__menu">
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-image"></i> {% trans 'Фотогалерея' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-film"></i> {% trans 'Видеогалерея' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-panorama"></i> {% trans 'Виртуальный тур' %}
+                                    </a>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown__item">
+                                <div class="nav__link">
+                                    {% trans 'Контакты' %} <i class="fa-solid fa-caret-down"></i>
+                                </div>
+
+                                <ul class="dropdown__menu">
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-phone"></i> {% trans 'Телефоны' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-map"></i> {% trans 'Как добраться' %}
+                                    </a>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown__item">
+                                <div class="nav__link">
+                                    {% trans 'О нас' %} <i class="fa-solid fa-caret-down"></i>
+                                </div>
+
+                                <ul class="dropdown__menu">
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-money-bill"></i> {% trans 'Бронирование и оплата' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-earth-europe"></i> {% trans 'Территория' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-sailboat"></i> {% trans 'Услуги' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-calendar-days"></i> {% trans 'Мероприятия' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-solid fa-photo-film"></i> {% trans 'Галерея' %}
+                                    </a>
+
+                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
+                                        <i class="fa-regular fa-comment-dots"></i> {% trans 'Отзывы' %}
+                                    </a>
+                                </ul>
+                            </li>
+                        </ul>
+                        <span class="mobile__nav_book" onclick="window.location='{% url 'developPage' 'apartments' %}'">{% trans 'БРОНИРОВАНИЕ' %}</span>
+                        <span class="mobile__nav_call" style="margin-bottom: 20px;" id="navCallMobile">{% trans 'ЗАКАЗАТЬ ЗВОНОК' %}</span>
+                    </div>
                 </div>
-            </div>
-
-            <!-- ======== MOBILE NAVIGATION ======== -->
-            <div class="mobile__container">
-                <ul class="mobile__nav_list">
-                    <li class="dropdown__item">
-                        <div class="nav__link">
-                            {% trans 'Апартаменты' %} <i class="fa-solid fa-caret-down"></i>
-                        </div>
-
-                        <ul class="dropdown__menu">
-                            <a href="{% url 'apartHomePage' 'olive' %}" class="dropdown__link">
-                                <i class="fa-solid fa-house"></i>{% trans 'Дом' %} 1
-                            </a>
-
-                            <a href="{% url 'apartHomePage' 'terra' %}" class="dropdown__link">
-                                <i class="fa-solid fa-house-chimney"></i> {% trans 'Дом' %} 2
-                            </a>
-
-                            <a href="{% url 'apartHomePage' 'obsidian' %}" class="dropdown__link">
-                                <i class="fa-solid fa-house-chimney-window"></i> {% trans 'Дом' %} 3
-                            </a>
-
-                            <a href="{% url 'developPage' 'apartments' %}" class="dropdown__link">
-                                <i class="fa-solid fa-hotel"></i> {% trans 'Гостиница' %}
-                            </a>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown__item">
-                        <div class="nav__link">
-                            {% trans 'Услуги' %} <i class="fa-solid fa-caret-down"></i>
-                        </div>
-
-                        <ul class="dropdown__menu">
-                            <a href="{% url 'developPage' 'sevices' %}" class="dropdown__link">
-                                <i class="fa-solid fa-clock"></i> {% trans 'Прокат и аренда' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
-                                <i class="fa-solid fa-utensils"></i> {% trans 'Ресторан' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
-                                <i class="fa-solid fa-truck"></i> {% trans 'Доставка еды' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i> {% trans 'Трансфер' %}
-                            </a>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown__item">
-                        <div class="nav__link">
-                            {% trans 'Мероприятия' %} <i class="fa-solid fa-caret-down"></i>
-                        </div>
-
-                        <ul class="dropdown__menu">
-                            <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
-                                <i class="fa-solid fa-ring"></i> {% trans 'Свадьба' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
-                                <i class="fa-solid fa-champagne-glasses"></i> {% trans 'Корпоратив' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
-                                <i class="fa-solid fa-people-line"></i> {% trans 'Конференция' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
-                                <i class="fa-solid fa-cake-candles"></i> {% trans 'День рождения' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'aevents' %}" class="dropdown__link">
-                                <i class="fa-solid fa-person-biking"></i> {% trans 'Спортивные мероприятия' %}
-                            </a>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown__item">
-                        <div class="nav__link">
-                            {% trans 'Галерея' %} <i class="fa-solid fa-caret-down"></i>
-                        </div>
-
-                        <ul class="dropdown__menu">
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-image"></i> {% trans 'Фотогалерея' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-film"></i> {% trans 'Видеогалерея' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-panorama"></i> {% trans 'Виртуальный тур' %}
-                            </a>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown__item">
-                        <div class="nav__link">
-                            {% trans 'Контакты' %} <i class="fa-solid fa-caret-down"></i>
-                        </div>
-
-                        <ul class="dropdown__menu">
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-phone"></i> {% trans 'Телефоны' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-map"></i> {% trans 'Как добраться' %}
-                            </a>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown__item">
-                        <div class="nav__link">
-                            {% trans 'О нас' %} <i class="fa-solid fa-caret-down"></i>
-                        </div>
-
-                        <ul class="dropdown__menu">
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-money-bill"></i> {% trans 'Бронирование и оплата' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-earth-europe"></i> {% trans 'Территория' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
-                                <i class="fa-solid fa-sailboat"></i> {% trans 'Услуги' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'events' %}" class="dropdown__link">
-                                <i class="fa-solid fa-calendar-days"></i> {% trans 'Мероприятия' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-solid fa-photo-film"></i> {% trans 'Галерея' %}
-                            </a>
-
-                            <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                <i class="fa-regular fa-comment-dots"></i> {% trans 'Отзывы' %}
-                            </a>
-                        </ul>
-                    </li>
-                </ul>
-                <span class="mobile__nav_book" onclick="window.location='{% url 'developPage' 'apartments' %}'">{% trans 'БРОНИРОВАНИЕ' %}</span>
-                <span class="mobile__nav_call" style="margin-bottom: 20px;" id="navCallMobile">{% trans 'ЗАКАЗАТЬ ЗВОНОК' %}</span>
-            </div>
-        </div>
-    </nav>
-</header>
+            </nav>
+        </header>

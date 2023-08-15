@@ -1,124 +1,124 @@
 {% load static %}
 {% load i18n %}
-<!-- ======== FOOTER ======== -->
-<footer class="footer">
-    <section class="footer-main">
-        <div class="footer__items">
-            <div class="footer__item">
-                <div class="item__logo" onclick="window.location='{% url 'indexPage' %}'">
-                    <img src="{% static 'img/logo/LogoZORKA-White.png' %}" alt="">
-                </div>
-                <div class="item__payments">
-                    <i class="fa-brands fa-cc-mastercard payment"></i>
-                    <i class="fa-brands fa-cc-visa payment"></i>
-                    <div class="svg-container">
-                        <svg class="payment mir" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 803 515" fill="none">
-                            <path d="M759.795 0H42.8718C19.1795 0 0 19.5897 0 43.6923V470.667C0 494.769 19.1795 514.359 42.7692 514.359H759.692C783.282 514.359 802.462 494.769 802.462 470.667V43.6923C802.564 19.5897 783.385 0 759.795 0ZM298.564 356.41H237.026V239.487C237.026 237.231 235.18 235.385 232.923 235.385C230.872 235.385 229.231 236.821 228.923 238.769L192.923 356.41H148.718L112.821 238.667C112.513 236.821 110.872 235.385 108.821 235.385C106.564 235.385 104.718 237.231 104.718 239.487V356.41H43.1795V155.385H96H111.795C123.077 155.385 134.974 164.205 138.256 174.974L168.205 272.923C169.744 277.846 172.103 277.744 173.641 272.923L203.59 174.974C206.872 164.103 218.769 155.385 230.051 155.385H245.744H298.564V356.41ZM527.282 356.41H465.744V236.923C465.641 234.974 464.103 233.333 462.051 233.333C460.615 233.333 459.487 234.051 458.872 235.282V235.385C458.872 235.487 458.769 235.59 458.769 235.692L408.513 343.487C405.333 350.462 396.718 356.103 388.923 356.513H327.385V155.487H388.923V272.41C388.923 274.667 390.769 276.513 393.026 276.513C394.462 276.513 395.692 275.795 396.41 274.769C396.615 274.359 396.821 274.051 396.923 273.538L445.846 168.513C449.128 161.436 457.949 155.795 465.744 155.487H527.282V356.41ZM689.333 291.795H619.59V357.436H558.051V246.667H753.026C743.59 272.821 718.667 291.59 689.333 291.795ZM755.59 236.41C755.59 236.41 648.718 236.41 648.615 236.41C596.308 236.41 553.436 200.615 549.846 155.385H689.128C726.564 155.692 756.821 186.051 756.821 223.59C756.821 228 756.41 232.308 755.59 236.41Z" fill="white"/>
-                        </svg>
+        <!-- ======== FOOTER ======== -->
+        <footer class="footer">
+            <section class="footer-main">
+                <div class="footer__items">
+                    <div class="footer__item">
+                        <div class="item__logo" onclick="window.location='{% url 'indexPage' %}'">
+                            <img src="{% static 'img/logo/LogoZORKA-White.png' %}" alt="">
+                        </div>
+                        <div class="item__payments">
+                            <i class="fa-brands fa-cc-mastercard payment"></i>
+                            <i class="fa-brands fa-cc-visa payment"></i>
+                            <div class="svg-container">
+                                <svg class="payment mir" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 803 515" fill="none">
+                                    <path d="M759.795 0H42.8718C19.1795 0 0 19.5897 0 43.6923V470.667C0 494.769 19.1795 514.359 42.7692 514.359H759.692C783.282 514.359 802.462 494.769 802.462 470.667V43.6923C802.564 19.5897 783.385 0 759.795 0ZM298.564 356.41H237.026V239.487C237.026 237.231 235.18 235.385 232.923 235.385C230.872 235.385 229.231 236.821 228.923 238.769L192.923 356.41H148.718L112.821 238.667C112.513 236.821 110.872 235.385 108.821 235.385C106.564 235.385 104.718 237.231 104.718 239.487V356.41H43.1795V155.385H96H111.795C123.077 155.385 134.974 164.205 138.256 174.974L168.205 272.923C169.744 277.846 172.103 277.744 173.641 272.923L203.59 174.974C206.872 164.103 218.769 155.385 230.051 155.385H245.744H298.564V356.41ZM527.282 356.41H465.744V236.923C465.641 234.974 464.103 233.333 462.051 233.333C460.615 233.333 459.487 234.051 458.872 235.282V235.385C458.872 235.487 458.769 235.59 458.769 235.692L408.513 343.487C405.333 350.462 396.718 356.103 388.923 356.513H327.385V155.487H388.923V272.41C388.923 274.667 390.769 276.513 393.026 276.513C394.462 276.513 395.692 275.795 396.41 274.769C396.615 274.359 396.821 274.051 396.923 273.538L445.846 168.513C449.128 161.436 457.949 155.795 465.744 155.487H527.282V356.41ZM689.333 291.795H619.59V357.436H558.051V246.667H753.026C743.59 272.821 718.667 291.59 689.333 291.795ZM755.59 236.41C755.59 236.41 648.718 236.41 648.615 236.41C596.308 236.41 553.436 200.615 549.846 155.385H689.128C726.564 155.692 756.821 186.051 756.821 223.59C756.821 228 756.41 232.308 755.59 236.41Z" fill="white"/>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="footer__item">
-                <div class="item__nav">
-                    <ul class="footer__nav_list">
-                        <li class="footer__nav__item">
-                            <a href="#" class="nav__link" onclick="window.location='{% url 'developPage' 'all' %}'">{% trans 'О нас' %}</a>
-                        </li>
+                    <div class="footer__item">
+                        <div class="item__nav">
+                            <ul class="footer__nav_list">
+                                <li class="footer__nav__item">
+                                    <a href="{% url 'developPage' 'all' %}" class="nav__link">{% trans 'О нас' %}</a>
+                                </li>
 
-                        <li class="footer__nav__item">
-                            <a href="#" class="nav__link" onclick="window.location='{% url 'developPage' 'apartments' %}'">{% trans 'Апартаменты' %}</a>
-                        </li>
+                                <li class="footer__nav__item">
+                                    <a href="{% url 'apartmentsPage'%}" class="nav__link">{% trans 'Апартаменты' %}</a>
+                                </li>
 
-                        <li class="footer__nav__item">
-                            <a href="#" class="nav__link" onclick="window.location='{% url 'developPage' 'services' %}'">{% trans 'Услуги' %}</a>
-                        </li>
+                                <li class="footer__nav__item">
+                                    <a href="{% url 'developPage' 'services' %}" class="nav__link">{% trans 'Услуги' %}</a>
+                                </li>
 
-                        <li class="footer__nav__item">
-                            <a href="#" class="nav__link" onclick="window.location='{% url 'developPage' 'all' %}'">{% trans 'Галерея' %}</a>
-                        </li>
+                                <li class="footer__nav__item">
+                                    <a href="{% url 'developPage' 'all' %}" class="nav__link">{% trans 'Галерея' %}</a>
+                                </li>
 
-                        <li class="footer__nav__item">
-                            <a href="#" class="nav__link" onclick="window.location='{% url 'developPage' 'all' %}'">{% trans 'Контакты' %}</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                                <li class="footer__nav__item">
+                                    <a href="{% url 'developPage' 'all' %}" class="nav__link">{% trans 'Контакты' %}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-            <div class="footer__item">
-                <div class="footer__item_container">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>{% trans 'Витебский район, Мазоловский сельсовет' %} 64</span>
-                </div>
-                <div class="footer__item_container">
-                    <div class="item__container_contacts">
-                        <i class="fa-solid fa-phone"></i>
-                        <span>+375 29 169 91 06</span>
-                        <div class="container__contacts_icons">
-                            <i class="fa-brands fa-viber"></i>
-                            <i class="fa-brands fa-telegram"></i>
-                            <i class="fa-brands fa-whatsapp"></i>
+                    <div class="footer__item">
+                        <div class="footer__item_container">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>{% trans 'Витебский район, Мазоловский сельсовет' %} 64</span>
+                        </div>
+                        <div class="footer__item_container">
+                            <div class="item__container_contacts">
+                                <i class="fa-solid fa-phone"></i>
+                                <span>+375 29 169 91 06</span>
+                                <div class="container__contacts_icons">
+                                    <i class="fa-brands fa-viber"></i>
+                                    <i class="fa-brands fa-telegram"></i>
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer__item_container">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>info@nazare.by</span>
+                        </div>
+                    </div>
+
+                    <div class="footer__item">
+                        <div class="footer__item_container">
+                            <span class="item__title">{% trans 'Подписка на рассылку' %}</span>
+                        </div>
+                        <div class="footer__item_container">
+                            <span>{% trans 'Будьте в курсе выгодного предложения' %}</span>
+                        </div>
+                        <div class="footer__item_container">
+                            <input class="item__container_input" type="text" inputmode="email" placeholder="E-mail">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                        <div class="footer__item_container">
+                            <span class="item__title">{% trans 'Следи за нами' %}</span>
+                        </div>
+                        <div class="footer__item_container">
+                            <div class="item_socials">
+                                <i class="fa-brands fa-instagram"></i>
+                                <i class="fa-brands fa-vk"></i>
+                                <i class="fa-brands fa-odnoklassniki"></i>
+                                <i class="fa-brands fa-telegram"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="footer__item_container">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>info@nazare.by</span>
-                </div>
-            </div>
+            </section>
 
-            <div class="footer__item">
-                <div class="footer__item_container">
-                    <span class="item__title">{% trans 'Подписка на рассылку' %}</span>
-                </div>
-                <div class="footer__item_container">
-                    <span>{% trans 'Будьте в курсе выгодного предложения' %}</span>
-                </div>
-                <div class="footer__item_container">
-                    <input class="item__container_input" type="text" inputmode="email" placeholder="E-mail">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </div>
-                <div class="footer__item_container">
-                    <span class="item__title">{% trans 'Следи за нами' %}</span>
-                </div>
-                <div class="footer__item_container">
-                    <div class="item_socials">
-                        <i class="fa-brands fa-instagram"></i>
-                        <i class="fa-brands fa-vk"></i>
-                        <i class="fa-brands fa-odnoklassniki"></i>
-                        <i class="fa-brands fa-telegram"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <section class="footer__secondary">
+                <span>© ZORKA 2023 {% trans 'Все права защищены' %}</span>
+                <a class="footer__developer" href="https://github.com/LilScottyPippen">{% trans 'Разработано' %}: LilScottyPippen</a>
+                <span style="cursor: pointer;" onclick="window.location='{% url 'privacyPage' %}'">{% trans 'Политика конфендециальности' %}</span>
+            </section>
+        </footer>
 
-    <section class="footer__secondary">
-        <span>© ZORKA 2023 {% trans 'Все права защищены' %}</span>
-        <a class="footer__developer" href="https://github.com/LilScottyPippen">{% trans 'Разработано' %}: LilScottyPippen</a>
-        <span style="cursor: pointer;" onclick="window.location='{% url 'privacyPage' %}'">{% trans 'Политика конфендециальности' %}</span>
-    </section>
-</footer>
-
-<script>
-    header.style.backgroundColor = '#24486C';
-    
-    /*======== SHOW MENU ========*/
-    const navMenu = document.getElementById('menu-mobile'),
-        navToggle = document.getElementById('nav-toggle'),
-        navClose = document.getElementById('nav-close');
-    
-    /*======== MENU SHOW ========*/
-    if (navToggle) {
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.add('show-menu');
-        });
-    }
-    
-    /*======== MENU HIDDEN ========*/
-    if (navClose) {
-        navClose.addEventListener('click', () => {
-            navMenu.classList.remove('show-menu');
-        });
-    }
-</script>
+        <script>
+            header.style.backgroundColor = '#24486C';
+            
+            /*======== SHOW MENU ========*/
+            const navMenu = document.getElementById('menu-mobile'),
+                navToggle = document.getElementById('nav-toggle'),
+                navClose = document.getElementById('nav-close');
+            
+            /*======== MENU SHOW ========*/
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.add('show-menu');
+                });
+            }
+            
+            /*======== MENU HIDDEN ========*/
+            if (navClose) {
+                navClose.addEventListener('click', () => {
+                    navMenu.classList.remove('show-menu');
+                });
+            }
+        </script>

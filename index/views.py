@@ -102,6 +102,15 @@ def privacyPage(request):
     return render(request, 'index/privacy.html', context)
 
 
+def apartmentsPage(request):
+    current_language = request.LANGUAGE_CODE
+
+    context = {
+        'cur_lang': current_language
+    }
+    return render(request, 'index/apartments.html', context)
+
+
 def apartHomePage(request, title):
     current_language = request.LANGUAGE_CODE
 

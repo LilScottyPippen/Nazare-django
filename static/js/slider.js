@@ -7,18 +7,21 @@ let itemIndex = 0;
 let intervalId;
 
 const createPaginator = () => {
-    const paginatorContainer = document.querySelector('.control__paginator');
-    paginatorContainer.innerHTML = '';
-    for (let i = 0; i < items.length; i++) {
-        const circle = document.createElement('i');
-        circle.className = 'fa-regular fa-circle';
-        paginatorContainer.appendChild(circle);
-    }
-    const firstPaginatorItem = paginatorContainer.querySelector('i');
-    if (firstPaginatorItem) {
-        firstPaginatorItem.classList.add('fa-solid');
-    }
-    updatePaginator();
+    try{
+        const paginatorContainer = document.querySelector('.control__paginator');
+            paginatorContainer.innerHTML = '';
+        
+        for (let i = 0; i < items.length; i++) {
+            const circle = document.createElement('i');
+            circle.className = 'fa-regular fa-circle';
+            paginatorContainer.appendChild(circle);
+        }
+        const firstPaginatorItem = paginatorContainer.querySelector('i');
+        if (firstPaginatorItem) {
+            firstPaginatorItem.classList.add('fa-solid');
+        }
+        updatePaginator();
+    } catch(err){}
 };
 
 const slideItem = (index) => {

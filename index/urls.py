@@ -6,6 +6,7 @@ urlpatterns = [
     # PAGES
     path('', indexPage, name='indexPage'),
     path('development/<str:pageType>', developPage, name='developPage'),
+    path('apartments/', apartmentsPage, name='apartmentsPage'),
     path('apartments/home/<str:title>', apartHomePage, name='apartHomePage'),
     path('privacy/', privacyPage, name='privacyPage'),
 
