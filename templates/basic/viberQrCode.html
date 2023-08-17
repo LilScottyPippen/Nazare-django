@@ -1,0 +1,11 @@
+{% load static %}
+{% load i18n %}
+<div class="background__viber_qr-code" id="viberQrCode">
+    <div class="viber__qr_code">
+        <img src="{% static 'svg/qr-code-viber.svg' %}" alt="" width="288" height="288">
+        <span class="qr__code_title">{% trans "Скопируйте qr код в приложении Viber" %}</span>
+        <div class="qr__code_button">
+            <span id="closeQrCode">{% trans "Закрыть" %}</span>
+        </div>
+    </div>
+</div>
