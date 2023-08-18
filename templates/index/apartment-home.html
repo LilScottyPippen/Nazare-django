@@ -4,6 +4,43 @@
 <html lang="ru">
     <head>
         {% include 'basic/head.html'%}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.thumbs.css" />
+        <style>
+            #myCarousel {
+                max-width: 640px;
+                margin: 0 auto;
+            }
+            
+            #myCarousel .f-carousel__slide {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .f-carousel {
+                --f-button-width: 38px;
+                --f-button-height: 38px;
+              
+                --f-button-svg-width: 16px;
+                --f-button-svg-height: 16px;
+                --f-button-svg-stroke-width: 2.5;
+              
+                --f-button-color: rgb(71 85 105);
+                --f-button-border-radius: 50%;
+                --f-button-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0
+                        0 / 30%);
+              
+                --f-button-bg: #fff;
+                --f-button-hover-bg: #f9f9f9;
+                --f-button-active-bg: #f0f0f0;
+              }
+
+            .f-thumbs.is-horizontal .f-thumbs__track{
+                padding-bottom: 0;
+            }
+
+        </style>
     </head>
     <body>
         {% include 'basic/preloader.html' %}
@@ -22,59 +59,115 @@
                     <!-- ======== SLIDER ======== -->
                     <div class="apartments__left">
                         <section class="slider__wrapper">
-                            <div class="content_carousel">
-                                {% for imageFiles in imageFiles %}
-                                    <div class="container__content_slider apartment">
-                                        <a data-fancybox="gallery" href="{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}"><div class="container__content_image-center" style="background: url('{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}') no-repeat; background-size: cover; background-position: center;"></div></a>
+                            <div>
+                                <div class="f-carousel" id="myCarousel">
+                                    {% for imageFiles in imageFiles %}
+                                    <div class="f-carousel__slide" data-thumb-src="{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}">
+                                        <a data-fancybox="gallery" href="{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}">
+                                            <div class="image-container">
+                                                <img width="670" height="480" alt="" data-lazy-src="{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}" />
+                                            </div>
+                                        </a>
                                     </div>
-                                {% endfor %}
-                            </div>
-                            
-                            {% comment %} {% if imageFiles|length > 1 %}
-                                <div class="item__container_control">
-                                    <i class="fa-solid fa-chevron-left button" id="prev"></i>
-                                    <div class="control__paginator"></div>
-                                    <i class="fa-solid fa-chevron-right button" id="next"></i>
+                                    {% endfor %}
                                 </div>
-                            {% endif %} {% endcomment %}
+                            </div>
                         </section>
                     </div>
 
                     <div class="apartments__right">
                         <section class="apartment__info">
-                            <span class="apartment__info_title">{% trans "ИНФОРМАЦИЯ" %}</span>
-                            <div class="apartment__items">
-                                <div class="apartment__item">
-                                    <i class="fa-solid fa-people-group"></i> {% trans "Количество гостей" %}: {{ homeGuests }}
+                            <div class="aparment__info_main">
+                                <span class="apartment__info_title">{% trans "ИНФОРМАЦИЯ" %}</span>
+                                <div class="info__main_container">
+                                    <div class="apartment__items">
+                                        <div class="apartment__item">
+                                            <i class="fa-solid fa-people-group"></i> {% trans "Количество гостей" %}: {{ homeGuests }} {% trans "взрослых" %}
+                                        </div>
+                                        <div class="apartment__item">
+                                            <i class="fa-regular fa-square"></i> {% trans "Площадь" %}: {{ homeSquare }} м²
+                                        </div>
+                                        <div class="apartment__item">
+                                            <i class="fa-solid fa-bed"></i> {% trans "Спальные места" %}: {{ homeSleep }}
+                                        </div>
+                                        {% comment %} <div class="apartment__item">
+                                            <i class="fa-solid fa-wifi"></i> Wi-Fi: 
+                                            {% if homeWiFi == True %}
+                                                {% trans 'есть' %}
+                                            {% else %}
+                                                {% trans "нет" %}
+                                            {% endif %}
+                                        </div> {% endcomment %}
+                                    </div>
+                                    <div class="main__conetiner_logo">
+                                        <img src="{% static 'img/logo/LogoZORKA-white.png' %}" alt="">
+                                    </div>
                                 </div>
-                                <div class="apartment__item">
-                                    <i class="fa-regular fa-square"></i> {% trans "Площадь" %}: {{ homeSquare }} м²
+                            </div>
+                            <span class="apartment__info_title">{% trans "ОСНАЩЕНИЕ" %}</span>
+                            {% comment %} <div class="apartment__items_container"> {% endcomment %}
+                                <div class="apartment__items services">
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-tv"></i> {% trans "Телевизор" %}
+                                    </div>
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-wifi"></i> Wi-Fi
+                                    </div>
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-snowflake"></i> {% trans "Холодильник" %}
+                                    </div>
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-fan"></i> {% trans "Кондиционер" %}
+                                    </div>
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-wind"></i> {% trans "Фен" %}
+                                    </div>
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-vault"></i> {% trans "Сейф" %}
+                                    </div>
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-mug-hot"></i> {% trans "Кофеварка" %}
+                                    </div>
                                 </div>
-                                <div class="apartment__item">
-                                    <i class="fa-solid fa-bed"></i> {% trans "Спальные места" %}: {{ homeSleep }}
+                            {% comment %} </div> {% endcomment %}
+                            <span class="apartment__info_title">{% trans "ДОП. УСЛУГИ" %}</span>
+                            <div class="apartment__items_container">
+                                <div class="apartment__items services">
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-ship"></i> {% trans "Катер" %}
+                                    </div>
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-ferry"></i> {% trans "Гидроцикл" %}
+                                    </div>
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-person-snowboarding"></i> {% trans "Сапборд" %}
+                                    </div>
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-sailboat"></i> {% trans "Каное" %}
+                                    </div>
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-basketball"></i> {% trans "Баскетбольная площадка" %}
+                                    </div>
+                                    <div class="apartment__item">
+                                        <i class="fa-solid fa-table-tennis-paddle-ball"></i> {% trans "Теннисный корт" %}
+                                    </div>
                                 </div>
-                                <div class="apartment__item">
-                                    <i class="fa-solid fa-wifi"></i> Wi-Fi: 
-                                    {% if homeWiFi == True %}
-                                        {% trans 'есть' %}
-                                    {% else %}
-                                        {% trans "нет" %}
-                                    {% endif %}
+                            </div>
+                            <div class="apartment__footer">
+                                <span class="apartments__book" id="navCallDev">
+                                    {% trans "ЗАБРОНИРОВАТЬ" %}
+                                </span>
+                                <div class="apartments__share">
+                                    {% trans 'Поделиться'%}: 
+                                    {% comment %} <i class="fa-brands fa-instagram"></i> {% endcomment %}
+                                    {% comment %} <i class="fa-brands fa-linkedin"></i> {% endcomment %}
+                                    <a href="https://vk.com/share.php?title={{ homeShare }}+nazare.by{% url 'apartHomePage' title %}"><i class="fa-brands fa-vk"></i></a>
+                                    {% comment %} <i class="fa-brands fa-square-odnoklassniki"></i> {% endcomment %}
+                                    <a href="https://t.me/share/url?url=nazare.by{% url 'apartHomePage' title %}&text={{ homeShare }}"><i class="fa-brands fa-telegram"></i></a>
+                                    <a href="https://wa.me/?text={{ homeShare }}+nazare.by{% url 'apartHomePage' title %}"><i class="fa-brands fa-whatsapp"></i></a>
                                 </div>
                             </div>
                         </section>
-                        <span class="apartments__book" id="navCallDev">
-                            {% trans "ЗАБРОНИРОВАТЬ" %}
-                        </span>
-                        <div class="apartments__share">
-                            {% trans 'Поделиться'%}: 
-                            <i class="fa-brands fa-instagram"></i>
-                            <i class="fa-brands fa-linkedin"></i>
-                            <i class="fa-brands fa-vk"></i>
-                            <i class="fa-brands fa-square-odnoklassniki"></i>
-                            <i class="fa-brands fa-telegram"></i>
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </div>
                     </div>
                 </section>
             </div>
@@ -84,5 +177,18 @@
 
         <!-- ======== JS ======== -->
         <script src="{% static 'js/slider.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.umd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.thumbs.umd.js"></script>
+        <script>
+            const container = document.getElementById("myCarousel");
+            const options = {
+              Dots: false,
+              Thumbs: {
+                type: "classic",
+              },
+            };
+      
+            new Carousel(container, options, { Thumbs });
+          </script>
     </body>
 </html>

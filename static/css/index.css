@@ -621,7 +621,7 @@
 }
 
 .apartments__right{
-    color: #fff;
+    color: white;
     font-size: var(--small-font-size);
     width: fit-content;
     display: flex;
@@ -636,8 +636,19 @@
 
 .apartment__info{
     padding: 20px;
-    margin: 10px 0;
     background-color: var(--blue-color);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.info__main_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main__conetiner_logo img{
+    width: 100px;
 }
 
 .apartment__info_title{
@@ -647,21 +658,58 @@
     padding: 0 50px;
 }
 
-.apartment__item{
-    padding: 10px 0;
+.apartment__items_container {
+    display: flex;
+    justify-content: center;
+}
+
+/* CENTERED */
+.apartment__items.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 20px;
+}
+
+.apartment__item {
+    padding: 8px 12px;
+}
+
+/* COLUMN */
+/* .apartment__items.services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 20px;
+}
+
+.apartment__item {
+    flex-basis: calc(50% - 5px);
+    padding: 8px 12px;
+    box-sizing: border-box;
+} */
+
+.apartment__footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
 }
 
 .apartments__book{
-    background-color: var(--blue-color);
+    background-color: white;
     font-size: var(--normal-font-size);
     width: fit-content;
     margin: 10px 0;
     padding: 10px;
     cursor: pointer;
+    color: var(--blue-color);
 }
 
 .apartments__share{
-    color: var(--blue-color);
     font-weight: var(--font-bold);
     margin: 10px 0;
 }

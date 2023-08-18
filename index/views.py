@@ -40,6 +40,11 @@ HOME_TITLE = {
     'obsidian': _('ДОМ OBSIDIAN')
 }
 
+SHARE_APART_PAGE = {
+    'olive': _('Забронировать дом OLIVE'),
+    'terra': _('Забронировать дом TERRA'),
+    'obsidian': _('Забронировать дом OBSIDIAN')
+}
 
 def set_language(request, language):
     view = None
@@ -118,7 +123,6 @@ def apartHomePage(request, title):
         apartment = Apartment.objects.get(title=title)
         imageFolderPath = os.path.join(settings.STATIC_ROOT, 'img', 'apartments', title)
         imageFiles = os.listdir(imageFolderPath)
-        print(imageFiles)
         context = {
             'homeTitle': HOME_TITLE[title],
             'homeGuests': apartment.guests,
@@ -128,7 +132,8 @@ def apartHomePage(request, title):
             'cur_lang': current_language,
             'imageFolderPath': imageFolderPath,
             'imageFiles': imageFiles,
-            'title': title
+            'title': title,
+            'homeShare': SHARE_APART_PAGE[title]
         }
 
         return render(request, 'index/apartment-home.html', context)
@@ -178,7 +183,6 @@ def sendMail(type, name, phone, created):
     try:
         if type == MESSAGE_TYPE['callback']:
             message = render_to_string('mailing/admin_callback.html', {'name': name, 'phone': phone, 'created': created})
-            print(message)
             recipient_list = [admin.email for admin in User.objects.filter(is_superuser=True)]
             send_mail(MESSAGE_TYPE['callback'], message, settings.EMAIL_HOST_USER, recipient_list, fail_silently=False)
     except:
