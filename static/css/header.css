@@ -94,6 +94,7 @@ a{
 .nav__logo{
     display: flex;
     height: 100px;
+    float: left;
 }
 
 .nav__menu_top{
@@ -121,6 +122,7 @@ a{
 
 .nav__contact{
     margin-left: 10px;
+    white-space: nowrap;
 }
 
 .nav__column_mobile{

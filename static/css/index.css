@@ -35,6 +35,12 @@
     }
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /*======== BASE ========*/
 .main{
     padding: 100px 300px;
