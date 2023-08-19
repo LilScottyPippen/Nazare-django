@@ -9,6 +9,7 @@ urlpatterns = [
     path('apartments/', apartmentsPage, name='apartmentsPage'),
     path('apartments/home/<str:title>', apartHomePage, name='apartHomePage'),
     path('privacy/', privacyPage, name='privacyPage'),
+    # path("contacts/", contactsPage, name="contactsPage"),
 
     # FUNCTIONS
     path('order-call/', orderCall, name='orderCallFunc')

@@ -94,7 +94,6 @@ a{
 .nav__logo{
     display: flex;
     height: 100px;
-    justify-content: center;
 }
 
 .nav__menu_top{

@@ -187,3 +187,12 @@ def sendMail(type, name, phone, created):
             send_mail(MESSAGE_TYPE['callback'], message, settings.EMAIL_HOST_USER, recipient_list, fail_silently=False)
     except:
         return JsonResponse({'success': False, 'message': ERROR_MESSAGES["invalid_request"]}, safe=False)
+    
+
+def contactsPage(request):
+    current_language = request.LANGUAGE_CODE
+
+    context = {
+        'cur_lang': current_language
+    }
+    return render(request, 'index/contacts.html', context)

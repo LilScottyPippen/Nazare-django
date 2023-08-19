@@ -175,7 +175,7 @@
                             </li>
 
                             <li class="dropdown__item">
-                                <a href="{% url 'developPage' 'all' %}" class="nav__link">
+                                <a href="{% url 'contactsPage' %}" class="nav__link">
                                     {% trans 'Контакты' %}
                                 </a>
                             </li>
@@ -296,19 +296,9 @@
                             </li>
 
                             <li class="dropdown__item">
-                                <div class="nav__link">
-                                    {% trans 'Контакты' %} <i class="fa-solid fa-caret-down"></i>
+                                <div class="nav__link" onclick="window.location='{% url 'contactsPage' %}'">
+                                    {% trans 'Контакты' %}
                                 </div>
-
-                                <ul class="dropdown__menu">
-                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                        <i class="fa-solid fa-phone"></i> {% trans 'Телефоны' %}
-                                    </a>
-
-                                    <a href="{% url 'developPage' 'all' %}" class="dropdown__link">
-                                        <i class="fa-solid fa-map"></i> {% trans 'Как добраться' %}
-                                    </a>
-                                </ul>
                             </li>
 
                             <li class="dropdown__item">

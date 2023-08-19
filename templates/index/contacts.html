@@ -1,0 +1,29 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        {% include 'basic/head.html'%}
+        <link rel="stylesheet" href="{% static 'css/development.css' %}">
+    </head>
+    <body>
+        {% include 'basic/preloader.html' %}
+        {% include 'basic/callback.html' %}
+        {% include 'basic/header.html' %}
+        {% include 'basic/viberQrCode.html' %}
+
+        <main class="main">
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{% trans 'КОНТАКТЫ' %}</span><span class="content__title_dot">•</span>
+                </div>
+
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Afc13d0fbe024f962d99e2a95d503811bcb473106e7de6fef58e1a80c665f7851&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
+            </div>
+        </main>
+
+        {% include 'basic/footer.html'%}
+    </body>
+</html>
