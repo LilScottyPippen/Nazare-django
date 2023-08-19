@@ -93,6 +93,7 @@ a{
 
 .nav__logo{
     display: flex;
+    width: fit-content;
     height: 100px;
     float: left;
 }
