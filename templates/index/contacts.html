@@ -4,7 +4,6 @@
 <html lang="ru">
     <head>
         {% include 'basic/head.html'%}
-        <link rel="stylesheet" href="{% static 'css/development.css' %}">
     </head>
     <body>
         {% include 'basic/preloader.html' %}
@@ -20,7 +19,30 @@
                     <span class="content__title_dot">•</span><span>{% trans 'КОНТАКТЫ' %}</span><span class="content__title_dot">•</span>
                 </div>
 
-                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Afc13d0fbe024f962d99e2a95d503811bcb473106e7de6fef58e1a80c665f7851&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
+                <section class="contacts">
+                    <div class="contacts__info">
+                        <div class="contacts__item_container">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>{% trans 'Витебский район, Мазоловский сельсовет' %} 64</span>
+                        </div>
+                        <div class="contacts__item_container">
+                            <div class="item__container_contacts">
+                                <i class="fa-solid fa-phone"></i>
+                                <span>+375 29 169 91 06</span>
+                                <div class="container__contacts_icons">
+                                    <i class="fa-brands fa-viber"></i>
+                                    <i class="fa-brands fa-telegram"></i>
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contacts__item_container">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>info@nazare.by</span>
+                        </div>
+                    </div>
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Afc13d0fbe024f962d99e2a95d503811bcb473106e7de6fef58e1a80c665f7851&amp;source=constructor" frameborder="0"></iframe>
+                </section>
             </div>
         </main>
 

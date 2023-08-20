@@ -99,7 +99,7 @@
                                             {% endif %}
                                         </div> {% endcomment %}
                                     </div>
-                                    <div class="main__conetiner_logo">
+                                    <div class="main__conteiner_logo">
                                         <img src="{% static 'img/logo/LogoZORKA-white.png' %}" alt="">
                                     </div>
                                 </div>
@@ -161,10 +161,10 @@
                                     {% trans 'Поделиться'%}: 
                                     {% comment %} <i class="fa-brands fa-instagram"></i> {% endcomment %}
                                     {% comment %} <i class="fa-brands fa-linkedin"></i> {% endcomment %}
-                                    <a href="https://vk.com/share.php?title={{ homeShare }}+nazare.by{% url 'apartHomePage' title %}"><i class="fa-brands fa-vk"></i></a>
+                                    <a href="https://vk.com/share.php?title={{ homeShare }}+nazare.by{% url 'apartHomePage' title %}" target="_blank"><i class="fa-brands fa-vk"></i></a>
                                     {% comment %} <i class="fa-brands fa-square-odnoklassniki"></i> {% endcomment %}
-                                    <a href="https://t.me/share/url?url=nazare.by{% url 'apartHomePage' title %}&text={{ homeShare }}"><i class="fa-brands fa-telegram"></i></a>
-                                    <a href="https://wa.me/?text={{ homeShare }}+nazare.by{% url 'apartHomePage' title %}"><i class="fa-brands fa-whatsapp"></i></a>
+                                    <a href="https://t.me/share/url?url=nazare.by{% url 'apartHomePage' title %}&text={{ homeShare }}" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                                    <a href="https://wa.me/?text={{ homeShare }}+nazare.by{% url 'apartHomePage' title %}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
                                 </div>
                             </div>
                         </section>

@@ -208,7 +208,7 @@ a{
 /* ======== FOOTER SECONDARY ======== */
 .footer__secondary{
     background-color: #fff;
-    height: 50px;
+    height: fit-content;
     display: flex;
     justify-content: space-between;
     font-size: var(--small-font-size);
@@ -217,8 +217,18 @@ a{
     color: var(--blue-color);
 }
 
+.footer__secondary *{
+    padding: 25px 0;
+}
+
 .footer__developer{
     color: var(--blue-color);
+}
+
+@media (max-width: 1401px){
+    .footer__secondary *{
+        padding: 12px 0;
+    }
 }
 
 @media (max-width: 900px){
@@ -227,8 +237,7 @@ a{
         justify-content: center;
     }
 
-    .footer__secondary span,
-    .footer__developer{
-        padding-bottom: 5px;
+    .footer__secondary *{
+        padding: 5px 0;
     }
 }

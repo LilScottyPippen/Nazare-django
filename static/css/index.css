@@ -12,6 +12,7 @@
     --body-font: 'Open Sans', sans-serif;
     --biggest-font-size: 32px;
     --normal-font-size: 16px;
+    --medium-font-size: 12px;
     --small-font-size: 8px;
 
     /*======== FONT WEIGHT ========*/
@@ -31,6 +32,7 @@
     :root{
         --biggest-font-size: 64px;
         --normal-font-size: 32px;
+        --medium-font-size: 20px;
         --small-font-size: 16px;
     }
 }
@@ -53,7 +55,7 @@
 /*======== RESPONSIVE BASE ========*/
 @media (max-width: 1401px) {
     .main{
-        padding: 100px 100px;
+        padding: 50px 100px;
     }
 }
 @media (max-width: 900px) {
@@ -180,7 +182,6 @@
 @media (max-width: 1401px) {
     .home__footer{
         padding: 0 100px;
-        padding-bottom: 33px;
     }
 
     .home__footer_item{
@@ -250,7 +251,7 @@
 /*======== RESPONSIVE CONTENT ========*/
 @media (max-width: 1401px) {
     .content__container{
-        padding: 25px 0;
+        padding: 25px;
     }
 
     .content__title_dot{
@@ -653,7 +654,7 @@
     justify-content: space-between;
 }
 
-.main__conetiner_logo img{
+.main__conteiner_logo img{
     width: 100px;
 }
 
@@ -761,10 +762,63 @@
     .apartments__share i{
         font-size: var(--normal-font-size);
     }
+
+    .main__conteiner_logo img{
+        width: 50px;
+    }
 }
 
 @media (max-width: 900px){
     .apartments__left{
         width: 300px;
+    }
+
+    .main__conteiner_logo img{
+        width: 40px;
+    }
+}
+
+/* ======== CONTACTS ======== */
+.contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: var(--small-font-size);
+    color: #fff;
+    margin-top: 10px;
+}
+
+.contacts__info {
+    padding: 10px 20px;
+    background-color: var(--blue-color);
+    font-size: var(--medium-font-size);
+}
+
+.contacts__item_container {
+    padding: 5px 0;
+}
+
+.contacts iframe {
+    width: 600px;
+    height: 400px;
+    padding: 0;
+}
+
+@media (max-width: 900px) {
+    .contacts {
+        flex-direction: column;
+    }
+
+    .contacts iframe {
+        width: 100%
+    }
+    
+    .contacts__info {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .contacts iframe {
+        height: 300px;
     }
 }
