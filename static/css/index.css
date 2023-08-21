@@ -677,11 +677,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    padding-bottom: 20px;
-}
-
-.apartment__item {
-    padding: 8px 12px;
+    padding: 10px 0;
 }
 
 /* COLUMN */
@@ -746,10 +742,6 @@
         padding: 0 30px;
     }
 
-    .apartment__item{
-        padding: 5px 0;
-    }
-
     .apartments__book{
         margin: 8px 0;
     }
@@ -796,6 +788,10 @@
 
 .contacts__item_container {
     padding: 5px 0;
+}
+
+.container__contacts_number{
+    cursor: pointer;
 }
 
 .contacts iframe {

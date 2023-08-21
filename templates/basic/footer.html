@@ -48,16 +48,16 @@
                     <div class="footer__item">
                         <div class="footer__item_container">
                             <i class="fa-solid fa-location-dot"></i>
-                            <span>{% trans 'Витебский район, Мазоловский сельсовет' %} 64</span>
+                            <span>{% trans 'Витебский район, Мазоловский сельсовет' %} 63</span>
                         </div>
                         <div class="footer__item_container">
                             <div class="item__container_contacts">
                                 <i class="fa-solid fa-phone"></i>
-                                <span>+375 29 169 91 06</span>
+                                <a href="tel:+375291699106" class="container__contacts_number" id="contactLink">+375 29 169 91 06</a>
                                 <div class="container__contacts_icons">
-                                    <i class="fa-brands fa-viber"></i>
-                                    <i class="fa-brands fa-telegram"></i>
-                                    <i class="fa-brands fa-whatsapp"></i>
+                                    <a href="viber://chat?number=%2B375291699106"><i class="fab fa-viber" id="viber-icon"></i></a>
+                                    <a href="https://t.me/nazareby" target="_blank"><i class="fab fa-telegram"></i></a>
+                                <a href="https://wa.me/375291699106" target="_blank"><i class="fab fa-whatsapp"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -99,6 +99,8 @@
                 <span style="cursor: pointer;" onclick="window.location='{% url 'privacyPage' %}'">{% trans 'Политика конфендециальности' %}</span>
             </section>
         </footer>
+
+        <script src="{% static 'js/copyMobile.js' %}"></script>
 
         <script>
             header.style.backgroundColor = '#24486C';

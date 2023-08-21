@@ -16,9 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    try {
-        document.getElementById('viber-icon').addEventListener('click', openViberQrCode);
-    } catch (error) {}
+    const viberIconButtons = document.querySelectorAll('.fab.fa-viber');
+
+    viberIconButtons.forEach(function(button) {
+        button.parentElement.addEventListener('click', openViberQrCode);
+    });
 
     document.getElementById('closeQrCode').addEventListener('click', function() {
         viberQrCode.style.display = 'none';

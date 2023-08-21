@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-18 16:22+0300\n"
+"POT-Creation-Date: 2023-08-21 13:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,32 +105,32 @@ msgstr "To order"
 msgid "Вы не приняли пользовательское соглашение!"
 msgstr "You have not accepted the user agreement!"
 
-#: .\templates\basic\footer.html:26 .\templates\basic\header.html:59
-#: .\templates\basic\header.html:316
+#: .\templates\basic\footer.html:26 .\templates\basic\header.html:60
+#: .\templates\basic\header.html:307
 msgid "О нас"
 msgstr "About us"
 
-#: .\templates\basic\footer.html:30 .\templates\basic\header.html:83
-#: .\templates\basic\header.html:204
+#: .\templates\basic\footer.html:30 .\templates\basic\header.html:84
+#: .\templates\basic\header.html:205
 msgid "Апартаменты"
 msgstr "Apartments"
 
-#: .\templates\basic\footer.html:34 .\templates\basic\header.html:107
-#: .\templates\basic\header.html:228 .\templates\basic\header.html:329
+#: .\templates\basic\footer.html:34 .\templates\basic\header.html:108
+#: .\templates\basic\header.html:229 .\templates\basic\header.html:320
 msgid "Услуги"
 msgstr "Services"
 
-#: .\templates\basic\footer.html:38 .\templates\basic\header.html:159
-#: .\templates\basic\header.html:280 .\templates\basic\header.html:337
+#: .\templates\basic\footer.html:38 .\templates\basic\header.html:160
+#: .\templates\basic\header.html:281 .\templates\basic\header.html:328
 msgid "Галерея"
 msgstr "Gallery"
 
-#: .\templates\basic\footer.html:42 .\templates\basic\header.html:179
-#: .\templates\basic\header.html:300
+#: .\templates\basic\footer.html:42 .\templates\basic\header.html:180
+#: .\templates\basic\header.html:301
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\templates\basic\footer.html:51
+#: .\templates\basic\footer.html:51 .\templates\index\contacts.html:26
 msgid "Витебский район, Мазоловский сельсовет"
 msgstr "Vitebsk district, Mazolovsky village Council"
 
@@ -142,19 +142,15 @@ msgstr "Subscribe to the newsletter"
 msgid "Будьте в курсе выгодного предложения"
 msgstr "Be aware of the best offer"
 
-#: .\templates\basic\footer.html:82
-msgid "Следи за нами"
-msgstr "Follow us"
-
-#: .\templates\basic\footer.html:97
+#: .\templates\basic\footer.html:98
 msgid "Все права защищены"
 msgstr "All rights reserved"
 
-#: .\templates\basic\footer.html:98
+#: .\templates\basic\footer.html:99
 msgid "Разработано"
 msgstr "Developed by"
 
-#: .\templates\basic\footer.html:99
+#: .\templates\basic\footer.html:100
 msgid "Политика конфендециальности"
 msgstr "Confendeciality policy"
 
@@ -162,108 +158,100 @@ msgstr "Confendeciality policy"
 msgid "Парк-отель ZORKA"
 msgstr "Park hotel ZORKA"
 
-#: .\templates\basic\header.html:21 .\templates\basic\header.html:347
+#: .\templates\basic\header.html:21 .\templates\basic\header.html:338
 #: .\templates\index\development.html:28
 msgid "ЗАКАЗАТЬ ЗВОНОК"
 msgstr "ORDER A CALL"
 
-#: .\templates\basic\header.html:22 .\templates\basic\header.html:346
+#: .\templates\basic\header.html:22 .\templates\basic\header.html:337
 #: .\templates\index\index.html:19 .\templates\index\index.html:81
 msgid "БРОНИРОВАНИЕ"
 msgstr "BOOKING"
 
-#: .\templates\basic\header.html:64 .\templates\basic\header.html:321
+#: .\templates\basic\header.html:65 .\templates\basic\header.html:312
 msgid "Бронирование и оплата"
 msgstr "Booking and payment"
 
-#: .\templates\basic\header.html:68 .\templates\basic\header.html:325
+#: .\templates\basic\header.html:69 .\templates\basic\header.html:316
 msgid "Территория"
 msgstr "Territory"
 
-#: .\templates\basic\header.html:72 .\templates\basic\header.html:341
+#: .\templates\basic\header.html:73 .\templates\basic\header.html:332
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: .\templates\basic\header.html:76
+#: .\templates\basic\header.html:77
 msgid "О компании"
 msgstr "About the company"
 
-#: .\templates\basic\header.html:88 .\templates\basic\header.html:209
+#: .\templates\basic\header.html:89 .\templates\basic\header.html:210
 msgid "Дом olive"
 msgstr "Olive house"
 
-#: .\templates\basic\header.html:92 .\templates\basic\header.html:213
+#: .\templates\basic\header.html:93 .\templates\basic\header.html:214
 msgid "Дом terra"
 msgstr "Terra house"
 
-#: .\templates\basic\header.html:96 .\templates\basic\header.html:217
+#: .\templates\basic\header.html:97 .\templates\basic\header.html:218
 msgid "Дом obsidian"
 msgstr "Obsidian house"
 
-#: .\templates\basic\header.html:100 .\templates\basic\header.html:221
+#: .\templates\basic\header.html:101 .\templates\basic\header.html:222
 msgid "Гостиница"
 msgstr "Hotel"
 
-#: .\templates\basic\header.html:112 .\templates\basic\header.html:233
+#: .\templates\basic\header.html:113 .\templates\basic\header.html:234
 msgid "Прокат и аренда"
 msgstr "Renatal and lease"
 
-#: .\templates\basic\header.html:116 .\templates\basic\header.html:237
+#: .\templates\basic\header.html:117 .\templates\basic\header.html:238
 msgid "Ресторан"
 msgstr "Restaurant"
 
-#: .\templates\basic\header.html:120 .\templates\basic\header.html:241
+#: .\templates\basic\header.html:121 .\templates\basic\header.html:242
 msgid "Доставка еды"
 msgstr "Delivery eat"
 
-#: .\templates\basic\header.html:124 .\templates\basic\header.html:245
+#: .\templates\basic\header.html:125 .\templates\basic\header.html:246
 msgid "Трансфер"
 msgstr "Transfer"
 
-#: .\templates\basic\header.html:131 .\templates\basic\header.html:252
-#: .\templates\basic\header.html:333
+#: .\templates\basic\header.html:132 .\templates\basic\header.html:253
+#: .\templates\basic\header.html:324
 msgid "Мероприятия"
 msgstr "Events"
 
-#: .\templates\basic\header.html:136 .\templates\basic\header.html:257
+#: .\templates\basic\header.html:137 .\templates\basic\header.html:258
 msgid "Свадьба"
 msgstr "Wedding"
 
-#: .\templates\basic\header.html:140 .\templates\basic\header.html:261
+#: .\templates\basic\header.html:141 .\templates\basic\header.html:262
 msgid "Корпоратив"
 msgstr "Company party"
 
-#: .\templates\basic\header.html:144 .\templates\basic\header.html:265
+#: .\templates\basic\header.html:145 .\templates\basic\header.html:266
 msgid "Конференция"
 msgstr "The conference"
 
-#: .\templates\basic\header.html:148 .\templates\basic\header.html:269
+#: .\templates\basic\header.html:149 .\templates\basic\header.html:270
 msgid "День рождения"
 msgstr "Birthday"
 
-#: .\templates\basic\header.html:152 .\templates\basic\header.html:273
+#: .\templates\basic\header.html:153 .\templates\basic\header.html:274
 msgid "Спортивные мероприятия"
 msgstr "Sports events"
 
-#: .\templates\basic\header.html:164 .\templates\basic\header.html:285
+#: .\templates\basic\header.html:165 .\templates\basic\header.html:286
 msgid "Фотогалерея"
 msgstr "Photo Gallery"
 
-#: .\templates\basic\header.html:168 .\templates\basic\header.html:289
+#: .\templates\basic\header.html:169 .\templates\basic\header.html:290
 msgid "Видеогалерея"
 msgstr "Video Gallery"
 
-#: .\templates\basic\header.html:172 .\templates\basic\header.html:293
+#: .\templates\basic\header.html:173 .\templates\basic\header.html:294
 msgid "Виртуальный тур"
 msgstr "Virtual tour"
-
-#: .\templates\basic\header.html:305
-msgid "Телефоны"
-msgstr "Phones"
-
-#: .\templates\basic\header.html:309
-msgid "Как добраться"
-msgstr "How to get"
 
 #: .\templates\basic\viberQrCode.html:6
 msgid "Скопируйте qr код в приложении Viber"
@@ -370,6 +358,10 @@ msgstr "HOUSE"
 #: .\templates\index\apartments.html:48
 msgid "ГОСТИНИЦА"
 msgstr "HOTEL"
+
+#: .\templates\index\contacts.html:19
+msgid "КОНТАКТЫ"
+msgstr "CONTACTS"
 
 #: .\templates\index\development.html:20
 msgid "СТРАНИЦА В РАЗРАБОТКЕ"
@@ -634,3 +626,12 @@ msgstr "CONVENIENCES"
 #: .\templates\index\privacy.html:20
 msgid "ПОЛИТИКА КОНФЕНДЕЦИАЛЬНОСТИ"
 msgstr "CONFENDECIALITY POLICY"
+
+#~ msgid "Следи за нами"
+#~ msgstr "Follow us"
+
+#~ msgid "Телефоны"
+#~ msgstr "Phones"
+
+#~ msgid "Как добраться"
+#~ msgstr "How to get"
