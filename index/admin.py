@@ -10,3 +10,5 @@ class CallbackAdmin(admin.ModelAdmin):
 class ApartmentAdmin(admin.ModelAdmin):
     verbose_name_plureal = 'Апартаменты'
     list_display = ('id', 'title', 'guests', 'square', 'sleepPlace', 'isWifi')
+
+admin.site.register(Mail)

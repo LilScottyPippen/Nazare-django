@@ -75,9 +75,53 @@
                             <span>{% trans 'Будьте в курсе выгодного предложения' %}</span>
                         </div>
                         <div class="footer__item_container">
-                            <input class="item__container_input" type="text" inputmode="email" placeholder="E-mail">
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <input class="item__container_input" id="input_email" type="text" inputmode="email" placeholder="E-mail">
+                            <i class="fa-solid fa-arrow-right" id="email_submit"></i>
                         </div>
+
+                        <script>
+                            function showNotification(status, text) {
+                                new Notify({
+                                    status: status,
+                                    text: text,
+                                    effect: 'fade',
+                                    speed: 300,
+                                    customClass: null,
+                                    customIcon: null,
+                                    showIcon: true,
+                                    showCloseButton: true,
+                                    autoclose: true,
+                                    autotimeout: 3000,
+                                    gap: 20,
+                                    distance: 20,
+                                    type: 1,
+                                    position: 'right bottom'
+                                });
+                            }
+                            
+                            $('body').on('click', '#email_submit', function(event) {
+                                let email = document.getElementById('input_email').value
+                                $.ajax({
+                                    url: '{% url 'saveEmailFunc' %}',
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    data: {
+                                        'email': email
+                                    },
+                                    success: function(response) {
+                                        if (response.success === true) {
+                                            document.getElementById('input_email').value = ''
+                                            showNotification('success', response.message);
+                                        } else {
+                                            showNotification('error', response.message);
+                                        }
+                                    },
+                                    error: function(err) {
+                                        showNotification('error', err.message);
+                                    }
+                                });
+                            });
+                        </script>
                         {% comment %} <div class="footer__item_container">
                             <span class="item__title">{% trans 'Следи за нами' %}</span>
                         </div>

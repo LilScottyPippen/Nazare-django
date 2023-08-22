@@ -59,16 +59,20 @@
             
             $('body').on('click', '#callback_submit', function(event) {
                 if (document.getElementById("input_checkbox").checked) {
+                    let name = document.getElementById('input_name').value
+                    let phone = document.getElementById('input_phone').value
                     $.ajax({
                         url: '{% url 'orderCallFunc' %}',
                         type: 'POST',
                         dataType: 'json',
                         data: {
-                            'name': document.getElementById('input_name').value,
-                            'phone': document.getElementById('input_phone').value
+                            'name': name,
+                            'phone': phone
                         },
                         success: function(response) {
                             if (response.success === true) {
+                                document.getElementById('input_name').value = '';
+                                document.getElementById('input_phone').value = '';
                                 showNotification('success', response.message);
                             } else {
                                 showNotification('error', response.message);

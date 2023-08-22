@@ -12,7 +12,8 @@ urlpatterns = [
     path("contacts/", contactsPage, name="contactsPage"),
 
     # FUNCTIONS
-    path('order-call/', orderCall, name='orderCallFunc')
+    path('order-call/', orderCall, name='orderCallFunc'),
+    path('save-email/', saveEmail, name='saveEmailFunc')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

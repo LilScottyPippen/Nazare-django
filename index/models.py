@@ -34,14 +34,26 @@ class Apartment(models.Model):
         return self.title
     
 
-def getImageUploadPath(instance, filename):
-    base_path = f"static/img/apartments/{instance.apartment.title}"
-    extension = os.path.splitext(filename)[1]
-    new_filename = f"{instance.nameImage}{extension}"
-    return os.path.join(base_path, new_filename)
+class Mail(models.Model):
+    address = models.EmailField(unique=True)
+    added_at = models.DateTimeField(auto_now_add=True, verbose_name='Добавлено')
+
+    class Meta:
+        verbose_name = "Электронные почты"
+        verbose_name_plural = "Электронные почты"
+
+    def __str__(self):
+        return self.address
+
 
 #
 # ======== UNDER REVISION ==========
+#
+# def getImageUploadPath(instance, filename):
+#     base_path = f"static/img/apartments/{instance.apartment.title}"
+#     extension = os.path.splitext(filename)[1]
+#     new_filename = f"{instance.nameImage}{extension}"
+#     return os.path.join(base_path, new_filename)
 #
 # class ApartmentPhoto(models.Model):
 #     id = models.BigAutoField(primary_key=True)

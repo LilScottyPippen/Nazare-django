@@ -59,7 +59,7 @@ WSGI_APPLICATION = 'ZorkaDjango.wsgi.application'
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'neondb',
+    'NAME': 'zpopsspj',
     'USER': os.getenv('DB_USER'),
     'PASSWORD': os.getenv('DB_PASSWORD'),
     'HOST': os.getenv('DB_HOST'),

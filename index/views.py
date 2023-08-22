@@ -11,6 +11,8 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls.base import resolve, reverse
 from django.urls.exceptions import Resolver404
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.translation import gettext_lazy as _
@@ -22,12 +24,20 @@ ERROR_MESSAGES = {
     'empty_name': _("Поле 'Ваше имя': пустое!"),
     'empty_phone': _("Поле 'Телефон': пустое!"),
     'invalid_name': _('Введите корректное имя!'),
-    'invalid_phone': _('Введите корректный номер!')
+    'invalid_phone': _('Введите корректный номер!'),
+
+    # Mailing
+    'empty_email': _("Поле 'Email': пустое!"),
+    'invalid_email': _('Неверный адрес электронной почты!'),
+    'exists_email': _("Электронная почта уже добавлена")
 }
 
 SUCCESS_MESSAGES = {
     # CALLBACK
-    'success_callback': _("Спасибо за Вашу заявку. Мы скоро Вам перезвоним.")
+    'success_callback': _("Спасибо за Вашу заявку. Мы скоро Вам перезвоним."),
+
+    # Mailing
+    'success_mailing': _("Теперь вы подписаны на наши предложения.")
 }
 
 MESSAGE_TYPE = {
@@ -196,3 +206,29 @@ def contactsPage(request):
         'cur_lang': current_language
     }
     return render(request, 'index/contacts.html', context)
+
+
+@csrf_exempt
+def saveEmail(request):
+    try:
+        if request.method != 'POST':
+            return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
+
+        email = request.POST.get('email')
+        if not email:
+            return JsonResponse({'success': False, 'message': ERROR_MESSAGES['empty_email']})
+
+        try:
+            validate_email(email)
+        except ValidationError:
+            return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_email']})
+
+        mail, created = Mail.objects.get_or_create(address=email)
+        
+        if created:
+            return JsonResponse({'success': True, 'message': SUCCESS_MESSAGES['success_mailing']})
+        else:
+            return JsonResponse({'success': False, 'message': ERROR_MESSAGES['exists_email']})
+
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': str(e)})
