@@ -6,41 +6,7 @@
         {% include 'basic/head.html'%}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.thumbs.css" />
-        <style>
-            #myCarousel {
-                max-width: 640px;
-                margin: 0 auto;
-            }
-            
-            #myCarousel .f-carousel__slide {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            
-            .f-carousel {
-                --f-button-width: 38px;
-                --f-button-height: 38px;
-              
-                --f-button-svg-width: 16px;
-                --f-button-svg-height: 16px;
-                --f-button-svg-stroke-width: 2.5;
-              
-                --f-button-color: rgb(71 85 105);
-                --f-button-border-radius: 50%;
-                --f-button-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%), 0 3px 7px -3px rgb(0 0
-                        0 / 30%);
-              
-                --f-button-bg: #fff;
-                --f-button-hover-bg: #f9f9f9;
-                --f-button-active-bg: #f0f0f0;
-              }
-
-            .f-thumbs.is-horizontal .f-thumbs__track{
-                padding-bottom: 0;
-            }
-
-        </style>
+        <link rel="stylesheet" href="{% static 'css/fancybox.css' %}">
     </head>
     <body>
         {% include 'basic/preloader.html' %}
@@ -189,6 +155,6 @@
             };
       
             new Carousel(container, options, { Thumbs });
-          </script>
+        </script>
     </body>
 </html>

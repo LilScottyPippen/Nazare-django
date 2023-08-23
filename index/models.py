@@ -3,6 +3,7 @@ from shutil import copyfile
 from django.db import models
 from django.conf import settings
 
+
 class Callback(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=20, verbose_name='Имя')

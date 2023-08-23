@@ -232,3 +232,30 @@ def saveEmail(request):
 
     except Exception as e:
         return JsonResponse({'success': False, 'message': str(e)})
+    
+
+# def rentPage(request):
+#     current_language = request.LANGUAGE_CODE
+
+#     context = {
+#         'cur_lang': current_language
+#     }
+#     return render(request, 'index/rent.html', context)
+
+
+def territoryPage(request):
+    current_language = request.LANGUAGE_CODE
+    
+    folder_path = 'img/territory'
+    full_folder_path = os.path.join(settings.STATICFILES_DIRS[0], folder_path)
+
+    image_paths = []
+    for filename in os.listdir(full_folder_path):
+        img_path = os.path.join(folder_path, filename)
+        image_paths.append(img_path)
+
+    context = {
+        'cur_lang': current_language,
+        "image_paths": image_paths
+    }
+    return render(request, 'index/territoryGallery.html', context)

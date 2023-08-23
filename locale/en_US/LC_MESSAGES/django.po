@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-22 20:03+0300\n"
+"POT-Creation-Date: 2023-08-23 19:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,7 +117,7 @@ msgstr "processing of personal data"
 msgid "Заказать"
 msgstr "To order"
 
-#: .\templates\basic\callback.html:82
+#: .\templates\basic\callback.html:86
 msgid "Вы не приняли пользовательское соглашение!"
 msgstr "You have not accepted the user agreement!"
 
@@ -158,15 +158,15 @@ msgstr "Subscribe to the newsletter"
 msgid "Будьте в курсе выгодного предложения"
 msgstr "Be aware of the best offer"
 
-#: .\templates\basic\footer.html:140
+#: .\templates\basic\footer.html:142
 msgid "Все права защищены"
 msgstr "All rights reserved"
 
-#: .\templates\basic\footer.html:141
+#: .\templates\basic\footer.html:143
 msgid "Разработано"
 msgstr "Developed by"
 
-#: .\templates\basic\footer.html:142
+#: .\templates\basic\footer.html:144
 msgid "Политика конфендециальности"
 msgstr "Confendeciality policy"
 
@@ -218,7 +218,7 @@ msgstr "Hotel"
 
 #: .\templates\basic\header.html:113 .\templates\basic\header.html:234
 msgid "Прокат и аренда"
-msgstr "Renatal and lease"
+msgstr "Rental and lease"
 
 #: .\templates\basic\header.html:117 .\templates\basic\header.html:238
 msgid "Ресторан"
@@ -277,87 +277,87 @@ msgstr "Copy the qr code in the Viber app"
 msgid "Закрыть"
 msgstr "Close"
 
-#: .\templates\index\apartment-home.html:81
+#: .\templates\index\apartment-home.html:47 .\templates\index\rent.html:53
 msgid "ИНФОРМАЦИЯ"
 msgstr "INFORMATION"
 
-#: .\templates\index\apartment-home.html:85
+#: .\templates\index\apartment-home.html:51 .\templates\index\rent.html:57
 msgid "Количество гостей"
 msgstr "Number of guests"
 
-#: .\templates\index\apartment-home.html:85
+#: .\templates\index\apartment-home.html:51 .\templates\index\rent.html:57
 msgid "взрослых"
 msgstr "adults"
 
-#: .\templates\index\apartment-home.html:88
+#: .\templates\index\apartment-home.html:54 .\templates\index\rent.html:60
 msgid "Площадь"
 msgstr "Square"
 
-#: .\templates\index\apartment-home.html:91
+#: .\templates\index\apartment-home.html:57 .\templates\index\rent.html:63
 msgid "Спальные места"
 msgstr "Sleeping places"
 
-#: .\templates\index\apartment-home.html:108
+#: .\templates\index\apartment-home.html:74 .\templates\index\rent.html:80
 msgid "ОСНАЩЕНИЕ"
 msgstr "EQUIPMENT"
 
-#: .\templates\index\apartment-home.html:113
+#: .\templates\index\apartment-home.html:79 .\templates\index\rent.html:85
 msgid "Телевизор"
 msgstr "TV"
 
-#: .\templates\index\apartment-home.html:119
+#: .\templates\index\apartment-home.html:85 .\templates\index\rent.html:91
 msgid "Холодильник"
 msgstr "Fridge"
 
-#: .\templates\index\apartment-home.html:122
+#: .\templates\index\apartment-home.html:88 .\templates\index\rent.html:94
 msgid "Кондиционер"
 msgstr "Conditioner"
 
-#: .\templates\index\apartment-home.html:125
+#: .\templates\index\apartment-home.html:91 .\templates\index\rent.html:97
 msgid "Фен"
 msgstr "Fan"
 
-#: .\templates\index\apartment-home.html:128
+#: .\templates\index\apartment-home.html:94 .\templates\index\rent.html:100
 msgid "Сейф"
 msgstr "Safe"
 
-#: .\templates\index\apartment-home.html:131
+#: .\templates\index\apartment-home.html:97 .\templates\index\rent.html:103
 msgid "Кофеварка"
 msgstr "Coffee-maker"
 
-#: .\templates\index\apartment-home.html:136
+#: .\templates\index\apartment-home.html:102 .\templates\index\rent.html:108
 msgid "ДОП. УСЛУГИ"
 msgstr "ADDITIONAL SERVICES"
 
-#: .\templates\index\apartment-home.html:140
+#: .\templates\index\apartment-home.html:106 .\templates\index\rent.html:112
 msgid "Катер"
 msgstr "Speedboat"
 
-#: .\templates\index\apartment-home.html:143
+#: .\templates\index\apartment-home.html:109 .\templates\index\rent.html:115
 msgid "Гидроцикл"
 msgstr "Hydrocycle"
 
-#: .\templates\index\apartment-home.html:146
+#: .\templates\index\apartment-home.html:112 .\templates\index\rent.html:118
 msgid "Сапборд"
 msgstr "Sapboard"
 
-#: .\templates\index\apartment-home.html:149
+#: .\templates\index\apartment-home.html:115 .\templates\index\rent.html:121
 msgid "Каное"
 msgstr "Canoe"
 
-#: .\templates\index\apartment-home.html:152
+#: .\templates\index\apartment-home.html:118 .\templates\index\rent.html:124
 msgid "Баскетбольная площадка"
 msgstr "Basketball court"
 
-#: .\templates\index\apartment-home.html:155
+#: .\templates\index\apartment-home.html:121 .\templates\index\rent.html:127
 msgid "Теннисный корт"
 msgstr "Tennis court"
 
-#: .\templates\index\apartment-home.html:161
+#: .\templates\index\apartment-home.html:127
 msgid "ЗАБРОНИРОВАТЬ"
 msgstr "BOOKING"
 
-#: .\templates\index\apartment-home.html:164
+#: .\templates\index\apartment-home.html:130
 msgid "Поделиться"
 msgstr "Share"
 
@@ -631,7 +631,7 @@ msgstr ""
 msgid "ПЛЕНИТЕЛЬНАЯ КРАСОТА В КАЖДОМ КАДРЕ."
 msgstr "CAPTIVATING BEAUTY IN EVERY FRAME."
 
-#: .\templates\index\index.html:222
+#: .\templates\index\index.html:222 .\templates\index\territoryGallery.html:19
 msgid "ТЕРРИТОРИЯ"
 msgstr "TERRITORY"
 
@@ -643,11 +643,6 @@ msgstr "CONVENIENCES"
 msgid "ПОЛИТИКА КОНФЕНДЕЦИАЛЬНОСТИ"
 msgstr "CONFENDECIALITY POLICY"
 
-#~ msgid "Следи за нами"
-#~ msgstr "Follow us"
-
-#~ msgid "Телефоны"
-#~ msgstr "Phones"
-
-#~ msgid "Как добраться"
-#~ msgstr "How to get"
+#: .\templates\index\rent.html:22
+msgid "ПРОКАТ И АРЕНДА"
+msgstr "RENTAL AND LEASE"

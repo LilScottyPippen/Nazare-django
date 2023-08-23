@@ -251,7 +251,7 @@
 /*======== RESPONSIVE CONTENT ========*/
 @media (max-width: 1401px) {
     .content__container{
-        padding: 25px;
+        padding: 25px 0;
     }
 
     .content__title_dot{

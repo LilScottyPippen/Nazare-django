@@ -217,7 +217,7 @@
                                 <div class="gallery__item_img"><img src="{% static 'img/source/photo1690230633.jpeg' %}" alt=""></div>
                                 <div class="gallery__item_description">{% trans 'АПАРТАМЕНТЫ' %}</div>
                             </div>
-                            <div class="content__gallery_item" onclick="window.location='{% url 'developPage' 'all' %}'">
+                            <div class="content__gallery_item" onclick="window.location='{% url 'territoryPage' %}'">
                                 <div class="gallery__item_img"><img src="{% static 'img/source/CuTbIniWIAAbbaE.jfif' %}" alt=""></div>
                                 <div class="gallery__item_description">{% trans 'ТЕРРИТОРИЯ' %}</div>
                             </div>
@@ -234,7 +234,7 @@
         {% include 'basic/footer.html' %}
 
         <!-- ======== JS ======== -->
-        <script src="{% static 'js/gallery.js' %}"></script>
+        <!-- <script src="{% static 'js/gallery.js' %}"></script> -->
         <script src="{% static 'js/slider.js' %}"></script>
     </body>
 </html>

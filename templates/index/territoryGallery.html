@@ -1,0 +1,52 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        {% include 'basic/head.html'%}
+    </head>
+    <body>
+        {% include 'basic/preloader.html' %}
+        {% include 'basic/callback.html' %}
+        {% include 'basic/header.html' %}
+        {% include 'basic/viberQrCode.html' %}
+
+        <main class="main">
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{% trans 'ТЕРРИТОРИЯ' %}</span><span class="content__title_dot">•</span>
+                </div>
+                
+                <style>
+                    .center-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                
+                    .image-wrapper {
+                        text-align: center;
+                    }
+                
+                    .image-wrapper a {
+                        margin: 10px; /* Добавьте отступы между изображениями, если необходимо */
+                    }
+                </style>
+                
+                <div class="center-container">
+                    <div class="image-wrapper">
+                        {% for img_path in image_paths %}
+                        <a href="{% static img_path %}" data-fancybox="gallery">
+                            <img alt="" width="300" height="250" src="{% static img_path %}" />
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        {% include 'basic/footer.html'%}
+    </body>
+</html>

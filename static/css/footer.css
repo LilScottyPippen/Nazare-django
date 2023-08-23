@@ -218,7 +218,7 @@ a{
 }
 
 .footer__secondary *{
-    padding: 25px 0;
+    margin: 25px 0;
 }
 
 .footer__developer{
@@ -227,17 +227,17 @@ a{
 
 @media (max-width: 1401px){
     .footer__secondary *{
-        padding: 12px 0;
+        margin: 12px 0;
     }
 }
 
-@media (max-width: 900px){
+@media (max-width: 500px){
     .footer__secondary{
         flex-direction: column;
         justify-content: center;
     }
 
     .footer__secondary *{
-        padding: 5px 0;
+        margin: 5px 0;
     }
 }
