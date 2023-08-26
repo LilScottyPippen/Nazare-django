@@ -1,5 +1,6 @@
 import os
 import re
+from .tasks import *
 from .models import *
 from django.conf import settings
 from urllib.parse import urlparse
@@ -173,8 +174,7 @@ def orderCall(request):
             is_russian_number = re.match(russia_pattern, phone)
 
             if is_belarus_number or is_russian_number:
-                callback = Callback.objects.create(name=name, phone=phone)
-                sendMail(MESSAGE_TYPE['callback'], name, phone, callback.created_at)
+                create_callback.delay(name, phone)
                 return JsonResponse({'success': True, 'message': SUCCESS_MESSAGES['success_callback']}, safe=False)
             else:
                 return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
@@ -184,8 +184,6 @@ def orderCall(request):
             if len(phone) == 0:
                 return JsonResponse({'success': False, 'message': ERROR_MESSAGES['empty_phone']}, safe=False)
     except Exception as e:
-        if 'callback' in locals():
-            callback.delete()
         return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
     
 
@@ -195,7 +193,7 @@ def sendMail(type, name, phone, created):
             message = render_to_string('mailing/admin_callback.html', {'name': name, 'phone': phone, 'created': created})
             recipient_list = [admin.email for admin in User.objects.filter(is_superuser=True)]
             send_mail(MESSAGE_TYPE['callback'], message, settings.EMAIL_HOST_USER, recipient_list, fail_silently=False)
-    except:
+    except Exception as e:
         return JsonResponse({'success': False, 'message': ERROR_MESSAGES["invalid_request"]}, safe=False)
     
 

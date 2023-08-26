@@ -1,9 +1,10 @@
 from pathlib import Path
 import os
 import dotenv
-# import sentry_sdk
+import sentry_sdk
 from pathlib import Path
-# from sentry_sdk.integrations.django import DjangoIntegration
+from datetime import timedelta
+from sentry_sdk.integrations.django import DjangoIntegration
 
 dotenv.load_dotenv()
 
@@ -13,7 +14,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'nazare.by', 'www.nazare.by', '.ngrok-free.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost' ,'.vercel.app', 'nazare.by', 'www.nazare.by', '.ngrok-free.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -113,10 +114,18 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
-#SENTRY
-# sentry_sdk.init(
-#   dsn=os.getenv('SENTRY_DSN'),
-#   integrations=[DjangoIntegration()],
-#   traces_sample_rate=1.0,
-#   send_default_pii=True
-# )
+# SENTRY
+sentry_sdk.init(
+  dsn=os.getenv('SENTRY_DSN'),
+  integrations=[DjangoIntegration()],
+  traces_sample_rate=1.0,
+  send_default_pii=True
+)
+
+# CELERY
+CELERY_BROKER_URL = "redis://redis:6379"
+CELERY_RESULT_BACKEND = "redis://redis:6379"
+CELERY_TIMEZONE = 'Europe/Moscow'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
