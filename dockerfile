@@ -1,12 +1,13 @@
-FROM python:3.11-slim
 
-RUN mkdir code
-WORKDIR code
+FROM python:3.9-alpine3.16
 
-ADD . /code/
-ADD .env.docker /code/.env
 
-RUN pip install -r requirements.txt
-RUN python3 manage.py collectstatic
+COPY requirements.txt /temp/requirements.txt
+COPY ZorkaDjango /ZorkaDjango
+WORKDIR /ZorkaDjango
+EXPOSE 8000
 
-# CMD gunicorn ZorkaDjango.wsgi:application -b 0.0.0.0:8000
+COPY . /code/
+COPY .env.docker /code/.env
+
+RUN pip install -r /temp/requirements.txt

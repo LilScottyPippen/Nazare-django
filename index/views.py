@@ -2,6 +2,7 @@ import os
 import re
 from .tasks import *
 from .models import *
+from .constants import *
 from django.conf import settings
 from urllib.parse import urlparse
 from django.shortcuts import render
@@ -18,44 +19,6 @@ from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.translation import gettext_lazy as _
 
-ERROR_MESSAGES = {
-    'invalid_request': _('Недействительный запрос! Попробуйте еще раз.'),
-
-    # CALLBACK
-    'empty_name': _("Поле 'Ваше имя': пустое!"),
-    'empty_phone': _("Поле 'Телефон': пустое!"),
-    'invalid_name': _('Введите корректное имя!'),
-    'invalid_phone': _('Введите корректный номер!'),
-
-    # Mailing
-    'empty_email': _("Поле 'Email': пустое!"),
-    'invalid_email': _('Неверный адрес электронной почты!'),
-    'exists_email': _("Электронная почта уже добавлена")
-}
-
-SUCCESS_MESSAGES = {
-    # CALLBACK
-    'success_callback': _("Спасибо за Вашу заявку. Мы скоро Вам перезвоним."),
-
-    # Mailing
-    'success_mailing': _("Теперь вы подписаны на наши предложения.")
-}
-
-MESSAGE_TYPE = {
-    'callback': 'callback'
-}
-
-HOME_TITLE = {
-    'olive': _('ДОМ OLIVE'),
-    'terra': _('ДОМ TERRA'),
-    'obsidian': _('ДОМ OBSIDIAN')
-}
-
-SHARE_APART_PAGE = {
-    'olive': _('Забронировать дом OLIVE'),
-    'terra': _('Забронировать дом TERRA'),
-    'obsidian': _('Забронировать дом OBSIDIAN')
-}
 
 def set_language(request, language):
     view = None
@@ -174,7 +137,8 @@ def orderCall(request):
             is_russian_number = re.match(russia_pattern, phone)
 
             if is_belarus_number or is_russian_number:
-                create_callback.delay(name, phone)
+                callback = Callback.objects.create(name=name, phone=phone)
+                create_callback.delay(callback.id)
                 return JsonResponse({'success': True, 'message': SUCCESS_MESSAGES['success_callback']}, safe=False)
             else:
                 return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
@@ -184,6 +148,8 @@ def orderCall(request):
             if len(phone) == 0:
                 return JsonResponse({'success': False, 'message': ERROR_MESSAGES['empty_phone']}, safe=False)
     except Exception as e:
+        if 'callback' in locals():
+            callback.delete()
         return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
     
 
@@ -193,7 +159,7 @@ def sendMail(type, name, phone, created):
             message = render_to_string('mailing/admin_callback.html', {'name': name, 'phone': phone, 'created': created})
             recipient_list = [admin.email for admin in User.objects.filter(is_superuser=True)]
             send_mail(MESSAGE_TYPE['callback'], message, settings.EMAIL_HOST_USER, recipient_list, fail_silently=False)
-    except Exception as e:
+    except:
         return JsonResponse({'success': False, 'message': ERROR_MESSAGES["invalid_request"]}, safe=False)
     
 
@@ -222,7 +188,7 @@ def saveEmail(request):
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_email']})
 
         mail, created = Mail.objects.get_or_create(address=email)
-        
+
         if created:
             return JsonResponse({'success': True, 'message': SUCCESS_MESSAGES['success_mailing']})
         else:
