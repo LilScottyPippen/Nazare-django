@@ -10,4 +10,6 @@ EXPOSE 8000
 COPY . /code/
 COPY .env.docker /code/.env
 
+RUN apk add postgresql-client build-base postgresql-dev
+
 RUN pip install -r /temp/requirements.txt
