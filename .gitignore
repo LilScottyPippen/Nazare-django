@@ -12,3 +12,4 @@ __pycache__
 staticfiles_build
 .env.docker
 .vscode
+*.rdb

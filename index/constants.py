@@ -38,3 +38,9 @@ SHARE_APART_PAGE = {
     'terra': _('Забронировать дом TERRA'),
     'obsidian': _('Забронировать дом OBSIDIAN')
 }
+
+DEVELOP_DESCRIPTION = {
+    'apartments': _('аренды апартаментов'),
+    'services': _('оказываемых услуг'),
+    'events': _('проведения мероприятий'),
+}

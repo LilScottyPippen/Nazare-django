@@ -38,6 +38,10 @@
 
         <!-- ======== CALLBACK NOTIFICATION NOTYFY ======== -->
         <script>
+            $.ajaxSetup({
+                headers: { "X-CSRFToken": "{{ csrf_token }}" }
+            });
+
             function showNotification(status, text) {
                 new Notify({
                     status: status,

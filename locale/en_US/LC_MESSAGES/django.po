@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 19:58+0300\n"
+"POT-Creation-Date: 2023-08-29 15:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,389 +17,393 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\index\views.py:21
+#: index/constants.py:4
 msgid "Недействительный запрос! Попробуйте еще раз."
 msgstr "Invalid request! Try again."
 
-#: .\index\views.py:24
+#: index/constants.py:7
 msgid "Поле 'Ваше имя': пустое!"
 msgstr "Field 'Your name': empty!"
 
-#: .\index\views.py:25
+#: index/constants.py:8
 msgid "Поле 'Телефон': пустое!"
 msgstr "'Phone' field: empty!"
 
-#: .\index\views.py:26
+#: index/constants.py:9
 msgid "Введите корректное имя!"
 msgstr "Enter the correct name!"
 
-#: .\index\views.py:27
+#: index/constants.py:10
 msgid "Введите корректный номер!"
 msgstr "Enter the correct number!"
 
-#: .\index\views.py:30
+#: index/constants.py:13
 msgid "Поле 'Email': пустое!"
 msgstr "'Email' field: empty!"
 
-#: .\index\views.py:31
+#: index/constants.py:14
 msgid "Неверный адрес электронной почты!"
 msgstr "Invalid email address!"
 
-#: .\index\views.py:32
+#: index/constants.py:15
 msgid "Электронная почта уже добавлена"
 msgstr "Email has already been added"
 
-#: .\index\views.py:37
+#: index/constants.py:20
 msgid "Спасибо за Вашу заявку. Мы скоро Вам перезвоним."
 msgstr "Thank you for your application. We'll call you back soon."
 
-#: .\index\views.py:40
+#: index/constants.py:23
 msgid "Теперь вы подписаны на наши предложения."
 msgstr "Now you are subscribed to our offers."
 
-#: .\index\views.py:48
+#: index/constants.py:31
 msgid "ДОМ OLIVE"
 msgstr "OLIVE HOUSE"
 
-#: .\index\views.py:49
+#: index/constants.py:32
 msgid "ДОМ TERRA"
 msgstr "TERRA HOUSE"
 
-#: .\index\views.py:50
+#: index/constants.py:33
 msgid "ДОМ OBSIDIAN"
 msgstr "OBSIDIAN HOUSE"
 
-#: .\index\views.py:54
+#: index/constants.py:37
 msgid "Забронировать дом OLIVE"
 msgstr "Book an OLIVE house"
 
-#: .\index\views.py:55
+#: index/constants.py:38
 msgid "Забронировать дом TERRA"
 msgstr "Book an TERRA house"
 
-#: .\index\views.py:56
+#: index/constants.py:39
 msgid "Забронировать дом OBSIDIAN"
 msgstr "Book an OBSIDIAN house"
 
-#: .\index\views.py:98
+#: index/views.py:62
 msgid "аренды апартаментов"
 msgstr "apartment rentals"
 
-#: .\index\views.py:100
+#: index/views.py:64
 msgid "оказываемых услуг"
 msgstr "services provided"
 
-#: .\index\views.py:102
+#: index/views.py:66
 msgid "проведения мероприятий"
 msgstr "holding events"
 
-#: .\templates\basic\callback.html:7
+#: templates/basic/callback.html:7
 msgid "Заказать звонок"
 msgstr "Order a call"
 
-#: .\templates\basic\callback.html:15
+#: templates/basic/callback.html:15
 msgid "Ваше имя"
 msgstr "Your name"
 
-#: .\templates\basic\callback.html:22
+#: templates/basic/callback.html:22
 msgid "Телефон"
 msgstr "Phone"
 
-#: .\templates\basic\callback.html:29
+#: templates/basic/callback.html:29
 msgid "Я согласен на "
 msgstr "I agree to "
 
-#: .\templates\basic\callback.html:29
+#: templates/basic/callback.html:29
 msgid "обработку персональных данных"
 msgstr "processing of personal data"
 
-#: .\templates\basic\callback.html:33
+#: templates/basic/callback.html:33
 msgid "Заказать"
 msgstr "To order"
 
-#: .\templates\basic\callback.html:86
+#: templates/basic/callback.html:86
 msgid "Вы не приняли пользовательское соглашение!"
 msgstr "You have not accepted the user agreement!"
 
-#: .\templates\basic\footer.html:26 .\templates\basic\header.html:60
-#: .\templates\basic\header.html:307
+#: templates/basic/footer.html:26 templates/basic/header.html:60
+#: templates/basic/header.html:307
 msgid "О нас"
 msgstr "About us"
 
-#: .\templates\basic\footer.html:30 .\templates\basic\header.html:84
-#: .\templates\basic\header.html:205
+#: templates/basic/footer.html:30 templates/basic/header.html:84
+#: templates/basic/header.html:205
 msgid "Апартаменты"
 msgstr "Apartments"
 
-#: .\templates\basic\footer.html:34 .\templates\basic\header.html:108
-#: .\templates\basic\header.html:229 .\templates\basic\header.html:320
+#: templates/basic/footer.html:34 templates/basic/header.html:108
+#: templates/basic/header.html:229 templates/basic/header.html:320
 msgid "Услуги"
 msgstr "Services"
 
-#: .\templates\basic\footer.html:38 .\templates\basic\header.html:160
-#: .\templates\basic\header.html:281 .\templates\basic\header.html:328
+#: templates/basic/footer.html:38 templates/basic/header.html:160
+#: templates/basic/header.html:281 templates/basic/header.html:328
 msgid "Галерея"
 msgstr "Gallery"
 
-#: .\templates\basic\footer.html:42 .\templates\basic\header.html:180
-#: .\templates\basic\header.html:301
+#: templates/basic/footer.html:42 templates/basic/header.html:180
+#: templates/basic/header.html:301
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\templates\basic\footer.html:51 .\templates\index\contacts.html:26
+#: templates/basic/footer.html:51 templates/index/contacts.html:26
 msgid "Витебский район, Мазоловский сельсовет"
 msgstr "Vitebsk district, Mazolovsky village Council"
 
-#: .\templates\basic\footer.html:72
+#: templates/basic/footer.html:72
 msgid "Подписка на рассылку"
 msgstr "Subscribe to the newsletter"
 
-#: .\templates\basic\footer.html:75
+#: templates/basic/footer.html:75
 msgid "Будьте в курсе выгодного предложения"
 msgstr "Be aware of the best offer"
 
-#: .\templates\basic\footer.html:142
+#: templates/basic/footer.html:126
+msgid "Следи за нами"
+msgstr ""
+
+#: templates/basic/footer.html:138
 msgid "Все права защищены"
 msgstr "All rights reserved"
 
-#: .\templates\basic\footer.html:143
+#: templates/basic/footer.html:139
 msgid "Разработано"
 msgstr "Developed by"
 
-#: .\templates\basic\footer.html:144
+#: templates/basic/footer.html:140
 msgid "Политика конфендециальности"
 msgstr "Confendeciality policy"
 
-#: .\templates\basic\head.html:5
+#: templates/basic/head.html:5
 msgid "Парк-отель ZORKA"
 msgstr "Park hotel ZORKA"
 
-#: .\templates\basic\header.html:21 .\templates\basic\header.html:338
-#: .\templates\index\development.html:28
+#: templates/basic/header.html:21 templates/basic/header.html:338
+#: templates/index/development.html:28
 msgid "ЗАКАЗАТЬ ЗВОНОК"
 msgstr "ORDER A CALL"
 
-#: .\templates\basic\header.html:22 .\templates\basic\header.html:337
-#: .\templates\index\index.html:19 .\templates\index\index.html:81
+#: templates/basic/header.html:22 templates/basic/header.html:337
+#: templates/index/index.html:19 templates/index/index.html:81
 msgid "БРОНИРОВАНИЕ"
 msgstr "BOOKING"
 
-#: .\templates\basic\header.html:65 .\templates\basic\header.html:312
+#: templates/basic/header.html:65 templates/basic/header.html:312
 msgid "Бронирование и оплата"
 msgstr "Booking and payment"
 
-#: .\templates\basic\header.html:69 .\templates\basic\header.html:316
+#: templates/basic/header.html:69 templates/basic/header.html:316
 msgid "Территория"
 msgstr "Territory"
 
-#: .\templates\basic\header.html:73 .\templates\basic\header.html:332
+#: templates/basic/header.html:73 templates/basic/header.html:332
 msgid "Отзывы"
 msgstr "Reviews"
 
-#: .\templates\basic\header.html:77
+#: templates/basic/header.html:77
 msgid "О компании"
 msgstr "About the company"
 
-#: .\templates\basic\header.html:89 .\templates\basic\header.html:210
+#: templates/basic/header.html:89 templates/basic/header.html:210
 msgid "Дом olive"
 msgstr "Olive house"
 
-#: .\templates\basic\header.html:93 .\templates\basic\header.html:214
-msgid "Дом terra"
-msgstr "Terra house"
-
-#: .\templates\basic\header.html:97 .\templates\basic\header.html:218
+#: templates/basic/header.html:93 templates/basic/header.html:214
 msgid "Дом obsidian"
 msgstr "Obsidian house"
 
-#: .\templates\basic\header.html:101 .\templates\basic\header.html:222
+#: templates/basic/header.html:97 templates/basic/header.html:218
+msgid "Дом terra"
+msgstr "Terra house"
+
+#: templates/basic/header.html:101 templates/basic/header.html:222
 msgid "Гостиница"
 msgstr "Hotel"
 
-#: .\templates\basic\header.html:113 .\templates\basic\header.html:234
+#: templates/basic/header.html:113 templates/basic/header.html:234
 msgid "Прокат и аренда"
 msgstr "Rental and lease"
 
-#: .\templates\basic\header.html:117 .\templates\basic\header.html:238
+#: templates/basic/header.html:117 templates/basic/header.html:238
 msgid "Ресторан"
 msgstr "Restaurant"
 
-#: .\templates\basic\header.html:121 .\templates\basic\header.html:242
+#: templates/basic/header.html:121 templates/basic/header.html:242
 msgid "Доставка еды"
 msgstr "Delivery eat"
 
-#: .\templates\basic\header.html:125 .\templates\basic\header.html:246
+#: templates/basic/header.html:125 templates/basic/header.html:246
 msgid "Трансфер"
 msgstr "Transfer"
 
-#: .\templates\basic\header.html:132 .\templates\basic\header.html:253
-#: .\templates\basic\header.html:324
+#: templates/basic/header.html:132 templates/basic/header.html:253
+#: templates/basic/header.html:324
 msgid "Мероприятия"
 msgstr "Events"
 
-#: .\templates\basic\header.html:137 .\templates\basic\header.html:258
+#: templates/basic/header.html:137 templates/basic/header.html:258
 msgid "Свадьба"
 msgstr "Wedding"
 
-#: .\templates\basic\header.html:141 .\templates\basic\header.html:262
+#: templates/basic/header.html:141 templates/basic/header.html:262
 msgid "Корпоратив"
 msgstr "Company party"
 
-#: .\templates\basic\header.html:145 .\templates\basic\header.html:266
+#: templates/basic/header.html:145 templates/basic/header.html:266
 msgid "Конференция"
 msgstr "The conference"
 
-#: .\templates\basic\header.html:149 .\templates\basic\header.html:270
+#: templates/basic/header.html:149 templates/basic/header.html:270
 msgid "День рождения"
 msgstr "Birthday"
 
-#: .\templates\basic\header.html:153 .\templates\basic\header.html:274
+#: templates/basic/header.html:153 templates/basic/header.html:274
 msgid "Спортивные мероприятия"
 msgstr "Sports events"
 
-#: .\templates\basic\header.html:165 .\templates\basic\header.html:286
+#: templates/basic/header.html:165 templates/basic/header.html:286
 msgid "Фотогалерея"
 msgstr "Photo Gallery"
 
-#: .\templates\basic\header.html:169 .\templates\basic\header.html:290
+#: templates/basic/header.html:169 templates/basic/header.html:290
 msgid "Видеогалерея"
 msgstr "Video Gallery"
 
-#: .\templates\basic\header.html:173 .\templates\basic\header.html:294
+#: templates/basic/header.html:173 templates/basic/header.html:294
 msgid "Виртуальный тур"
 msgstr "Virtual tour"
 
-#: .\templates\basic\viberQrCode.html:6
+#: templates/basic/viberQrCode.html:6
 msgid "Скопируйте qr код в приложении Viber"
 msgstr "Copy the qr code in the Viber app"
 
-#: .\templates\basic\viberQrCode.html:8
+#: templates/basic/viberQrCode.html:8
 msgid "Закрыть"
 msgstr "Close"
 
-#: .\templates\index\apartment-home.html:47 .\templates\index\rent.html:53
+#: templates/index/apartment-home.html:47 templates/index/rent.html:53
 msgid "ИНФОРМАЦИЯ"
 msgstr "INFORMATION"
 
-#: .\templates\index\apartment-home.html:51 .\templates\index\rent.html:57
+#: templates/index/apartment-home.html:51 templates/index/rent.html:57
 msgid "Количество гостей"
 msgstr "Number of guests"
 
-#: .\templates\index\apartment-home.html:51 .\templates\index\rent.html:57
+#: templates/index/apartment-home.html:51 templates/index/rent.html:57
 msgid "взрослых"
 msgstr "adults"
 
-#: .\templates\index\apartment-home.html:54 .\templates\index\rent.html:60
+#: templates/index/apartment-home.html:54 templates/index/rent.html:60
 msgid "Площадь"
 msgstr "Square"
 
-#: .\templates\index\apartment-home.html:57 .\templates\index\rent.html:63
+#: templates/index/apartment-home.html:57 templates/index/rent.html:63
 msgid "Спальные места"
 msgstr "Sleeping places"
 
-#: .\templates\index\apartment-home.html:74 .\templates\index\rent.html:80
+#: templates/index/apartment-home.html:74 templates/index/rent.html:80
 msgid "ОСНАЩЕНИЕ"
 msgstr "EQUIPMENT"
 
-#: .\templates\index\apartment-home.html:79 .\templates\index\rent.html:85
+#: templates/index/apartment-home.html:79 templates/index/rent.html:85
 msgid "Телевизор"
 msgstr "TV"
 
-#: .\templates\index\apartment-home.html:85 .\templates\index\rent.html:91
+#: templates/index/apartment-home.html:85 templates/index/rent.html:91
 msgid "Холодильник"
 msgstr "Fridge"
 
-#: .\templates\index\apartment-home.html:88 .\templates\index\rent.html:94
+#: templates/index/apartment-home.html:88 templates/index/rent.html:94
 msgid "Кондиционер"
 msgstr "Conditioner"
 
-#: .\templates\index\apartment-home.html:91 .\templates\index\rent.html:97
+#: templates/index/apartment-home.html:91 templates/index/rent.html:97
 msgid "Фен"
 msgstr "Fan"
 
-#: .\templates\index\apartment-home.html:94 .\templates\index\rent.html:100
+#: templates/index/apartment-home.html:94 templates/index/rent.html:100
 msgid "Сейф"
 msgstr "Safe"
 
-#: .\templates\index\apartment-home.html:97 .\templates\index\rent.html:103
+#: templates/index/apartment-home.html:97 templates/index/rent.html:103
 msgid "Кофеварка"
 msgstr "Coffee-maker"
 
-#: .\templates\index\apartment-home.html:102 .\templates\index\rent.html:108
+#: templates/index/apartment-home.html:102 templates/index/rent.html:108
 msgid "ДОП. УСЛУГИ"
 msgstr "ADDITIONAL SERVICES"
 
-#: .\templates\index\apartment-home.html:106 .\templates\index\rent.html:112
+#: templates/index/apartment-home.html:106 templates/index/rent.html:112
 msgid "Катер"
 msgstr "Speedboat"
 
-#: .\templates\index\apartment-home.html:109 .\templates\index\rent.html:115
+#: templates/index/apartment-home.html:109 templates/index/rent.html:115
 msgid "Гидроцикл"
 msgstr "Hydrocycle"
 
-#: .\templates\index\apartment-home.html:112 .\templates\index\rent.html:118
+#: templates/index/apartment-home.html:112 templates/index/rent.html:118
 msgid "Сапборд"
 msgstr "Sapboard"
 
-#: .\templates\index\apartment-home.html:115 .\templates\index\rent.html:121
+#: templates/index/apartment-home.html:115 templates/index/rent.html:121
 msgid "Каное"
 msgstr "Canoe"
 
-#: .\templates\index\apartment-home.html:118 .\templates\index\rent.html:124
+#: templates/index/apartment-home.html:118 templates/index/rent.html:124
 msgid "Баскетбольная площадка"
 msgstr "Basketball court"
 
-#: .\templates\index\apartment-home.html:121 .\templates\index\rent.html:127
+#: templates/index/apartment-home.html:121 templates/index/rent.html:127
 msgid "Теннисный корт"
 msgstr "Tennis court"
 
-#: .\templates\index\apartment-home.html:127
+#: templates/index/apartment-home.html:127
 msgid "ЗАБРОНИРОВАТЬ"
 msgstr "BOOKING"
 
-#: .\templates\index\apartment-home.html:130
+#: templates/index/apartment-home.html:130
 msgid "Поделиться"
 msgstr "Share"
 
-#: .\templates\index\apartments.html:20 .\templates\index\index.html:30
-#: .\templates\index\index.html:218
+#: templates/index/apartments.html:20 templates/index/index.html:30
+#: templates/index/index.html:218
 msgid "АПАРТАМЕНТЫ"
 msgstr "APARTMENTS"
 
-#: .\templates\index\apartments.html:30 .\templates\index\apartments.html:36
-#: .\templates\index\apartments.html:42
+#: templates/index/apartments.html:30 templates/index/apartments.html:36
+#: templates/index/apartments.html:42
 msgid "ДОМ"
 msgstr "HOUSE"
 
-#: .\templates\index\apartments.html:48
+#: templates/index/apartments.html:48
 msgid "ГОСТИНИЦА"
 msgstr "HOTEL"
 
-#: .\templates\index\contacts.html:19
+#: templates/index/contacts.html:19
 msgid "КОНТАКТЫ"
 msgstr "CONTACTS"
 
-#: .\templates\index\development.html:20
+#: templates/index/development.html:20
 msgid "СТРАНИЦА В РАЗРАБОТКЕ"
 msgstr "PAGE IN DEVELOPMENT"
 
-#: .\templates\index\development.html:25
+#: templates/index/development.html:25
 msgid "По вопросам"
 msgstr "For questions"
 
-#: .\templates\index\development.html:25
+#: templates/index/development.html:25
 msgid "звоните на номер:"
 msgstr "call the number:"
 
-#: .\templates\index\development.html:27
+#: templates/index/development.html:27
 msgid "или заполните форму и мы с вами свяжемся"
 msgstr "or fill out the form and we will contact you"
 
-#: .\templates\index\index.html:17
+#: templates/index/index.html:17
 msgid "ПАРК-ОТЕЛЬ ZORKA"
 msgstr "PARK HOTEL ZORKA"
 
-#: .\templates\index\index.html:18
+#: templates/index/index.html:18
 msgid ""
 "Это идеальное место для отдыха и проведения свободного времени. Мы "
 "предлагаем уютные апартаменты, красивый парк живописными аллеями и озером, а "
@@ -409,23 +413,23 @@ msgstr ""
 "a beautiful park with picturesque alleys and a lake, as well as various "
 "services."
 
-#: .\templates\index\index.html:38 .\templates\index\index.html:103
+#: templates/index/index.html:38 templates/index/index.html:103
 msgid "УСЛУГИ"
 msgstr "SERVICES"
 
-#: .\templates\index\index.html:46 .\templates\index\index.html:206
+#: templates/index/index.html:46 templates/index/index.html:206
 msgid "ГАЛЕРЕЯ"
 msgstr "GALLERY"
 
-#: .\templates\index\index.html:58
+#: templates/index/index.html:58
 msgid "МЕРОПРИЯТИЯ"
 msgstr "EVENTS"
 
-#: .\templates\index\index.html:62
+#: templates/index/index.html:62
 msgid "РАЗВЛЕЧЕНИЯ НА МАКСИМУМЕ: ВАШ ИДЕАЛЬНЫЙ ДОСУГ!"
 msgstr "ENTERTAINMENT AT THE MAXIMUM: YOUR PERFECT LEISURE TIME!"
 
-#: .\templates\index\index.html:68
+#: templates/index/index.html:68
 msgid ""
 "Добро пожаловать в мир радости и удовольствия нашего парк-отеля! Здесь вас "
 "ждет невероятный досуг и множество развлечений. Откройте для себя уникальные "
@@ -435,7 +439,7 @@ msgstr ""
 "waiting for an incredible leisure and a lot of entertainment. Discover "
 "unique apartments where comfort is combined with refined style."
 
-#: .\templates\index\index.html:69
+#: templates/index/index.html:69
 msgid ""
 "Наши веселые вечеринки и разнообразные активности позабавят вас круглый год. "
 "Не упустите шанс насладиться вкусом изысканных блюд в наших ресторанах и "
@@ -445,7 +449,7 @@ msgstr ""
 "miss the chance to enjoy the taste of delicious dishes in our restaurants "
 "and try unique culinary workshops."
 
-#: .\templates\index\index.html:70
+#: templates/index/index.html:70
 msgid ""
 "Для любителей активного отдыха у нас есть великолепные возможности для "
 "проведения времени на природе. Приглашаем вас на пешие прогулки, "
@@ -455,7 +459,7 @@ msgstr ""
 "miss the chance to enjoy the taste of delicious dishes in our restaurants "
 "and try unique culinary workshops."
 
-#: .\templates\index\index.html:71
+#: templates/index/index.html:71
 msgid ""
 "Приглашаем вас открыть двери к незабываемым моментам в нашем парк-отеле, где "
 "досуг и развлечения станут для вас сокровищем радости!"
@@ -463,15 +467,15 @@ msgstr ""
 "We invite you to open the doors to unforgettable moments in our park hotel, "
 "where leisure and entertainment will be a treasure of joy for you!"
 
-#: .\templates\index\index.html:72 .\templates\index\index.html:94
+#: templates/index/index.html:72 templates/index/index.html:94
 msgid "СМОТРЕТЬ"
 msgstr "SEE"
 
-#: .\templates\index\index.html:85
+#: templates/index/index.html:85
 msgid "ВАШ ОТДЫХ В ОДИН КЛИК: БРОНИРУЙТЕ СЕЙЧАС!"
 msgstr "YUR VACATION IN ONE CLICK: BOOK NOW!"
 
-#: .\templates\index\index.html:91
+#: templates/index/index.html:91
 msgid ""
 "Всего в несколько простых шагов вы сможете забронировать свои апартаменты "
 "или номер в нашем роскошном парк-отеле, чтобы открыть для себя новые места, "
@@ -482,7 +486,7 @@ msgstr ""
 "room in our luxury park hotel to discover new places, get to know amazing "
 "cultures and enjoy unique experiences."
 
-#: .\templates\index\index.html:92
+#: templates/index/index.html:92
 msgid ""
 "Наша онлайн-бронирование предлагает удобный и интуитивно понятный интерфейс, "
 "где вы можете легко выбрать даты вашего пребывания, узнать доступные "
@@ -496,7 +500,7 @@ msgstr ""
 "value your time and strive to ensure maximum enjoyment from planning your "
 "trip."
 
-#: .\templates\index\index.html:93
+#: templates/index/index.html:93
 msgid ""
 "Не упустите возможность создать незабываемые моменты. Забронируйте свою "
 "мечту с нами, и позвольте вашим мечтам сбыться. Доверьтесь нам свои планы, и "
@@ -508,43 +512,43 @@ msgstr ""
 "do everything to make your holiday truly special. Leave worries outside - "
 "you deserve only the best."
 
-#: .\templates\index\index.html:107
+#: templates/index/index.html:107
 msgid "ИЗЫСКАННЫЙ СЕРВИС, НЕЗАБЫВАЕМЫЕ ВПЕЧАТЛЕНИЯ."
 msgstr "EXQUISITE SERVICE, AN UNFORGETTABLE EXPERIENCE."
 
-#: .\templates\index\index.html:117
+#: templates/index/index.html:117
 msgid "ЛОДКА"
 msgstr "A BOAT"
 
-#: .\templates\index\index.html:123
+#: templates/index/index.html:123
 msgid "СПОРТИВНЫЙ ИНВЕНТАРЬ"
 msgstr "SPORTS EQUIPMENT"
 
-#: .\templates\index\index.html:129
+#: templates/index/index.html:129
 msgid "КОМАНДНЫЕ ИГРЫ"
 msgstr "TEAM GAMES"
 
-#: .\templates\index\index.html:135
+#: templates/index/index.html:135
 msgid "БАРБЕКЮ"
 msgstr "BARBECUE"
 
-#: .\templates\index\index.html:140
+#: templates/index/index.html:140
 msgid "ВСЕ УСЛУГИ"
 msgstr "ALL SERVICES"
 
-#: .\templates\index\index.html:151
+#: templates/index/index.html:151
 msgid "ОТЗЫВЫ"
 msgstr "REVIEWS"
 
-#: .\templates\index\index.html:155
+#: templates/index/index.html:155
 msgid "ВАШИ ОТЗЫВЫ - НАШЕ ВДОХНОВЕНИЕ!"
 msgstr "YOUR FEEDBACK IS OUR INSPIRATION!"
 
-#: .\templates\index\index.html:163
+#: templates/index/index.html:163
 msgid "ОЛЕГ"
 msgstr "OLEG"
 
-#: .\templates\index\index.html:164
+#: templates/index/index.html:164
 msgid ""
 "Я просто восхищен нашим пребыванием в вашем удивительном парк-отеле! "
 "Отличное место для романтического уикенда. Апартаменты просто потрясающие - "
@@ -560,11 +564,11 @@ msgstr ""
 "picturesque paths of the park and relaxing in the spa center. Definitely "
 "back again! Thank you for such a wonderful experience."
 
-#: .\templates\index\index.html:171
+#: templates/index/index.html:171
 msgid "ЕЛЕНА"
 msgstr "ELENA"
 
-#: .\templates\index\index.html:172
+#: templates/index/index.html:172
 msgid ""
 "Замечательный опыт отдыха в парк-отеле ZORKA! Провели здесь прекрасные "
 "выходные в компании друзей. Виллы, которые мы арендовали, были просто "
@@ -582,11 +586,11 @@ msgstr ""
 "park. This place will definitely leave vivid memories. Thank you, ZORKA, for "
 "the hospitality!"
 
-#: .\templates\index\index.html:179
+#: templates/index/index.html:179
 msgid "АЛЕКСЕЙ"
 msgstr "ALEXEY"
 
-#: .\templates\index\index.html:180
+#: templates/index/index.html:180
 msgid ""
 "Очень понравился отдых в парк-отеле ZORKA! Бронировал номер для семейного "
 "отпуска и не разочаровался. Атмосфера уюта и спокойствия настолько "
@@ -605,11 +609,11 @@ msgstr ""
 "evening. Special thanks to the staff for the warm welcome and care! We will "
 "definitely come back here!"
 
-#: .\templates\index\index.html:187
+#: templates/index/index.html:187
 msgid "МАРИНА"
 msgstr "MARINA"
 
-#: .\templates\index\index.html:188
+#: templates/index/index.html:188
 msgid ""
 "Я провела волшебные выходные в парк-отеле ZORKA! Сразу по приезду меня "
 "встретила атмосфера спокойствия и красоты природы. Мой номер был просто "
@@ -627,22 +631,25 @@ msgstr ""
 "Special thanks to the spa center for a relaxing massage! I didn't want to "
 "leave at all. I would be happy to recommend it."
 
-#: .\templates\index\index.html:210
+#: templates/index/index.html:210
 msgid "ПЛЕНИТЕЛЬНАЯ КРАСОТА В КАЖДОМ КАДРЕ."
 msgstr "CAPTIVATING BEAUTY IN EVERY FRAME."
 
-#: .\templates\index\index.html:222 .\templates\index\territoryGallery.html:19
+#: templates/index/index.html:222 templates/index/territoryGallery.html:19
 msgid "ТЕРРИТОРИЯ"
 msgstr "TERRITORY"
 
-#: .\templates\index\index.html:226
-msgid "УДОБСТВА"
-msgstr "CONVENIENCES"
+#: templates/index/index.html:226
+msgid "РАЗВЛЕЧЕНИЯ"
+msgstr "ENTERTAINMENTS"
 
-#: .\templates\index\privacy.html:20
+#: templates/index/privacy.html:20
 msgid "ПОЛИТИКА КОНФЕНДЕЦИАЛЬНОСТИ"
 msgstr "CONFENDECIALITY POLICY"
 
-#: .\templates\index\rent.html:22
+#: templates/index/rent.html:22
 msgid "ПРОКАТ И АРЕНДА"
 msgstr "RENTAL AND LEASE"
+
+#~ msgid "УДОБСТВА"
+#~ msgstr "CONVENIENCES"

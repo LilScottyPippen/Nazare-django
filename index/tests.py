@@ -1,11 +1,5 @@
-# В tests.py
-from django.test import TestCase
-from django.core import mail
-from django.contrib.auth.models import User
-from .models import Callback
 from .tasks import *
-from .constants import MESSAGE_TYPE
-from unittest.mock import patch, call
+from django.test import TestCase
 
 class CallbackTestCase(TestCase):
     def test_create_callback(self):

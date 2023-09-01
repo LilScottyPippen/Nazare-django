@@ -1,179 +1,153 @@
-import os
 import re
 from .tasks import *
 from .models import *
 from .constants import *
+from django.views import View
 from django.conf import settings
 from urllib.parse import urlparse
 from django.shortcuts import render
 from django.utils import translation
 from django.http import JsonResponse
-from django.core.mail import send_mail
-from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls.base import resolve, reverse
 from django.urls.exceptions import Resolver404
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
-from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
-from django.utils.translation import gettext_lazy as _
 
 
-def set_language(request, language):
-    view = None
-    for lang, _ in settings.LANGUAGES:
-        translation.activate(lang)
+class SetLanguageView(View):
+    def get(self, request, language):
+        referer = request.META.get("HTTP_REFERER", "/")
+        referer_path = urlparse(referer).path
         try:
-            referer_path = urlparse(request.META.get("HTTP_REFERER")).path
             view = resolve(referer_path)
         except Resolver404:
-            continue
-        break
-    
-    if view:
-        translation.activate(language)
-        if hasattr(view, 'url_name'):
-            url_name = view.url_name
-        else:
-            url_name = None
+            view = None
 
-        next_url = reverse(url_name, args=view.args, kwargs=view.kwargs) if url_name else "/"
+        if view:
+            translation.activate(language)
+            url_name = getattr(view, 'url_name', None)
+            args = getattr(view, 'args', [])
+            kwargs = getattr(view, 'kwargs', {})
+            next_url = reverse(url_name, args=args, kwargs=kwargs) if url_name else "/"
+        else:
+            next_url = "/"
+
         response = HttpResponseRedirect(next_url)
         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
-    else:
-        response = HttpResponseRedirect("/")
-    return response
+        return response
 
 
-def indexPage(request):
-    current_language = request.LANGUAGE_CODE
+class IndexPageView(View):
+    def get(self, request):
+        current_language = request.LANGUAGE_CODE
 
-    context = {
-        'cur_lang': current_language
-    }
-    return render(request, 'index/index.html', context)
-
-
-def developPage(request, pageType):
-    current_language = request.LANGUAGE_CODE
-    description = ''
-    if pageType == 'apartments':
-        description = _('аренды апартаментов')
-    if pageType == 'services':
-        description = _('оказываемых услуг')
-    if pageType == 'events':
-        description = _('проведения мероприятий')
-
-    context = {
-        'cur_lang': current_language,
-        'description': description
-    }
-    return render(request, 'index/development.html', context)
-
-
-def privacyPage(request):
-    current_language = request.LANGUAGE_CODE
-
-    context = {
-        'cur_lang': current_language,
-    }
-    return render(request, 'index/privacy.html', context)
-
-
-def apartmentsPage(request):
-    current_language = request.LANGUAGE_CODE
-
-    context = {
-        'cur_lang': current_language
-    }
-    return render(request, 'index/apartments.html', context)
-
-
-def apartHomePage(request, title):
-    current_language = request.LANGUAGE_CODE
-
-    if title in HOME_TITLE:
-        apartment = Apartment.objects.get(title=title)
-        imageFolderPath = os.path.join(settings.STATIC_ROOT, 'img', 'apartments', title)
-        imageFiles = os.listdir(imageFolderPath)
         context = {
-            'homeTitle': HOME_TITLE[title],
-            'homeGuests': apartment.guests,
-            'homeSquare': apartment.square,
-            'homeSleep': apartment.sleepPlace,
-            'homeWiFi': apartment.isWifi,
-            'cur_lang': current_language,
-            'imageFolderPath': imageFolderPath,
-            'imageFiles': imageFiles,
-            'title': title,
-            'homeShare': SHARE_APART_PAGE[title]
+            'cur_lang': current_language
         }
+        return render(request, 'index/index.html', context)
 
-        return render(request, 'index/apartment-home.html', context)
-    else:
+
+class DevelopPageView(View):
+    def get(self, request, pageType):
+        current_language = request.LANGUAGE_CODE
+        description = DEVELOP_DESCRIPTION.get(pageType, '')
+
+        context = {
+            'cur_lang': current_language,
+            'description': description
+        }
+        return render(request, 'index/development.html', context)
+
+
+class PrivacyPageView(View):
+    def get(self, request):
+        current_language = request.LANGUAGE_CODE
+
+        context = {
+            'cur_lang': current_language,
+        }
+        return render(request, 'index/privacy.html', context)
+
+
+class ApartmentsPageView(View):
+    def get(self, request):
+        current_language = request.LANGUAGE_CODE
+
+        context = {
+            'cur_lang': current_language,
+        }
+        return render(request, 'index/apartments.html', context)
+
+
+class ApartHomePageView(View):
+    def get(self, request, title):
+        current_language = request.LANGUAGE_CODE
+
+        if title in HOME_TITLE:
+            apartment = Apartment.objects.get(title=title)
+            image_folder_path = os.path.join(settings.STATIC_ROOT, 'img', 'apartments', title)
+            image_files = os.listdir(image_folder_path)
+            context = {
+                'homeTitle': HOME_TITLE[title],
+                'homeGuests': apartment.guests,
+                'homeSquare': apartment.square,
+                'homeSleep': apartment.sleepPlace,
+                'homeWiFi': apartment.isWifi,
+                'cur_lang': current_language,
+                'imageFolderPath': image_folder_path,
+                'imageFiles': image_files,
+                'title': title,
+                'homeShare': SHARE_APART_PAGE[title]
+            }
+            return render(request, 'index/apartment-home.html', context)
         return render(request, 'index/development.html')
-    
 
-@csrf_exempt
-def orderCall(request):
-    try:
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
 
-        if len(name) > 0 and len(phone) > 0:
-            for n in name:
-                if n.isdigit():
-                    return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_name']})
+class OrderCallView(View):
+    def is_valid_phone(self, phone):
+        belarus_pattern = r'^(?:\+375|375)?\d{9}$'
+        russia_pattern = r'^(?:\+7|7)?\d{10}$'
 
-            for p in phone:
-                if p.isalpha():
-                    return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
+        return re.match(belarus_pattern, phone) or re.match(russia_pattern, phone)
 
-            belarus_pattern = r'^(?:\+375|375)?\d{9}$'
-            russia_pattern = r'^(?:\+7|7)?\d{10}$'
+    def post(self, request):
+        name = request.POST.get('name', '')
+        phone = request.POST.get('phone', '')
 
-            is_belarus_number = re.match(belarus_pattern, phone)
-            is_russian_number = re.match(russia_pattern, phone)
+        if not name or not phone:
+            return JsonResponse({'success': False, 'message': ERROR_MESSAGES['empty_name' if not name else 'empty_phone']})
 
-            if is_belarus_number or is_russian_number:
-                callback = Callback.objects.create(name=name, phone=phone)
-                create_callback.delay(callback.id)
-                return JsonResponse({'success': True, 'message': SUCCESS_MESSAGES['success_callback']}, safe=False)
-            else:
-                return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
-        else:
-            if len(name) == 0:
-                return JsonResponse({'success': False, 'message': ERROR_MESSAGES['empty_name']}, safe=False)
-            if len(phone) == 0:
-                return JsonResponse({'success': False, 'message': ERROR_MESSAGES['empty_phone']}, safe=False)
-    except Exception as e:
-        if 'callback' in locals():
-            callback.delete()
-        return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
-    
+        if any(char.isdigit() for char in name):
+            return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_name']})
 
-def sendMail(type, name, phone, created):
-    try:
-        if type == MESSAGE_TYPE['callback']:
-            message = render_to_string('mailing/admin_callback.html', {'name': name, 'phone': phone, 'created': created})
-            recipient_list = [admin.email for admin in User.objects.filter(is_superuser=True)]
-            send_mail(MESSAGE_TYPE['callback'], message, settings.EMAIL_HOST_USER, recipient_list, fail_silently=False)
-    except:
-        return JsonResponse({'success': False, 'message': ERROR_MESSAGES["invalid_request"]}, safe=False)
-    
+        if any(char.isalpha() for char in phone):
+            return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
 
-def contactsPage(request):
-    current_language = request.LANGUAGE_CODE
+        if not self.is_valid_phone(phone):
+            return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
 
-    context = {
-        'cur_lang': current_language
-    }
-    return render(request, 'index/contacts.html', context)
+        try:
+            callback = Callback.objects.create(name=name, phone=phone)
+            create_callback.delay(callback.id)
+            return JsonResponse({'success': True, 'message': SUCCESS_MESSAGES['success_callback']})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
+
+
+class ContactsPageView(View):
+    def get(self, request):
+        current_language = request.LANGUAGE_CODE
+
+        context = {
+            'cur_lang': current_language,
+        }
+        return render(request, 'index/contacts.html', context)
 
 
 @csrf_exempt
-def saveEmail(request):
+def save_email(request):
     try:
         if request.method != 'POST':
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
@@ -196,9 +170,9 @@ def saveEmail(request):
 
     except Exception as e:
         return JsonResponse({'success': False, 'message': str(e)})
-    
 
-# def rentPage(request):
+
+# def rent_page(request):
 #     current_language = request.LANGUAGE_CODE
 
 #     context = {
@@ -207,19 +181,20 @@ def saveEmail(request):
 #     return render(request, 'index/rent.html', context)
 
 
-def territoryPage(request):
-    current_language = request.LANGUAGE_CODE
-    
-    folder_path = 'img/territory'
-    full_folder_path = os.path.join(settings.STATICFILES_DIRS[0], folder_path)
+class TerritoryPageView(View):
+    def get(self, request):
+        current_language = request.LANGUAGE_CODE
 
-    image_paths = []
-    for filename in os.listdir(full_folder_path):
-        img_path = os.path.join(folder_path, filename)
-        image_paths.append(img_path)
+        folder_path = 'img/territory'
+        full_folder_path = os.path.join(settings.STATICFILES_DIRS[0], folder_path)
 
-    context = {
-        'cur_lang': current_language,
-        "image_paths": image_paths
-    }
-    return render(request, 'index/territoryGallery.html', context)
+        image_paths = []
+        for filename in os.listdir(full_folder_path):
+            img_path = os.path.join(folder_path, filename)
+            image_paths.append(img_path)
+
+        context = {
+            'cur_lang': current_language,
+            'image_paths': image_paths
+        }
+        return render(request, 'index/territoryGallery.html', context)
