@@ -15,7 +15,7 @@ urlpatterns = [
 
     # FUNCTIONS
     path('order-call/', OrderCallView.as_view(), name='orderCallFunc'),
-    path('save-email/', save_email, name='saveEmailFunc')
+    path('save-email/', SaveEmailView.as_view(), name='saveEmailFunc')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -4,87 +4,50 @@ from .models import *
 from .constants import *
 from django.views import View
 from django.conf import settings
-from urllib.parse import urlparse
 from django.shortcuts import render
-from django.utils import translation
 from django.http import JsonResponse
-from django.http import HttpResponseRedirect
-from django.urls.base import resolve, reverse
-from django.urls.exceptions import Resolver404
+from django.views.generic import TemplateView
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
-from django.views.decorators.csrf import csrf_exempt
 
 
-class SetLanguageView(View):
-    def get(self, request, language):
-        referer = request.META.get("HTTP_REFERER", "/")
-        referer_path = urlparse(referer).path
-        try:
-            view = resolve(referer_path)
-        except Resolver404:
-            view = None
+class IndexPageView(TemplateView):
+    template_name = 'index/index.html'
 
-        if view:
-            translation.activate(language)
-            url_name = getattr(view, 'url_name', None)
-            args = getattr(view, 'args', [])
-            kwargs = getattr(view, 'kwargs', {})
-            next_url = reverse(url_name, args=args, kwargs=kwargs) if url_name else "/"
-        else:
-            next_url = "/"
-
-        response = HttpResponseRedirect(next_url)
-        response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
-        return response
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
-class IndexPageView(View):
-    def get(self, request):
-        current_language = request.LANGUAGE_CODE
+class DevelopPageView(TemplateView):
+    template_name = 'index/development.html'
 
-        context = {
-            'cur_lang': current_language
-        }
-        return render(request, 'index/index.html', context)
+    def get_context_data(self, **kwargs):
+        description = DEVELOP_DESCRIPTION.get(kwargs['pageType'], '')
 
-
-class DevelopPageView(View):
-    def get(self, request, pageType):
-        current_language = request.LANGUAGE_CODE
-        description = DEVELOP_DESCRIPTION.get(pageType, '')
-
-        context = {
-            'cur_lang': current_language,
-            'description': description
-        }
-        return render(request, 'index/development.html', context)
+        context = super().get_context_data(**kwargs)
+        context['description'] = description
+        return context
 
 
-class PrivacyPageView(View):
-    def get(self, request):
-        current_language = request.LANGUAGE_CODE
+class PrivacyPageView(TemplateView):
+    template_name = 'index/privacy.html'
 
-        context = {
-            'cur_lang': current_language,
-        }
-        return render(request, 'index/privacy.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
-class ApartmentsPageView(View):
-    def get(self, request):
-        current_language = request.LANGUAGE_CODE
+class ApartmentsPageView(TemplateView):
+    template_name = 'index/apartments.html'
 
-        context = {
-            'cur_lang': current_language,
-        }
-        return render(request, 'index/apartments.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 class ApartHomePageView(View):
     def get(self, request, title):
-        current_language = request.LANGUAGE_CODE
-
         if title in HOME_TITLE:
             apartment = Apartment.objects.get(title=title)
             image_folder_path = os.path.join(settings.STATIC_ROOT, 'img', 'apartments', title)
@@ -95,7 +58,6 @@ class ApartHomePageView(View):
                 'homeSquare': apartment.square,
                 'homeSleep': apartment.sleepPlace,
                 'homeWiFi': apartment.isWifi,
-                'cur_lang': current_language,
                 'imageFolderPath': image_folder_path,
                 'imageFiles': image_files,
                 'title': title,
@@ -122,10 +84,7 @@ class OrderCallView(View):
         if any(char.isdigit() for char in name):
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_name']})
 
-        if any(char.isalpha() for char in phone):
-            return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
-
-        if not self.is_valid_phone(phone):
+        if any(char.isalpha() for char in phone) or not self.is_valid_phone(phone):
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
 
         try:
@@ -136,19 +95,16 @@ class OrderCallView(View):
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
 
 
-class ContactsPageView(View):
-    def get(self, request):
-        current_language = request.LANGUAGE_CODE
+class ContactsPageView(TemplateView):
+    template_name = 'index/contacts.html'
 
-        context = {
-            'cur_lang': current_language,
-        }
-        return render(request, 'index/contacts.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
-@csrf_exempt
-def save_email(request):
-    try:
+class SaveEmailView(View):
+    def post(self, request):
         if request.method != 'POST':
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
 
@@ -168,9 +124,6 @@ def save_email(request):
         else:
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['exists_email']})
 
-    except Exception as e:
-        return JsonResponse({'success': False, 'message': str(e)})
-
 
 # def rent_page(request):
 #     current_language = request.LANGUAGE_CODE
@@ -183,8 +136,6 @@ def save_email(request):
 
 class TerritoryPageView(View):
     def get(self, request):
-        current_language = request.LANGUAGE_CODE
-
         folder_path = 'img/territory'
         full_folder_path = os.path.join(settings.STATICFILES_DIRS[0], folder_path)
 
@@ -194,7 +145,6 @@ class TerritoryPageView(View):
             image_paths.append(img_path)
 
         context = {
-            'cur_lang': current_language,
             'image_paths': image_paths
         }
         return render(request, 'index/territoryGallery.html', context)
