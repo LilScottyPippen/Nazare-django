@@ -55,7 +55,7 @@
 /*======== RESPONSIVE BASE ========*/
 @media (max-width: 1401px) {
     .main{
-        padding: 50px 100px;
+        padding: 80px 100px;
     }
 }
 @media (max-width: 900px) {

@@ -49,7 +49,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'index.context_processors.language_context'
+                'ZorkaDjango.context_processors.language_context'
             ],
         },
     },
@@ -70,9 +70,23 @@ WSGI_APPLICATION = 'ZorkaDjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-}}
+    'ENGINE': 'django.db.backends.mysql',
+    'OPTIONS': {
+        'sql_mode': 'traditional',
+        },
+    'NAME': os.getenv('DB_NAME'),
+    'USER': os.getenv('DB_USER'),
+    'PASSWORD': os.getenv('DB_PASSWORD'),
+    'HOST': os.getenv('DB_HOST'),
+    'PORT': os.getenv('DB_PORT'),
+    }
+}
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# }}
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -107,9 +121,9 @@ USE_I18N = os.getenv('USE_I18N') == 'True'
 
 USE_TZ = os.getenv('USE_TZ') == 'True'
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

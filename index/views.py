@@ -47,7 +47,7 @@ class ApartmentsPageView(TemplateView):
 
 
 class ApartHomePageView(View):
-    def get(self, request, title):
+    def get(self, request, title, *args, **kwargs):
         if title in HOME_TITLE:
             apartment = Apartment.objects.get(title=title)
             image_folder_path = os.path.join(settings.STATIC_ROOT, 'img', 'apartments', title)
@@ -74,7 +74,7 @@ class OrderCallView(View):
 
         return re.match(belarus_pattern, phone) or re.match(russia_pattern, phone)
 
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         name = request.POST.get('name', '')
         phone = request.POST.get('phone', '')
 
@@ -104,7 +104,7 @@ class ContactsPageView(TemplateView):
 
 
 class SaveEmailView(View):
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         if request.method != 'POST':
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
 
@@ -125,17 +125,16 @@ class SaveEmailView(View):
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['exists_email']})
 
 
-# def rent_page(request):
-#     current_language = request.LANGUAGE_CODE
+class RentPageView(TemplateView):
+    template_name = 'index/rent.html'
 
-#     context = {
-#         'cur_lang': current_language
-#     }
-#     return render(request, 'index/rent.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 class TerritoryPageView(View):
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         folder_path = 'img/territory'
         full_folder_path = os.path.join(settings.STATICFILES_DIRS[0], folder_path)
 

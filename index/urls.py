@@ -10,7 +10,7 @@ urlpatterns = [
     path('apartments/home/<str:title>', ApartHomePageView.as_view(), name='apartHomePage'),
     path('privacy/', PrivacyPageView.as_view(), name='privacyPage'),
     path('contacts/', ContactsPageView.as_view(), name="contactsPage"),
-    # path('rent/', rent_page, name='rentPage'),
+    # path('rent/', RentPageView.as_view(), name='rentPage'),
     path('gallery/territory/', TerritoryPageView.as_view(), name='territoryPage'),
 
     # FUNCTIONS
