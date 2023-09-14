@@ -10,7 +10,6 @@ click-repl==0.3.0
 Django==2.2
 greenlet==2.0.2
 kombu==5.3.1
-mysqlclient==2.2.0
 packaging==23.1
 Pillow==10.0.0
 prompt-toolkit==3.0.39

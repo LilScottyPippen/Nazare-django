@@ -1,9 +1,9 @@
 from pathlib import Path
 import os
 import dotenv
-# import sentry_sdk
+import sentry_sdk
 from pathlib import Path
-# from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.django import DjangoIntegration
 
 dotenv.load_dotenv()
 
@@ -136,12 +136,12 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
 EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL') == 'True'
 
 #SENTRY
-# sentry_sdk.init(
-#   dsn=os.getenv('SENTRY_DSN'),
-#   integrations=[DjangoIntegration()],
-#   traces_sample_rate=1.0,
-#   send_default_pii=True
-# )
+sentry_sdk.init(
+  dsn=os.getenv('SENTRY_DSN'),
+  integrations=[DjangoIntegration()],
+  traces_sample_rate=1.0,
+  send_default_pii=True
+)
 
 # CELERY
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')

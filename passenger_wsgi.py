@@ -1,13 +1,17 @@
 import os
 import sys
 
+try:
+    import pymysql
+    pymysql.install_as_MySQLdb()
+except ImportError:
+    pass
 
-sys.path.insert(0, os.path.dirname(__file__))
 
-
-def application(environ, start_response):
-    start_response('200 OK', [('Content-Type', 'text/plain')])
-    message = 'It works!\n'
-    version = 'Python %s\n' % sys.version.split()[0]
-    response = '\n'.join([message, version])
-    return [response.encode()]
+import sys, os 
+cwd = os.getcwd() 
+sys.path.append(cwd) 
+sys.path.append(cwd + '/nazare') 
+os.environ['DJANGO_SETTINGS_MODULE'] = "ZorkaDjango.settings" 
+from django.core.wsgi import get_wsgi_application 
+application = get_wsgi_application()
