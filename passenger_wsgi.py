@@ -8,7 +8,6 @@ except ImportError:
     pass
 
 
-import sys, os 
 cwd = os.getcwd() 
 sys.path.append(cwd) 
 sys.path.append(cwd + '/nazare') 

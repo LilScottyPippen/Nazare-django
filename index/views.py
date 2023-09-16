@@ -1,3 +1,4 @@
+import os
 import re
 from .tasks import *
 from .models import *
@@ -9,6 +10,7 @@ from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 
 class IndexPageView(TemplateView):
@@ -41,13 +43,17 @@ class PrivacyPageView(TemplateView):
 class ApartmentsPageView(TemplateView):
     template_name = 'index/apartments.html'
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, pageType, **kwargs):
         context = super().get_context_data(**kwargs)
+        if pageType == 'gallery':
+            context['page_url'] = 'galleryPage'
+        else:
+            context['page_url'] = 'apartHomePage'
         return context
 
 
 class ApartHomePageView(View):
-    def get(self, request, title, *args, **kwargs):
+    def get(self, request, title):
         if title in HOME_TITLE:
             apartment = Apartment.objects.get(title=title)
             image_folder_path = os.path.join(settings.STATIC_ROOT, 'img', 'apartments', title)
@@ -74,7 +80,7 @@ class OrderCallView(View):
 
         return re.match(belarus_pattern, phone) or re.match(russia_pattern, phone)
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         name = request.POST.get('name', '')
         phone = request.POST.get('phone', '')
 
@@ -104,7 +110,7 @@ class ContactsPageView(TemplateView):
 
 
 class SaveEmailView(View):
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         if request.method != 'POST':
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
 
@@ -134,8 +140,16 @@ class RentPageView(TemplateView):
 
 
 class TerritoryPageView(View):
-    def get(self, request, *args, **kwargs):
+    def get(self, request, category):
         folder_path = 'img/territory'
+        title = _('ТЕРРИТОРИЯ')
+
+        categories = list(Apartment.objects.values_list('title', flat=True))
+
+        if category in categories:
+            folder_path = 'img/apartments/' + category
+            title = _(f'ДОМ {category.upper()}')
+
         full_folder_path = os.path.join(settings.STATICFILES_DIRS[0], folder_path)
 
         image_paths = []
@@ -144,6 +158,7 @@ class TerritoryPageView(View):
             image_paths.append(img_path)
 
         context = {
-            'image_paths': image_paths
+            'image_paths': image_paths,
+            'page_title': title
         }
-        return render(request, 'index/territoryGallery.html', context)
+        return render(request, 'index/gallery.html', context)

@@ -1,7 +1,4 @@
-import os
-from shutil import copyfile
 from django.db import models
-from django.conf import settings
 
 
 class Callback(models.Model):
@@ -17,7 +14,7 @@ class Callback(models.Model):
 
     def __str__(self):
         return self.phone
-    
+
 
 class Apartment(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -33,7 +30,7 @@ class Apartment(models.Model):
 
     def __str__(self):
         return self.title
-    
+
 
 class Mail(models.Model):
     address = models.EmailField(unique=True)
@@ -71,27 +68,27 @@ class Mail(models.Model):
 
 #     def save(self, *args, **kwargs):
 #         super().save(*args, **kwargs)
-        
+
 #         photo_path = self.image.path
 #         photo_filename = os.path.basename(photo_path)
-        
+
 #         staticfiles_build_path = os.path.join(settings.BASE_DIR, 'staticfiles_build', 'static', 'img', 'apartments', self.apartment.title)
 #         if not os.path.exists(staticfiles_build_path):
 #             os.makedirs(staticfiles_build_path)
-        
+
 #         staticfiles_build_photo_path = os.path.join(staticfiles_build_path, photo_filename)
 #         copyfile(photo_path, staticfiles_build_photo_path)
-    
+
 #     def delete(self, *args, **kwargs):
 #         photo_path = self.image.path
 #         photo_filename = os.path.basename(photo_path)
-        
+
 #         static_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'apartments', self.apartment.title, photo_filename)
 #         staticfiles_build_path = os.path.join(settings.BASE_DIR, 'staticfiles_build', 'static', 'img', 'apartments', self.apartment.title, photo_filename)
-        
+
 #         if os.path.exists(static_path):
 #             os.remove(static_path)
-        
+
 #         if os.path.exists(staticfiles_build_path):
 #             os.remove(staticfiles_build_path)
 

@@ -19,7 +19,7 @@
                     <!-- ======== TOP MENU ======== -->
                     <div class="nav__menu_top">
                         <span class="nav__call" id="navCall">{% trans 'ЗАКАЗАТЬ ЗВОНОК' %}</span>
-                        <span class="nav__book" onclick="window.location='{% url 'apartmentsPage' %}'">{% trans 'БРОНИРОВАНИЕ' %}</span>
+                        <span class="nav__book" onclick="window.location='{% url 'apartmentsPage' 'category' %}'">{% trans 'БРОНИРОВАНИЕ' %}</span>
                         <a href="tel:+375291699106" class="nav__contact" id="contactLink">+375 29 169 91 06</a>
                         {% comment %} <script src="{% static 'js/copyMobile.js' %}"></script> {% endcomment %}
                         <div class="nav__column_mobile">
@@ -80,7 +80,7 @@
 
                             <li class="dropdown__item">
                                 <div class="nav__link">
-                                    <a href="{% url 'apartmentsPage' %}">{% trans 'Апартаменты' %} <i class="fa-solid fa-caret-down"></i></a>
+                                    <a href="{% url 'apartmentsPage' 'category' %}">{% trans 'Апартаменты' %} <i class="fa-solid fa-caret-down"></i></a>
                                 </div>
 
                                 <ul class="dropdown__menu">
@@ -160,7 +160,7 @@
                                 </div>
 
                                 <ul class="dropdown__menu">
-                                    <a href="{% url 'territoryPage' %}" class="dropdown__link">
+                                    <a href="{% url 'indexPage' %}#gallery-anchor" class="dropdown__link">
                                         <i class="fa-solid fa-image"></i> {% trans 'Фотогалерея' %}
                                     </a>
 
@@ -281,7 +281,7 @@
                                 </div>
 
                                 <ul class="dropdown__menu">
-                                    <a href="{% url 'territoryPage' %}" class="dropdown__link">
+                                    <a href="{% url 'indexPage' %}#gallery-anchor" class="dropdown__link">
                                         <i class="fa-solid fa-image"></i> {% trans 'Фотогалерея' %}
                                     </a>
 
