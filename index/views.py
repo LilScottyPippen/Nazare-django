@@ -63,7 +63,7 @@ class ApartHomePageView(View):
                 'homeGuests': apartment.guests,
                 'homeSquare': apartment.square,
                 'homeSleep': apartment.sleepPlace,
-                'homeWiFi': apartment.isWifi,
+                'homePrice': apartment.dailyPrice,
                 'imageFolderPath': image_folder_path,
                 'imageFiles': image_files,
                 'title': title,
@@ -139,7 +139,7 @@ class RentPageView(TemplateView):
         return context
 
 
-class TerritoryPageView(View):
+class GalleryPageView(View):
     def get(self, request, category):
         folder_path = 'img/territory'
         title = _('ТЕРРИТОРИЯ')

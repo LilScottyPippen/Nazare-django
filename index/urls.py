@@ -11,7 +11,7 @@ urlpatterns = [
     path('privacy/', PrivacyPageView.as_view(), name='privacyPage'),
     path('contacts/', ContactsPageView.as_view(), name="contactsPage"),
     # path('rent/', RentPageView.as_view(), name='rentPage'),
-    path('gallery/<str:category>', TerritoryPageView.as_view(), name='galleryPage'),
+    path('gallery/<str:category>', GalleryPageView.as_view(), name='galleryPage'),
 
     # FUNCTIONS
     path('order-call/', OrderCallView.as_view(), name='orderCallFunc'),

@@ -22,7 +22,7 @@ class Apartment(models.Model):
     guests = models.IntegerField(verbose_name='Кол-во гостей')
     square = models.FloatField(verbose_name='Площадь')
     sleepPlace = models.IntegerField(verbose_name='Кол-во спальных мест')
-    isWifi = models.BooleanField(verbose_name='Wi-Fi')
+    dailyPrice = models.IntegerField(default=0, verbose_name='Суточная стоимость (BYN)')
 
     class Meta:
         verbose_name = "Апартаменты"

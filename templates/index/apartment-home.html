@@ -56,14 +56,6 @@
                                         <div class="apartment__item">
                                             <i class="fa-solid fa-bed"></i> {% trans "Спальные места" %}: {{ homeSleep }}
                                         </div>
-                                        {% comment %} <div class="apartment__item">
-                                            <i class="fa-solid fa-wifi"></i> Wi-Fi: 
-                                            {% if homeWiFi == True %}
-                                                {% trans 'есть' %}
-                                            {% else %}
-                                                {% trans "нет" %}
-                                            {% endif %}
-                                        </div> {% endcomment %}
                                     </div>
                                     <div class="main__conteiner_logo">
                                         <img src="{% static 'img/logo/LogoZORKA-white.png' %}" alt="">
@@ -120,6 +112,9 @@
                                 </div>
                             </div>
                             <div class="apartment__footer">
+                                <span class="apartments__price">
+                                    {% trans "Суточная стоимость:" %} {{ homePrice }} BYN
+                                </span>
                                 <span class="apartments__book" id="navCallDev">
                                     {% trans "ЗАБРОНИРОВАТЬ" %}
                                 </span>

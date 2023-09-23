@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -136,13 +137,13 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
 EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL') == 'True'
 
-#SENTRY
-sentry_sdk.init(
-  dsn=os.getenv('SENTRY_DSN'),
-  integrations=[DjangoIntegration()],
-  traces_sample_rate=1.0,
-  send_default_pii=True
-)
+# ROLLBAR
+ROLLBAR = {
+    'access_token': os.getenv('ROLLBAR_TOKEN'),
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': '1.0',
+    'root': BASE_DIR,
+}
 
 # CELERY
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')

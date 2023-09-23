@@ -702,6 +702,10 @@
     margin-top: auto;
 }
 
+.apartments__price{
+    font-size: var(--normal-font-size);
+}
+
 .apartments__book{
     background-color: white;
     font-size: var(--normal-font-size);

@@ -11,7 +11,7 @@ class CallbackAdmin(admin.ModelAdmin):
 @admin.register(Apartment)
 class ApartmentAdmin(admin.ModelAdmin):
     verbose_name_plural = 'Апартаменты'
-    list_display = ('id', 'title', 'guests', 'square', 'sleepPlace', 'isWifi')
+    list_display = ('id', 'title', 'guests', 'square', 'sleepPlace', 'dailyPrice')
 
 
 admin.site.register(Mail)
