@@ -27,18 +27,6 @@ MESSAGE_TYPE = {
     'callback': 'callback'
 }
 
-HOME_TITLE = {
-    'olive': _('ДОМ OLIVE'),
-    'terra': _('ДОМ TERRA'),
-    'obsidian': _('ДОМ OBSIDIAN')
-}
-
-SHARE_APART_PAGE = {
-    'olive': _('Забронировать дом OLIVE'),
-    'terra': _('Забронировать дом TERRA'),
-    'obsidian': _('Забронировать дом OBSIDIAN')
-}
-
 DEVELOP_DESCRIPTION = {
     'apartments': _('аренды апартаментов'),
     'services': _('оказываемых услуг'),

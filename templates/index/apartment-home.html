@@ -28,10 +28,10 @@
                             <div>
                                 <div class="f-carousel" id="myCarousel">
                                     {% for imageFiles in imageFiles %}
-                                    <div class="f-carousel__slide" data-thumb-src="{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}">
-                                        <a data-fancybox="gallery" href="{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}">
+                                    <div class="f-carousel__slide" data-thumb-src="{% static 'img/apartments/'|add:homeSlug|add:'/'|add:imageFiles %}">
+                                        <a data-fancybox="gallery" href="{% static 'img/apartments/'|add:homeSlug|add:'/'|add:imageFiles %}">
                                             <div class="image-container">
-                                                <img width="670" height="480" alt="" data-lazy-src="{% static 'img/apartments/'|add:title|add:'/'|add:imageFiles %}" />
+                                                <img width="670" height="480" alt="" data-lazy-src="{% static 'img/apartments/'|add:homeSlug|add:'/'|add:imageFiles %}" />
                                             </div>
                                         </a>
                                     </div>
@@ -122,16 +122,16 @@
                                     {% trans 'Поделиться'%}: 
                                     {% comment %} <i class="fa-brands fa-instagram"></i> {% endcomment %}
                                     {% comment %} <i class="fa-brands fa-linkedin"></i> {% endcomment %}
-                                    <a href="https://vk.com/share.php?title={{ homeShare }}+nazare.by{% url 'apartHomePage' title %}" target="_blank"><i class="fa-brands fa-vk"></i></a>
+                                    <a href="https://vk.com/share.php?title={{ homeShare }}+nazare.by{% url 'apartHomePage' homeSlug %}" target="_blank"><i class="fa-brands fa-vk"></i></a>
                                     {% comment %} <i class="fa-brands fa-square-odnoklassniki"></i> {% endcomment %}
-                                    <a href="https://t.me/share/url?url=nazare.by{% url 'apartHomePage' title %}&text={{ homeShare }}" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-                                    <a href="https://wa.me/?text={{ homeShare }}+nazare.by{% url 'apartHomePage' title %}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                                    <a href="https://t.me/share/url?url=nazare.by{% url 'apartHomePage' homeSlug %}&text={{ homeShare }}" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                                    <a href="https://wa.me/?text={{ homeShare }}+nazare.by{% url 'apartHomePage' homeSlug %}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
                                 </div>
                             </div>
                         </section>
                     </div>
                 </section>
-            </div>
+            </section>
         </main>
 
         {% include 'basic/footer.html' %}

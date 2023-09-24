@@ -53,21 +53,21 @@ class ApartmentsPageView(TemplateView):
 
 
 class ApartHomePageView(View):
-    def get(self, request, title):
-        if title in HOME_TITLE:
-            apartment = Apartment.objects.get(title=title)
-            image_folder_path = os.path.join(settings.STATIC_ROOT, 'img', 'apartments', title)
+    def get(self, request, **kwargs):
+        apartment = Apartment.objects.get(title=kwargs.get('title'))
+        if apartment:
+            image_folder_path = os.path.join(settings.STATIC_ROOT, 'img', 'apartments', apartment.title)
             image_files = os.listdir(image_folder_path)
             context = {
-                'homeTitle': HOME_TITLE[title],
+                'homeTitle': _(f'ДОМ {apartment.title.upper()}'),
                 'homeGuests': apartment.guests,
                 'homeSquare': apartment.square,
                 'homeSleep': apartment.sleepPlace,
                 'homePrice': apartment.dailyPrice,
                 'imageFolderPath': image_folder_path,
                 'imageFiles': image_files,
-                'title': title,
-                'homeShare': SHARE_APART_PAGE[title]
+                'homeSlug': apartment.title,
+                'homeShare': _(f'Забронировать дом {apartment.title.upper()}'),
             }
             return render(request, 'index/apartment-home.html', context)
         return render(request, 'index/development.html')
@@ -131,12 +131,19 @@ class SaveEmailView(View):
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['exists_email']})
 
 
-class RentPageView(TemplateView):
-    template_name = 'index/rent.html'
+class ServicePageView(View):
+    def get(self, request, **kwargs):
+        service = Services.objects.get(slug=kwargs.get('slug'))
+        if service:
+            image_folder_path = os.path.join(settings.STATIC_ROOT, 'img', 'services', service.slug)
+            image_files = os.listdir(image_folder_path)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+            context = {
+                'title': service.title.upper(),
+                'slug': service.slug,
+                'imageFiles': image_files,
+            }
+            return render(request, 'index/service.html', context)
 
 
 class GalleryPageView(View):

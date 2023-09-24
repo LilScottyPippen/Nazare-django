@@ -2,7 +2,6 @@ from django.db import models
 
 
 class Callback(models.Model):
-    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=20, verbose_name='Имя')
     phone = models.CharField(max_length=20, verbose_name='Телефон')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создано')
@@ -17,7 +16,6 @@ class Callback(models.Model):
 
 
 class Apartment(models.Model):
-    id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=20, verbose_name='Название')
     guests = models.IntegerField(verbose_name='Кол-во гостей')
     square = models.FloatField(verbose_name='Площадь')
@@ -33,16 +31,28 @@ class Apartment(models.Model):
 
 
 class Mail(models.Model):
-    address = models.EmailField(unique=True)
+    address = models.EmailField(unique=True, verbose_name="Адрес")
     added_at = models.DateTimeField(auto_now_add=True, verbose_name='Добавлено')
 
     class Meta:
-        verbose_name = "Электронные почты"
+        verbose_name = "Электронная почта"
         verbose_name_plural = "Электронные почты"
 
     def __str__(self):
         return self.address
 
+
+class Services(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Название")
+    hourlyPrice = models.IntegerField(default=0, verbose_name="Часовая стоимость (BYN)")
+    slug = models.SlugField(unique=True, max_length=100, verbose_name="Псевдоним (English)")
+
+    class Meta:
+        verbose_name = "Услуга"
+        verbose_name_plural = "Услуги"
+
+    def __str__(self):
+        return self.title
 
 #
 # ======== UNDER REVISION ==========

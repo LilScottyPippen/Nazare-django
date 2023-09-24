@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-29 15:37+0300\n"
+"POT-Creation-Date: 2023-09-24 21:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,40 +58,38 @@ msgid "Теперь вы подписаны на наши предложения
 msgstr "Now you are subscribed to our offers."
 
 #: index/constants.py:31
-msgid "ДОМ OLIVE"
-msgstr "OLIVE HOUSE"
-
-#: index/constants.py:32
-msgid "ДОМ TERRA"
-msgstr "TERRA HOUSE"
-
-#: index/constants.py:33
-msgid "ДОМ OBSIDIAN"
-msgstr "OBSIDIAN HOUSE"
-
-#: index/constants.py:37
-msgid "Забронировать дом OLIVE"
-msgstr "Book an OLIVE house"
-
-#: index/constants.py:38
-msgid "Забронировать дом TERRA"
-msgstr "Book an TERRA house"
-
-#: index/constants.py:39
-msgid "Забронировать дом OBSIDIAN"
-msgstr "Book an OBSIDIAN house"
-
-#: index/views.py:62
 msgid "аренды апартаментов"
 msgstr "apartment rentals"
 
-#: index/views.py:64
+#: index/constants.py:32
 msgid "оказываемых услуг"
 msgstr "services provided"
 
-#: index/views.py:66
+#: index/constants.py:33
 msgid "проведения мероприятий"
 msgstr "holding events"
+
+#: index/views.py:62
+msgid "ДОМ {apartment.title.upper()}"
+msgstr "{apartment.title.upper()} HOUSE"
+
+#: index/views.py:70
+msgid "Забронировать дом {apartment.title.upper()}"
+msgstr "Book an {apartment.title.upper()} house"
+
+#: index/views.py:142
+#, fuzzy
+#| msgid "ДОМ {apartment.title.upper()}"
+msgid "{service.title.upper()}"
+msgstr "{apartment.title.upper()} HOUSE"
+
+#: index/views.py:152 templates/index/index.html:223
+msgid "ТЕРРИТОРИЯ"
+msgstr "TERRITORY"
+
+#: index/views.py:158
+msgid "ДОМ {category.upper()}"
+msgstr "{category.upper()} HOUSE"
 
 #: templates/basic/callback.html:7
 msgid "Заказать звонок"
@@ -160,7 +158,7 @@ msgstr "Be aware of the best offer"
 
 #: templates/basic/footer.html:126
 msgid "Следи за нами"
-msgstr ""
+msgstr "Follow us"
 
 #: templates/basic/footer.html:138
 msgid "Все права защищены"
@@ -281,92 +279,96 @@ msgstr "Copy the qr code in the Viber app"
 msgid "Закрыть"
 msgstr "Close"
 
-#: templates/index/apartment-home.html:47 templates/index/rent.html:53
+#: templates/index/apartment-home.html:47
 msgid "ИНФОРМАЦИЯ"
 msgstr "INFORMATION"
 
-#: templates/index/apartment-home.html:51 templates/index/rent.html:57
+#: templates/index/apartment-home.html:51
 msgid "Количество гостей"
 msgstr "Number of guests"
 
-#: templates/index/apartment-home.html:51 templates/index/rent.html:57
+#: templates/index/apartment-home.html:51
 msgid "взрослых"
 msgstr "adults"
 
-#: templates/index/apartment-home.html:54 templates/index/rent.html:60
+#: templates/index/apartment-home.html:54
 msgid "Площадь"
 msgstr "Square"
 
-#: templates/index/apartment-home.html:57 templates/index/rent.html:63
+#: templates/index/apartment-home.html:57
 msgid "Спальные места"
 msgstr "Sleeping places"
 
-#: templates/index/apartment-home.html:74 templates/index/rent.html:80
+#: templates/index/apartment-home.html:65
 msgid "ОСНАЩЕНИЕ"
 msgstr "EQUIPMENT"
 
-#: templates/index/apartment-home.html:79 templates/index/rent.html:85
+#: templates/index/apartment-home.html:70
 msgid "Телевизор"
 msgstr "TV"
 
-#: templates/index/apartment-home.html:85 templates/index/rent.html:91
+#: templates/index/apartment-home.html:76
 msgid "Холодильник"
 msgstr "Fridge"
 
-#: templates/index/apartment-home.html:88 templates/index/rent.html:94
+#: templates/index/apartment-home.html:79
 msgid "Кондиционер"
 msgstr "Conditioner"
 
-#: templates/index/apartment-home.html:91 templates/index/rent.html:97
+#: templates/index/apartment-home.html:82
 msgid "Фен"
 msgstr "Fan"
 
-#: templates/index/apartment-home.html:94 templates/index/rent.html:100
+#: templates/index/apartment-home.html:85
 msgid "Сейф"
 msgstr "Safe"
 
-#: templates/index/apartment-home.html:97 templates/index/rent.html:103
+#: templates/index/apartment-home.html:88
 msgid "Кофеварка"
 msgstr "Coffee-maker"
 
-#: templates/index/apartment-home.html:102 templates/index/rent.html:108
+#: templates/index/apartment-home.html:93
 msgid "ДОП. УСЛУГИ"
 msgstr "ADDITIONAL SERVICES"
 
-#: templates/index/apartment-home.html:106 templates/index/rent.html:112
+#: templates/index/apartment-home.html:97
 msgid "Катер"
 msgstr "Speedboat"
 
-#: templates/index/apartment-home.html:109 templates/index/rent.html:115
+#: templates/index/apartment-home.html:100
 msgid "Гидроцикл"
 msgstr "Hydrocycle"
 
-#: templates/index/apartment-home.html:112 templates/index/rent.html:118
+#: templates/index/apartment-home.html:103
 msgid "Сапборд"
 msgstr "Sapboard"
 
-#: templates/index/apartment-home.html:115 templates/index/rent.html:121
+#: templates/index/apartment-home.html:106
 msgid "Каное"
 msgstr "Canoe"
 
-#: templates/index/apartment-home.html:118 templates/index/rent.html:124
+#: templates/index/apartment-home.html:109
 msgid "Баскетбольная площадка"
 msgstr "Basketball court"
 
-#: templates/index/apartment-home.html:121 templates/index/rent.html:127
+#: templates/index/apartment-home.html:112
 msgid "Теннисный корт"
 msgstr "Tennis court"
 
-#: templates/index/apartment-home.html:127
+#: templates/index/apartment-home.html:118
+msgid "Суточная стоимость:"
+msgstr "Daily cost:"
+
+#: templates/index/apartment-home.html:121
 msgid "ЗАБРОНИРОВАТЬ"
 msgstr "BOOKING"
 
-#: templates/index/apartment-home.html:130
+#: templates/index/apartment-home.html:124
 msgid "Поделиться"
 msgstr "Share"
 
 #: templates/index/apartments.html:20 templates/index/index.html:30
-#: templates/index/index.html:218
+#: templates/index/index.html:219
 msgid "АПАРТАМЕНТЫ"
 msgstr "APARTMENTS"
 
@@ -417,7 +419,7 @@ msgstr ""
 msgid "УСЛУГИ"
 msgstr "SERVICES"
 
-#: templates/index/index.html:46 templates/index/index.html:206
+#: templates/index/index.html:46 templates/index/index.html:207
 msgid "ГАЛЕРЕЯ"
 msgstr "GALLERY"
 
@@ -631,15 +633,11 @@ msgstr ""
 "Special thanks to the spa center for a relaxing massage! I didn't want to "
 "leave at all. I would be happy to recommend it."
 
-#: templates/index/index.html:210
+#: templates/index/index.html:211
 msgid "ПЛЕНИТЕЛЬНАЯ КРАСОТА В КАЖДОМ КАДРЕ."
 msgstr "CAPTIVATING BEAUTY IN EVERY FRAME."
 
-#: templates/index/index.html:222 templates/index/territoryGallery.html:19
-msgid "ТЕРРИТОРИЯ"
-msgstr "TERRITORY"
-
-#: templates/index/index.html:226
+#: templates/index/index.html:227
 msgid "РАЗВЛЕЧЕНИЯ"
 msgstr "ENTERTAINMENTS"
 
@@ -647,9 +645,42 @@ msgstr "ENTERTAINMENTS"
 msgid "ПОЛИТИКА КОНФЕНДЕЦИАЛЬНОСТИ"
 msgstr "CONFENDECIALITY POLICY"
 
-#: templates/index/rent.html:22
-msgid "ПРОКАТ И АРЕНДА"
-msgstr "RENTAL AND LEASE"
+#: templates/index/service.html:47
+msgid ""
+"Всего несколькими щелчками мыши, вы перенесетесь в мир бесперебойного "
+"комфорта и роскоши. Наши услуги трансфера предоставляют вам уникальную "
+"возможность начать ваше путешествие с беззаботности и стиля."
+msgstr ""
+"With just a few mouse clicks, you will be transported into a world of "
+"uninterrupted comfort and luxury. Our transfer services provide you with a "
+"unique opportunity to start your journey with carelessness and style."
 
-#~ msgid "УДОБСТВА"
-#~ msgstr "CONVENIENCES"
+#: templates/index/service.html:48
+msgid ""
+"Мы создали интуитивно понятную онлайн-платформу, чтобы сделать процесс "
+"бронирования вашего трансфера максимально легким и приятным. Вы можете "
+"выбрать дату и время вашего переезда, ознакомиться с нашим разнообразным "
+"парком транспортных средств, и быть уверенными в каждой детали вашей "
+"поездки. Мы ценим ваше время и стремимся сделать путешествие не менее "
+"волнующим, чем сама цель."
+msgstr ""
+"We have created an intuitive online platform to make the process of booking "
+"your transfer as easy and enjoyable as possible. You can choose the date and "
+"time of your move, get acquainted with our diverse fleet of vehicles, and be "
+"sure of every detail of your trip. We value your time and strive to make the "
+"journey no less exciting than the goal itself."
+
+#: templates/index/service.html:49
+msgid ""
+"Не упустите шанс воплотить в жизнь ваши самые заветные мечты о путешествии. "
+"Доверьтесь нам, чтобы сделать ваше путешествие по-настоящему незабываемым. "
+"Разрешите себе забыть о всех заботах и насладиться каждым моментом вашего "
+"путешествия."
+msgstr ""
+"Do not miss the chance to realize your most cherished dreams of travel. "
+"Trust us to make your trip truly unforgettable. Allow yourself to forget "
+"about all the worries and enjoy every moment of your journey."
+
+#: templates/index/service.html:50
+msgid "ЗАКАЗАТЬ"
+msgstr "ORDER"

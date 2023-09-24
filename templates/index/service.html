@@ -1,0 +1,76 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        {% include 'basic/head.html'%}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.thumbs.css" />
+        <link rel="stylesheet" href="{% static 'css/fancybox.css' %}">
+    </head>
+    <body>
+        {% include 'basic/preloader.html' %}
+        {% include 'basic/callback.html' %}
+        {% include 'basic/header.html' %}
+        {% include 'basic/viberQrCode.html' %}
+
+        <main class="main">
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{{ title }}</span><span class="content__title_dot">•</span>
+                </div>
+                
+                <section class="apartments">
+                    <!-- ======== SLIDER ======== -->
+                    <div class="apartments__left">
+                        <section class="slider__wrapper">
+                            <div>
+                                <div class="f-carousel" id="myCarousel">
+                                    {% for imageFiles in imageFiles %}
+                                    <div class="f-carousel__slide" data-thumb-src="{% static 'img/services/'|add:slug|add:'/'|add:imageFiles %}">
+                                        <a data-fancybox="gallery" href="{% static 'img/services/'|add:slug|add:'/'|add:imageFiles %}">
+                                            <div class="image-container">
+                                                <img width="670" height="480" alt="" data-lazy-src="{% static 'img/services/'|add:slug|add:'/'|add:imageFiles %}" />
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="apartments__right">
+                        <div class="container__content_description">
+                            <span class="content__description_text">{% trans 'Всего несколькими щелчками мыши, вы перенесетесь в мир бесперебойного комфорта и роскоши. Наши услуги трансфера предоставляют вам уникальную возможность начать ваше путешествие с беззаботности и стиля.' %}</span><br><br>
+                            <span class="content__description_text">{% trans 'Мы создали интуитивно понятную онлайн-платформу, чтобы сделать процесс бронирования вашего трансфера максимально легким и приятным. Вы можете выбрать дату и время вашего переезда, ознакомиться с нашим разнообразным парком транспортных средств, и быть уверенными в каждой детали вашей поездки. Мы ценим ваше время и стремимся сделать путешествие не менее волнующим, чем сама цель.' %}</span><br><br>
+                            <span class="content__description_text">{% trans 'Не упустите шанс воплотить в жизнь ваши самые заветные мечты о путешествии. Доверьтесь нам, чтобы сделать ваше путешествие по-настоящему незабываемым. Разрешите себе забыть о всех заботах и насладиться каждым моментом вашего путешествия.' %}</span><br><br>
+                            <br><br><span class="content__description_button" onclick="window.location='{% url 'developPage' 'events' %}'">{% trans 'ЗАКАЗАТЬ' %}</span>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+        </main>
+
+        {% include 'basic/footer.html'%}
+
+        <!-- ======== JS ======== -->
+        <script src="{% static 'js/slider.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.umd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.thumbs.umd.js"></script>
+        <script>
+            const container = document.getElementById("myCarousel");
+            const options = {
+              Dots: false,
+              Thumbs: {
+                type: "classic",
+              },
+            };
+      
+            new Carousel(container, options, { Thumbs });
+        </script>
+    </body>
+</html>
