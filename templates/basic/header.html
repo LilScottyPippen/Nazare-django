@@ -19,7 +19,7 @@
                     <!-- ======== TOP MENU ======== -->
                     <div class="nav__menu_top">
                         <span class="nav__call" id="navCall">{% trans 'ЗАКАЗАТЬ ЗВОНОК' %}</span>
-                        <span class="nav__book" onclick="window.location='{% url 'apartmentsPage' 'category' %}'">{% trans 'БРОНИРОВАНИЕ' %}</span>
+                        <span class="nav__book" onclick="window.location='{% url 'catalogPage' 'category' %}'">{% trans 'БРОНИРОВАНИЕ' %}</span>
                         <a href="tel:+375291699106" class="nav__contact" id="contactLink">+375 29 169 91 06</a>
                         {% comment %} <script src="{% static 'js/copyMobile.js' %}"></script> {% endcomment %}
                         <div class="nav__column_mobile">
@@ -56,7 +56,7 @@
                         <ul class="nav__list">
                             <li class="dropdown__item">
                                 <div class="nav__link">
-                                    <a href="{% url 'developPage' 'all' %}">{% trans 'О нас' %} <i class="fa-solid fa-caret-down"></i></a>
+                                    <a href="{% url 'catalogPage' 'about' %}">{% trans 'О нас' %} <i class="fa-solid fa-caret-down"></i></a>
                                 </div>
 
                                 <ul class="dropdown__menu">
@@ -80,7 +80,7 @@
 
                             <li class="dropdown__item">
                                 <div class="nav__link">
-                                    <a href="{% url 'apartmentsPage' 'category' %}">{% trans 'Апартаменты' %} <i class="fa-solid fa-caret-down"></i></a>
+                                    <a href="{% url 'catalogPage' 'apartments' %}">{% trans 'Апартаменты' %} <i class="fa-solid fa-caret-down"></i></a>
                                 </div>
 
                                 <ul class="dropdown__menu">
@@ -104,7 +104,7 @@
 
                             <li class="dropdown__item">
                                 <div class="nav__link">
-                                    <a href="{% url 'developPage' 'services' %}">{% trans 'Услуги' %} <i class="fa-solid fa-caret-down"></i></a>
+                                    <a href="{% url 'catalogPage' 'services' %}">{% trans 'Услуги' %} <i class="fa-solid fa-caret-down"></i></a>
                                 </div>
 
                                 <ul class="dropdown__menu">
@@ -116,7 +116,7 @@
                                         <i class="fa-solid fa-utensils"></i> {% trans 'Ресторан' %}
                                     </a>
 
-                                    <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
+                                    <a href="{% url 'servicePage' 'delivery' %}" class="dropdown__link">
                                         <i class="fa-solid fa-truck"></i> {% trans 'Доставка еды' %}
                                     </a>
 
@@ -128,7 +128,7 @@
 
                             <li class="dropdown__item">
                                 <div class="nav__link">
-                                    <a href="{% url 'developPage' 'events' %}">{% trans 'Мероприятия' %} <i class="fa-solid fa-caret-down"></i></a>
+                                    <a href="{% url 'catalogPage' 'events' %}">{% trans 'Мероприятия' %} <i class="fa-solid fa-caret-down"></i></a>
                                 </div>
 
                                 <ul class="dropdown__menu">
@@ -156,7 +156,7 @@
 
                             <li class="dropdown__item">
                                 <div class="nav__link">
-                                    <a href="{% url 'developPage' 'all' %}">{% trans 'Галерея' %} <i class="fa-solid fa-caret-down"></i></a>
+                                    <a href="{% url 'catalogPage' 'gallery' %}">{% trans 'Галерея' %} <i class="fa-solid fa-caret-down"></i></a>
                                 </div>
 
                                 <ul class="dropdown__menu">
@@ -237,11 +237,11 @@
                                         <i class="fa-solid fa-utensils"></i> {% trans 'Ресторан' %}
                                     </a>
 
-                                    <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
+                                    <a href="{% url 'servicePage' 'delivery' %}" class="dropdown__link">
                                         <i class="fa-solid fa-truck"></i> {% trans 'Доставка еды' %}
                                     </a>
 
-                                    <a href="{% url 'developPage' 'services' %}" class="dropdown__link">
+                                    <a href="{% url 'servicePage' 'transfer' %}" class="dropdown__link">
                                         <i class="fa-solid fa-arrow-right-arrow-left"></i> {% trans 'Трансфер' %}
                                     </a>
                                 </ul>

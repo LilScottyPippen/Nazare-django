@@ -16,13 +16,13 @@
             <div class="home">
                 <span class="home__title">{% trans 'ПАРК-ОТЕЛЬ ZORKA' %}</span>
                 <span class="home__description">{% trans 'Это идеальное место для отдыха и проведения свободного времени. Мы предлагаем уютные апартаменты, красивый парк живописными аллеями и озером, а также различные услуги.' %}</span>
-                <span class="home__book" onclick="window.location='{% url 'apartmentsPage' 'category' %}'">{% trans 'БРОНИРОВАНИЕ' %}<i class="fa-solid fa-arrow-right"></i></span>
+                <span class="home__book" onclick="window.location='{% url 'catalogPage' 'apartments' %}'">{% trans 'БРОНИРОВАНИЕ' %}<i class="fa-solid fa-arrow-right"></i></span>
             </div>
         </section>
 
         <!-- ======== HOME FOOTER ======== -->
         <section class="home__footer">
-            <div class="home__footer_item" onclick="window.location='{% url 'apartmentsPage' 'category' %}'">
+            <div class="home__footer_item" onclick="window.location='{% url 'catalogPage' 'apartments' %}'">
                 <div class="footer__item_img">
                     <i class="fa-solid fa-building"></i>
                 </div>
@@ -30,7 +30,7 @@
                     {% trans 'АПАРТАМЕНТЫ' %}
                 </div>
             </div>
-            <div class="home__footer_item" onclick="window.location='{% url 'developPage' 'services' %}'">
+            <div class="home__footer_item" onclick="window.location='{% url 'catalogPage' 'services' %}'">
                 <div class="footer__item_img">
                     <i class="fa-solid fa-sailboat"></i>
                 </div>
@@ -38,7 +38,7 @@
                     {% trans 'УСЛУГИ' %}
                 </div>
             </div>
-            <div class="home__footer_item" onclick="window.location='{% url 'developPage' 'all' %}'">
+            <div class="home__footer_item" onclick="window.location='{% url 'catalogPage' 'gallery' %}'">
                 <div class="footer__item_img">
                     <i class="fa-solid fa-image"></i>
                 </div>
@@ -214,7 +214,7 @@
                 <div class="container__content">
                     <div class="content__gallery">
                         <div class="content__gallery_items">
-                            <div class="content__gallery_item" onclick="window.location='{% url 'apartmentsPage' 'gallery' %}'">
+                            <div class="content__gallery_item" onclick="window.location='{% url 'catalogPage' 'gallery' %}'">
                                 <div class="gallery__item_img"><img src="{% static 'img/source/photo1690230633.jpeg' %}" alt=""></div>
                                 <div class="gallery__item_description">{% trans 'АПАРТАМЕНТЫ' %}</div>
                             </div>

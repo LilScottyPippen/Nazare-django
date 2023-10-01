@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-24 21:14+0300\n"
+"POT-Creation-Date: 2023-10-01 21:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,27 +69,9 @@ msgstr "services provided"
 msgid "проведения мероприятий"
 msgstr "holding events"
 
-#: index/views.py:62
-msgid "ДОМ {apartment.title.upper()}"
-msgstr "{apartment.title.upper()} HOUSE"
-
-#: index/views.py:70
-msgid "Забронировать дом {apartment.title.upper()}"
-msgstr "Book an {apartment.title.upper()} house"
-
-#: index/views.py:142
-#, fuzzy
-#| msgid "ДОМ {apartment.title.upper()}"
-msgid "{service.title.upper()}"
-msgstr "{apartment.title.upper()} HOUSE"
-
-#: index/views.py:152 templates/index/index.html:223
+#: index/views.py:190 templates/index/index.html:223
 msgid "ТЕРРИТОРИЯ"
 msgstr "TERRITORY"
-
-#: index/views.py:158
-msgid "ДОМ {category.upper()}"
-msgstr "{category.upper()} HOUSE"
 
 #: templates/basic/callback.html:7
 msgid "Заказать звонок"
@@ -115,7 +97,7 @@ msgstr "processing of personal data"
 msgid "Заказать"
 msgstr "To order"
 
-#: templates/basic/callback.html:86
+#: templates/basic/callback.html:87
 msgid "Вы не приняли пользовательское соглашение!"
 msgstr "You have not accepted the user agreement!"
 
@@ -177,7 +159,7 @@ msgid "Парк-отель ZORKA"
 msgstr "Park hotel ZORKA"
 
 #: templates/basic/header.html:21 templates/basic/header.html:338
-#: templates/index/development.html:28
+#: templates/index/development.html:28 templates/index/service.html:48
 msgid "ЗАКАЗАТЬ ЗВОНОК"
 msgstr "ORDER A CALL"
 
@@ -228,7 +210,7 @@ msgstr "Restaurant"
 
 #: templates/basic/header.html:121 templates/basic/header.html:242
 msgid "Доставка еды"
-msgstr "Delivery eat"
+msgstr "Food delivery"
 
 #: templates/basic/header.html:125 templates/basic/header.html:246
 msgid "Трансфер"
@@ -367,20 +349,6 @@ msgstr "BOOKING"
 msgid "Поделиться"
 msgstr "Share"
 
-#: templates/index/apartments.html:20 templates/index/index.html:30
-#: templates/index/index.html:219
-msgid "АПАРТАМЕНТЫ"
-msgstr "APARTMENTS"
-
-#: templates/index/apartments.html:30 templates/index/apartments.html:36
-#: templates/index/apartments.html:42
-msgid "ДОМ"
-msgstr "HOUSE"
-
-#: templates/index/apartments.html:48
-msgid "ГОСТИНИЦА"
-msgstr "HOTEL"
-
 #: templates/index/contacts.html:19
 msgid "КОНТАКТЫ"
 msgstr "CONTACTS"
@@ -414,6 +382,10 @@ msgstr ""
 "It is an ideal place to relax and spend free time. We offer cozy apartments, "
 "a beautiful park with picturesque alleys and a lake, as well as various "
 "services."
+
+#: templates/index/index.html:30 templates/index/index.html:219
+msgid "АПАРТАМЕНТЫ"
+msgstr "APARTMENTS"
 
 #: templates/index/index.html:38 templates/index/index.html:103
 msgid "УСЛУГИ"
@@ -644,43 +616,3 @@ msgstr "ENTERTAINMENTS"
 #: templates/index/privacy.html:20
 msgid "ПОЛИТИКА КОНФЕНДЕЦИАЛЬНОСТИ"
 msgstr "CONFENDECIALITY POLICY"
-
-#: templates/index/service.html:47
-msgid ""
-"Всего несколькими щелчками мыши, вы перенесетесь в мир бесперебойного "
-"комфорта и роскоши. Наши услуги трансфера предоставляют вам уникальную "
-"возможность начать ваше путешествие с беззаботности и стиля."
-msgstr ""
-"With just a few mouse clicks, you will be transported into a world of "
-"uninterrupted comfort and luxury. Our transfer services provide you with a "
-"unique opportunity to start your journey with carelessness and style."
-
-#: templates/index/service.html:48
-msgid ""
-"Мы создали интуитивно понятную онлайн-платформу, чтобы сделать процесс "
-"бронирования вашего трансфера максимально легким и приятным. Вы можете "
-"выбрать дату и время вашего переезда, ознакомиться с нашим разнообразным "
-"парком транспортных средств, и быть уверенными в каждой детали вашей "
-"поездки. Мы ценим ваше время и стремимся сделать путешествие не менее "
-"волнующим, чем сама цель."
-msgstr ""
-"We have created an intuitive online platform to make the process of booking "
-"your transfer as easy and enjoyable as possible. You can choose the date and "
-"time of your move, get acquainted with our diverse fleet of vehicles, and be "
-"sure of every detail of your trip. We value your time and strive to make the "
-"journey no less exciting than the goal itself."
-
-#: templates/index/service.html:49
-msgid ""
-"Не упустите шанс воплотить в жизнь ваши самые заветные мечты о путешествии. "
-"Доверьтесь нам, чтобы сделать ваше путешествие по-настоящему незабываемым. "
-"Разрешите себе забыть о всех заботах и насладиться каждым моментом вашего "
-"путешествия."
-msgstr ""
-"Do not miss the chance to realize your most cherished dreams of travel. "
-"Trust us to make your trip truly unforgettable. Allow yourself to forget "
-"about all the worries and enjoy every moment of your journey."
-
-#: templates/index/service.html:50
-msgid "ЗАКАЗАТЬ"
-msgstr "ORDER"

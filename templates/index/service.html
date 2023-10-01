@@ -19,7 +19,7 @@
             <section class="content__container">
                 <!-- ======== CONTENT TITLE ======== -->
                 <div class="content__title">
-                    <span class="content__title_dot">•</span><span>{{ title }}</span><span class="content__title_dot">•</span>
+                    <span class="content__title_dot">•</span><span>{% trans title %}</span><span class="content__title_dot">•</span>
                 </div>
                 
                 <section class="apartments">
@@ -41,13 +41,12 @@
                             </div>
                         </section>
                     </div>
-
-                    <div class="apartments__right">
-                        <div class="container__content_description">
-                            <span class="content__description_text">{% trans 'Всего несколькими щелчками мыши, вы перенесетесь в мир бесперебойного комфорта и роскоши. Наши услуги трансфера предоставляют вам уникальную возможность начать ваше путешествие с беззаботности и стиля.' %}</span><br><br>
-                            <span class="content__description_text">{% trans 'Мы создали интуитивно понятную онлайн-платформу, чтобы сделать процесс бронирования вашего трансфера максимально легким и приятным. Вы можете выбрать дату и время вашего переезда, ознакомиться с нашим разнообразным парком транспортных средств, и быть уверенными в каждой детали вашей поездки. Мы ценим ваше время и стремимся сделать путешествие не менее волнующим, чем сама цель.' %}</span><br><br>
-                            <span class="content__description_text">{% trans 'Не упустите шанс воплотить в жизнь ваши самые заветные мечты о путешествии. Доверьтесь нам, чтобы сделать ваше путешествие по-настоящему незабываемым. Разрешите себе забыть о всех заботах и насладиться каждым моментом вашего путешествия.' %}</span><br><br>
-                            <br><br><span class="content__description_button" onclick="window.location='{% url 'developPage' 'events' %}'">{% trans 'ЗАКАЗАТЬ' %}</span>
+                    <div class="container__content">
+                        <div class="apartments__right">
+                            <div class="container__content_description">
+                                <span class="content__description_text">{{ desc }}</span><br><br>
+                                <br><br><span class="content__description_button" id="navCallDev">{% trans 'ЗАКАЗАТЬ ЗВОНОК' %}</span>
+                            </div>
                         </div>
                     </div>
                 </section>

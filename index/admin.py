@@ -19,3 +19,13 @@ admin.site.register(Mail)
 @admin.register(Services)
 class ServicesAdmin(admin.ModelAdmin):
     list_display = ('title', 'hourlyPrice')
+
+admin.site.register(Category)
+
+
+@admin.register(Subcategory)
+class SubcategoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'page_slug')
+
+
+admin.site.register(PageSlug)

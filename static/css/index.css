@@ -390,7 +390,7 @@
     font-size: var(--small-font-size);
     background-color: var(--gray-color);
     padding: 20px 30px;
-    margin: 0 15px 0 15px;
+    margin: 15px 15px 0 15px;
     cursor: pointer;
     text-align: center;
 }
@@ -514,7 +514,7 @@
 
     .container__content_description{
         width: 400px;
-        margin: 20px 0 0 0 10px;
+        margin: 20px 0 0 10px;
     }
 
     .content__description_button{

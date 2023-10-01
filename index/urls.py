@@ -6,7 +6,7 @@ urlpatterns = [
     # PAGES
     path('', IndexPageView.as_view(), name='indexPage'),
     path('development/<str:pageType>', DevelopPageView.as_view(), name='developPage'),
-    path('apartments/<str:pageType>', ApartmentsPageView.as_view(), name='apartmentsPage'),
+    path('catalog/<str:pageType>', CatalogPageView.as_view(), name='catalogPage'),
     path('apartments/home/<str:title>', ApartHomePageView.as_view(), name='apartHomePage'),
     path('privacy/', PrivacyPageView.as_view(), name='privacyPage'),
     path('contacts/', ContactsPageView.as_view(), name="contactsPage"),

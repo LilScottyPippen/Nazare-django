@@ -67,7 +67,8 @@
                         dataType: 'json',
                         data: {
                             'name': name,
-                            'phone': phone
+                            'phone': phone,
+                            'pageType': "{{ pageType }}"
                         },
                         success: function(response) {
                             if (response.success === true) {

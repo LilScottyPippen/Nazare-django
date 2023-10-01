@@ -1,0 +1,42 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'basic/head.html' %} 
+    </head>
+    <body>
+        {% include 'basic/preloader.html'%}
+        {% include 'basic/header.html' %}
+        {% include 'basic/callback.html' %}
+        {% include 'basic/viberQrCode.html' %}
+
+        <!-- ======== MAIN ======== -->
+        <main class="main">
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{{ pageType.upper }}</span><span class="content__title_dot">•</span>
+                </div>
+
+                <div class="container__content" style="margin-top: 50px">
+                    <div class="content__service">
+                        <div class="content__service_items">
+                            {% for sub in subcategories %}
+                                <div class="content__service_item" onclick="window.location='{% url sub.page_slug.slug sub.slug %}'">
+                                    <div class="service__item_img">
+                                        {{ sub.icon | safe }}
+                                    </div>
+                                    <div class="service__item_description">{% if request.LANGUAGE_CODE == "ru" %} {% trans sub.title.upper %} {% else %} {% trans sub.title_en.upper %} {% endif %}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        {% include 'basic/footer.html'%}
+    </body>
+</html>

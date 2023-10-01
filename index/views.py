@@ -18,6 +18,7 @@ class IndexPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['pageType'] = "Главная страница"
         return context
 
 
@@ -29,6 +30,7 @@ class DevelopPageView(TemplateView):
 
         context = super().get_context_data(**kwargs)
         context['description'] = description
+        context['pageType'] = "Страница в разработке"
         return context
 
 
@@ -37,19 +39,37 @@ class PrivacyPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['pageType'] = "Политика конфиденциальности"
         return context
 
 
-class ApartmentsPageView(TemplateView):
-    template_name = 'index/apartments.html'
+class CatalogPageView(View):
+    # template_name = 'index/catalog.html'
 
-    def get_context_data(self, pageType, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if pageType == 'gallery':
-            context['page_url'] = 'galleryPage'
-        else:
-            context['page_url'] = 'apartHomePage'
-        return context
+    def get(self, request, **kwargs):
+        category = Category.objects.get(slug=kwargs.get('pageType').lower())
+        if category:
+            subcategories = Subcategory.objects.filter(category=category)
+            title = category.title
+            if request.LANGUAGE_CODE == "en":
+                title = category.title_en
+
+            context = {
+                'page_url': 'apartHomePage',
+                'pageType': title,
+                'subcategories': subcategories,
+            }
+            return render(request, 'index/catalog.html', context)
+
+    # def get_context_data(self, pageType, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     if pageType == 'gallery':
+    #         context['page_url'] = 'galleryPage'
+    #         context['pageType'] = "Апартаменты"
+    #     else:
+    #         context['page_url'] = 'apartHomePage'
+    #         context['pageType'] = "Галерея"
+    #     return context
 
 
 class ApartHomePageView(View):
@@ -57,9 +77,16 @@ class ApartHomePageView(View):
         apartment = Apartment.objects.get(title=kwargs.get('title'))
         if apartment:
             image_folder_path = os.path.join(settings.STATIC_ROOT, 'img', 'apartments', apartment.title)
+
             image_files = os.listdir(image_folder_path)
+            home_title = f'ДОМ {apartment.title.upper()}'
+            share_title = f'Забронировать дом {apartment.title.upper()}'
+            if request.LANGUAGE_CODE == "en":
+                home_title = f'{apartment.title.upper()} HOME'
+                share_title = f'Book an {apartment.title.upper()} house'
+
             context = {
-                'homeTitle': _(f'ДОМ {apartment.title.upper()}'),
+                'homeTitle': home_title,
                 'homeGuests': apartment.guests,
                 'homeSquare': apartment.square,
                 'homeSleep': apartment.sleepPlace,
@@ -67,7 +94,8 @@ class ApartHomePageView(View):
                 'imageFolderPath': image_folder_path,
                 'imageFiles': image_files,
                 'homeSlug': apartment.title,
-                'homeShare': _(f'Забронировать дом {apartment.title.upper()}'),
+                'homeShare': share_title,
+                'pageType': f'Дом {apartment.title}'
             }
             return render(request, 'index/apartment-home.html', context)
         return render(request, 'index/development.html')
@@ -83,6 +111,7 @@ class OrderCallView(View):
     def post(self, request):
         name = request.POST.get('name', '')
         phone = request.POST.get('phone', '')
+        page_type = request.POST.get('pageType', '')
 
         if not name or not phone:
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['empty_name' if not name else 'empty_phone']})
@@ -94,7 +123,7 @@ class OrderCallView(View):
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_phone']})
 
         try:
-            callback = Callback.objects.create(name=name, phone=phone)
+            callback = Callback.objects.create(name=name, phone=phone, placeApplication=page_type)
             create_callback.delay(callback.id)
             return JsonResponse({'success': True, 'message': SUCCESS_MESSAGES['success_callback']})
         except Exception as e:
@@ -106,6 +135,7 @@ class ContactsPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['pageType'] = "Контакты"
         return context
 
 
@@ -138,10 +168,18 @@ class ServicePageView(View):
             image_folder_path = os.path.join(settings.STATIC_ROOT, 'img', 'services', service.slug)
             image_files = os.listdir(image_folder_path)
 
+            title = service.title.upper()
+            description = service.description
+            if request.LANGUAGE_CODE == "en":
+                title = service.title_en.upper()
+                description = service.description_en
+
             context = {
-                'title': service.title.upper(),
+                'title': title,
                 'slug': service.slug,
+                'desc': description,
                 'imageFiles': image_files,
+                'pageType': service.title
             }
             return render(request, 'index/service.html', context)
 
@@ -155,7 +193,9 @@ class GalleryPageView(View):
 
         if category in categories:
             folder_path = 'img/apartments/' + category
-            title = _(f'ДОМ {category.upper()}')
+            title = f'ДОМ {category.upper()}'
+            if request.LANGUAGE_CODE == "en":
+                title = f'{category.upper()} HOME'
 
         full_folder_path = os.path.join(settings.STATICFILES_DIRS[0], folder_path)
 
@@ -166,6 +206,7 @@ class GalleryPageView(View):
 
         context = {
             'image_paths': image_paths,
-            'page_title': title
+            'page_title': title,
+            'pageType': title
         }
         return render(request, 'index/gallery.html', context)
