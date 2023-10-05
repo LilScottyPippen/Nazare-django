@@ -89,7 +89,7 @@ class Subcategory(models.Model):
     title_en = models.CharField(max_length=100, verbose_name="Название (English)")
     icon = models.CharField(max_length=255, verbose_name="Иконка (Font awesome)")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Категория")
-    slug = models.SlugField(max_length=100, verbose_name="Псевдоним (English)")
+    slug = models.SlugField(null=False, blank=True, max_length=100, verbose_name="Псевдоним (English)")
     page_slug = models.ForeignKey(PageSlug, on_delete=models.CASCADE, verbose_name="Псевдоним страницы")
 
     class Meta:

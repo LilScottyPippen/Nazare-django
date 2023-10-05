@@ -24,7 +24,7 @@
                     <div class="content__service">
                         <div class="content__service_items">
                             {% for sub in subcategories %}
-                                <div class="content__service_item" onclick="window.location='{% url sub.page_slug.slug sub.slug %}'">
+                                <div class="content__service_item" onclick="window.location='{% if sub.slug %} {% url sub.page_slug.slug sub.slug %} {% else %} {% url sub.page_slug.slug %} {% endif %}'">
                                     <div class="service__item_img">
                                         {{ sub.icon | safe }}
                                     </div>

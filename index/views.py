@@ -210,3 +210,11 @@ class GalleryPageView(View):
             'pageType': title
         }
         return render(request, 'index/gallery.html', context)
+
+
+class RentPageView(TemplateView):
+    template_name = 'index/rent.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context

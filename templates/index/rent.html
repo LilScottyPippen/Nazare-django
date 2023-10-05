@@ -1,0 +1,32 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'basic/head.html'%}
+        <link rel="stylesheet" href="{% static 'css/privacy.css' %}">
+    </head>
+    <body>
+        {% include 'basic/preloader.html' %}
+        {% include 'basic/callback.html' %}
+        {% include 'basic/header.html' %}
+        {% include 'basic/viberQrCode.html' %}
+
+        <main class="main">
+            <!-- ======== CONTENT CONTAINER ======== -->
+            <section class="content__container">
+                <!-- ======== CONTENT TITLE ======== -->
+                <div class="content__title">
+                    <span class="content__title_dot">•</span><span>{% trans 'ПРОКАТ И АРЕНДА' %}</span><span class="content__title_dot">•</span>
+                </div>
+                <!-- ======== CONTENT DESCRIPTION ======== -->
+                <div class="content__description">
+                    <span>{% trans 'ИЗЫСКАННЫЙ СЕРВИС, НЕЗАБЫВАЕМЫЕ ВПЕЧАТЛЕНИЯ.' %}</span>
+                </div>
+
+            </section>
+        </main>
+
+        {% include 'basic/footer.html'%}
+    </body>
+</html>

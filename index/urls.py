@@ -12,6 +12,7 @@ urlpatterns = [
     path('contacts/', ContactsPageView.as_view(), name="contactsPage"),
     path('service/<str:slug>', ServicePageView.as_view(), name='servicePage'),
     path('gallery/<str:category>', GalleryPageView.as_view(), name='galleryPage'),
+    # path('rent/', RentPageView.as_view(), name='rentPage'),
 
     # FUNCTIONS
     path('order-call/', OrderCallView.as_view(), name='orderCallFunc'),
