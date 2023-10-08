@@ -1,12 +1,12 @@
 {% load static %}
 {% load i18n %}
         <!-- ======== CALLBACK ======== -->
-        <div class="background__callback" id="callbackForm">
+        <div class="background__callback" id="modal_windows_callback">
             <div class="callback">
                 <div class="callback__header">
                     <span class="header__title">{% trans 'Заказать звонок' %}</span>
                     <div class="close__callback">
-                        <i class="fa-solid fa-xmark" id="closeCallback"></i>
+                        <i class="fa-solid fa-xmark" id="close_modal"></i>
                     </div>
                 </div>
                 <div class="callback__main">
@@ -90,5 +90,4 @@
         </script>
 
         <!-- ======== JS ======== -->
-        <script src="{% static 'js/callback.js' %}"></script>
         <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>

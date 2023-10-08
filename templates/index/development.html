@@ -22,13 +22,13 @@
 
                 <section class='info'>
                     <span class="info__description">
-                        <span class="info__description">{% trans 'По вопросам' %} {{ description }} {% trans 'звоните на номер:' %}
+                        <span class="info__description">{% trans 'По вопросам' %} {{ description }} {% trans 'звоните на номер:' %}</span>
                         <a href="tel:+375291699106" style="color: black;" id="contactLink">+375 29 169 91 06</a></span><br>
                     <span class="info__description">{% trans 'или заполните форму и мы с вами свяжемся' %}</span><br><br>
-                    <span class="info__button" id="navCallDev">{% trans 'ЗАКАЗАТЬ ЗВОНОК' %}</span>
+                    <span class="info__button" id="modal_btn_callback">{% trans 'ЗАКАЗАТЬ ЗВОНОК' %}</span>
                     <script src="{% static 'js/copyMobile.js' %}"></script>
                 </section>
-            </div>
+            </section>
         </main>
 
         {% include 'basic/footer.html'%}
