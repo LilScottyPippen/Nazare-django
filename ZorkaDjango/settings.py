@@ -1,9 +1,7 @@
 from pathlib import Path
 import os
 import dotenv
-import sentry_sdk
 from pathlib import Path
-from sentry_sdk.integrations.django import DjangoIntegration
 
 dotenv.load_dotenv()
 
@@ -22,7 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'index'
+    'index',
 ]
 
 MIDDLEWARE = [
@@ -35,7 +33,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
 ROOT_URLCONF = 'ZorkaDjango.urls'
@@ -59,17 +57,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ZorkaDjango.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME'),
-#         'USER': os.getenv('DB_USER'),
-#         'PASSWORD': os.getenv('DB_PASSWORD'),
-#         'HOST': os.getenv('DB_HOST'),
-#         'PORT': os.getenv('DB_PORT'),
-#     }
-# }
-
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
@@ -83,13 +70,6 @@ DATABASES = {
     'PORT': os.getenv('DB_PORT'),
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-# }}
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -144,11 +124,3 @@ ROLLBAR = {
     'code_version': '1.0',
     'root': BASE_DIR,
 }
-
-# CELERY
-CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
-CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
-CELERY_TIMEZONE = os.getenv('CELERY_TIMEZONE')
-CELERY_ACCEPT_CONTENT = [os.getenv('CELERY_ACCEPT_CONTENT', 'application/json')]
-CELERY_RESULT_SERIALIZER = os.getenv('CELERY_RESULT_SERIALIZER')
-CELERY_TASK_SERIALIZER = os.getenv('CELERY_TASK_SERIALIZER')

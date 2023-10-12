@@ -1,16 +1,19 @@
 import os
 import re
-from .tasks import *
+import threading
 from .models import *
 from .constants import *
 from django.views import View
 from django.conf import settings
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.core.mail import send_mail
+from django.contrib.auth.models import User
 from django.views.generic import TemplateView
 from django.core.validators import validate_email
-from django.core.exceptions import ValidationError
+from django.template.loader import render_to_string
 from django.utils.translation import gettext_lazy as _
+from django.http import JsonResponse, HttpResponseNotFound
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 
 
 class IndexPageView(TemplateView):
@@ -44,11 +47,9 @@ class PrivacyPageView(TemplateView):
 
 
 class CatalogPageView(View):
-    # template_name = 'index/catalog.html'
-
     def get(self, request, **kwargs):
-        category = Category.objects.get(slug=kwargs.get('pageType').lower())
-        if category:
+        try:
+            category = Category.objects.get(slug=kwargs.get('pageType').lower())
             subcategories = Subcategory.objects.filter(category=category)
             title = category.title
             if request.LANGUAGE_CODE == "en":
@@ -60,22 +61,14 @@ class CatalogPageView(View):
                 'subcategories': subcategories,
             }
             return render(request, 'index/catalog.html', context)
-
-    # def get_context_data(self, pageType, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     if pageType == 'gallery':
-    #         context['page_url'] = 'galleryPage'
-    #         context['pageType'] = "Апартаменты"
-    #     else:
-    #         context['page_url'] = 'apartHomePage'
-    #         context['pageType'] = "Галерея"
-    #     return context
+        except ObjectDoesNotExist:
+            return HttpResponseNotFound("Page not found")
 
 
 class ApartHomePageView(View):
     def get(self, request, **kwargs):
-        apartment = Apartment.objects.get(title=kwargs.get('title'))
-        if apartment:
+        try:
+            apartment = Apartment.objects.get(title=kwargs.get('title'))
             image_folder_path = os.path.join(settings.STATIC_ROOT, 'img', 'apartments', apartment.title)
 
             image_files = os.listdir(image_folder_path)
@@ -98,13 +91,14 @@ class ApartHomePageView(View):
                 'pageType': f'Дом {apartment.title}'
             }
             return render(request, 'index/apartment-home.html', context)
-        return render(request, 'index/development.html')
+        except ObjectDoesNotExist:
+            return HttpResponseNotFound("Page not found")
 
 
 class OrderCallView(View):
     def is_valid_phone(self, phone):
-        belarus_pattern = r'^(?:\+375|375)?\d{9}$'
-        russia_pattern = r'^(?:\+7|7)?\d{10}$'
+        belarus_pattern = r'^(?:\+375|375)\d{9}$'
+        russia_pattern = r'^(?:\+7|7)\d{10}$'
 
         return re.match(belarus_pattern, phone) or re.match(russia_pattern, phone)
 
@@ -124,8 +118,19 @@ class OrderCallView(View):
 
         try:
             callback = Callback.objects.create(name=name, phone=phone, placeApplication=page_type)
-            create_callback.delay(callback.id)
+            threading.Thread(target=self.create_callback, args=(callback.id,)).start()
             return JsonResponse({'success': True, 'message': SUCCESS_MESSAGES['success_callback']})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
+
+    def create_callback(self, callback_id):
+        try:
+            callback = Callback.objects.get(id=callback_id)
+            message = render_to_string('mailing/admin_callback.html',
+                                       {'name': callback.name, 'phone': callback.phone, 'created': callback.created_at})
+            recipient_list = [admin.email for admin in User.objects.filter(is_superuser=True)]
+            send_mail(MESSAGE_TYPE['callback'], message, settings.EMAIL_HOST_USER, recipient_list, fail_silently=False)
+            return True
         except Exception as e:
             return JsonResponse({'success': False, 'message': ERROR_MESSAGES['invalid_request']})
 
@@ -163,8 +168,8 @@ class SaveEmailView(View):
 
 class ServicePageView(View):
     def get(self, request, **kwargs):
-        service = Services.objects.get(slug=kwargs.get('slug'))
-        if service:
+        try:
+            service = Services.objects.get(slug=kwargs.get('slug'))
             image_folder_path = os.path.join(settings.STATIC_ROOT, 'img', 'services', service.slug)
             image_files = os.listdir(image_folder_path)
 
@@ -182,6 +187,8 @@ class ServicePageView(View):
                 'pageType': service.title
             }
             return render(request, 'index/service.html', context)
+        except ObjectDoesNotExist:
+            return HttpResponseNotFound("Page not found")
 
 
 class GalleryPageView(View):

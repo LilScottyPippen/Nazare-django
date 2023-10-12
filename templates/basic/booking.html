@@ -1,0 +1,87 @@
+{% load static %}
+{% load i18n %}
+<!-- ======== MODAL BOOKING WINDOW ======== -->
+<div class="background__booking" id="modal_windows_book">
+    <div class="booking">
+        <div class="booking__title">
+            <span>БРОНИРОВАНИЕ {{ homeTitle }}</span>
+            <div class="close__callback">
+                <i class="fa-solid fa-xmark" id="close_modal"></i>
+            </div>
+        </div>
+        <div class="booking__main">
+            <div class="booking__calendar">
+                <span class="calendar__title">Заезд - Выезд</span><br>
+                <input class="calendar__input" id="date-range" type="text" readonly="readonly" placeholder="Выберите дату">
+            </div>
+
+            <div class="booking__info">
+                <span>Контактные данные</span>
+                <input type="text" placeholder="ИМЯ">
+                <input type="text" placeholder="ТЕЛЕФОН">
+                <input type="email" placeholder="ПОЧТА">
+
+                <span class="booking__btn" style="">
+                    {% trans "ЗАБРОНИРОВАТЬ" %}
+                </span>
+
+                <span class="booking__price">
+                    ИТОГОВАЯ ЦЕНА: 900 BYN
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            moment.locale('ru');
+            let today = moment();
+            let oneYearLater = moment().add(365, 'days');
+            let startDate;
+            let endDate;
+            let dateRangeInput = document.getElementById('date-range');
+            let picker = new Pikaday({
+                field: dateRangeInput,
+                format: 'D MMMM',
+                minDate: today.toDate(),
+                maxDate: oneYearLater.toDate(),
+                bound: false,
+                i18n: {
+                    previousMonth : 'Предыдущий месяц',
+                    nextMonth     : 'Следующий месяц',
+                    months        : moment.months(),
+                    weekdays      : moment.weekdays(),
+                    weekdaysShort : moment.weekdaysShort()
+                },
+                onSelect: function (date) {
+                    var selectedDate = moment(date);
+                    if (startDate && endDate) {
+                        startDate = selectedDate;
+                        endDate = null;
+                    } else if (!startDate || selectedDate.isBefore(startDate, 'day')) {
+                        if (endDate && endDate.isBefore(selectedDate, 'day')) {
+                            endDate = startDate.clone();
+                        }
+                        startDate = selectedDate;
+                    } else {
+                        endDate = selectedDate;
+                    }
+                    updateDateRangeInput(startDate, endDate);
+                }
+            });
+
+            function updateDateRangeInput(start, end) {
+                if (start && end) {
+                    dateRangeInput.value = start.format('D MMMM') + ' - ' + end.format('D MMMM');
+                } else if (start) {
+                    dateRangeInput.value = start.format('D MMMM') + ' - ';
+                } else {
+                    dateRangeInput.value = '';
+                }
+            }
+        });
+    </script>
+    </div>
+</div>

@@ -15,3 +15,5 @@ staticfiles_build
 *.rdb
 tmp/
 migrations
+htmlcov
+.coverage

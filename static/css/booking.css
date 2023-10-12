@@ -1,0 +1,86 @@
+@import "variables.css";
+
+/* ======== MODEL BOOKING WINDOW ======== */
+.background__booking{
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: var(--z-fixed-background);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    background-color: white;
+    border-radius: 30px;
+    gap: 15px;
+    box-shadow: 0px 2px 10px 0 #24486C;
+    border: #24486C 2px solid;
+}
+
+.booking__title{
+    display: flex;
+}
+
+.booking__main{
+    display: flex;
+}
+
+.booking__calendar{
+    background-color: white;
+    border: #24486C 2px solid;
+    width: fit-content;
+    padding: 10px 15px;
+    margin-right: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px 0 #24486C;
+}
+
+.calendar__title{
+    font-size: var(--medium-font-size);
+    user-select: none;
+}
+
+.calendar__input{
+    all: unset;
+    font-size: var(--medium-font-size);
+    font-weight: var(--font-semi-bold);
+}
+
+.booking__info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.booking__btn{
+    font-size: 15px;
+    background-color: #24486C;
+    color: white;
+    width: fit-content;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer
+}
+
+.booking__info input{
+    all: unset;
+    border: var(--blue-color) 2px solid;
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: var(--small-font-size);
+}
+
+.booking__price{
+    font-size: var(--medium-font-size);
+    margin-top: 20px
+}

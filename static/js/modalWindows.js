@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
         let modalBtnCallback = document.querySelectorAll('#modal_btn_callback');
         let modalBtnViber = document.querySelectorAll('#modal_btn_viber');
+        let modalBtnBook = document.querySelectorAll('#modal_btn_book')
 
         modalBtnCallback.forEach(function(element) {
             element.addEventListener('click', function() {
@@ -30,6 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
         modalBtnViber.forEach(function(element) {
             element.addEventListener('click', function() {
                 openModalWindows('modal_windows_viber');
+            });
+        });
+
+        modalBtnBook.forEach(function(element) {
+            element.addEventListener('click', function() {
+                openModalWindows('modal_windows_book');
             });
         });
     } catch (error) {}
