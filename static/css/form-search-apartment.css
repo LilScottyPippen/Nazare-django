@@ -1,0 +1,97 @@
+@import "/static/css/variables.css";
+
+.content-container-form-search-apartment{
+    display: flex;
+    align-items: flex-end;
+}
+
+.form-search-apartment-grid{
+    display: grid;
+    grid-template-columns: 150px 150px;
+    gap: 10px;
+}
+
+.form-search-apartment-grid-2x2{
+    grid-row: 2/2;
+    grid-column: span 2;
+}
+
+.form-search-apartment-grid-3x2{
+    grid-row: 3/3;
+    grid-column: span 2;
+}
+
+.search-apartment-dropdown{
+    color: var(--blue-color);
+    background-color: var(--white-color);
+    border-radius: 10px;
+    font-size: var(--content-font);
+}
+
+.search-apartment-dropdown i {
+    font-size: 20px;
+}
+
+.search-apartment-dropdown-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.search-apartment-dropdown-header.active + .search-apartment-dropdown-footer{
+    display: flex;
+}
+
+.search-apartment-dropdown-header.active .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.search-apartment-dropdown-footer{
+    display: none;
+    gap: 10px;
+    padding: 10px;
+}
+
+.search-apartment-dropdown-footer-counter{
+    display: flex;
+    gap: 5px;
+}
+
+.apartment-dropdown-footer-counter-control{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.apartment-dropdown-footer-counter-control i {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.search-apartment-btn{
+    border: 2px solid var(--white-color);
+    border-radius: 10px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    color: var(--white-color);
+    font-size: var(--button-font);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-apartment-btn:hover{
+    color: var(--blue-color);
+    background-color: var(--white-color);
+}
+
+@media (max-width: 768px){
+    .form-search-apartment-grid{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}

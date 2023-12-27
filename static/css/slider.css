@@ -1,0 +1,77 @@
+@import "/static/css/variables.css";
+
+.slider-container{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    width: 790px;
+    margin: 10px;
+    overflow: hidden;
+    padding: 0 5px 10px 5px;
+}
+
+.slider{
+    display: flex;
+    gap: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.slider-container-btn{
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+}
+
+.prevBtn, .nextBtn {
+    position: absolute;
+    margin-top: 20px;
+    width: fit-content;
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white-color);
+    cursor: pointer;
+}
+
+.prevBtn, .nextBtn i{
+    font-size: 20px;
+    color: var(--blue-color);
+}
+
+.prevBtn{
+    right: -35px;
+}
+
+.nextBtn{
+    right: -815px;
+}
+
+@media (max-width: 1250px) and (min-width: 768px){
+    .slider-container{
+        width: 390px;
+    }   
+    
+    .nextBtn{
+        right: -415px;
+    }
+}
+
+@media (max-width: 768px){
+    .slider-container{
+        width: 290px;
+        padding: 0 3px 10px 3px;
+    }    
+
+    .prevBtn{
+        right: -30px;
+    }
+
+    .nextBtn{
+        right: -315px;
+    }
+}

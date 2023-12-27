@@ -1,0 +1,148 @@
+@import "./variables.css";
+
+footer{
+    font-size: var(--content-font);
+}
+
+.footer-main{
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: var(--blue-color);
+    color: var(--white-color);
+}
+
+.footer-main-containers{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-main-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-main-logo{
+    cursor: pointer;
+}
+
+.footer-main-logo img{
+    width: 100px;
+}
+
+.footer-main-nav-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: var(--button-font);
+}
+
+.footer-main-container-items{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-main-container-item{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.footer-main-container-item i{
+    font-size: 18px;
+}
+
+.footer-main-container-social-contacts{
+    display: flex;
+    gap: 15px;
+}
+
+.footer-main-social-contanct{
+    font-size: 24px;
+}
+
+.footer-main-mailing{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-main-mailing-form{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-main-mailing-input{
+    width: 250px;
+    border: none;
+    outline: none;
+    color: var(--blue-color);
+    background-color: var(--white-color);
+    border-radius: 10px;
+    padding: 11px;
+}
+
+.footer-main-mailing-btn{
+    border: 1px var(--white-color) solid;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.footer-main-mailing-btn:hover{
+    background-color: var(--white-color);
+    color: var(--blue-color);
+}
+
+.footer-main-follow{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.footer-main-follow-socials{
+    width: fit-content;
+}
+
+.footer-main-follow-social{
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.footer-main-social-contanct:hover,
+.footer-main-follow-social i:hover{
+    scale: 1.25;
+}
+
+.footer-secondary-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--blue-color);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.footer-secondary-items *{
+    width: fit-content;
+}
+
+@media (max-width: 1300px){
+    .footer-main-containers{
+        flex-wrap: wrap;
+        justify-content: normal;
+        gap: 50px
+    }
+}
+
+@media (max-width: 786px){
+    .footer-secondary-items{
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+}
