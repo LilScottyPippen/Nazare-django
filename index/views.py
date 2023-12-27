@@ -1,4 +1,9 @@
 from django.shortcuts import render
+from django.views import View
 
-def indexPage(request):
-    return render(request, 'index/index.html')
+
+class IndexPageView(View):
+    template_name = 'index/index.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
