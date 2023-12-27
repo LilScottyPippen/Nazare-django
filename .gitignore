@@ -135,7 +135,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+Nazare_django/.env
 .venv
 env/
 venv/

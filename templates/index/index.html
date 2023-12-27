@@ -5,29 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ПАРК ОТЕЛЬ ZORKA</title>
-    <link rel="icon" href="/static/svg/ZorkaLogo-icon.svg">
+    <link rel="icon" href="{% static 'svg/ZorkaLogo-icon.svg' %}">
 
-    <link rel="stylesheet" href="/static/css/base.css">
-    <link rel="stylesheet" href="/static/css/header.css">
-    <link rel="stylesheet" href="/static/css/nav-mobile.css">
-    <link rel="stylesheet" href="/static/css/index.css">
-    <link rel="stylesheet" href="/static/css/card.css">
-    <link rel="stylesheet" href="/static/css/grid-cards.css">
-    <link rel="stylesheet" href="/static/css/slider.css">
-    <link rel="stylesheet" href="/static/css/footer.css">
-    <link rel="stylesheet" href="/static/css/preloader.css">
-    <link rel="stylesheet" href="/static/css/form-search-apartment.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav-mobile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
+    <link rel="stylesheet" href="{% static 'css/grid-cards.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/preloader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 
-    <script src="/static/js/preloader.js"></script>
-    <script src="/static/js/guest-counter.js"></script>
+    <script src="{% static 'js/preloader.js' %}"></script>
+    <script src="{% static 'js/guest-counter.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
 </head>
 <body>
     <section class="preloader" id="preloader">
-        <img src="/static/svg/ZorkaLogo.svg" alt="logo">
+        <img src="{% static 'svg/ZorkaLogo.svg' %}" alt="logo">
         <span class="loader"></span>
     </section>
 
@@ -35,7 +35,7 @@
         <nav class="nav-container main-padding">
             <div class="nav-left">
                 <a class="nav-logo" href="#">
-                    <img src="/static/svg/ZorkaLogo.svg" alt="logo">
+                    <img src="{% static 'svg/ZorkaLogo.svg' %}" alt="logo">
                 </a>
             </div>
 
@@ -365,7 +365,7 @@
                     <section class="content-items flex-wrap gap-20-to-40">
                         <div class="card bg-white shadow">
                             <div class="card-main-section">
-                                <div class="card-image-container" style="background-image: url('/static/img/apartments/resources/cards/obsidian.webp');"></div>
+                                <div class="card-image-container" style="background-image: url('{% static 'img/apartments/resources/cards/obsidian.webp' %}');"></div>
                                 <div class="card-main-section-content">
                                     <span class="card-main-content-title">
                                         OBSIDIAN
@@ -391,7 +391,7 @@
 
                         <div class="card blue-card bg-blue shadow">
                             <div class="card-main-section">
-                                <div class="card-image-container" style="background-image: url('/static/img/apartments/resources/cards/terra.webp');"></div>
+                                <div class="card-image-container" style="background-image: url('{% static 'img/apartments/resources/cards/terra.webp' %}');"></div>
                                 <div class="card-main-section-content">
                                     <span class="card-main-content-title color-white">
                                         TERRA
@@ -419,7 +419,7 @@
 
                         <div class="card bg-white shadow">
                             <div class="card-main-section">
-                                <div class="card-image-container" style="background-image: url('/static/img/apartments/resources/cards/olive.webp');"></div>
+                                <div class="card-image-container" style="background-image: url('{% static 'img/apartments/resources/cards/olive.webp' %}');"></div>
                                 <div class="card-main-section-content">
                                     <span class="card-main-content-title">
                                         OLIVE
@@ -458,7 +458,7 @@
                         <div class="grid-container">
                             <div class="grid-item shadow-blur bg-white object-1">
                                 <div class="grid-item-icon-for-object-2x2 bg-white"><i class="fa-solid fa-wifi"></i></div>
-                                <div class="grid-item-image-container" style="background-image: url('/static/img/apartments/resources/cards/olive2.webp');"></div>
+                                <div class="grid-item-image-container" style="background-image: url('{% static 'img/apartments/resources/cards/olive2.webp' %}');"></div>
                                 <div class="grid-item-content-for-object-2x2">
                                     <span class="grid-item-section-title">WiFi Free</span>
                                     <span class="grid-item-section-description">
@@ -530,7 +530,7 @@
                                             Наслаждался каждым моментом в уютном парк-отеле Zorka. Безупречный сервис, красивейший пейзаж и непередаваемая атмосфера покоя. Вернусь снова и снова!
                                         </span>
                                         <div class="card-main-content-guest">
-                                            <div class="card-main-content-guest-image" style="background-image: url(/static/img/reviews/guest1.webp);"></div>
+                                            <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest1.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
                                                 <span class="card-main-content-guest-name color-blue">
                                                     Олег
@@ -560,7 +560,7 @@
                                             Превзошел все ожидания. Уютные номера, великолепный сервис и впечатляющая природа. Незабвенный опыт, рекомендую всем.
                                         </span>
                                         <div class="card-main-content-guest">
-                                            <div class="card-main-content-guest-image" style="background-image: url(/static/img/reviews/guest2.webp);"></div>
+                                            <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest2.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
                                                 <span class="card-main-content-guest-name color-blue">
                                                     Елена
@@ -590,7 +590,7 @@
                                             Семейный рай! Отличные условия для детей, множество развлечений и безопасная атмосфера. Наш отдых был полон счастья, дети в восторге, а родители могли наконец-то расслабиться.
                                         </span>
                                         <div class="card-main-content-guest">
-                                            <div class="card-main-content-guest-image" style="background-image: url(/static/img/reviews/guest3.webp);"></div>
+                                            <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest3.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
                                                 <span class="card-main-content-guest-name color-blue">
                                                     Алексей
@@ -620,7 +620,7 @@
                                             Пятерка звезд не выражает всей красоты этого места! Роскошные номера, великолепный вид из окна и атмосфера уюта. Это был отпуск моей мечты, я влюблена в этот отель!
                                         </span>
                                         <div class="card-main-content-guest">
-                                            <div class="card-main-content-guest-image" style="background-image: url(/static/img/reviews/guest4.webp);"></div>
+                                            <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest4.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
                                                 <span class="card-main-content-guest-name color-blue">
                                                     Мария
@@ -649,7 +649,7 @@
             <div class="footer-main-containers">
                 <div class="footer-main-container">
                     <a class="footer-main-logo">
-                        <img src="/static/svg/ZorkaLogo.svg" alt="logo">
+                        <img src="{% static 'svg/ZorkaLogo.svg' %}" alt="logo">
                     </a>
                 </div>
 
@@ -745,8 +745,8 @@
         </div>
     </footer>
 
-    <script src="/static/js/nav-mobile.js"></script>
-    <script src="/static/js/slider.js"></script>
-    <script src="/static/js/datepicker.js"></script>
+    <script src="{% static 'js/nav-mobile.js' %}"></script>
+    <script src="{% static 'js/slider.js' %}"></script>
+    <script src="{% static 'js/datepicker.js' %}"></script>
 </body>
 </html>
