@@ -121,24 +121,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-# ADMIN_REORDER = (
-#     # Keep original label and models
-#     'sites',
-#
-#     # Rename app
-#     {'app': 'rm_app', 'label': 'Продукция',
-#         'models': ('rm_app.ProductCategory', 'rm_app.ProductModel', 'rm_app.ProductChassis')},
-#     {'app': 'rm_app', 'label': 'Производство',
-#         'models': ('rm_app.Workshop', 'rm_app.Region', 'rm_app.WorkCenters', 'rm_app.AssemblyUnit')},
-#     {'app': 'rm_app', 'label': 'Операции',
-#      'models': ('rm_app.Operations',)},
-#     {'app': 'pp_app', 'label': 'План производства',
-#         'models': ('pp_app.MonthPlan',)},
-#     {'app': 'hrd_app', 'label': 'Кадры', 'models': ('hrd_app.Worker',)},
-#     {'app': 'wc_app', 'label': 'Рабочий процесс',
-#         'models': ('wc_app.Interupts', 'wc_app.InteruptInWorkProcess', 'wc_app.WorkProcess')},
-#     {'app': 'main_app', 'label': 'Пользователи', 'models': ('main_app.User',)}
-# )
+ADMIN_REORDER = (
+    # Keep original label and models
+    'sites',
+
+    # Rename app
+    {'app': 'index', 'label': 'Аппартаменты',
+        'models': ('index.Apartament',)},
+)
 #
 #
 # AUTH_USER_MODEL = "main_app.User"
