@@ -44,11 +44,15 @@ class ApartamentConvenience(models.Model):
         verbose_name_plural = "Удобства"
 
 
+def apartament_photo_path(instance, file_name):
+    return f"apartaments/{instance.apartament.title}/{file_name}"
+
+
 class ApartamentPhotoGalery(models.Model):
     apartament = models.ForeignKey(
         Apartament, on_delete=models.PROTECT, verbose_name="Апартаменты")
     photo = models.ImageField(
-        upload_to=f"apartaments/{apartament.name}", verbose_name="Фото")
+        upload_to=apartament_photo_path, verbose_name="Фото")
 
 
 class ApartamentMenu(models.Model):

@@ -32,7 +32,7 @@ class ApartamentAdmin(admin.ModelAdmin):
     list_editable = ('title', 'guest_count', 'square', 'slug')
 
     fields = [('title', 'slug'), ('guest_count',
-                                  'square', 'room_count'), 'daily_price']
+                                  'square', 'room_count', 'sleep_place_count'), 'daily_price']
 
     inlines = [ApartamentMenuInline, ApartamentPriceListInline,
                ApartamentConvenienceInline, ApartamentPhotoInline]
