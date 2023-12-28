@@ -1,5 +1,5 @@
 {% for house in houses %}
-<a href="/apartament/{{house.apartament.slug}}">
+<a href="{% url 'index:apartament' house.apartament.slug %}">
   <div class="card blue-card bg-blue shadow">
     <div class="card-main-section">
       <div class="card-image-container" style="background-image: url('{{house.apartament_main_photo.url}}');"></div>

@@ -1,11 +1,15 @@
 from django.urls import path
-from .views import *
+from index.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 
-urlpatterns = [
-    path('', IndexPageView.as_view())
 
+app_name = "index"
+
+urlpatterns = [
+    path('', IndexPageView.as_view(), name="index"),
+    path('apartaments/<slug:apartament>',
+         ApartamentPageView.as_view(), name="apartament"),
 ]
 
 

@@ -1,1 +1,1 @@
-from .index import *
+from .main_views import *

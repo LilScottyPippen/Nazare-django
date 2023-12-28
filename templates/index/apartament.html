@@ -1,0 +1,153 @@
+{% extends 'base/base.html'%}
+
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/apartment.css' %}">
+<link rel="stylesheet" href="{% static 'css/grid-galery.css' %}">
+
+
+{% endblock link %}
+
+
+{% block main %}
+<section class="content-section">
+    <section class="content-container">
+        <div class="content-container-items apartment-index">
+            <div class="content-container-apartment-title">
+                <span class="content-title color-blue">ДОМ {{apartament.title}}</span>
+                <span class="content-title-price color-blue">{{apartament.daily_price}} BYN/сутки</span>
+            </div>
+
+            <div class="content-items">
+                <div class="grid-galery">
+                    {% for photo in photos %}
+                    <div class="grid-galery-image shadow" style="background-image: url('{{photo.photo.url}}');"
+                        onclick="openModal(this.style.backgroundImage)"></div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="modal" id="myModal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImg">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+
+            <div class="content-items apartment-description">
+                <div class="apartment-info">
+                    <div class="apartment-info-item">
+                        <i class="fa-solid fa-users"></i><span>{{apartament.guest_count}}</span>
+                    </div>
+                    <div class="apartment-info-item">
+                        <i class="fa-solid fa-cube"></i><span>{{apartament.square}} м<sup>2</sup></span>
+                    </div>
+                    <div class="apartment-info-item">
+                        <i class="fa-solid fa-door-open"></i><span>{{apartament.room_count}} комнат</span>
+                    </div>
+                </div>
+                <div class="apartment-booking">
+                    <button class="apartment-bootking-btn">
+                        ЗАБРОНИРОВАТЬ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<section class="content-section bg-gray">
+    <section class="content-container">
+        <div class="content-container-items container-apartment-list">
+            <div class="content-container-item">
+                <div class="content-title color-blue">
+                    В СТОИМОСТЬ ВХОДИТ
+                </div>
+
+                <div class="content-items apartment-list">
+                    {% for price_list in price_lists %}
+                    <div class="content-item-apartment-list">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>{{price_list}}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="content-container-item">
+                <div class="content-title color-blue">
+                    Удобства
+                </div>
+
+                <div class="content-items apartment-list">
+                    {% for elem in conveniences %}
+                    <div class="content-item-apartment-list">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>{{elem}}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<section class="content-section">
+    <div class="content-container flex-column align-items-center">
+        <div class="content-container-items">
+            <div class="content-title color-blue">
+                ПРЕИМУЩЕСТВА
+            </div>
+
+            <section class="content-items">
+                <div class="grid-container">
+                    <div class="grid-item shadow-blur bg-white object-1">
+                        <div class="grid-item-icon-for-object-2x2 bg-white"><i class="fa-solid fa-wifi"></i></div>
+                        <div class="grid-item-image-container"
+                            style="background-image: url('{{first_photo.photo.url}}');"></div>
+                        <div class="grid-item-content-for-object-2x2">
+                            <span class="grid-item-section-title">WiFi Free</span>
+                            <span class="grid-item-section-description">
+                                Свободный и быстрый доступ к интернету в любой точке отеля. Оставайтесь а связи,
+                                общайтесь и делитесь впечатлениями без ограничений.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="grid-item shadow-blur bg-white object-2">
+                        <div class="grid-item-content-for-object-2x1">
+                            <div class="grid-item-icon"><i class="fa-solid fa-medal"></i></div>
+                            <div class="grid-item-content-column">
+                                <span class="font-bold">Комфорт и стиль</span>
+                                <span class="grid-item-section-description">
+                                    Насладитесь уникальным сочетанием комфорта и стиля в каждой детали. Изысканный
+                                    дизайн номеров создает уютную атмосферу, где вы почувствуете себя как дома.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-item shadow-blur bg-gray object-3">
+                        <div class="grid-item-content-for-object-1x1">
+                            <div class="grid-item-icon bg-blue color-white"><i class="fa-regular fa-credit-card"></i>
+                            </div>
+                            <span class="font-bold">Лучшая цена</span>
+                            <span class="grid-item-section-description">
+                                Непревзойденный комфорт по выгодной стоимости.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="grid-item shadow-blur bg-white object-4">
+                        <div class="grid-item-content-for-object-1x1">
+                            <div class="grid-item-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <span class="font-bold">10 км от города</span>
+                            <span class="grid-item-section-description">
+                                Близость к удобствам, недалеко от природы.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+{% endblock main %}

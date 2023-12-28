@@ -29,6 +29,9 @@ class ApartamentPriceList(models.Model):
         Apartament, on_delete=models.PROTECT, verbose_name="Апартаменты")
     name = models.CharField(max_length=255, verbose_name="Наименование услуги")
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = "В стоимость входит"
         verbose_name_plural = "В стоимость входит"
@@ -38,6 +41,9 @@ class ApartamentConvenience(models.Model):
     apartament = models.ForeignKey(
         Apartament, on_delete=models.PROTECT, verbose_name="Апартаменты")
     name = models.CharField(max_length=255, verbose_name="Удобства")
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "Удобства"
