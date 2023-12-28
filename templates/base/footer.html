@@ -1,10 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% load static %}
+<footer>
+    <div class="footer-main main-padding">
+        <div class="footer-main-containers">
+            <div class="footer-main-container">
+                <a class="footer-main-logo">
+                    <img src="{% static 'svg/ZorkaLogo.svg' %}" alt="logo">
+                </a>
+            </div>
+
+            <div class="footer-main-container">
+                <ul class="footer-main-nav-list">
+                    <a class="footer-main-nav-list-link" href="#">
+                        О нас
+                    </a>
+                    <a class="footer-main-nav-list-link" href="#">
+                        Апартаменты
+                    </a>
+                    <a class="footer-main-nav-list-link" href="#">
+                        Услуги
+                    </a>
+                    <a class="footer-main-nav-list-link" href="#">
+                        Галерея
+                    </a>
+                    <a class="footer-main-nav-list-link" href="#">
+                        Контакты
+                    </a>
+                </ul>
+            </div>
+
+            <div class="footer-main-container">
+                <div class="footer-main-container-items">
+                    <div class="footer-main-container-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span class="footer-main-container-title">
+                            Мазоловский сельсовет 63
+                        </span>
+                    </div>
+                    <div class="footer-main-container-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span class="footer-main-container-title">
+                            info@nazare.by
+                        </span>
+                    </div>
+                    <div class="footer-main-container-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="tel:+375291699106" class="footer-main-container-title">
+                            +375 29 169 91 06
+                        </a>
+                    </div>
+                    <div class="footer-main-container-social-contacts">
+                        <a class="footer-main-social-contanct" href="#">
+                            <i class="fa-brands fa-viber"></i>
+                        </a>
+                        <a class="footer-main-social-contanct" href="#">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                        <a class="footer-main-social-contanct" href="#">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-main-container">
+                <div class="footer-main-mailing">
+                    <span class="footer-main-mailing-title">
+                        ПОДПИСКА НА РАССЫЛКУ
+                    </span>
+                    <div class="footer-main-mailing-form">
+                        <input type="email" class="footer-main-mailing-input" placeholder="ВАШ E-MAIL">
+                        <span class="footer-main-mailing-btn">
+                            ПОДПИСАТЬСЯ
+                        </span>
+                    </div>
+                </div>
+
+                <div class="footer-main-follow">
+                    <span class="footer-main-follow-title">
+                        СЛЕДИ ЗА НАМИ
+                    </span>
+                    <div class="footer-main-follow-socials">
+                        <a href="https://www.instagram.com/na_zare.by/" target="_blank" class="footer-main-follow-social">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-secondary main-padding">
+        <div class="footer-secondary-items">
+            <span>© ZORKA 2023 Все права защищены</span>
+            <a href="https://github.com/LilScottyPippen" target="_blank">
+                Разработано: LilScottyPippen
+            </a>
+            <a href="#">Политика конфиденциальности</a>
+        </div>
+    </div>
+</footer>
