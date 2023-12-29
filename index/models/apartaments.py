@@ -1,4 +1,5 @@
 from django.db import models
+from utils.pathes import apartament_photo_path
 
 
 class Apartament(models.Model):
@@ -48,10 +49,6 @@ class ApartamentConvenience(models.Model):
     class Meta:
         verbose_name = "Удобства"
         verbose_name_plural = "Удобства"
-
-
-def apartament_photo_path(instance, file_name):
-    return f"apartaments/{instance.apartament.title}/{file_name}"
 
 
 class ApartamentPhotoGalery(models.Model):

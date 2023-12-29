@@ -10,6 +10,10 @@ urlpatterns = [
     path('', IndexPageView.as_view(), name="index"),
     path('apartaments/<slug:apartament>',
          ApartamentPageView.as_view(), name="apartament"),
+    path('photo_gallery/', PhotoGalleryCategoryView.as_view(), name="photo_gallery"),
+    path('photo_gallery/<slug:category>',
+         PhotoGalleryView.as_view(), name="photos"),
+
 ]
 
 
