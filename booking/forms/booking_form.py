@@ -24,7 +24,7 @@ class BookingForm(forms.ModelForm):
         client_name = cleaned_data.get('client_name')
         client_surname = cleaned_data.get('client_surname')
         client_father_name = cleaned_data.get('client_father_name')
-        client_number = cleaned_data.get('client_number')
+        client_phone = cleaned_data.get('client_phone')
 
         if not is_valid_date_booking(check_in_date, check_out_date):
             raise forms.ValidationError("Booking date is invalid")
@@ -32,5 +32,5 @@ class BookingForm(forms.ModelForm):
         if not is_valid_full_name(client_name, client_surname, client_father_name):
             raise forms.ValidationError("Full name is invalid")
 
-        if not is_valid_phone(client_number):
+        if not is_valid_phone(client_phone):
             raise forms.ValidationError("Phone number is invalid")

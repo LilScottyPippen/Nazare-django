@@ -1,13 +1,12 @@
+import threading
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 from django.forms import formset_factory, BaseFormSet
-from utils.is_valid_phone import *
-from utils.is_valid_date import *
-from utils.is_valid_full_name import *
 from .models.booking import *
 from .forms.booking_form import *
+from utils.send_mail import *
 
 
 class BaseArticleFormSet(BaseFormSet):
@@ -38,17 +37,34 @@ class BookingView(TemplateView):
         if booking_form.is_valid() and formset.is_valid():
             booking_instance = booking_form.save()
 
-            if booking_instance.payment_method == PAYMENT_METHOD_CHOICES[1][0]:
-                print("It's payment method is offline")
+            self.send_mailing(booking_instance)
 
             for guest_form in formset:
                 guest_instance = Guest.objects.create(**guest_form.cleaned_data)
                 guest_instance.booking_id = booking_instance
                 guest_instance.save()
-
             return HttpResponse("Success", 200)
         else:
             return HttpResponseBadRequest("Form is invalid", 400)
+
+    def send_mailing(self, booking_instance):
+        print(booking_instance.client_mail)
+        if booking_instance.payment_method == PAYMENT_METHOD_CHOICES[1][0]:
+            threading.Thread(target=send_mail_for_admin,
+                             args=('mailing/admin_callback.html', {
+                                 'name': booking_instance.client_name,
+                                 'phone': booking_instance.client_phone,
+                                 'created': booking_instance.created_at
+                             })).start()
+        if booking_instance.payment_method == PAYMENT_METHOD_CHOICES[0][0]:
+            threading.Thread(target=send_mail_for_client,
+                             args=(booking_instance.client_mail, 'mailing/client_receipt.html', {
+                                 'name': booking_instance.client_name,
+                                 'check_in': booking_instance.check_in_date,
+                                 'check_out': booking_instance.check_out_date,
+                                 'is_paid': booking_instance.is_paid,
+                                 'total_sum': booking_instance.total_sum
+                             })).start()
 
 
 class GuestView(View):
