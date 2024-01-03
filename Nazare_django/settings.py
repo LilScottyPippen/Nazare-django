@@ -65,12 +65,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Nazare_django.wsgi.application'
 
-
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env("DATABASE_NAME"),
+        'USER': env("DATABASE_USER"),
+        'PASSWORD': env("DATABASE_PASSWORD"),
+        'HOST': env("DATABASE_HOST"),
+        'PORT': env("DATABASE_PORT"),
+
     }
+
 }
 
 
@@ -116,8 +122,10 @@ ADMIN_REORDER = (
         'models': ('index.Apartament',)},
     {'app': 'index', 'label': 'Галерея',
         'models': ('index.PhotoGalleryCategory',)},
+    {'app': 'index', 'label': 'Контактные данные',
+        'models': ('index.ContactPage',)},
     {'app': 'booking', 'label': 'Бронирование',
-        'models': ('booking.Booking','booking.Guest',)}
+        'models': ('booking.Booking', 'booking.Guest',)}
 )
 
 
