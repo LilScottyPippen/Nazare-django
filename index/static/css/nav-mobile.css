@@ -1,4 +1,4 @@
-@import "/static/css/variables.css";
+@import "variables.css";
 
 .nav-mobile{
     color: var(--white-color);

@@ -1,4 +1,4 @@
-@import "/static/css/variables.css";
+@import "variables.css";
 
 .grid-container {
     display: grid;

@@ -1,4 +1,4 @@
-@import "/static/css/card.css";
+@import "variables.css";
 
 .card{
     display: flex;

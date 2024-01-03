@@ -1,4 +1,4 @@
-@import "/static/css/variables.css";
+@import "variables.css";
 
 .content-container-form-search-apartment{
     display: flex;
