@@ -11,6 +11,7 @@ class PhotoGalleryInline(admin.TabularInline):
 class PhotoGallerySubCategoryInline(admin.StackedInline):
     model = PhotoGallerySubCategory
     extra = 1
+    show_change_link = True
 
 
 @admin.register(PhotoGalleryCategory)

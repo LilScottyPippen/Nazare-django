@@ -6,7 +6,8 @@ class PhotoGalleryCategory(models.Model):
     name = models.CharField(
         max_length=255, verbose_name="Наименование категории")
     icon = models.CharField(max_length=255, verbose_name="Иконка категории")
-    slug = models.SlugField(verbose_name="Псеводним для url")
+    slug = models.SlugField(unique=True, primary_key=True, db_index=True,
+                            verbose_name="Псеводним для url")
 
     def __str__(self):
         return self.name
@@ -22,7 +23,8 @@ class PhotoGallerySubCategory(models.Model):
     name = models.CharField(
         max_length=255, verbose_name="Наименование подкатегории")
     icon = models.CharField(max_length=255, verbose_name="Иконка подкатегории")
-    slug = models.SlugField(verbose_name="Псеводним для url")
+    slug = models.SlugField(unique=True, primary_key=True, db_index=True,
+                            verbose_name="Псеводним для url")
 
     def __str__(self):
         return self.name

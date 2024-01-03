@@ -1,0 +1,3 @@
+{% for subcategory in subcategories %}
+<a href="{% url 'index:photo_gallery' subcategory.slug %}">{{subcategory.name}}</a>
+{% endfor %}
