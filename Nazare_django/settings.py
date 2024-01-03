@@ -11,14 +11,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = env('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG') == 'True'
 
 ALLOWED_HOSTS = ['192.168.0.105', '127.0.0.1', '192.168.100.10',
                  '192.168.0.120', '192.168.0.121']
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -47,8 +43,6 @@ MIDDLEWARE = [
     'admin_reorder.middleware.ModelAdminReorder',
 ]
 
-X_FRAME_OPTIONS = "SAMEORIGIN"
-
 ROOT_URLCONF = 'Nazare_django.urls'
 
 TEMPLATES = [
@@ -74,12 +68,8 @@ WSGI_APPLICATION = 'Nazare_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': env("DATABASE_NAME"),
-        'USER': env("DATABASE_USER"),
-        'PASSWORD': env("DATABASE_PASSWORD"),
-        'HOST': env("DATABASE_HOST"),
-        'PORT': env("DATABASE_PORT"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -112,24 +102,28 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'index/static')
-
+STATIC_ROOT = os.path.join(BASE_DIR, '/index/static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'globalstatic')
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 ADMIN_REORDER = (
-    # Keep original label and models
-    'sites',
-
-    # Rename app
     {'app': 'index', 'label': 'Аппартаменты',
         'models': ('index.Apartament',)},
     {'app': 'index', 'label': 'Галерея',
-        'models': ('index.PhotoGalleryCategory',)}
+        'models': ('index.PhotoGalleryCategory',)},
+    {'app': 'booking', 'label': 'Бронирование',
+        'models': ('booking.Booking','booking.Guest',)}
 )
-#
-#
-# AUTH_USER_MODEL = "main_app.User"
-# LOGOUT_REDIRECT_URL = "/"
+
+
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL') == 'True'
