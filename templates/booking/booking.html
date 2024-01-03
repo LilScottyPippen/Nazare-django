@@ -1,10 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Бронирование</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 </head>
 <body>
-$END$
+    <div>
+        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="1">1</button>
+        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="2">2</button>
+        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="3">3</button>
+        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="4">4</button>
+        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="5">5</button>
+        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="6">6</button>
+    </div>
+
+    <form action="{% url 'booking' %}" method="POST">
+        {% csrf_token %}
+        {{ booking_form.as_p }}
+        <div id="guest-form">
+            {% include 'booking/guest_form.html' %}
+        </div>
+        <button type="submit">Отправить</button>
+    </form>
+
 </body>
 </html>

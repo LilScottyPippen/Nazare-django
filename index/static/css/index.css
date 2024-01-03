@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @import "/index/static/css/variables.css";
+=======
+@import "variables.css";
+>>>>>>> booking
 
 .bg-image {
     position: relative;

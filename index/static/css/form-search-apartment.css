@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @import "/index/staticstatic/css/variables.css";
+=======
+@import "variables.css";
+>>>>>>> booking
 
 .content-container-form-search-apartment{
     display: flex;
