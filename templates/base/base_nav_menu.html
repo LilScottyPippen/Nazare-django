@@ -29,15 +29,11 @@
       </div>
 
       <ul class="nav-mobile-dropdown-links">
-        <div class="nav-mobile-dropdown-link">
-          <a href="#">Дом OBSIDIAN</a>
-        </div>
-        <div class="nav-mobile-dropdown-link">
-          <a href="#">Дом TERRA</a>
-        </div>
-        <div class="nav-mobile-dropdown-link">
-          <a href="#">Дом OLIVE</a>
-        </div>
+          {% for house in houses %}
+              <div class="nav-mobile-dropdown-link">
+                <a href="{% url 'index:apartment' house.apartment.slug %}">Дом {{ house.apartment.title }}</a>
+              </div>
+          {% endfor %}
         <div class="nav-mobile-dropdown-link">
           <a href="#">Гостиница</a>
         </div>
@@ -74,7 +70,7 @@
 
       <ul class="nav-mobile-dropdown-links">
         <div class="nav-mobile-dropdown-link">
-          <a href="#">Фотогалерея</a>
+          <a href="{% url 'index:photo_category' %}">Фотогалерея</a>
         </div>
         <div class="nav-mobile-dropdown-link">
           <a href="#">Видеогалерея</a>

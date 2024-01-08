@@ -58,6 +58,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'utils.context_processors.common_context'
             ],
         },
     },
@@ -66,10 +67,24 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Nazare_django.wsgi.application'
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+            },
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 
@@ -112,8 +127,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 ADMIN_REORDER = (
-    {'app': 'index', 'label': 'Аппартаменты',
-        'models': ('index.Apartament',)},
+    {'app': 'index', 'label': 'Апартаменты',
+        'models': ('index.Apartment',)},
     {'app': 'index', 'label': 'Галерея',
         'models': ('index.PhotoGalleryCategory',)},
     {'app': 'booking', 'label': 'Бронирование',

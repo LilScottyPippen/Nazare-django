@@ -27,5 +27,5 @@ class Booking(models.Model):
         return str(self.id)
 
     class Meta:
-        verbose_name = "Категория бронирования"
-        verbose_name_plural = "Категории бронирования"
+        verbose_name = "Бронирование"
+        verbose_name_plural = "Бронирования"

@@ -8,8 +8,8 @@ app_name = "index"
 
 urlpatterns = [
     path('', IndexPageView.as_view(), name="index"),
-    path('apartaments/<slug:apartament>',
-         ApartamentPageView.as_view(), name="apartament"),
+    path('apartments/<slug:apartment>',
+         ApartmentPageView.as_view(), name="apartment"),
     path('photo-gallery-category/',
          PhotoGalleryCategoryView.as_view(), name="photo_category"),
     path('photo-gallery-subcategory/<slug:category>',

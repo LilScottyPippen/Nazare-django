@@ -7,24 +7,24 @@ class IndexPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["houses"] = ApartamentMenu.objects.all()
+        context["houses"] = ApartmentMenu.objects.all()
         return context
 
 
-class ApartamentPageView(TemplateView):
-    template_name = "index/apartament.html"
+class ApartmentPageView(TemplateView):
+    template_name = "index/apartment.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        apartament = Apartament.objects.get(
-            slug=kwargs['apartament'])
+        apartment = Apartment.objects.get(
+            slug=kwargs['apartment'])
 
-        context["apartament"] = apartament
-        context["price_lists"] = ApartamentPriceList.objects.filter(
-            apartament=apartament)
-        context["photos"] = ApartamentPhotoGalery.objects.filter(
-            apartament=apartament)
-        context["conveniences"] = ApartamentConvenience.objects.filter(
-            apartament=apartament)
+        context["apartment"] = apartment
+        context["price_lists"] = ApartmentPriceList.objects.filter(
+            apartment=apartment)
+        context["photos"] = ApartmentPhotoGallery.objects.filter(
+            apartment=apartment)
+        context["conveniences"] = ApartmentConvenience.objects.filter(
+            apartment=apartment)
         context["first_photo"] = context["photos"].first()
         return context

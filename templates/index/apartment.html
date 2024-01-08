@@ -4,7 +4,11 @@
 
 {% block link %}
 <link rel="stylesheet" href="{% static 'css/apartment.css' %}">
-<link rel="stylesheet" href="{% static 'css/grid-galery.css' %}">
+<link rel="stylesheet" href="{% static 'css/grid-cards.css' %}">
+<link rel="stylesheet" href="{% static 'css/grid-gallery.css' %}">
+<link rel="stylesheet" href="{% static 'css/modal-gallery.css' %}">
+
+<script src="{% static 'js/modal-gallery.js' %}"></script>
 
 
 {% endblock link %}
@@ -15,8 +19,8 @@
     <section class="content-container">
         <div class="content-container-items apartment-index">
             <div class="content-container-apartment-title">
-                <span class="content-title color-blue">ДОМ {{apartament.title}}</span>
-                <span class="content-title-price color-blue">{{apartament.daily_price}} BYN/сутки</span>
+                <span class="content-title color-blue">ДОМ {{apartment.title}}</span>
+                <span class="content-title-price color-blue">{{apartment.daily_price}} BYN/сутки</span>
             </div>
 
             <div class="content-items">
@@ -38,13 +42,13 @@
             <div class="content-items apartment-description">
                 <div class="apartment-info">
                     <div class="apartment-info-item">
-                        <i class="fa-solid fa-users"></i><span>{{apartament.guest_count}}</span>
+                        <i class="fa-solid fa-users"></i><span>{{apartment.guest_count}}</span>
                     </div>
                     <div class="apartment-info-item">
-                        <i class="fa-solid fa-cube"></i><span>{{apartament.square}} м<sup>2</sup></span>
+                        <i class="fa-solid fa-cube"></i><span>{{apartment.square}} м<sup>2</sup></span>
                     </div>
                     <div class="apartment-info-item">
-                        <i class="fa-solid fa-door-open"></i><span>{{apartament.room_count}} комнат</span>
+                        <i class="fa-solid fa-door-open"></i><span>{{apartment.room_count}} комнат</span>
                     </div>
                 </div>
                 <div class="apartment-booking">

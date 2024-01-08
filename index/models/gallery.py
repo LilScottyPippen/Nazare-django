@@ -1,11 +1,12 @@
 from django.db import models
-from utils.pathes import photo_gallery_path
+from utils.pathes import *
 
 
 class PhotoGalleryCategory(models.Model):
     name = models.CharField(
         max_length=255, verbose_name="Наименование категории")
-    icon = models.CharField(max_length=255, verbose_name="Иконка категории")
+    image = models.ImageField(
+        upload_to=photo_category_path, default='index/static/img/backgrounds/background-image.jpg', verbose_name="Изображение категории")
     slug = models.SlugField(unique=True, primary_key=True, db_index=True,
                             verbose_name="Псеводним для url")
 
@@ -22,7 +23,8 @@ class PhotoGallerySubCategory(models.Model):
         PhotoGalleryCategory, on_delete=models.PROTECT, verbose_name="Подкатегория")
     name = models.CharField(
         max_length=255, verbose_name="Наименование подкатегории")
-    icon = models.CharField(max_length=255, verbose_name="Иконка подкатегории")
+    image = models.ImageField(
+        upload_to=photo_subcategory_path, default='index/static/img/backgrounds/background-image.jpg', verbose_name="Изображение подкатегории")
     slug = models.SlugField(unique=True, primary_key=True, db_index=True,
                             verbose_name="Псеводним для url")
 
@@ -36,7 +38,7 @@ class PhotoGallerySubCategory(models.Model):
 
 class PhotoGallery(models.Model):
     subcategory = models.ForeignKey(
-        PhotoGallerySubCategory, on_delete=models.PROTECT, verbose_name="Подкатегория Фотогаллереи",)
+        PhotoGallerySubCategory, on_delete=models.PROTECT, verbose_name="Подкатегория фотогалереи",)
     photo = models.ImageField(
         upload_to=photo_gallery_path, verbose_name="Фото")
 

@@ -1,3 +1,48 @@
-{% for photo in photos %}
-<img src="{{photo.photo.url}}" alt="error">
-{% endfor %}
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+<link rel="stylesheet" href="{% static 'css/modal-gallery.css' %}">
+
+<script src="{% static 'js/modal-gallery.js' %}"></script>
+{% endblock link %}
+
+{% block title %}
+    ПАРК ОТЕЛЬ ZORKA
+{% endblock title %}
+
+{% block main %}
+
+    <section class="content-section main-padding">
+            <div class="content-container flex-column">
+                <div class="content-container-items">
+                    <div class="content-title color-blue">
+                        {{ category }}
+                    </div>
+
+                    <div class="content-items">
+                        {% for photo in photos %}
+                            <div class="grid-galery shadow">
+                                <div class="grid-galery-image" style="background-image: url('{{ photo.photo.url }}');" onclick="openModal(this.style.backgroundImage)"></div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="modal" id="myModal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImg">
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+
+                    <div class="content-items gallery-load-more">
+                        <button class="gallery-load-more-btn">
+                            ПОКАЗАТЬ БОЛЬШЕ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock main %}

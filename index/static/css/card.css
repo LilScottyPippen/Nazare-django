@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-@import "/index/staticstatic/css/card.css";
-=======
 @import "variables.css";
->>>>>>> booking
+
 
 .card{
     display: flex;

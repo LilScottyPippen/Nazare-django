@@ -1,7 +1,7 @@
 {% load static %}
     <nav class="nav-container main-padding">
         <div class="nav-left">
-            <a class="nav-logo" href="#">
+            <a class="nav-logo" href="{% url 'index:index' %}">
                 <img src="{% static 'svg/ZorkaLogo.svg' %}" alt="logo">
             </a>
         </div>
@@ -80,15 +80,11 @@
                             </div>
 
                             <ul class="nav-dropdown-links shadow">
-                                <div class="nav-dropdown-link">
-                                    <a href="#">Дом OBSIDIAN</a>
-                                </div>
-                                <div class="nav-dropdown-link">
-                                    <a href="#">Дом TERRA</a>
-                                </div>
-                                <div class="nav-dropdown-link">
-                                    <a href="apartment.html">Дом OLIVE</a>
-                                </div>
+                                {% for house in houses %}
+                                    <div class="nav-dropdown-link">
+                                        <a href="{% url 'index:apartment' house.apartment.slug %}">Дом {{ house.apartment.title }}</a>
+                                    </div>
+                                {% endfor %}
                                 <div class="nav-dropdown-link">
                                     <a href="#">Гостиница</a>
                                 </div>
@@ -119,13 +115,13 @@
 
                         <li class="nav-dropdown-item-container">
                             <div class="nav-dropdown-item">
-                                <a href="#">Галерея</a>
+                                <a href="{% url 'index:photo_category' %}">Галерея</a>
                                 <i class="fa-solid fa-caret-down"></i>
                             </div>
 
                             <ul class="nav-dropdown-links shadow">
                                 <div class="nav-dropdown-link">
-                                    <a href="{% url 'index:photo_category' %}">Фотогалерея</a>
+                                    <a href="#">Фотогалерея</a>
                                 </div>
                                 <div class="nav-dropdown-link">
                                     <a href="#">Видеогалерея</a>

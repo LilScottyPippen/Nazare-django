@@ -1,23 +1,47 @@
 {% for house in houses %}
-<a href="{% url 'index:apartament' house.apartament.slug %}">
-  <div class="card blue-card bg-blue shadow">
-    <div class="card-main-section">
-      <div class="card-image-container" style="background-image: url('{{house.apartament_main_photo.url}}');"></div>
-      <div class="card-main-section-content">
-        <span class="card-main-content-title color-white">
-          {{house.apartament.title}}
-        </span>
-        <span class="card-main-content-description color-white">
-          {{house.apartament_description|linebreaks}}
-        </span>
-        <div class="card-main-section-content-footer">
-          <span class="card-main-daily-price color-white">Цена: {{house.apartament.daily_price}} BYN / сутки</span>
-          <a href="#" class="card-main-btn-book bg-white color-blue">ЗАБРОНИРОВАТЬ</a>
-        </div>
-      </div>
-    </div>
-    <div class="card-main-section-third bg-blue shadow"></div>
-    <div class="card-main-section-second bg-blue shadow"></div>
-  </div>
-</a>
+    {% if house.id|divisibleby:2  %}
+        <a href="{% url 'index:apartment' house.apartment.slug %}">
+          <div class="card blue-card bg-blue shadow">
+            <div class="card-main-section">
+              <div class="card-image-container" style="background-image: url('{{house.apartment_main_photo.url}}');"></div>
+              <div class="card-main-section-content">
+                <span class="card-main-content-title color-white">
+                  {{house.apartment.title}}
+                </span>
+                <span class="card-main-content-description color-white">
+                  {{house.apartment_description|linebreaks}}
+                </span>
+                <div class="card-main-section-content-footer">
+                  <span class="card-main-daily-price color-white">Цена: {{house.apartment.daily_price}} BYN / сутки</span>
+                  <a href="#" class="card-main-btn-book bg-white color-blue">ЗАБРОНИРОВАТЬ</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-main-section-third bg-blue shadow"></div>
+            <div class="card-main-section-second bg-blue shadow"></div>
+          </div>
+        </a>
+    {% else %}
+        <a href="{% url 'index:apartment' house.apartment.slug %}">
+          <div class="card blue-card bg-white shadow">
+            <div class="card-main-section">
+              <div class="card-image-container" style="background-image: url('{{house.apartment_main_photo.url}}');"></div>
+              <div class="card-main-section-content">
+                <span class="card-main-content-title color-blue">
+                  {{house.apartment.title}}
+                </span>
+                <span class="card-main-content-description color-blue">
+                  {{house.apartment_description|linebreaks}}
+                </span>
+                <div class="card-main-section-content-footer">
+                  <span class="card-main-daily-price color-blue">Цена: {{house.apartment.daily_price}} BYN / сутки</span>
+                  <a href="#" class="card-main-btn-book bg-blue color-white">ЗАБРОНИРОВАТЬ</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-main-section-third bg-white shadow"></div>
+            <div class="card-main-section-second bg-white shadow"></div>
+          </div>
+        </a>
+    {% endif %}
 {% endfor %}

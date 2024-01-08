@@ -1,2 +1,2 @@
-from .apartaments import *
+from .apartments import *
 from .gallery import *

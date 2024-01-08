@@ -1,2 +1,2 @@
-from .apartaments_admin import *
+from .apartments_admin import *
 from .gallery_admin import *

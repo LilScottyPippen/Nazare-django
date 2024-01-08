@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-@import "/index/staticstatic/css/variables.css";
-=======
 @import "variables.css";
->>>>>>> booking
 
 .grid-container {
     display: grid;

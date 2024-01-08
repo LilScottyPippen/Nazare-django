@@ -7,17 +7,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="css/style.css" rel="stylesheet">
   <link rel="icon" href="{% static 'svg/ZorkaLogo-icon.svg' %}">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   <link rel="stylesheet" href="{% static 'css/header.css' %}">
   <link rel="stylesheet" href="{% static 'css/nav-mobile.css' %}">
-  <link rel="stylesheet" href="{% static 'css/card.css' %}">
-  <link rel="stylesheet" href="{% static 'css/grid-cards.css' %}">
-  <link rel="stylesheet" href="{% static 'css/slider.css' %}">
   <link rel="stylesheet" href="{% static 'css/footer.css' %}">
   <link rel="stylesheet" href="{% static 'css/preloader.css' %}">
-  <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
 
   {% block link %}
   {% endblock link %}
@@ -45,7 +40,7 @@
 
   {% include "base/base_nav_menu.html" %}
 
-  <main>
+  <main class="padding-for-main">
     {% block main %}
     {% endblock main%}
   </main>

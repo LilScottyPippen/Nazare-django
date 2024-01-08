@@ -18,5 +18,5 @@ class Guest(models.Model):
         return f'{self.guest_second_name.title()} {self.guest_name.title()[0]}. {self.guest_father_name.title()[0]}.'
 
     class Meta:
-        verbose_name = "Категория гостей"
-        verbose_name_plural = "Категории гостей"
+        verbose_name = "Гость"
+        verbose_name_plural = "Гости"

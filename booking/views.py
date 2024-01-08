@@ -48,7 +48,6 @@ class BookingView(TemplateView):
             return HttpResponseBadRequest("Form is invalid", 400)
 
     def send_mailing(self, booking_instance):
-        print(booking_instance.client_mail)
         if booking_instance.payment_method == PAYMENT_METHOD_CHOICES[1][0]:
             threading.Thread(target=send_mail_for_admin,
                              args=('mailing/admin_callback.html', {
