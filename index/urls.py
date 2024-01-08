@@ -15,7 +15,8 @@ urlpatterns = [
     path('photo-gallery-subcategory/<slug:category>',
          PhotoGallerySubCategoryView.as_view(), name="photo_subcategory"),
     path('photo-gallery/<slug:subcategory>',
-         PhotoGalleryView.as_view(), name="photo_gallery")
+         PhotoGalleryView.as_view(), name="photo_gallery"),
+    path('contact/', ContactPageView.as_view(), name="contact")
 
 ]
 

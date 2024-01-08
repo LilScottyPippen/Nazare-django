@@ -74,6 +74,7 @@ WSGI_APPLICATION = 'Nazare_django.wsgi.application'
 #     }
 # }
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -131,8 +132,10 @@ ADMIN_REORDER = (
         'models': ('index.Apartment',)},
     {'app': 'index', 'label': 'Галерея',
         'models': ('index.PhotoGalleryCategory',)},
+    {'app': 'index', 'label': 'Контактные данные',
+        'models': ('index.ContactPage',)},
     {'app': 'booking', 'label': 'Бронирование',
-        'models': ('booking.Booking','booking.Guest',)}
+        'models': ('booking.Booking', 'booking.Guest',)}
 )
 
 
