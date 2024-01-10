@@ -1,29 +1,32 @@
+{% extends 'base/base.html'%}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Бронирование</title>
+
+{% block link %}
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-</head>
-<body>
-    <div>
-        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="1">1</button>
-        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="2">2</button>
-        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="3">3</button>
-        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="4">4</button>
-        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="5">5</button>
-        <button hx-get="{% url 'adding_form' %}" hx-target="#guest-form" name="form-count" value="6">6</button>
-    </div>
+{% endblock link %}
+{% block main %}
+<section class="content-section main-padding">
+    <section class="content-container">
+        <div class="content-container-items apartment-index">
+            <div>
+                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="1">1</button>
+                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="2">2</button>
+                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="3">3</button>
+                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="4">4</button>
+                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="5">5</button>
+                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="6">6</button>
+            </div>
 
-    <form action="{% url 'booking' %}" method="POST">
-        {% csrf_token %}
-        {{ booking_form.as_p }}
-        <div id="guest-form">
-            {% include 'booking/guest_form.html' %}
+            <form action="{% url 'booking:booking' %}" method="POST">
+                {% csrf_token %}
+                {{ booking_form.as_p }}
+                <div id="guest-form">
+                    {% include 'booking/guest_form.html' %}
+                </div>
+                <button type="submit">Отправить</button>
+            </form>
         </div>
-        <button type="submit">Отправить</button>
-    </form>
-
-</body>
-</html>
+    </section>
+</section>
+{% endblock main %}

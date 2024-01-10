@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{% static 'css/modal-gallery.css' %}">
 
 <script src="{% static 'js/modal-gallery.js' %}"></script>
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
 {% endblock link %}
 
 {% block title %}
@@ -21,25 +22,13 @@
                         {{ category }}
                     </div>
 
-                    <div class="content-items">
-                        {% for photo in photos %}
-                            <div class="grid-galery shadow">
-                                <div class="grid-galery-image" style="background-image: url('{{ photo.photo.url }}');" onclick="openModal(this.style.backgroundImage)"></div>
-                            </div>
-                        {% endfor %}
-                    </div>
+                    {% include 'index/gallery/photo_gallery/photo_gallery_item.html' %}
 
                     <div class="modal" id="myModal">
                         <span class="close" onclick="closeModal()">&times;</span>
                         <img class="modal-content" id="modalImg">
                         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                         <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                    </div>
-
-                    <div class="content-items gallery-load-more">
-                        <button class="gallery-load-more-btn">
-                            ПОКАЗАТЬ БОЛЬШЕ
-                        </button>
                     </div>
                 </div>
             </div>

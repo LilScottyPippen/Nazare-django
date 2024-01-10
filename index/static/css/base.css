@@ -1,4 +1,4 @@
-@import "/static/css/variables.css";
+@import "variables.css";
 
 *{
     margin: 0;
@@ -26,6 +26,7 @@ body::-webkit-scrollbar-thumb {
 main{
     display: flex;
     flex-direction: column;
+    min-height: 80vh;
 }
 
 .padding-for-main{
@@ -128,10 +129,6 @@ sup{
     gap: 15px;
 }
 
-.gap-20-to-40{
-    gap: 20px;
-}
-
 .align-items-center{
     display: flex;
     align-items: center;
@@ -141,6 +138,10 @@ sup{
 @media (min-width: 1024px){
     .main-padding{
         padding: 0 150px;
+    }
+
+    .gap-20-to-40{
+        gap: 20px;
     }
 }
 
@@ -157,6 +158,10 @@ sup{
 @media (max-width: 768px){
     .main-padding{
         padding: 0 20px;
+    }
+
+    .padding-for-main{
+        padding: 50px 0 50px 0;
     }
 
     .mobile-flex-column{

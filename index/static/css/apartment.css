@@ -53,7 +53,7 @@
     font-size: 48px;
 }
 
-.apartment-bootking-btn{
+.apartment-booking-btn{
     border: none;
     color: white;
     background-color: var(--blue-color);
@@ -100,9 +100,9 @@
 }
 
 @media (max-width: 1024px){
-    .content-container{
-        padding: 25px;
-    }
+    /*.content-container{*/
+    /*    padding: 25px;*/
+    /*}*/
 
     .container-apartment-list{
         gap: 50px;
@@ -115,9 +115,9 @@
         padding: 100px 0 50px 0;
     }
 
-    .content-container{
-        padding: 20px;
-    }
+    /*.content-container{*/
+    /*    padding: 20px;*/
+    /*}*/
 
     .apartment-index{
         gap: 20px;

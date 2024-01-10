@@ -41,7 +41,7 @@ class ContactPageView(TemplateView):
         folium.Marker([55.255200, 30.162598], popup="Зорька").add_to(map)
         contact = ContactPage.objects.all().first()
         context['map'] = map._repr_html_()
-        context['adresses'] = Address.objects.filter(contact=contact)
+        context['addresses'] = Address.objects.filter(contact=contact)
         context['emails'] = Email.objects.filter(contact=contact)
         context['telephones'] = Telephone.objects.filter(contact=contact)
         return context

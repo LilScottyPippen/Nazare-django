@@ -130,8 +130,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ADMIN_REORDER = (
     {'app': 'index', 'label': 'Апартаменты',
         'models': ('index.Apartment',)},
-    {'app': 'index', 'label': 'Галерея',
-        'models': ('index.PhotoGalleryCategory',)},
+    {'app': 'index', 'label': 'Меню',
+        'models': ('index.Category', 'index.SubCategory', 'index.RedirectPage',)},
     {'app': 'index', 'label': 'Контактные данные',
         'models': ('index.ContactPage',)},
     {'app': 'booking', 'label': 'Бронирование',

@@ -140,6 +140,11 @@ footer{
 }
 
 @media (max-width: 786px){
+    .footer-main-mailing-input{
+        max-width: 250px;
+        width: 100%;
+    }
+
     .footer-secondary-items{
         flex-direction: column;
         text-align: center;

@@ -25,7 +25,7 @@ function plusSlides(n) {
 
 function showImage(n) {
     let modalImg = document.getElementById("modalImg");
-    let images = document.querySelectorAll('.grid-galery-image');
+    let images = document.querySelectorAll('.grid-gallery-image');
     if (n >= images.length) {
         slideIndex = 0;
     }

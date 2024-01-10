@@ -3,7 +3,7 @@ from django.db import models
 
 class ContactPage(models.Model):
     name = models.CharField(
-        max_length=255, default="Связывает все поля", verbose_name="Наиенование")
+        max_length=255, default="Связывает все поля", verbose_name="Наименование")
 
     class Meta:
         verbose_name = "Страница - Контакты"

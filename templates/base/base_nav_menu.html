@@ -70,10 +70,10 @@
 
       <ul class="nav-mobile-dropdown-links">
         <div class="nav-mobile-dropdown-link">
-          <a href="{% url 'index:photo_category' %}">Фотогалерея</a>
+          <a href="{% url 'index:category' 'photogallery' %}">Фотогалерея</a>
         </div>
         <div class="nav-mobile-dropdown-link">
-          <a href="#">Видеогалерея</a>
+          <a href="{% url 'index:category' 'videogallery' %}">Видеогалерея</a>
         </div>
         <div class="nav-mobile-dropdown-link">
           <a href="#">3D-тур</a>
@@ -83,7 +83,7 @@
 
     <li class="nav-mobile-item-container">
       <div class="nav-mobile-dropdown-item">
-        <a href="#">Контакты</a>
+        <a href="{% url 'index:contact' %}">Контакты</a>
       </div>
     </li>
   </ul>

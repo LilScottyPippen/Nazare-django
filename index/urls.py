@@ -10,12 +10,14 @@ urlpatterns = [
     path('', IndexPageView.as_view(), name="index"),
     path('apartments/<slug:apartment>',
          ApartmentPageView.as_view(), name="apartment"),
-    path('photo-gallery-category/',
-         PhotoGalleryCategoryView.as_view(), name="photo_category"),
-    path('photo-gallery-subcategory/<slug:category>',
-         PhotoGallerySubCategoryView.as_view(), name="photo_subcategory"),
+    path('category/<slug:category>',
+         CategoryView.as_view(), name="category"),
+    path('subcategory/<slug:category>',
+         SubCategoryView.as_view(), name="subcategory"),
     path('photo-gallery/<slug:subcategory>',
          PhotoGalleryView.as_view(), name="photo_gallery"),
+    path('photo-gallery/load-more/<slug:subcategory>',
+         PhotoGalleryLoadMoreView.as_view(), name="photo_gallery_load_more"),
     path('contact/', ContactPageView.as_view(), name="contact")
 
 ]

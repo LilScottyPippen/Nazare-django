@@ -53,7 +53,7 @@
                     <ul class="nav-dropdown-items-container">
                         <li class="nav-dropdown-item-container">
                             <div class="nav-dropdown-item">
-                                <a href="#">О нас</a>
+                                <a href="{% url 'index:category' 'about-us' %}">О нас</a>
                                 <i class="fa-solid fa-caret-down"></i>
                             </div>
 
@@ -75,7 +75,7 @@
 
                         <li class="nav-dropdown-item-container">
                             <div class="nav-dropdown-item">
-                                <a href="#">Апартаменты</a>
+                                <a href="{% url 'index:category' 'apartments' %}">Апартаменты</a>
                                 <i class="fa-solid fa-caret-down"></i>
                             </div>
 
@@ -93,7 +93,7 @@
 
                         <li class="nav-dropdown-item-container">
                             <div class="nav-dropdown-item">
-                                <a href="#">Услуги</a>
+                                <a href="{% url 'index:category' 'services' %}">Услуги</a>
                                 <i class="fa-solid fa-caret-down"></i>
                             </div>
 
@@ -108,14 +108,14 @@
                                     <a href="#">Доставка еды</a>
                                 </div>
                                 <div class="nav-dropdown-link">
-                                    <a href="#">Трасфер</a>
+                                    <a href="#">Трансфер</a>
                                 </div>
                             </ul>
                         </li>
 
                         <li class="nav-dropdown-item-container">
                             <div class="nav-dropdown-item">
-                                <a href="{% url 'index:photo_category' %}">Галерея</a>
+                                <a href="{% url 'index:category' 'gallery' %}">Галерея</a>
                                 <i class="fa-solid fa-caret-down"></i>
                             </div>
 
