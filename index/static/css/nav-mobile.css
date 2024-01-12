@@ -1,10 +1,10 @@
-@import "variables.css";
+@import url('variables.css');
 
 .nav-mobile{
     color: var(--white-color);
     position: fixed;
     width: 100%;
-    background-color: var(--blue-color);
+    background-color: var(--dark-blue-color);
     padding-top: 100px;
     top: -200%;
     transition: top .2s;

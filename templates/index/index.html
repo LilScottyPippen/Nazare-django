@@ -15,7 +15,7 @@
 {% endblock title %}
 {% block main %}
 
-        <section class="content-section bg-blue main-padding static-height mobile-flex-column">
+        <section class="content-section bg-dark-blue main-padding static-height mobile-flex-column">
             <div class="content-container space-between color-white mobile-flex-column mobile-content-container-for-second-section">
                 <div class="content flex-end">
                     <span class="content-title">
@@ -57,7 +57,7 @@
                                     </span>
                                     <div class="apartment-dropdown-footer-counter-control">
                                         <i class="fa-solid fa-square-plus" onclick="incrementCounter('adult')"></i>
-                                        <span id="adultCount">0</span>
+                                        <span id="adultCount">1</span>
                                         <i class="fa-solid fa-square-minus" onclick="decrementCounter('adult')"></i>
                                     </div>
                                 </div>
@@ -78,13 +78,7 @@
                             <span class="search-apartment-btn-title">НАЙТИ АПАРТАМЕНТ</span>
                         </div>
                     </div>
-                    <script>
-                        document.querySelectorAll('.search-apartment-dropdown-header').forEach(function(element) {
-                            element.addEventListener('click', function() {
-                                this.classList.toggle('active');
-                            });
-                        });
-                    </script>
+                    <script src="{% static 'js/apartment-dropdown-active.js' %}"></script>
                 </section>
             </div>
         </section>
@@ -92,7 +86,7 @@
         <section class="content-section main-padding bg-image">
             <div class="content-container flex-column align-items-center">
                 <div class="content-container-items">
-                    <div class="content-title color-blue">
+                    <div class="content-title color-dark-blue">
                         АПАРТАМЕНТЫ
                     </div>
 
@@ -107,7 +101,7 @@
         <section class="content-section main-padding">
             <div class="content-container flex-column align-items-center">
                 <div class="content-container-items">
-                    <div class="content-title color-blue">
+                    <div class="content-title color-dark-blue">
                         ПРЕИМУЩЕСТВА
                     </div>
 
@@ -136,7 +130,7 @@
                             </div>
                             <div class="grid-item shadow-blur bg-gray object-3">
                                 <div class="grid-item-content-for-object-1x1">
-                                    <div class="grid-item-icon bg-blue color-white"><i class="fa-regular fa-credit-card"></i></div>
+                                    <div class="grid-item-icon bg-dark-blue color-white"><i class="fa-regular fa-credit-card"></i></div>
                                     <span class="font-bold">Лучшая цена</span>
                                     <span class="grid-item-section-description">
                                         Непревзойденный комфорт по выгодной стоимости.
@@ -158,10 +152,10 @@
             </div>
         </section>
 
-        <section class="content-section main-padding bg-gray">
+        <section class="content-section main-padding bg-green-blue">
             <div class="content-container flex-column align-items-center">
                 <div class="content-container-items">
-                    <div class="content-title color-blue">
+                    <div class="content-title color-dark-blue">
                         ОТЗЫВЫ
                     </div>
 
@@ -183,16 +177,16 @@
                                                 <i class="fa-solid fa-quote-right"></i>
                                             </div>
                                         </div>
-                                        <span class="card-main-content-description color-blue">
+                                        <span class="card-main-content-description color-dark-blue">
                                             Наслаждался каждым моментом в уютном парк-отеле Zorka. Безупречный сервис, красивейший пейзаж и непередаваемая атмосфера покоя. Вернусь снова и снова!
                                         </span>
                                         <div class="card-main-content-guest">
                                             <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest1.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
-                                                <span class="card-main-content-guest-name color-blue">
+                                                <span class="card-main-content-guest-name color-dark-blue">
                                                     Олег
                                                 </span>
-                                                <div class="card-main-content-guest-score color-blue">
+                                                <div class="card-main-content-guest-score color-dark-blue">
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
@@ -219,10 +213,10 @@
                                         <div class="card-main-content-guest">
                                             <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest2.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
-                                                <span class="card-main-content-guest-name color-blue">
+                                                <span class="card-main-content-guest-name color-dark-blue">
                                                     Елена
                                                 </span>
-                                                <div class="card-main-content-guest-score color-blue">
+                                                <div class="card-main-content-guest-score color-dark-blue">
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
@@ -249,10 +243,10 @@
                                         <div class="card-main-content-guest">
                                             <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest3.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
-                                                <span class="card-main-content-guest-name color-blue">
+                                                <span class="card-main-content-guest-name color-dark-blue">
                                                     Алексей
                                                 </span>
-                                                <div class="card-main-content-guest-score color-blue">
+                                                <div class="card-main-content-guest-score color-dark-blue">
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
@@ -279,10 +273,10 @@
                                         <div class="card-main-content-guest">
                                             <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest4.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
-                                                <span class="card-main-content-guest-name color-blue">
+                                                <span class="card-main-content-guest-name color-dark-blue">
                                                     Мария
                                                 </span>
-                                                <div class="card-main-content-guest-score color-blue">
+                                                <div class="card-main-content-guest-score color-dark-blue">
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>

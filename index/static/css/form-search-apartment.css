@@ -1,4 +1,4 @@
-@import "variables.css";
+@import url('variables.css');
 
 .content-container-form-search-apartment{
     display: flex;
@@ -22,7 +22,7 @@
 }
 
 .search-apartment-dropdown{
-    color: var(--blue-color);
+    color: var(--dark-blue-color);
     background-color: var(--white-color);
     border-radius: 10px;
     font-size: var(--content-font);
@@ -84,7 +84,7 @@
 }
 
 .search-apartment-btn:hover{
-    color: var(--blue-color);
+    color: var(--dark-blue-color);
     background-color: var(--white-color);
 }
 

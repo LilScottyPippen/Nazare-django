@@ -1,4 +1,4 @@
-@import "variables.css";
+@import url('variables.css');
 
 footer{
     font-size: var(--content-font);
@@ -8,7 +8,7 @@ footer{
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: var(--blue-color);
+    background-color: var(--dark-blue-color);
     color: var(--white-color);
 }
 
@@ -59,7 +59,7 @@ footer{
     gap: 15px;
 }
 
-.footer-main-social-contanct{
+.footer-main-social-contact{
     font-size: 24px;
 }
 
@@ -80,7 +80,7 @@ footer{
     width: 250px;
     border: none;
     outline: none;
-    color: var(--blue-color);
+    color: var(--dark-blue-color);
     background-color: var(--white-color);
     border-radius: 10px;
     padding: 11px;
@@ -95,7 +95,7 @@ footer{
 
 .footer-main-mailing-btn:hover{
     background-color: var(--white-color);
-    color: var(--blue-color);
+    color: var(--dark-blue-color);
 }
 
 .footer-main-follow{
@@ -113,7 +113,7 @@ footer{
     cursor: pointer;
 }
 
-.footer-main-social-contanct:hover,
+.footer-main-social-contact:hover,
 .footer-main-follow-social i:hover{
     scale: 1.25;
 }
@@ -122,7 +122,7 @@ footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--blue-color);
+    color: var(--dark-blue-color);
     padding-top: 20px;
     padding-bottom: 20px;
 }

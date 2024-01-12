@@ -14,7 +14,10 @@ function decrementCounter(type) {
     let counter = document.getElementById(counterId);
     let count = parseInt(counter.innerText);
 
-    if (count > 0) {
+    if (type === 'adult' && count > 1) {
+        count--;
+        counter.innerText = count;
+    } else if (type === 'child' && count > 0) {
         count--;
         counter.innerText = count;
     }

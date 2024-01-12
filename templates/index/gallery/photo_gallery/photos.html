@@ -18,7 +18,7 @@
     <section class="content-section main-padding">
             <div class="content-container flex-column">
                 <div class="content-container-items">
-                    <div class="content-title color-blue">
+                    <div class="content-title color-dark-blue">
                         {{ category }}
                     </div>
 
@@ -26,7 +26,10 @@
 
                     <div class="modal" id="myModal">
                         <span class="close" onclick="closeModal()">&times;</span>
-                        <img class="modal-content" id="modalImg">
+                        <div class="modal-container">
+                            <img class="modal-content" id="modalImg">
+                            <div class="modal-caption" id="caption"></div>
+                        </div>
                         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                         <a class="next" onclick="plusSlides(1)">&#10095;</a>
                     </div>

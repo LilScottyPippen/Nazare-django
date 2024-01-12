@@ -3,30 +3,197 @@
 {% load static %}
 
 {% block link %}
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
+
+    <script src="{% static 'js/guest-counter.js' %}"></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 {% endblock link %}
 {% block main %}
-<section class="content-section main-padding">
-    <section class="content-container">
-        <div class="content-container-items apartment-index">
-            <div>
-                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="1">1</button>
-                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="2">2</button>
-                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="3">3</button>
-                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="4">4</button>
-                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="5">5</button>
-                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="6">6</button>
-            </div>
-
-            <form action="{% url 'booking:booking' %}" method="POST">
-                {% csrf_token %}
-                {{ booking_form.as_p }}
-                <div id="guest-form">
-                    {% include 'booking/guest_form.html' %}
+    <section class="content-section main-padding">
+        <div class="content-container flex-column align-items-center">
+            <div class="content-container-items">
+                <div class="content-title color-dark-blue">
+                    БРОНИРОВАНИЕ
                 </div>
-                <button type="submit">Отправить</button>
-            </form>
+
+                <section class="content-items">
+                    <div class="form">
+                        <div class="form-section">
+                            <div class="form-container">
+                                <div class="form-apartment-choose gap-10">
+                                    <div class="form-apartment-choose-title">
+                                        АПАРТАМЕНТЫ
+                                    </div>
+                                    <div class="form-apartment-items">
+                                        <input type="button" class="choose-input shadow-normal-blur active" value="OLIVE" data-price="920">
+                                        <input type="button" class="choose-input shadow-normal-blur" value="TERRA" data-price="1200">
+                                        <input type="button" class="choose-input shadow-normal-blur" value="OBSIDIAN" data-price="920">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-container gap-30">
+                                <div class="form-search-apartment-grid">
+                                    <div class="search-apartment-dropdown shadow-normal-blur">
+                                        <div class="search-apartment-dropdown-header" id="datepicker-checkin">
+                                            <span class="search-apartment-dropdown-title">
+                                                ЗАЕЗД
+                                            </span>
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                        </div>
+                                    </div>
+                                    <div class="search-apartment-dropdown shadow-normal-blur">
+                                        <div class="search-apartment-dropdown-header" id="datepicker-checkout">
+                                            <span class="search-apartment-dropdown-title">
+                                                ВЫЕЗД
+                                            </span>
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                        </div>
+                                    </div>
+                                    <div class="search-apartment-dropdown form-search-apartment-grid-2x2">
+                                        <div class="search-apartment-dropdown-header shadow-normal-blur">
+                                            <span class="search-apartment-dropdown-title">
+                                                ГОСТИ
+                                            </span>
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </div>
+                                        <div class="search-apartment-dropdown-footer">
+                                            <div class="search-apartment-dropdown-footer-counter" id="adultCounter">
+                                                <span class="apartment-dropdown-footer-counter-title">
+                                                    ВЗРОСЛЫЕ
+                                                </span>
+                                                <div class="apartment-dropdown-footer-counter-control">
+                                                    <i class="fa-solid fa-square-plus" id="abuldIncrement" onclick="incrementCounter('adult')"></i>
+                                                    <span id="adultCount">1</span>
+                                                    <i class="fa-solid fa-square-minus" id="abuldDecrement" onclick="decrementCounter('adult')"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="search-apartment-dropdown-footer-counter" id="childCounter">
+                                                <span class="apartment-dropdown-footer-counter-title">
+                                                    ДЕТИ
+                                                </span>
+                                                <div class="apartment-dropdown-footer-counter-control">
+                                                    <i class="fa-solid fa-square-plus" onclick="incrementCounter('child')"></i>
+                                                    <span id="childCount">0</span>
+                                                    <i class="fa-solid fa-square-minus" onclick="decrementCounter('child')"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script src="{% static 'js/apartment-dropdown-active.js' %}"></script>
+
+                                <div class="form-contact-information">
+                                    <div class="form-contact-information-items">
+                                        <input type="input" class="text-input shadow-normal-blur" placeholder="ФАМИЛИЯ">
+                                        <input type="input" class="text-input shadow-normal-blur" placeholder="ИМЯ">
+                                        <input type="input" class="text-input shadow-normal-blur" placeholder="ОТЧЕСТВО">
+                                        <input type="input" class="text-input shadow-normal-blur" placeholder="ТЕЛЕФОН">
+                                        <input type="input" class="text-input shadow-normal-blur" placeholder="E-MAIL">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-container">
+                                <div class="form-total-sum">
+                                    <span class="form-total-sum-info" id="totalCost">ИТОГОВАЯ СТОИМОСТЬ: 920 BYN</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-guest-information gap-10">
+                            <div class="form-guest-information-title">
+                                ИНФОРМАЦИЯ О ГОСТЯХ
+                            </div>
+                            <div class="form-guest-information-items" id="guestInformationContainer">
+                                <div class="form-guest-information-item">
+                                    <input type="input" class="text-input shadow-normal-blur" placeholder="ФАМИЛИЯ">
+                                    <input type="input" class="text-input shadow-normal-blur" placeholder="ИМЯ">
+                                    <input type="input" class="text-input shadow-normal-blur" placeholder="ОТЧЕСТВО">
+                                    <div class="form-guest-information-citizenship">
+                                        <div class="form-guest-information-citizenship-title">
+                                            ГРАЖДАНСТВО:
+                                        </div>
+                                        <div class="form-guest-information-citizenship-items">
+                                            <input type="button" class="choose-input shadow-normal-blur active" value="РБ">
+                                            <input type="button" class="choose-input shadow-normal-blur" value="РФ">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-online-payment gap-10">
+                            <div class="form-online-payment-title">
+                                ОНЛАЙН ОПЛАТА БРОНИРОВАНИЯ
+                            </div>
+                            <div class="form-online-payment-description">
+                                Оплачивается вся сумма брони.<br>
+                                Данный способ оплаты поддерживает платежи только с карт, выпущенных белорусскими банками.<br>
+                                Кассовый чек в электронном виде будет предоставлен компанией <a class="url-decorate-underline" href="https://www.alfabank.by/">Альфа-банк</a>. Вы получите его после оплаты на адрес электронной почты, который указали при бронировании.
+                            </div>
+                            <div class="form-online-payment-methods">
+                                <i class="fa-brands fa-cc-visa"></i>
+                                <i class="fa-brands fa-cc-mastercard"></i>
+                            </div>
+                            <div class="button-input shadow-normal-blur">
+                                Оплатить
+                            </div>
+                        </div>
+
+                        <div class="form-offline-payment gap-10">
+                            <div class="form-online-payment-title">
+                                ОПЛАТА ПРИ ЗАСЕЛЕНИИ
+                            </div>
+                            <div class="form-online-payment-description">
+                                Без предоплаты.<br>
+                                Администратор свяжется с вами по контактному номеру телефона для подтверждения бронирования и уточнения всех необходимых деталей.
+                            </div>
+                            <div class="button-input shadow-normal-blur">
+                                Оставить заявку
+                            </div>
+                        </div>
+
+                        <div class="form-consent-to-data-processing">
+                            <input type="checkbox" name="" id="">
+                            <span>Я даю согласие на <a class="url-decorate-underline" href="#">обработку персональных данных</a></span>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     </section>
-</section>
+
+{#<section class="content-section main-padding">#}
+{#    <section class="content-container">#}
+{#        <div class="content-container-items apartment-index">#}
+{#            <div>#}
+{#                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="1">1</button>#}
+{#                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="2">2</button>#}
+{#                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="3">3</button>#}
+{#                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="4">4</button>#}
+{#                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="5">5</button>#}
+{#                <button hx-get="{% url 'booking:adding_form' %}" hx-target="#guest-form" name="form-count" value="6">6</button>#}
+{#            </div>#}
+{##}
+{#            <form action="{% url 'booking:booking' %}" method="POST">#}
+{#                {% csrf_token %}#}
+{#                {{ booking_form.as_p }}#}
+{#                <div id="guest-form">#}
+{#                    {% include 'booking/guest_form.html' %}#}
+{#                </div>#}
+{#                <button type="submit">Отправить</button>#}
+{#            </form>#}
+{#        </div>#}
+{#    </section>#}
+{#</section>#}
 {% endblock main %}
+
+{% block script %}
+    <script src="{% static 'js/booking-active-items.js' %}"></script>
+    <script src="{% static 'js/generate-guest-form.js' %}"></script>
+    <script src="{% static 'js/datapicker-booking.js' %}"></script>
+{% endblock script %}

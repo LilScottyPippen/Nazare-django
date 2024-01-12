@@ -1,10 +1,10 @@
-@import "variables.css";
+@import url('variables.css');
 
 header{
     width: 100%;
     position: fixed;
     color: var(--white-color);
-    background-color: var(--blue-color);
+    background-color: var(--dark-blue-color);
     z-index: var(--header-index);
     padding: 15px 0;
 }
@@ -47,7 +47,7 @@ header{
 
 .nav-btn-call:hover, .nav-btn-book:hover{
     background: var(--white-color);
-    color: var(--blue-color);
+    color: var(--dark-blue-color);
 }
 
 .nav-btn-phone{
@@ -97,7 +97,7 @@ header{
     display: none;
     position: absolute;
     top: 100%;
-    background-color: var(--blue-color);
+    background-color: var(--dark-blue-color);
     padding: 10px;
     white-space: nowrap;
     border-radius: 10px;
@@ -106,7 +106,7 @@ header{
 
 .nav-lang-container .nav-dropdown-links{
     background-color: var(--white-color);
-    color: var(--blue-color);
+    color: var(--dark-blue-color);
 }
 
 .nav-dropdown-link{

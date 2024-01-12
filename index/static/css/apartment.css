@@ -11,6 +11,7 @@
 
 .content-title-price{
     font-size: var(--main-line-font);
+    font-weight: bold;
 }
 
 .content-container-items {
@@ -41,7 +42,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    color: var(--blue-color);
+    color: var(--dark-blue-color);
 }
 
 .apartment-info-item span{
@@ -56,7 +57,7 @@
 .apartment-booking-btn{
     border: none;
     color: white;
-    background-color: var(--blue-color);
+    background-color: var(--dark-blue-color);
     padding: 18px 40px;
     border-radius: 10px;
     cursor: pointer;
@@ -88,7 +89,7 @@
 .content-item-apartment-list{
     display: flex;
     gap: 10px;
-    color: var(--blue-color);
+    color: var(--dark-blue-color);
     font-weight: bold;
     align-items: center;
     width: fit-content;
@@ -100,10 +101,6 @@
 }
 
 @media (max-width: 1024px){
-    /*.content-container{*/
-    /*    padding: 25px;*/
-    /*}*/
-
     .container-apartment-list{
         gap: 50px;
         justify-content: left;
@@ -114,10 +111,6 @@
     main{
         padding: 100px 0 50px 0;
     }
-
-    /*.content-container{*/
-    /*    padding: 20px;*/
-    /*}*/
 
     .apartment-index{
         gap: 20px;
@@ -133,9 +126,18 @@
         margin-left: auto;
     }
 
-    .apartment-info-item span, .content-title-price{
+    .content-title-price{
         white-space: normal;
         font-size: var(--main-line-font-mobile);
+    }
+
+    .apartment-info-item{
+        gap: 5px;
+    }
+
+    .apartment-info span{
+        white-space: normal;
+        font-size: var(--content-font);
     }
 
     .container-apartment-list{
@@ -148,11 +150,15 @@
     }
 
     .apartment-info-item i{
-        font-size: 40px;
+        font-size: 25px;
     }
 
     .apartment-list{
         max-height: 100%;
         flex-wrap: nowrap;
+    }
+
+    sup{
+        font-size: 10px;
     }
 }

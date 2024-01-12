@@ -13,12 +13,24 @@
     justify-content: center;
 }
 
+.modal-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    gap: 30px;
+}
+
 .modal-content {
     margin: auto;
     display: block;
     width: auto;
     max-width: 80%;
     max-height: 80vh;
+}
+
+.modal-caption{
+    color: var(--white-color);
 }
 
 .close {

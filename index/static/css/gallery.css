@@ -19,7 +19,7 @@
 
 .grid-gallery-item {
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 15px;
     cursor: pointer;
 }
 
@@ -39,7 +39,7 @@
 .gallery-load-more-btn{
     border: none;
     color: white;
-    background-color: var(--blue-color);
+    background-color: var(--dark-blue-color);
     padding: 18px 40px;
     border-radius: 10px;
     cursor: pointer;
