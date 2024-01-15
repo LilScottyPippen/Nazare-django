@@ -28,6 +28,6 @@ function generateGuestInformationBlocks() {
 
 window.onload = function () {
     generateGuestInformationBlocks();
-    document.getElementById('abuldIncrement').addEventListener('click', generateGuestInformationBlocks);
-    document.getElementById('abuldDecrement').addEventListener('click', generateGuestInformationBlocks);
+    document.getElementById('adultIncrement').addEventListener('click', generateGuestInformationBlocks);
+    document.getElementById('adultDecrement').addEventListener('click', generateGuestInformationBlocks);
 };

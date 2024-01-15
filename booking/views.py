@@ -5,6 +5,7 @@ from django.views import View
 from django.views.generic import TemplateView
 from django.forms import formset_factory, BaseFormSet
 from .models.booking import *
+from index.models.apartments import *
 from .forms.booking_form import *
 from utils.send_mail import *
 
@@ -26,6 +27,7 @@ class BookingView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["booking_form"] = BookingForm()
+        context['apartments'] = Apartment.objects.all()
         return context
 
     def post(self, request):

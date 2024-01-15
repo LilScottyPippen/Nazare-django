@@ -8,17 +8,17 @@ document.addEventListener('DOMContentLoaded', function () {
     let pickerCheckin, pickerCheckout;
 
     function updateTotalCost() {
-        let checkinDate = moment(pickerCheckin.getDate(), 'DD/MM/YYYY');
-        let checkoutDate = moment(pickerCheckout.getDate(), 'DD/MM/YYYY');
+        let checkinDate = moment(pickerCheckin.getDate(), 'YYYY-MM-DD');
+        let checkoutDate = moment(pickerCheckout.getDate(), 'YYYY-MM-DD');
         let selectedInput = document.querySelector('.form-apartment-items input.active');
         selectedPrice = selectedInput ? parseFloat(selectedInput.getAttribute('data-price')) || 0 : 0;
 
         if (checkinDate.isValid() && checkoutDate.isValid()) {
             let days = checkoutDate.diff(checkinDate, 'days');
             let totalCost = selectedPrice * days;
-            totalCostElement.textContent = 'ИТОГОВАЯ СТОИМОСТЬ: ' + totalCost + ' BYN';
+            totalCostElement.innerText = totalCost;
         } else {
-            totalCostElement.textContent = 'ИТОГОВАЯ СТОИМОСТЬ: ' + selectedPrice + ' BYN';
+            totalCostElement.innerText = selectedPrice;
         }
     }
 
@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
             format: 'D/M/YYYY',
             minDate: minDate,
             maxDate: maxDate.toDate(),
+            position: 'top left',
             onSelect: function (date) {
                 titleElement.textContent = this.toString(date, 'D/M/YYYY');
 
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const day = date.getDate();
                 const month = date.getMonth() + 1;
                 const year = date.getFullYear();
-                return `${day}/${month}/${year}`;
+                return `${year}-${month}-${day}`;
             },
             parse(dateString, format) {
                 const parts = dateString.split('/');
