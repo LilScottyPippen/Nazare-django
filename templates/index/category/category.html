@@ -1,0 +1,36 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/category.css' %}">
+{% endblock link %}
+
+{% block title %}
+    ПАРК ОТЕЛЬ ZORKA
+{% endblock title %}
+
+{% block main %}
+
+    <section class="content-section main-padding ">
+        <div class="content-container flex-column">
+            <div class="content-container-items align-items-center">
+                <div class="content-title color-dark-blue">
+                    {{ category.name.upper }}
+                </div>
+
+                <div class="content-items">
+                    {% for subcategory in subcategories %}
+                        {% if subcategory.redirect_page %}
+                            <div class="grid-item shadow" onclick="window.location.href='{% url subcategory.redirect_page.url_name subcategory.slug %}'">
+                        {% else %}
+                            <div class="grid-item shadow" onclick="window.location.href='{% url 'index:category' subcategory.slug %}'">
+                        {% endif %}
+                            <div class="grid-item-image" style="background-image: url({{ subcategory.image.url }});"></div>
+                            <div class="grid-item-title">{{ subcategory.name.upper }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock main %}

@@ -1,4 +1,4 @@
-@import "/index/staticstatic/css/variables.css";
+@import url('variables.css');
 
 .grid-container {
     display: grid;
@@ -9,7 +9,7 @@
 
 .grid-item {
     border-radius: 25px;
-    color: var(--blue-color);
+    color: var(--dark-blue-color);
 }
 
 .grid-item-icon-for-object-2x2{
@@ -40,15 +40,15 @@
 
 .grid-item-content-for-object-1x1{
     padding: 20px;
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     gap: 10px
 }
 
 .grid-item-icon{
     width: 65px;
     height: 65px;
-    border: 2px solid var(--blue-color);
+    border: 2px solid var(--dark-blue-color);
     border-radius: 15px;
     display: flex;
     justify-content: center;

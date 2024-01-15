@@ -1,0 +1,41 @@
+@import url('variables.css');
+
+.content-container{
+    display: flex;
+    align-items: center;
+    padding: 50px 0 50px 0;
+}
+
+.content-container-items{
+    flex-direction: column;
+    gap: 30px;
+}
+
+.content-items {
+    display: flex;
+    max-width: 940px;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.grid-item {
+    overflow: hidden;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.grid-item-image {
+    width: 240px;
+    height: 190px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.grid-item-title{
+    display: flex;
+    justify-content: center;
+    padding: 18px 0;
+    font-weight: bold;
+    color: var(--dark-blue-color);
+}

@@ -1,0 +1,19 @@
+<div class="content-items">
+    {% for photo in photos %}
+    <div class="grid-gallery-item shadow" data-caption="Caption for Image 1">
+        <div class="grid-gallery-image" style="background-image: url('{{ photo.photo.url }}');" onclick="openModal(this.style.backgroundImage)"></div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="content-items gallery-load-more" id="load-more">
+    {% if photos.has_next %}
+        <button type="button" class="gallery-load-more-btn"
+                hx-get="{% url 'index:photo_gallery_load_more' subcategory %}"
+                hx-vals='{"page": "{{ photos.next_page_number }}"}'
+                hx-target="#load-more"
+                hx-swap="outerHTML">
+            ПОКАЗАТЬ БОЛЬШЕ
+        </button>
+    {% endif %}
+</div>

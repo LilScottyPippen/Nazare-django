@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,282 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ПАРК ОТЕЛЬ ZORKA</title>
     <link rel="icon" href="{% static 'svg/ZorkaLogo-icon.svg' %}">
+=======
+>>>>>>> main_views
 
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/nav-mobile.css' %}">
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block link %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/card.css' %}">
     <link rel="stylesheet" href="{% static 'css/grid-cards.css' %}">
     <link rel="stylesheet" href="{% static 'css/slider.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'css/preloader.css' %}">
     <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+{% endblock link %}
 
-    <script src="{% static 'js/preloader.js' %}"></script>
-    <script src="{% static 'js/guest-counter.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
-</head>
-<body>
-    <section class="preloader" id="preloader">
-        <img src="{% static 'svg/ZorkaLogo.svg' %}" alt="logo">
-        <span class="loader"></span>
-    </section>
+{% block title %}
+    ПАРК ОТЕЛЬ ZORKA
+{% endblock title %}
+{% block main %}
 
-    <header>
-        <nav class="nav-container main-padding">
-            <div class="nav-left">
-                <a class="nav-logo" href="#">
-                    <img src="{% static 'svg/ZorkaLogo.svg' %}" alt="logo">
-                </a>
-            </div>
-
-            <div class="nav-right">
-                <div class="nav-right-container">
-                    <div class="nav-right-top-container">
-                        <span class="nav-btn-call">
-                            ЗАКАЗАТЬ ЗВОНОК
-                        </span>
-                        <span class="nav-btn-book">
-                            ЗАБРОНИРОВАТЬ
-                        </span>
-                        <a href="tel:+375291699106" class="nav-btn-phone">
-                            +375 29 169 91 06
-                        </a>
-
-                        <div class="nav-social-contacts-container">
-                            <a class="nav-social-contanct" href="#">
-                                <i class="fab fa-viber"></i>
-                            </a>
-                            <a class="nav-social-contanct" href="#">
-                                <i class="fab fa-telegram"></i>
-                            </a>
-                            <a class="nav-social-contanct" href="#">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </div>
-
-                        <div class="nav-lang-container">
-                            <ul class="nav-dropdown-items-container">
-                                <li class="nav-dropdown-item-container">
-                                    <div class="nav-dropdown-item">
-                                        <a href="#">ru</a>
-                                        <i class="fa-solid fa-caret-down"></i>
-                                    </div>
-
-                                    <ul class="nav-dropdown-links shadow">
-                                        <div class="nav-dropdown-link">
-                                            <a href="#">en</a>
-                                        </div>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="nav-right-bottom-container">
-                        <ul class="nav-dropdown-items-container">
-                            <li class="nav-dropdown-item-container">
-                                <div class="nav-dropdown-item">
-                                    <a href="#">О нас</a>
-                                    <i class="fa-solid fa-caret-down"></i>
-                                </div>
-
-                                <ul class="nav-dropdown-links shadow">
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Бронирование и оплата</a>
-                                    </div>
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Территория</a>
-                                    </div>
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Отзывы</a>
-                                    </div>
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">О компании</a>
-                                    </div>
-                                </ul>
-                            </li>
-
-                            <li class="nav-dropdown-item-container">
-                                <div class="nav-dropdown-item">
-                                    <a href="#">Апартаменты</a>
-                                    <i class="fa-solid fa-caret-down"></i>
-                                </div>
-
-                                <ul class="nav-dropdown-links shadow">
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Дом OBSIDIAN</a>
-                                    </div>
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Дом TERRA</a>
-                                    </div>
-                                    <div class="nav-dropdown-link">
-                                        <a href="apartment.html">Дом OLIVE</a>
-                                    </div>
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Гостиница</a>
-                                    </div>
-                                </ul>
-                            </li>
-
-                            <li class="nav-dropdown-item-container">
-                                <div class="nav-dropdown-item">
-                                    <a href="#">Услуги</a>
-                                    <i class="fa-solid fa-caret-down"></i>
-                                </div>
-
-                                <ul class="nav-dropdown-links shadow">
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Прокат и аренда</a>
-                                    </div>
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Ресторан</a>
-                                    </div>
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Доставка еды</a>
-                                    </div>
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Трасфер</a>
-                                    </div>
-                                </ul>
-                            </li>
-
-                            <li class="nav-dropdown-item-container">
-                                <div class="nav-dropdown-item">
-                                    <a href="#">Галерея</a>
-                                    <i class="fa-solid fa-caret-down"></i>
-                                </div>
-
-                                <ul class="nav-dropdown-links shadow">
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Фотогалерея</a>
-                                    </div>
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">Видеогалерея</a>
-                                    </div>
-                                    <div class="nav-dropdown-link">
-                                        <a href="#">3D-тур</a>
-                                    </div>
-                                </ul>
-                            </li>
-
-                            <li class="nav-dropdown-item-container">
-                                <div class="nav-dropdown-item">
-                                    <a href="#">Контакты</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="nav-mobile-menu-container open" id="nav-toggle">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <section class="nav-mobile shadow main-padding" id="nav-mobile">
-        <ul class="nav-mobile-dropdown-items-container">
-            <li class="nav-mobile-item-container">
-                <div class="nav-mobile-dropdown-item">
-                    <span>О нас</span>
-                    <i class="fa-solid fa-caret-down"></i>
-                </div>
-
-                <ul class="nav-mobile-dropdown-links">
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Бронирование и оплата</a>
-                    </div>
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Территория</a>
-                    </div>
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Отзывы</a>
-                    </div>
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">О компании</a>
-                    </div>
-                </ul>
-            </li>
-
-            <li class="nav-mobile-item-container">
-                <div class="nav-mobile-dropdown-item">
-                    <span>Апартаменты</span>
-                    <i class="fa-solid fa-caret-down"></i>
-                </div>
-
-                <ul class="nav-mobile-dropdown-links">
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Дом OBSIDIAN</a>
-                    </div>
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Дом TERRA</a>
-                    </div>
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Дом OLIVE</a>
-                    </div>
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Гостиница</a>
-                    </div>
-                </ul>
-            </li>
-
-            <li class="nav-mobile-item-container">
-                <div class="nav-mobile-dropdown-item">
-                    <span>Услуги</span>
-                    <i class="fa-solid fa-caret-down"></i>
-                </div>
-
-                <ul class="nav-mobile-dropdown-links">
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Прокат и аренда</a>
-                    </div>
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Ресторан</a>
-                    </div>
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Доставка еды</a>
-                    </div>
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Трансфер</a>
-                    </div>
-                </ul>
-            </li>
-
-            <li class="nav-mobile-item-container">
-                <div class="nav-mobile-dropdown-item">
-                    <span>Галерея</span>
-                    <i class="fa-solid fa-caret-down"></i>
-                </div>
-
-                <ul class="nav-mobile-dropdown-links">
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Фотогалерея</a>
-                    </div>
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">Видеогалерея</a>
-                    </div>
-                    <div class="nav-mobile-dropdown-link">
-                        <a href="#">3D-тур</a>
-                    </div>
-                </ul>
-            </li>
-
-            <li class="nav-mobile-item-container">
-                <div class="nav-mobile-dropdown-item">
-                    <a href="#">Контакты</a>
-                </div>
-            </li>
-        </ul>
-    </section>
-
-    <main>
-        <section class="content-section bg-blue main-padding static-height mobile-flex-column">
+        <section class="content-section bg-dark-blue main-padding static-height mobile-flex-column">
             <div class="content-container space-between color-white mobile-flex-column mobile-content-container-for-second-section">
                 <div class="content flex-end">
                     <span class="content-title">
@@ -324,7 +69,7 @@
                                     </span>
                                     <div class="apartment-dropdown-footer-counter-control">
                                         <i class="fa-solid fa-square-plus" onclick="incrementCounter('adult')"></i>
-                                        <span id="adultCount">0</span>
+                                        <span id="adultCount">1</span>
                                         <i class="fa-solid fa-square-minus" onclick="decrementCounter('adult')"></i>
                                     </div>
                                 </div>
@@ -345,13 +90,7 @@
                             <span class="search-apartment-btn-title">НАЙТИ АПАРТАМЕНТ</span>
                         </div>
                     </div>
-                    <script>
-                        document.querySelectorAll('.search-apartment-dropdown-header').forEach(function(element) {
-                            element.addEventListener('click', function() {
-                                this.classList.toggle('active');
-                            });
-                        });
-                    </script>
+                    <script src="{% static 'js/apartment-dropdown-active.js' %}"></script>
                 </section>
             </div>
         </section>
@@ -359,90 +98,13 @@
         <section class="content-section main-padding bg-image">
             <div class="content-container flex-column align-items-center">
                 <div class="content-container-items">
-                    <div class="content-title color-blue">
+                    <div class="content-title color-dark-blue">
                         АПАРТАМЕНТЫ
                     </div>
 
                     <section class="content-items flex-wrap gap-20-to-40">
-                        <div class="card bg-white shadow">
-                            <div class="card-main-section">
-                                <div class="card-image-container" style="background-image: url('{% static 'img/apartments/resources/cards/obsidian.webp' %}');"></div>
-                                <div class="card-main-section-content">
-                                    <span class="card-main-content-title">
-                                        OBSIDIAN
-                                    </span>
-                                    <span class="card-main-content-description">
-                                        Вместимость: 6 взрослых + дети<br>
-                                        - 2 спальни + 1 гостевая<br>
-                                        - 2 санузла<br>
-                                        - Полноценная кухня<br>
-                                        - 4 телевизора<br>
-                                        - Пелетный камин<br>
-                                        - WiFi free
-                                    </span>
-                                    <div class="card-main-section-content-footer">
-                                        <span class="card-main-daily-price">Цена: 900 BYN / сутки</span>
-                                        <a href="#" class="card-main-btn-book bg-blue color-white">ЗАБРОНИРОВАТЬ</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-main-section-third bg-white shadow"></div>
-                            <div class="card-main-section-second bg-white shadow"></div>
-                        </div>
+                        {% include "index/index_houses.html" %}
 
-                        <div class="card blue-card bg-blue shadow">
-                            <div class="card-main-section">
-                                <div class="card-image-container" style="background-image: url('{% static 'img/apartments/resources/cards/terra.webp' %}');"></div>
-                                <div class="card-main-section-content">
-                                    <span class="card-main-content-title color-white">
-                                        TERRA
-                                    </span>
-                                    <span class="card-main-content-description color-white">
-                                        Вместимость: 4 взрослых + дети<br>
-                                        - 1 спальня + 1 гостевая<br>
-                                        - Собственная сауна<br>
-                                        - Джакузи<br>
-                                        - 1 санузел<br>
-                                        - Полноценная кухня<br>
-                                        - 3 телевизора<br>
-                                        - Пелетный камин<br>
-                                        - WiFi free
-                                    </span>
-                                    <div class="card-main-section-content-footer">
-                                        <span class="card-main-daily-price color-white">Цена: 1200 BYN / сутки</span>
-                                        <a href="#" class="card-main-btn-book bg-white color-blue">ЗАБРОНИРОВАТЬ</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-main-section-third bg-blue shadow"></div>
-                            <div class="card-main-section-second bg-blue shadow"></div>
-                        </div>
-
-                        <div class="card bg-white shadow">
-                            <div class="card-main-section">
-                                <div class="card-image-container" style="background-image: url('{% static 'img/apartments/resources/cards/olive.webp' %}');"></div>
-                                <div class="card-main-section-content">
-                                    <span class="card-main-content-title">
-                                        OLIVE
-                                    </span>
-                                    <span class="card-main-content-description">
-                                        Вместимость: 6 взрослых + дети<br>
-                                        - 2 спальни + 1 гостевая<br>
-                                        - 2 санузла<br>
-                                        - Полноценная кухня<br>
-                                        - 4 телевизора<br>
-                                        - Пелетный камин<br>
-                                        - WiFi free
-                                    </span>
-                                    <div class="card-main-section-content-footer">
-                                        <span class="card-main-daily-price">Цена: 900 BYN / сутки</span>
-                                        <a href="apartment.html" class="card-main-btn-book bg-blue color-white">ЗАБРОНИРОВАТЬ</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-main-section-third bg-white shadow"></div>
-                            <div class="card-main-section-second bg-white shadow"></div>
-                        </div>
                     </section>
                 </div>
             </div>
@@ -451,7 +113,7 @@
         <section class="content-section main-padding">
             <div class="content-container flex-column align-items-center">
                 <div class="content-container-items">
-                    <div class="content-title color-blue">
+                    <div class="content-title color-dark-blue">
                         ПРЕИМУЩЕСТВА
                     </div>
 
@@ -480,7 +142,7 @@
                             </div>
                             <div class="grid-item shadow-blur bg-gray object-3">
                                 <div class="grid-item-content-for-object-1x1">
-                                    <div class="grid-item-icon bg-blue color-white"><i class="fa-regular fa-credit-card"></i></div>
+                                    <div class="grid-item-icon bg-dark-blue color-white"><i class="fa-regular fa-credit-card"></i></div>
                                     <span class="font-bold">Лучшая цена</span>
                                     <span class="grid-item-section-description">
                                         Непревзойденный комфорт по выгодной стоимости.
@@ -502,10 +164,10 @@
             </div>
         </section>
 
-        <section class="content-section main-padding bg-gray">
+        <section class="content-section main-padding bg-green-blue">
             <div class="content-container flex-column align-items-center">
                 <div class="content-container-items">
-                    <div class="content-title color-blue">
+                    <div class="content-title color-dark-blue">
                         ОТЗЫВЫ
                     </div>
 
@@ -527,16 +189,16 @@
                                                 <i class="fa-solid fa-quote-right"></i>
                                             </div>
                                         </div>
-                                        <span class="card-main-content-description color-blue">
+                                        <span class="card-main-content-description color-dark-blue">
                                             Наслаждался каждым моментом в уютном парк-отеле Zorka. Безупречный сервис, красивейший пейзаж и непередаваемая атмосфера покоя. Вернусь снова и снова!
                                         </span>
                                         <div class="card-main-content-guest">
                                             <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest1.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
-                                                <span class="card-main-content-guest-name color-blue">
+                                                <span class="card-main-content-guest-name color-dark-blue">
                                                     Олег
                                                 </span>
-                                                <div class="card-main-content-guest-score color-blue">
+                                                <div class="card-main-content-guest-score color-dark-blue">
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
@@ -563,10 +225,10 @@
                                         <div class="card-main-content-guest">
                                             <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest2.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
-                                                <span class="card-main-content-guest-name color-blue">
+                                                <span class="card-main-content-guest-name color-dark-blue">
                                                     Елена
                                                 </span>
-                                                <div class="card-main-content-guest-score color-blue">
+                                                <div class="card-main-content-guest-score color-dark-blue">
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
@@ -593,10 +255,10 @@
                                         <div class="card-main-content-guest">
                                             <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest3.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
-                                                <span class="card-main-content-guest-name color-blue">
+                                                <span class="card-main-content-guest-name color-dark-blue">
                                                     Алексей
                                                 </span>
-                                                <div class="card-main-content-guest-score color-blue">
+                                                <div class="card-main-content-guest-score color-dark-blue">
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
@@ -623,10 +285,10 @@
                                         <div class="card-main-content-guest">
                                             <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest4.webp' %});"></div>
                                             <div class="card-main-content-guest-content">
-                                                <span class="card-main-content-guest-name color-blue">
+                                                <span class="card-main-content-guest-name color-dark-blue">
                                                     Мария
                                                 </span>
-                                                <div class="card-main-content-guest-score color-blue">
+                                                <div class="card-main-content-guest-score color-dark-blue">
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
                                                     <i class="fa-solid fa-star"></i>
@@ -643,8 +305,9 @@
                 </div>
             </div>
         </section>
-    </main>
+{% endblock main %}
 
+<<<<<<< HEAD
     <footer>
         <div class="footer-main main-padding">
             <div class="footer-main-containers">

@@ -1,0 +1,90 @@
+<section class="nav-mobile shadow main-padding" id="nav-mobile">
+  <ul class="nav-mobile-dropdown-items-container">
+    <li class="nav-mobile-item-container">
+      <div class="nav-mobile-dropdown-item">
+        <span>О нас</span>
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+
+      <ul class="nav-mobile-dropdown-links">
+        <div class="nav-mobile-dropdown-link">
+          <a href="#">Бронирование и оплата</a>
+        </div>
+        <div class="nav-mobile-dropdown-link">
+          <a href="#">Территория</a>
+        </div>
+        <div class="nav-mobile-dropdown-link">
+          <a href="#">Отзывы</a>
+        </div>
+        <div class="nav-mobile-dropdown-link">
+          <a href="#">О компании</a>
+        </div>
+      </ul>
+    </li>
+
+    <li class="nav-mobile-item-container">
+      <div class="nav-mobile-dropdown-item">
+        <span>Апартаменты</span>
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+
+      <ul class="nav-mobile-dropdown-links">
+          {% for house in houses %}
+              <div class="nav-mobile-dropdown-link">
+                <a href="{% url 'index:apartment' house.apartment.slug %}">Дом {{ house.apartment.title }}</a>
+              </div>
+          {% endfor %}
+        <div class="nav-mobile-dropdown-link">
+          <a href="#">Гостиница</a>
+        </div>
+      </ul>
+    </li>
+
+    <li class="nav-mobile-item-container">
+      <div class="nav-mobile-dropdown-item">
+        <span>Услуги</span>
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+
+      <ul class="nav-mobile-dropdown-links">
+        <div class="nav-mobile-dropdown-link">
+          <a href="#">Прокат и аренда</a>
+        </div>
+        <div class="nav-mobile-dropdown-link">
+          <a href="#">Ресторан</a>
+        </div>
+        <div class="nav-mobile-dropdown-link">
+          <a href="#">Доставка еды</a>
+        </div>
+        <div class="nav-mobile-dropdown-link">
+          <a href="#">Трансфер</a>
+        </div>
+      </ul>
+    </li>
+
+    <li class="nav-mobile-item-container">
+      <div class="nav-mobile-dropdown-item">
+        <span>Галерея</span>
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+
+      <ul class="nav-mobile-dropdown-links">
+        <div class="nav-mobile-dropdown-link">
+          <a href="{% url 'index:category' 'photogallery' %}">Фотогалерея</a>
+        </div>
+        <div class="nav-mobile-dropdown-link">
+          <a href="{% url 'index:category' 'videogallery' %}">Видеогалерея</a>
+        </div>
+        <div class="nav-mobile-dropdown-link">
+          <a href="#">3D-тур</a>
+        </div>
+      </ul>
+    </li>
+
+    <li class="nav-mobile-item-container">
+      <div class="nav-mobile-dropdown-item">
+        <a href="{% url 'index:contact' %}">Контакты</a>
+      </div>
+    </li>
+  </ul>
+</section>

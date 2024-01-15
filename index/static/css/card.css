@@ -1,4 +1,4 @@
-@import "/index/staticstatic/css/card.css";
+@import url('variables.css');
 
 .card{
     display: flex;
@@ -30,7 +30,7 @@
     flex-direction: column;
     gap: 10px;
     flex: 1;
-    color: var(--blue-color);
+    color: var(--dark-blue-color);
 }
 
 .card-main-content-title{

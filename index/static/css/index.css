@@ -1,4 +1,8 @@
-@import "/index/static/css/variables.css";
+@import "variables.css";
+
+.padding-for-main{
+    padding: 0;
+}
 
 .bg-image {
     position: relative;
@@ -19,16 +23,9 @@
     z-index: -5;
 }
 
-.content-section{
-    display: flex;
-}
-
 .content-container{
     display: flex;
-    width: 100%;
-    height: 100%;
     padding: 100px 0 50px 0;
-    gap: 20px;
 }
 
 .content-container-items{

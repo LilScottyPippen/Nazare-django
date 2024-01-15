@@ -3,8 +3,10 @@
 :root {
     /* ======== COLOR ======== */
     --blue-color: #354D6D;
+    --dark-blue-color: #35454E;
     --white-color: white;
     --gray-color: #EDF0F5;
+    --green-blue-color: #E2E8EB;
 
     /* Z-INDEX */
     --preloader-index: 9999;

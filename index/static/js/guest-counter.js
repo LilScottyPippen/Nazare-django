@@ -1,7 +1,7 @@
 function incrementCounter(type) {
-    var counterId = type + 'Count';
-    var counter = document.getElementById(counterId);
-    var count = parseInt(counter.innerText);
+    let counterId = type + 'Count';
+    let counter = document.getElementById(counterId);
+    let count = parseInt(counter.innerText);
 
     if (count < 6) {
         count++;
@@ -10,11 +10,14 @@ function incrementCounter(type) {
 }
 
 function decrementCounter(type) {
-    var counterId = type + 'Count';
-    var counter = document.getElementById(counterId);
-    var count = parseInt(counter.innerText);
+    let counterId = type + 'Count';
+    let counter = document.getElementById(counterId);
+    let count = parseInt(counter.innerText);
 
-    if (count > 0) {
+    if (type === 'adult' && count > 1) {
+        count--;
+        counter.innerText = count;
+    } else if (type === 'child' && count > 0) {
         count--;
         counter.innerText = count;
     }
