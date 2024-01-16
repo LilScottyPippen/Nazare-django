@@ -1,5 +1,5 @@
 function generateGuestInformationBlocks() {
-    var adultCount = parseInt(document.getElementById('adultCount').innerText);
+    let adultCount = parseInt(document.getElementById('guests_count').innerText);
 
     document.getElementById('guestInformationContainer').innerHTML = '';
 
@@ -8,9 +8,9 @@ function generateGuestInformationBlocks() {
         guestInformationBlock.className = 'form-guest-information-item';
 
         guestInformationBlock.innerHTML = `
-            <input type="input" class="text-input shadow-normal-blur" placeholder="ФАМИЛИЯ">
-            <input type="input" class="text-input shadow-normal-blur" placeholder="ИМЯ">
-            <input type="input" class="text-input shadow-normal-blur" placeholder="ОТЧЕСТВО">
+            <input id="guest_surname" type="input" class="text-input shadow-normal-blur" placeholder="ФАМИЛИЯ">
+            <input id="guest_name" type="input" class="text-input shadow-normal-blur" placeholder="ИМЯ">
+            <input id="guest_father_name" type="input" class="text-input shadow-normal-blur" placeholder="ОТЧЕСТВО">
             <div class="form-guest-information-citizenship">
                 <div class="form-guest-information-citizenship-title">
                     ГРАЖДАНСТВО:

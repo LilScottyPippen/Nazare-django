@@ -3,59 +3,61 @@
 <html lang="en">
 
 <head>
-  <title>{% block title %} {% endblock title %}</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock title %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" href="{% static 'svg/ZorkaLogo-icon.svg' %}">
-  <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  <link rel="stylesheet" href="{% static 'css/header.css' %}">
-  <link rel="stylesheet" href="{% static 'css/nav-mobile.css' %}">
-  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-  <link rel="stylesheet" href="{% static 'css/preloader.css' %}">
+    <link rel="icon" href="{% static 'svg/ZorkaLogo-icon.svg' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav-mobile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/preloader.css' %}">
 
-  {% block link %}
-  {% endblock link %}
+    {% block link %}
+    {% endblock link %}
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 
-  <script src="{% static 'js/preloader.js' %}"></script>
-  <script src="{% static 'js/guest-counter.js' %}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
-
+    <script src="{% static 'js/preloader.js' %}"></script>
+    <script src="{% static 'js/guest-counter.js' %}"></script>
+    <script src="{% static 'js/notification.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 </head>
 
 <body>
-  {% include "base/preloader.html" %}
+    {% include "base/preloader.html" %}
 
-  <header>
-    {% block header %}
-    {% include "base/header.html" %}
-    {% endblock header%}
-  </header>
+    <header>
+        {% block header %}
+        {% include "base/header.html" %}
+        {% endblock header%}
+    </header>
 
-  {% include "base/base_nav_menu.html" %}
+    {% include "base/base_nav_menu.html" %}
 
-  <main class="padding-for-main">
-    {% block main %}
-    {% endblock main%}
-  </main>
+    <main class="padding-for-main">
+        {% block main %}
+        {% endblock main%}
+    </main>
 
-  <footer>
-    {% block footer%}
-    {% include "base/footer.html" %}
-    {% endblock footer%}
-  </footer>
+    <footer>
+        {% block footer%}
+        {% include "base/footer.html" %}
+        {% endblock footer%}
+    </footer>
 
-  <script src="{% static 'js/nav-mobile.js' %}"></script>
-  <script src="{% static 'js/slider.js' %}"></script>
+    <script src="{% static 'js/nav-mobile.js' %}"></script>
+    <script src="{% static 'js/slider.js' %}"></script>
 
-  {% block script %}
-  {% endblock script %}
+    {% block script %}
+    {% endblock script %}
 
 </body>
 

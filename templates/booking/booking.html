@@ -14,6 +14,7 @@
 {% endblock link %}
 {% block main %}
 
+    {{ booking_form.errors }}
     <section class="content-section main-padding">
         <div class="content-container flex-column align-items-center">
             <div class="content-container-items">
@@ -23,7 +24,7 @@
 
                 <section class="content-items">
                     <div class="form">
-                        <form class="booking-form" action="#" method="POST">
+                        <form class="booking-form" method="POST">
                             {% csrf_token %}
                             <div class="form-section">
                                 <div class="form-container">
@@ -33,7 +34,7 @@
                                         </div>
                                         <div class="form-apartment-items">
                                             {% for apartment in apartments %}
-                                                <input type="button" class="choose-input shadow-normal-blur {% if apartment.id == 1 %} active {% endif %}" value="{{ apartment.title }}" data-price="{{ apartment.daily_price }}" data-id="{{ apartment.id }}">
+                                                <input id="apartment" type="button" class="choose-input shadow-normal-blur {% if apartment.id == 1 %} active {% endif %}" value="{{ apartment.title }}" data-price="{{ apartment.daily_price }}" data-id="{{ apartment.id }}">
                                             {% endfor %}
                                         </div>
                                     </div>
@@ -43,7 +44,7 @@
                                     <div class="form-search-apartment-grid">
                                         <div class="search-apartment-dropdown shadow-normal-blur">
                                             <div class="search-apartment-dropdown-header" id="datepicker-checkin">
-                                                    <span class="search-apartment-dropdown-title" id="span_check_in_date">
+                                                    <span class="search-apartment-dropdown-title" id="check_in_date">
                                                         ЗАЕЗД
                                                     </span>
                                                 <i class="fa-solid fa-calendar-days"></i>
@@ -51,7 +52,7 @@
                                         </div>
                                         <div class="search-apartment-dropdown shadow-normal-blur">
                                             <div class="search-apartment-dropdown-header" id="datepicker-checkout">
-                                                <span class="search-apartment-dropdown-title" id="span_check_out_date">
+                                                <span class="search-apartment-dropdown-title" id="check_out_date">
                                                     ВЫЕЗД
                                                 </span>
                                                 <i class="fa-solid fa-calendar-days"></i>
@@ -71,9 +72,9 @@
                                                         ВЗРОСЛЫЕ
                                                     </span>
                                                     <div class="apartment-dropdown-footer-counter-control">
-                                                        <i class="fa-solid fa-square-plus" id="adultIncrement" onclick="incrementCounter('adult')"></i>
-                                                        <span id="adultCount">1</span>
-                                                        <i class="fa-solid fa-square-minus" id="adultDecrement" onclick="decrementCounter('adult')"></i>
+                                                        <i class="fa-solid fa-square-plus" id="adultIncrement" onclick="incrementCounter('guests')"></i>
+                                                        <span id="guests_count">1</span>
+                                                        <i class="fa-solid fa-square-minus" id="adultDecrement" onclick="decrementCounter('guests')"></i>
                                                     </div>
                                                 </div>
 
@@ -82,9 +83,9 @@
                                                         ДЕТИ
                                                     </span>
                                                     <div class="apartment-dropdown-footer-counter-control">
-                                                        <i class="fa-solid fa-square-plus" onclick="incrementCounter('child')"></i>
-                                                        <span id="childCount">0</span>
-                                                        <i class="fa-solid fa-square-minus" onclick="decrementCounter('child')"></i>
+                                                        <i class="fa-solid fa-square-plus" onclick="incrementCounter('children')"></i>
+                                                        <span id="children_count">0</span>
+                                                        <i class="fa-solid fa-square-minus" onclick="decrementCounter('children')"></i>
                                                     </div>
                                                 </div>
                                             </div>
