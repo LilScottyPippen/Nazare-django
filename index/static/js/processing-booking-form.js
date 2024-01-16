@@ -1,9 +1,30 @@
-function setElementValue(id, value) {
-    document.getElementById(id).value = value;
-}
+function getClientFormData(method){
+    const apartment_id = document.querySelector('.form-apartment-items .choose-input.active').getAttribute('data-id')
+    const check_in_date = document.getElementById('span_check_in_date').innerText
+    const check_out_date = document.getElementById('span_check_out_date').innerText
+    const guests_count = document.getElementById('adultCount').innerText
+    const children_count = document.getElementById('childCount').innerText
+    const client_surname = document.getElementById('client_surname').value
+    const client_name = document.getElementById('client_name').value
+    const client_father_name = document.getElementById('client_father_name').value
+    const client_phone = document.getElementById('client_phone').value
+    const client_mail = document.getElementById('client_mail').value
+    const total_sum = document.getElementById('totalCost').innerText
 
-function getElementValue(selector) {
-    return document.querySelector(selector).innerText;
+    return {
+        apartment: apartment_id,
+        check_in_date: check_in_date,
+        check_out_date: check_out_date,
+        guests_count: guests_count,
+        children_count: children_count,
+        client_surname: client_surname,
+        client_name: client_name,
+        client_father_name: client_father_name,
+        client_phone: client_phone,
+        client_mail: client_mail,
+        payment_method: method,
+        total_sum: total_sum
+    }
 }
 
 function getGuestFormData(guestForm) {
@@ -21,40 +42,29 @@ function getGuestFormData(guestForm) {
 }
 
 function handlePayment(method) {
-    const activeChooseInput = document.querySelector('.choose-input.active');
-    const guestFormContainer = document.getElementById('guest-form');
+    const clientData = getClientFormData(method);
 
-    setElementValue('id_apartment', activeChooseInput.getAttribute('data-id'));
-    setElementValue('id_check_in_date', getElementValue('#span_check_in_date'));
-    setElementValue('id_check_out_date', getElementValue('#span_check_out_date'));
-    setElementValue('id_guests_count', getElementValue('#adultCount'));
-    setElementValue('id_children_count', getElementValue('#childCount'));
-    setElementValue('id_client_surname', document.getElementById('client_surname').value);
-    setElementValue('id_client_name', document.getElementById('client_name').value);
-    setElementValue('id_client_father_name', document.getElementById('client_father_name').value);
-    setElementValue('id_client_phone', document.getElementById('client_phone').value);
-    setElementValue('id_client_mail', document.getElementById('client_mail').value);
-    setElementValue('id_total_sum', getElementValue('#totalCost'));
-    setElementValue('id_payment_method', method);
-
-    const formDataArray = [];
     const guestForms = document.querySelectorAll('.form-guest-information-item');
+    const guestData = Array.from(guestForms).map(getGuestFormData);
 
-    guestForms.forEach((guestForm, index) => {
-        formDataArray.push(getGuestFormData(guestForm));
-    });
+    const formData = {
+        clientData: clientData,
+        guestData: guestData
+    };
 
-    guestForms.forEach((form, index) => {
-        const guestForm = guestFormContainer.querySelector(`#id_form-${index}-guest_name`);
-
-        if (guestForm) {
-            const inputFields = guestFormContainer.querySelectorAll(`[id^="id_form-${index}"]`);
-            const formData = formDataArray[index];
-
-            inputFields[0].value = formData.lastName || '';
-            inputFields[1].value = formData.firstName || '';
-            inputFields[2].value = formData.fatherName || '';
-            inputFields[3].value = formData.citizenship || '';
+    $.ajax({
+        type: "POST",
+        url: "/booking",
+        data: JSON.stringify(formData),
+        contentType: "application/json",
+        headers: {
+            'X-CSRFToken': window.csrf_token
+        },
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            console.error('Request failed with status:', xhr.status);
         }
     });
 }

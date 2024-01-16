@@ -1,5 +1,4 @@
 import threading
-from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
@@ -8,6 +7,8 @@ from .models.booking import *
 from index.models.apartments import *
 from .forms.booking_form import *
 from utils.send_mail import *
+import json
+from django.http import JsonResponse
 
 
 class BaseArticleFormSet(BaseFormSet):
@@ -31,23 +32,26 @@ class BookingView(TemplateView):
         return context
 
     def post(self, request):
-        booking_form = BookingForm(request.POST)
+        data = json.loads(request.body)
+        client_data = data.get('clientData', {})
+        guest_data = data.get('guestData', [])
 
-        GuestFormSet = formset_factory(GuestsForm, formset=BaseArticleFormSet)
-        formset = GuestFormSet(request.POST)
+        form = BookingForm(client_data)
 
-        if booking_form.is_valid() and formset.is_valid():
-            booking_instance = booking_form.save()
+        if form.is_valid():
+            booking_instance = form.save()
 
-            self.send_mailing(booking_instance)
-
-            for guest_form in formset:
-                guest_instance = Guest.objects.create(**guest_form.cleaned_data)
-                guest_instance.booking_id = booking_instance
-                guest_instance.save()
-            return HttpResponse("Success", 200)
+            for guest_form_data in guest_data:
+                Guest.objects.create(
+                    guest_second_name=guest_form_data['lastName'],
+                    guest_name=guest_form_data['firstName'],
+                    guest_father_name=guest_form_data['fatherName'],
+                    citizenship=guest_form_data['citizenship'],
+                    booking=booking_instance,
+                )
+            return JsonResponse({'status': 'Success'}, status=200)
         else:
-            return HttpResponseBadRequest("Form is invalid", 400)
+            return JsonResponse({'status': 'Form is invalid'}, status=400)
 
     def send_mailing(self, booking_instance):
         if booking_instance.payment_method == PAYMENT_METHOD_CHOICES[1][0]:

@@ -2,8 +2,8 @@ from django.db import models
 from ..models.booking import *
 
 CITIZENSHIP_CHOICES = [
-    ("РБ", "Россия"),
-    ("РФ", "Беларусь"),
+    ("РБ", "Беларусь"),
+    ("РФ", "Россия"),
 ]
 
 
