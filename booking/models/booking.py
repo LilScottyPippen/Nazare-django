@@ -22,6 +22,7 @@ class Booking(models.Model):
     payment_method = models.CharField(max_length=2, choices=PAYMENT_METHOD_CHOICES, default=PAYMENT_METHOD_CHOICES[0],
                                       verbose_name='Способ оплаты')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создано')
+    is_privacy_policy = models.BooleanField(default=False, verbose_name='Соглашение о конфиденциальности')
 
     def __str__(self):
         return str(self.id)

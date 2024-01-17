@@ -12,6 +12,7 @@ function getClientFormData(method){
     const client_phone = document.getElementById('client_phone').value
     const client_mail = document.getElementById('client_mail').value
     const total_sum = document.getElementById('totalCost').innerText
+    const privacy_policy = document.getElementById('privacy_policy')
 
     const formData = {
         apartment: apartment_id,
@@ -30,7 +31,6 @@ function getClientFormData(method){
         const input = document.getElementById(key);
         const dateRegex = /^\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])$/;
 
-        console.log(`${key} ${input}`)
         if (!formData[key]) {
             hasError = true;
             if (input) {
@@ -60,12 +60,15 @@ function getClientFormData(method){
         }
     }
 
+    const is_checked = privacy_policy.checked
+
     if (hasError) {
         return false;
     }
 
     formData.payment_method = method;
     formData.total_sum = total_sum
+    formData.is_privacy_policy = is_checked
 
     return formData;
 }
@@ -140,7 +143,7 @@ function handlePayment(method) {
                 showNotification(response.status, response.message);
             },
             error: function(response) {
-                showNotification('error', 'ошибка');
+                showNotification(response.responseJSON.status, response.responseJSON.message);
             }
         });
     }
