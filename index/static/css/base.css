@@ -138,6 +138,10 @@ sup{
     flex-direction: column;
 }
 
+.flex-row{
+    flex-direction: row;
+}
+
 .font-bold{
     font-weight: bold;
 }
@@ -158,6 +162,10 @@ sup{
     gap: 30px;
 }
 
+.gap-40{
+    gap: 40px;
+}
+
 .gap-20-to-40{
     gap: 20px;
 }
@@ -171,6 +179,13 @@ sup{
     text-decoration: underline;
 }
 
+.pika-single{
+    z-index: 100 !important;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
 
 @media (min-width: 1024px){
     .main-padding{
@@ -178,9 +193,13 @@ sup{
     }
 }
 
-@media (max-width: 1024px) and (min-width: 768px){
+@media (max-width: 1150px) and (min-width: 768px){
     .main-padding{
         padding: 0 50px;
+    }
+
+    .padding-for-main{
+        padding: 50px 0 50px 0;
     }
 
     .gap-20-to-40{

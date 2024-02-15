@@ -11,14 +11,14 @@ class SubCategoryInline(admin.StackedInline):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name')
+    list_display = ('name', 'slug')
 
     inlines = [SubCategoryInline]
 
 
 @admin.register(SubCategory)
 class SubCategoryAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'category', 'name')
+    list_display = ('name', 'category', 'redirect_page')
 
     inlines = [PhotoGalleryInline]
 

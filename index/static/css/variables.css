@@ -10,6 +10,7 @@
 
     /* Z-INDEX */
     --preloader-index: 9999;
+    --callback-index: 6000;
     --header-index: 5000;
     --nav-mobile-index: 4000;
 

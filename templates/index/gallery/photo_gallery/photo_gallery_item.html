@@ -1,6 +1,6 @@
 <div class="content-items">
     {% for photo in photos %}
-    <div class="grid-gallery-item shadow" data-caption="Caption for Image 1">
+    <div class="grid-gallery-item shadow" data-caption="{{ photo.description }}">
         <div class="grid-gallery-image" style="background-image: url('{{ photo.photo.url }}');" onclick="openModal(this.style.backgroundImage)"></div>
     </div>
     {% endfor %}

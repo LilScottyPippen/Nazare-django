@@ -15,6 +15,8 @@
 }
 
 .content-container-items {
+    display: flex;
+    gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -100,7 +102,7 @@
     font-size: 25px;
 }
 
-@media (max-width: 1024px){
+@media (max-width: 1150px){
     .container-apartment-list{
         gap: 50px;
         justify-content: left;

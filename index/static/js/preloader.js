@@ -7,10 +7,4 @@ function hidePreloader() {
     }, 800);
 }
 
-// function simulateLongLoad() {
-//     setTimeout(function() {
-//         hidePreloader();
-//     }, 2000);
-// }
-
 window.addEventListener("load", hidePreloader);

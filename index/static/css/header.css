@@ -16,8 +16,13 @@ header{
     position: relative;
 }
 
+.nav-logo{
+    max-height: 20px;
+    cursor: pointer;
+}
+
 .nav-logo img{
-    width: 55px;
+    width: 200px;
 }
 
 .nav-right{
@@ -132,7 +137,7 @@ header{
     cursor: pointer;
 }
 
-@media (max-width: 1024px) and (min-width: 768px){
+@media (max-width: 1150px) and (min-width: 768px){
     .nav-right-bottom-container, .nav-social-contacts-container, .nav-lang-container{
         display: none;
     }
@@ -140,9 +145,17 @@ header{
     .nav-mobile-menu-container{
         display: flex;
     }
+
+    .nav-logo img{
+        width: 150px;
+    }
 }
 
 @media (max-width: 768px){
+    header{
+        padding: 25px 0;
+    }
+
     .nav-right-bottom-container, .nav-right-top-container *{
         display: none;
     }
@@ -156,6 +169,6 @@ header{
     }
 
     .nav-logo img{
-        width: 35px;
+        width: 100px;
     }
 }

@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+{% endblock link %}
+
+{% block main%}
+    <section class="content-section main-padding">
+        <div class="content-container flex-column">
+            <div class="content-container-items">
+                <div class="content-title color-dark-blue">
+                    КОНТАКТЫ
+                </div>
+
+                <section class="content-items">
+                    <div class="map shadow-normal-blur">
+                        {{map|safe}}
+                    </div>
+                    <div class="contact-information-container">
+                        <div class="contact-information">
+                            <div class="contact-information-item">
+                                <span>E-mail:</span>
+                                {% for email in emails %}
+                                    <a href="mailto:{{ email }}">{{email}}</a>
+                                {% endfor %}
+                            </div>
+                            <div class="contact-information-item">
+                                <span>Телефон:</span>
+                                {% for telephone in telephones %}
+                                    <a href="tel:{{ telephone }}">{{telephone}}</a>
+                                {% endfor %}
+                            </div>
+                            <div class="contact-information-item">
+                                <span>Адрес:</span>
+                                {% for address in addresses %}
+                                    <span>{{address}}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="contact-information-item">
+                                <span>Координаты:</span>
+                                <a class="contact-information-coordinates" href="https://yandex.by/profile/-/CDuBBZKP" target="_blank">55.255200, 30.162598</a>
+                            </div>
+                        </div>
+
+                        <div class="qr-code-section">
+                            <img class="qr-code shadow-normal-blur" src="{% static 'svg/qr-yandex-map.svg' %}" alt="">
+                            <span class="qr-code-information">Наведите камеру смартфона на QR-код и проложите маршрут в приложении Яндекс-Карты</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock main%}

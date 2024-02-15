@@ -8,16 +8,10 @@
 
       <ul class="nav-mobile-dropdown-links">
         <div class="nav-mobile-dropdown-link">
-          <a href="#">Бронирование и оплата</a>
+          <a href="{% url 'index:content' 'booking' %}">Бронирование и оплата</a>
         </div>
         <div class="nav-mobile-dropdown-link">
-          <a href="#">Территория</a>
-        </div>
-        <div class="nav-mobile-dropdown-link">
-          <a href="#">Отзывы</a>
-        </div>
-        <div class="nav-mobile-dropdown-link">
-          <a href="#">О компании</a>
+          <a href="{% url 'index:content' 'history' %}">О компании</a>
         </div>
       </ul>
     </li>
@@ -31,12 +25,9 @@
       <ul class="nav-mobile-dropdown-links">
           {% for house in houses %}
               <div class="nav-mobile-dropdown-link">
-                <a href="{% url 'index:apartment' house.apartment.slug %}">Дом {{ house.apartment.title }}</a>
+                <a href="{% url 'index:apartment' house.apartment.slug %}">Дом {{ house.apartment.title.upper }}</a>
               </div>
           {% endfor %}
-        <div class="nav-mobile-dropdown-link">
-          <a href="#">Гостиница</a>
-        </div>
       </ul>
     </li>
 
@@ -48,16 +39,13 @@
 
       <ul class="nav-mobile-dropdown-links">
         <div class="nav-mobile-dropdown-link">
-          <a href="#">Прокат и аренда</a>
+          <a href="{% url 'index:content' 'rental' %}">Прокат и аренда</a>
         </div>
         <div class="nav-mobile-dropdown-link">
-          <a href="#">Ресторан</a>
+          <a href="{% url 'index:content' 'delivery' %}">Доставка еды</a>
         </div>
         <div class="nav-mobile-dropdown-link">
-          <a href="#">Доставка еды</a>
-        </div>
-        <div class="nav-mobile-dropdown-link">
-          <a href="#">Трансфер</a>
+          <a href="{% url 'index:content' 'transfer' %}">Трансфер</a>
         </div>
       </ul>
     </li>
@@ -71,12 +59,6 @@
       <ul class="nav-mobile-dropdown-links">
         <div class="nav-mobile-dropdown-link">
           <a href="{% url 'index:category' 'photogallery' %}">Фотогалерея</a>
-        </div>
-        <div class="nav-mobile-dropdown-link">
-          <a href="{% url 'index:category' 'videogallery' %}">Видеогалерея</a>
-        </div>
-        <div class="nav-mobile-dropdown-link">
-          <a href="#">3D-тур</a>
         </div>
       </ul>
     </li>

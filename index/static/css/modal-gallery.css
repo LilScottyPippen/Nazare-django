@@ -1,5 +1,6 @@
 .modal {
     display: none;
+    flex-direction: column;
     position: fixed;
     z-index: 9999;
     left: 0;
@@ -11,6 +12,7 @@
     background-color: rgba(0, 0, 0, 0.9);
     align-items: center;
     justify-content: center;
+    gap: 30px
 }
 
 .modal-container {
@@ -27,6 +29,7 @@
     width: auto;
     max-width: 80%;
     max-height: 80vh;
+    border-radius: 10px;
 }
 
 .modal-caption{
@@ -43,19 +46,23 @@
     cursor: pointer;
 }
 
+.modal-control{
+    display: flex;
+    position: fixed;
+    gap: 30px;
+    top: 90%;
+}
+
 .prev, .next {
-    position: absolute;
-    top: 50%;
     font-size: 30px;
-    font-weight: bold;
     color: white;
     cursor: pointer;
 }
 
-.prev {
-    left: 20px;
+.prev{
+    left: 15%;
 }
 
-.next {
-    right: 20px;
+.next{
+    right: 15%
 }

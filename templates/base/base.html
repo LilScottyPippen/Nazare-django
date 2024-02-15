@@ -23,16 +23,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 
     <script src="{% static 'js/preloader.js' %}"></script>
-    <script src="{% static 'js/guest-counter.js' %}"></script>
     <script src="{% static 'js/notification.js' %}"></script>
+    <script src="{% static 'js/constants.js' %}"></script>
+    <script src="{% static 'js/processing-subscribe-form.js' %}"></script>
+    <script src="{% static 'js/processing-callback-form.js' %}"></script>
+    <script src="{% static 'js/modal-active-inactive.js' %}"></script>
+    <script src="{% static 'js/disable-button-enter-for-forms.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ru.js"></script>
 </head>
 
 <body>
     {% include "base/preloader.html" %}
+    {% include "base/viber.html" %}
 
     <header>
         {% block header %}
@@ -41,6 +49,7 @@
     </header>
 
     {% include "base/base_nav_menu.html" %}
+    {% include 'base/callback.html' %}
 
     <main class="padding-for-main">
         {% block main %}
@@ -54,7 +63,6 @@
     </footer>
 
     <script src="{% static 'js/nav-mobile.js' %}"></script>
-    <script src="{% static 'js/slider.js' %}"></script>
 
     {% block script %}
     {% endblock script %}

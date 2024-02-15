@@ -1,4 +1,4 @@
-var pickerCheckin, pickerCheckout;
+let pickerCheckin, pickerCheckout;
 
 document.querySelectorAll('#datepicker-checkin, #datepicker-checkout').forEach(function (element) {
     moment.locale('ru');
@@ -24,7 +24,7 @@ document.querySelectorAll('#datepicker-checkin, #datepicker-checkout').forEach(f
             const day = date.getDate();
             const month = date.getMonth() + 1;
             const year = date.getFullYear();
-            return `${day}/${month}/${year}`;
+            return `${year}-${month}-${day}`;
         },
         parse(dateString, format) {
             const parts = dateString.split('/');
@@ -34,12 +34,11 @@ document.querySelectorAll('#datepicker-checkin, #datepicker-checkout').forEach(f
             return new Date(year, month, day);
         },
         i18n: {
-            previousMonth: 'Предыдущий месяц',
-            nextMonth: 'Следующий месяц',
             months: moment.months(),
             weekdays: moment.weekdaysShort(),
             weekdaysShort: moment.weekdaysShort()
-        }
+        },
+        firstDay: 1,
     });
 
     if (element.id === 'datepicker-checkin') {

@@ -56,6 +56,7 @@ class ApartmentPhotoGallery(models.Model):
         Apartment, on_delete=models.PROTECT, verbose_name="Апартамент")
     photo = models.ImageField(
         upload_to=apartment_photo_path, verbose_name="Фото")
+    description = models.CharField(max_length=255, default="Фото", verbose_name="Описание")
 
 
 class ApartmentMenu(models.Model):

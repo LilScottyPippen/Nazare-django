@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/content.css' %}">
+{% endblock link %}
+
+{% block main%}
+    <section class="content-section main-padding">
+        <div class="content-container flex-column">
+            <div class="content-container-items">
+                <div class="content-title color-dark-blue">
+                    {{ content.title.upper }}
+                </div>
+
+                <section class="content-items">
+                    <div class="content-image-item shadow-blur" style="background-image: url('{{ content.img.url }}')"></div>
+
+                    <div class="content-description-item">
+                        {{ content.description|linebreaksbr  }}
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock main%}

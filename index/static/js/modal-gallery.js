@@ -1,14 +1,16 @@
-var slideIndex = 0;
-var caption;
+let slideIndex = 0;
+let caption;
 
 function openModal(backgroundImage) {
     document.body.style.overflow = "hidden";
-    var modal = document.getElementById("myModal");
-    var modalImg = document.getElementById("modalImg");
-    caption = document.getElementsByClassName("modal-caption")[0]; // Change to getElementsByClassName
+
+    const modal = document.getElementById("galleryModal");
+    const modalImg = document.getElementById("modalImg");
+
+    caption = document.getElementsByClassName("modal-caption")[0];
     modal.style.display = "flex";
 
-    var imageUrl = backgroundImage.slice(5, -2);
+    const imageUrl = backgroundImage.slice(5, -2);
     modalImg.src = imageUrl;
 
     slideIndex = findIndex(imageUrl);
@@ -16,36 +18,28 @@ function openModal(backgroundImage) {
 }
 
 function updateCaption() {
-    var images = document.querySelectorAll('.grid-gallery-image');
+    const images = document.querySelectorAll('.grid-gallery-image');
 
     if (images.length > 0) {
-        var currentImage = images[slideIndex];
-        var imageCaption = currentImage.getAttribute("data-caption");
+        const currentImage = images[slideIndex];
+        const imageCaption = currentImage.getAttribute("data-caption");
 
         if (imageCaption) {
             caption.innerHTML = imageCaption;
         } else {
-            var parentElementFallback = currentImage.closest('.grid-gallery-item');
+            const parentElementFallback = currentImage.closest('.grid-gallery-item');
             if (parentElementFallback) {
-                var imageCaptionFallback = parentElementFallback.getAttribute("data-caption");
+                const imageCaptionFallback = parentElementFallback.getAttribute("data-caption");
                 caption.innerHTML = imageCaptionFallback;
             }
         }
     } else {
-        var parentElementFallback = document.querySelector('.grid-gallery-image[style*="' + modalImg.src + '"]').closest('.grid-gallery-item');
+        const parentElementFallback = document.querySelector('.grid-gallery-image[style*="' + modalImg.src + '"]').closest('.grid-gallery-item');
         if (parentElementFallback) {
-            var imageCaptionFallback = parentElementFallback.getAttribute("data-caption");
+            const imageCaptionFallback = parentElementFallback.getAttribute("data-caption");
             caption.innerHTML = imageCaptionFallback;
         }
     }
-}
-
-
-
-function closeModal() {
-    document.body.style.overflow = "auto";
-    var modal = document.getElementById("myModal");
-    modal.style.display = "none";
 }
 
 function plusSlides(n) {
@@ -54,8 +48,8 @@ function plusSlides(n) {
 }
 
 function showImage(n) {
-    var modalImg = document.getElementById("modalImg");
-    var images = document.querySelectorAll('.grid-gallery-image');
+    const modalImg = document.getElementById("modalImg");
+    const images = document.querySelectorAll('.grid-gallery-image');
     if (n >= images.length) {
         slideIndex = 0;
     }
@@ -68,8 +62,8 @@ function showImage(n) {
 }
 
 function findIndex(imgSrc) {
-    var images = document.querySelectorAll('.grid-gallery-image');
-    for (var i = 0; i < images.length; i++) {
+    const images = document.querySelectorAll('.grid-gallery-image');
+    for (let i = 0; i < images.length; i++) {
         if (images[i].style.backgroundImage.slice(5, -2) === imgSrc) {
             return i;
         }
@@ -78,18 +72,14 @@ function findIndex(imgSrc) {
 }
 
 document.addEventListener('keydown', function (event) {
-    var modal = document.getElementById("myModal");
+    const modal = document.getElementById("galleryModal");
     if (modal.style.display === "flex") {
-        keyboardControl(event);
+        if (event.key === "Escape") {
+            closeModal();
+        } else if (event.key === "ArrowLeft") {
+            plusSlides(-1);
+        } else if (event.key === "ArrowRight") {
+            plusSlides(1);
+        }
     }
 });
-
-function keyboardControl(event) {
-    if (event.key === "Escape") {
-        closeModal();
-    } else if (event.key === "ArrowLeft") {
-        plusSlides(-1);
-    } else if (event.key === "ArrowRight") {
-        plusSlides(1);
-    }
-}

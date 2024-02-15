@@ -1,0 +1,21 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/callback.css' %}">
+<section class="callback-container" id="callbackModal">
+    <div class="callback">
+        <div class="callback-items">
+            <div class="callback-close-btn" onclick="closeModal('callbackModal')">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <span class="callback-title">ЗАКАЗАТЬ ЗВОНОК</span>
+            <form action="{% url 'index:callback' %}" method="POST" class="callback-form" id="callbackForm">
+                <input type="text" class="callback-form-input" id="name" placeholder="ИМЯ">
+                <input type="text" class="callback-form-input" id="phone" placeholder="ТЕЛЕФОН">
+                <span class="callback-form-btn" onclick="handleCallback('{{ csrf_token }}')">ЗАКАЗАТЬ</span>
+            </form>
+            <div class="callback-form-privacy-policy">
+                <input id="callback-privacy_policy" type="checkbox" name="">
+                <span>Я даю согласие на <a class="url-decorate-underline" href="#">обработку персональных данных</a></span>
+            </div>
+        </div>
+    </div>
+</section>

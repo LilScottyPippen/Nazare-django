@@ -8,20 +8,14 @@
 
     <script src="{% static 'js/guest-counter.js' %}"></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 {% endblock link %}
 {% block main %}
-
-    {{ booking_form.errors }}
     <section class="content-section main-padding">
         <div class="content-container flex-column align-items-center">
             <div class="content-container-items">
                 <div class="content-title color-dark-blue">
                     БРОНИРОВАНИЕ
                 </div>
-
                 <section class="content-items">
                     <div class="form">
                         <form class="booking-form" method="POST">
@@ -34,7 +28,11 @@
                                         </div>
                                         <div class="form-apartment-items">
                                             {% for apartment in apartments %}
-                                                <input id="apartment" type="button" class="choose-input shadow-normal-blur {% if apartment.id == 1 %} active {% endif %}" value="{{ apartment.title }}" data-price="{{ apartment.daily_price }}" data-id="{{ apartment.id }}">
+                                                <input id="apartment" type="button" class="choose-input shadow-normal-blur
+                                                    {% if apartment.id == default_apartment.id %}active{% endif %}"
+                                                    value="{{ apartment.title.upper }}" data-price="{{ apartment.daily_price }}"
+                                                    data-id="{{ apartment.id }}" data-guest="{{ apartment.guest_count }}"
+                                                >
                                             {% endfor %}
                                         </div>
                                     </div>
@@ -45,7 +43,11 @@
                                         <div class="search-apartment-dropdown shadow-normal-blur">
                                             <div class="search-apartment-dropdown-header" id="datepicker-checkin">
                                                     <span class="search-apartment-dropdown-title" id="check_in_date">
-                                                        ЗАЕЗД
+                                                        {% if check_in_date %}
+                                                            {{ check_in_date }}
+                                                        {% else %}
+                                                            ЗАЕЗД
+                                                        {% endif %}
                                                     </span>
                                                 <i class="fa-solid fa-calendar-days"></i>
                                             </div>
@@ -53,7 +55,11 @@
                                         <div class="search-apartment-dropdown shadow-normal-blur">
                                             <div class="search-apartment-dropdown-header" id="datepicker-checkout">
                                                 <span class="search-apartment-dropdown-title" id="check_out_date">
-                                                    ВЫЕЗД
+                                                    {% if check_out_date %}
+                                                        {{ check_out_date }}
+                                                    {% else %}
+                                                        ВЫЕЗД
+                                                    {% endif %}
                                                 </span>
                                                 <i class="fa-solid fa-calendar-days"></i>
                                             </div>
@@ -73,7 +79,13 @@
                                                     </span>
                                                     <div class="apartment-dropdown-footer-counter-control">
                                                         <i class="fa-solid fa-square-plus" id="adultIncrement" onclick="incrementCounter('guests')"></i>
-                                                        <span id="guests_count">1</span>
+                                                        <span id="guests_count" data-guest="{{ default_apartment.guest_count }}">
+                                                            {% if adult_count %}
+                                                                {{ adult_count }}
+                                                            {% else %}
+                                                                1
+                                                            {% endif %}
+                                                        </span>
                                                         <i class="fa-solid fa-square-minus" id="adultDecrement" onclick="decrementCounter('guests')"></i>
                                                     </div>
                                                 </div>
@@ -83,9 +95,15 @@
                                                         ДЕТИ
                                                     </span>
                                                     <div class="apartment-dropdown-footer-counter-control">
-                                                        <i class="fa-solid fa-square-plus" onclick="incrementCounter('children')"></i>
-                                                        <span id="children_count">0</span>
-                                                        <i class="fa-solid fa-square-minus" onclick="decrementCounter('children')"></i>
+                                                        <i class="fa-solid fa-square-plus" id="childIncrement" onclick="incrementCounter('children')"></i>
+                                                        <span id="children_count">
+                                                            {% if children_count %}
+                                                                {{ children_count }}
+                                                            {% else %}
+                                                                0
+                                                            {% endif %}
+                                                        </span>
+                                                        <i class="fa-solid fa-square-minus" id="childDecrement" onclick="decrementCounter('children')"></i>
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,7 +124,7 @@
 
                                 <div class="form-container">
                                     <div class="form-total-sum">
-                                        <span class="form-total-sum-info">ИТОГОВАЯ СТОИМОСТЬ: <span id="totalCost">920</span> BYN</span>
+                                        <span class="form-total-sum-info">ИТОГОВАЯ СТОИМОСТЬ: <span id="totalCost">{{ default_apartment.daily_price | floatformat }}</span> BYN</span>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +150,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            {% if online_payment %}
                             <div class="form-online-payment gap-10">
                                 <div class="form-online-payment-title">
                                     ОНЛАЙН ОПЛАТА БРОНИРОВАНИЯ
@@ -140,14 +158,15 @@
                                 <div class="form-online-payment-description">
                                     Оплачивается вся сумма брони.<br>
                                     Данный способ оплаты поддерживает платежи только с карт, выпущенных белорусскими банками.<br>
-                                    Кассовый чек в электронном виде будет предоставлен компанией <a class="url-decorate-underline" href="https://www.alfabank.by/">Альфа-банк</a>. Вы получите его после оплаты на адрес электронной почты, который указали при бронировании.
+                                    Кассовый чек в электронном виде будет предоставлен компанией <a class="url-decorate-underline" href="https://www.alfabank.by/" target="_blank">Альфа-банк</a>. Вы получите его после оплаты на адрес электронной почты, который указали при бронировании.
                                 </div>
                                 <div class="form-online-payment-methods">
                                     <i class="fa-brands fa-cc-visa"></i>
                                     <i class="fa-brands fa-cc-mastercard"></i>
                                 </div>
-                                <input type="button" id="btn-online-pay" class="button-input shadow-normal-blur" onclick="handlePayment('ON')" value="Оплатить">
+                                <input type="button" id="btn-online-pay" class="button-input shadow-normal-blur" onclick="handlePayment('ON', '{{ csrf_token }}')" value="Оплатить">
                             </div>
+                            {% endif %}
 
                             <div class="form-offline-payment gap-10">
                                 <div class="form-online-payment-title">
@@ -157,10 +176,10 @@
                                     Без предоплаты.<br>
                                     Администратор свяжется с вами по контактному номеру телефона для подтверждения бронирования и уточнения всех необходимых деталей.
                                 </div>
-                                <input type="button" id="btn-offline-pay" class="button-input shadow-normal-blur" onclick="handlePayment('OF')" value="Оставить заявку">
+                                <input type="button" id="btn-offline-pay" class="button-input shadow-normal-blur" onclick="handlePayment('OF', '{{ csrf_token }}')" value="Оставить заявку">
                             </div>
 
-                            <div class="form-consent-to-data-processing">
+                            <div class="form-privacy-policy">
                                 <input id="privacy_policy" type="checkbox" name="">
                                 <span>Я даю согласие на <a class="url-decorate-underline" href="#">обработку персональных данных</a></span>
                             </div>
@@ -174,7 +193,8 @@
 
 {% block script %}
     <script>
-        window.csrf_token = '{{ csrf_token }}';
+        window.guest_max = {{ guest_max }};
+        window.booking_list = {{ booking_list|safe }};
     </script>
     <script src="{% static 'js/booking-active-items.js' %}"></script>
     <script src="{% static 'js/generate-guest-form.js' %}"></script>

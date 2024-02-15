@@ -17,8 +17,6 @@ class RedirectPage(models.Model):
 class Category(models.Model):
     name = models.CharField(
         max_length=255, verbose_name="Наименование категории")
-    image = models.ImageField(
-        upload_to=photo_category_path, verbose_name="Изображение категории")
     slug = models.SlugField(unique=True, primary_key=True, db_index=True,
                             verbose_name="Псеводним для url")
 
@@ -37,8 +35,7 @@ class SubCategory(models.Model):
         max_length=255, verbose_name="Наименование подкатегории")
     image = models.ImageField(
         upload_to=photo_subcategory_path, verbose_name="Изображение подкатегории")
-    slug = models.SlugField(unique=True, primary_key=True, db_index=True,
-                            verbose_name="Псеводним для url")
+    slug = models.SlugField(verbose_name="Псеводним для url")
     redirect_page = models.ForeignKey(
         RedirectPage, on_delete=models.PROTECT, null=True, blank=True, verbose_name="Перенаправление на страницу")
 

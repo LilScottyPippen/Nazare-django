@@ -22,3 +22,26 @@ navToggle.addEventListener('click', () => {
     }
     navToggle.classList.toggle('open');
 });
+
+const itemContainers = document.querySelectorAll('.nav-mobile-item-container');
+let openedDropdown = null;
+
+itemContainers.forEach(itemContainer => {
+    const dropdownLinks = itemContainer.querySelector('.nav-mobile-dropdown-links');
+    itemContainer.addEventListener('click', () => {
+        if (openedDropdown && openedDropdown !== dropdownLinks) {
+            openedDropdown.style.maxHeight = null;
+            openedDropdown.style.transition = null;
+        }
+
+        if (dropdownLinks.style.maxHeight) {
+            dropdownLinks.style.maxHeight = null;
+            dropdownLinks.style.transition = null;
+            openedDropdown = null;
+        } else {
+            dropdownLinks.style.maxHeight = '2000px';
+            dropdownLinks.style.transition = 'max-height 0.4s ease-in';
+            openedDropdown = dropdownLinks;
+        }
+    });
+});

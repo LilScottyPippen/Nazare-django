@@ -1,0 +1,78 @@
+@import "variables.css";
+
+.viber-container{
+    display: none;
+    z-index: var(--callback-index);
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.viber{
+    position: relative;
+    background-color: white;
+    align-items: center;
+    padding: 50px;
+    border-radius: 10px;
+    margin: 50px;
+}
+
+.viber-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.viber-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--dark-blue-color);
+}
+
+.viber-choose{
+    display: flex;
+    gap: 20px;
+}
+
+.viber-btn, .viber-qr{
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+}
+
+.viber-btn{
+    cursor: pointer;
+}
+
+.viber-btn img,
+.viber-qr img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.viber-description{
+    max-width: 300px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--dark-blue-color);
+}
+
+@media (max-width: 768px){
+    .viber{
+        padding: 50px 20px;
+    }
+
+    .viber-choose{
+        flex-direction: column;
+    }
+}

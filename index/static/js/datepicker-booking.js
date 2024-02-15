@@ -1,86 +1,215 @@
+let pickerCheckin, pickerCheckout
+let selectedStartDate, selectedEndDate;
+let inputs = document.querySelectorAll('.form-apartment-items input');
+let totalCostElement = document.getElementById('totalCost');
+
+let selectedInput = document.querySelector('.form-apartment-items input.active');
+let selectedPrice = selectedInput ? parseFloat(selectedInput.getAttribute('data-price')) || 0 : 0;
+let bookedDates = booking_list[selectedInput.getAttribute('data-id')] || [];
+
+const dateFormat = 'YYYY-MM-DD'
+
+const defaultCheckInDate = moment(document.getElementById('check_in_date').innerText, dateFormat);
+const defaultCheckOutDate = moment(document.getElementById('check_out_date').innerText, dateFormat);
+
+let titleElementCheckin, titleElementCheckout
+
+moment.locale('ru');
+let minDate = moment().toDate();
+
 document.addEventListener('DOMContentLoaded', function () {
-    let inputs = document.querySelectorAll('.form-apartment-items input');
-    let totalCostElement = document.getElementById('totalCost');
+    document.querySelectorAll('#datepicker-checkin').forEach(function (element) {
+        titleElementCheckin = element.querySelector('.search-apartment-dropdown-title');
+    })
 
-    let selectedInput = document.querySelector('.form-apartment-items input.active');
-    let selectedPrice = selectedInput ? parseFloat(selectedInput.getAttribute('data-price')) || 0 : 0;
+    document.querySelectorAll('#datepicker-checkout').forEach(function (element) {
+        titleElementCheckout = element.querySelector('.search-apartment-dropdown-title');
+    })
 
-    let pickerCheckin, pickerCheckout;
+    pickerCheckin = new Pikaday({
+        field: document.getElementById('datepicker-checkin'),
+        format: 'YYYY/MM/DD',
+        minDate: minDate,
+        position: 'top left',
+        defaultDate: defaultCheckInDate.isValid() ? defaultCheckInDate.toDate() : null,
+        setDefaultDate: defaultCheckInDate.isValid(),
+        onSelect: function (date) {
+            handleDateSelection(date, 'checkin', titleElementCheckin, pickerCheckin);
+        },
+        toString(date) {
+            const year = date.getFullYear();
+            const month = ('0' + (date.getMonth() + 1)).slice(-2);
+            const day = ('0' + date.getDate()).slice(-2);
+            return `${year}-${month}-${day}`;
+        },
+        parse(dateString) {
+            const parts = dateString.split('/');
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10) - 1;
+            const year = parseInt(parts[2], 10);
+            return new Date(year, month, day);
+        },
+        i18n: {
+            months: moment.months(),
+            weekdays: moment.weekdaysShort(),
+            weekdaysShort: moment.weekdaysShort()
+        },
+        disableDayFn: function (date) {
+            const dateString = moment(date).format(dateFormat);
 
-    function updateTotalCost() {
-        let checkinDate = moment(pickerCheckin.getDate(), 'YYYY-MM-DD');
-        let checkoutDate = moment(pickerCheckout.getDate(), 'YYYY-MM-DD');
-        let selectedInput = document.querySelector('.form-apartment-items input.active');
-        selectedPrice = selectedInput ? parseFloat(selectedInput.getAttribute('data-price')) || 0 : 0;
+            return bookedDates.some(range => {
+                const [startDate, endDate] = range.map(d => moment(d).format(dateFormat));
+                return dateString >= startDate && dateString <= endDate;
+            });
+        },
+        firstDay: 1,
+    });
 
-        if (checkinDate.isValid() && checkoutDate.isValid()) {
-            let days = checkoutDate.diff(checkinDate, 'days');
-            let totalCost = selectedPrice * days;
-            totalCostElement.innerText = totalCost;
-        } else {
-            totalCostElement.innerText = selectedPrice;
-        }
+    pickerCheckout = new Pikaday({
+        field: document.getElementById('datepicker-checkout'),
+        format: 'YYYY/M/D',
+        minDate: minDate,
+        position: 'top left',
+        defaultDate: defaultCheckOutDate.isValid() ? defaultCheckOutDate.toDate() : null,
+        setDefaultDate: defaultCheckOutDate.isValid(),
+        onSelect: function (date) {
+            handleDateSelection(date, 'checkout', titleElementCheckout, pickerCheckout);
+        },
+        toString(date) {
+            const year = date.getFullYear();
+            const month = ('0' + (date.getMonth() + 1)).slice(-2);
+            const day = ('0' + date.getDate()).slice(-2);
+            return `${year}-${month}-${day}`;
+        },
+        parse(dateString) {
+            const parts = dateString.split('/');
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10) - 1;
+            const year = parseInt(parts[2], 10);
+            return new Date(year, month, day);
+        },
+        i18n: {
+            months: moment.months(),
+            weekdays: moment.weekdaysShort(),
+            weekdaysShort: moment.weekdaysShort()
+        },
+        disableDayFn: function (date) {
+            const dateString = moment(date).format(dateFormat);
+
+            return bookedDates.some(range => {
+                const [startDate, endDate] = range.map(d => moment(d).format(dateFormat));
+                return dateString >= startDate && dateString <= endDate;
+            });
+        },
+        firstDay: 1,
+    });
+
+    if (defaultCheckInDate.isValid() && defaultCheckOutDate.isValid()) {
+        updateTotalCost(totalCostElement);
     }
 
     inputs.forEach(function (input) {
         input.addEventListener('click', function () {
+            bookedDates = booking_list[input.getAttribute('data-id')] || [];
+
             inputs.forEach(function (otherInput) {
                 otherInput.classList.remove('active');
             });
+
             input.classList.add('active');
-            updateTotalCost();
+            guest_max = input.getAttribute('data-guest')
+
+            resetDates(minDate);
+            updateGuestCount(input);
         });
-    });
-
-    document.querySelectorAll('#datepicker-checkin, #datepicker-checkout').forEach(function (element) {
-        moment.locale('ru');
-        let minDate = moment().toDate();
-        let maxDate = moment().add(365, 'days');
-        let titleElement = element.querySelector('.search-apartment-dropdown-title');
-
-        let picker = new Pikaday({
-            field: element,
-            format: 'D/M/YYYY',
-            minDate: minDate,
-            maxDate: maxDate.toDate(),
-            position: 'top left',
-            onSelect: function (date) {
-                titleElement.textContent = this.toString(date, 'D/M/YYYY');
-
-                if (element.id === 'datepicker-checkin') {
-                    pickerCheckout.setMinDate(moment(date).add(1, 'days').toDate());
-                } else if (element.id === 'datepicker-checkout') {
-                    pickerCheckin.setMaxDate(moment(date).subtract(1, 'days').toDate());
-                }
-
-                updateTotalCost();
-            },
-            toString(date, format) {
-                const day = date.getDate();
-                const month = date.getMonth() + 1;
-                const year = date.getFullYear();
-                return `${year}-${month}-${day}`;
-            },
-            parse(dateString, format) {
-                const parts = dateString.split('/');
-                const day = parseInt(parts[0], 10);
-                const month = parseInt(parts[1], 10) - 1;
-                const year = parseInt(parts[2], 10);
-                return new Date(year, month, day);
-            },
-            i18n: {
-                previousMonth: 'Предыдущий месяц',
-                nextMonth: 'Следующий месяц',
-                months: moment.months(),
-                weekdays: moment.weekdaysShort(),
-                weekdaysShort: moment.weekdaysShort()
-            }
-        });
-
-        if (element.id === 'datepicker-checkin') {
-            pickerCheckin = picker;
-        } else if (element.id === 'datepicker-checkout') {
-            pickerCheckout = picker;
-        }
     });
 });
+
+function updateTotalCost(totalCostElement) {
+    const check_in_date = moment(document.getElementById('check_in_date').innerText, dateFormat);
+    const check_out_date = moment(document.getElementById('check_out_date').innerText, dateFormat);
+    let selectedInput = document.querySelector('.form-apartment-items input.active');
+
+    selectedPrice = selectedInput ? parseFloat(selectedInput.getAttribute('data-price')) || 0 : 0;
+
+    if (check_in_date.isValid() && check_out_date.isValid()) {
+        const days = check_out_date.diff(check_in_date, 'days');
+        totalCostElement.innerText = selectedPrice * days;
+    } else {
+        totalCostElement.innerText = selectedPrice;
+    }
+}
+
+function updateGuestCount(){
+    let guestCount = document.getElementById('guests_count');
+    let childrenCount = document.getElementById('children_count')
+
+    if (parseInt(guestCount.innerText) + parseInt(childrenCount.innerText) > guest_max) {
+        while (parseInt(guestCount.innerText) + parseInt(childrenCount.innerText) > guest_max) {
+            if (parseInt(childrenCount.innerText) > 0) {
+                decrementCounter('children');
+            } else if (parseInt(guestCount.innerText) > 1) {
+                decrementCounter('guests');
+            } else {
+                break;
+            }
+        }
+        generateGuestInformationBlocks();
+    }
+    guestCount.setAttribute('data-guest', guest_max);
+}
+
+function resetDates(minDate){
+    document.getElementById('check_in_date').innerText = "ЗАЕЗД";
+    document.getElementById('check_out_date').innerText = "ВЫЕЗД";
+
+    pickerCheckin.setDate(null);
+    pickerCheckout.setDate(null);
+    pickerCheckin.setMinDate(minDate);
+    pickerCheckin.setMaxDate(null);
+    pickerCheckout.setMinDate(minDate);
+    pickerCheckout.setMaxDate(null);
+
+    updateTotalCost(totalCostElement)
+}
+
+function isDateRangeOverlap(range1, range2) {
+    return range1[0] <= range2[1] && range1[1] >= range2[0];
+}
+
+function handleDateSelection(date, calendarType, titleElement, pikadayInstance) {
+    try {
+        if (calendarType === 'checkin') {
+            selectedStartDate = moment(date, dateFormat);
+            if (selectedStartDate.isValid()) {
+                titleElement.textContent = pikadayInstance.toString(date, dateFormat);
+                pickerCheckout.setMinDate(moment(date).add(1, 'days').toDate());
+                updateTotalCost(totalCostElement);
+            }
+        } else if (calendarType === 'checkout') {
+            selectedEndDate = moment(date, dateFormat);
+            if (selectedEndDate.isValid()) {
+                titleElement.textContent = pikadayInstance.toString(date, dateFormat);
+                pickerCheckin.setMaxDate(moment(date).subtract(1, 'days').toDate());
+                updateTotalCost(totalCostElement);
+            }
+        }
+        if (selectedStartDate && selectedEndDate){
+            const overlappingRange = bookedDates.some(range =>
+                isDateRangeOverlap([moment(selectedStartDate).format(dateFormat), moment(selectedEndDate).format(dateFormat)], range)
+            );
+
+            if(overlappingRange){
+                showNotification("error", ERROR_MESSAGES['unavailable_period']);
+                document.getElementById('check_out_date').innerText = "ВЫЕЗД";
+                pickerCheckin.setMinDate(minDate);
+                pickerCheckin.setMaxDate(null);
+                pickerCheckout.setMaxDate(null);
+                updateTotalCost(totalCostElement)
+            }
+        }
+    } catch (error) {
+        showNotification("error", error.message);
+        resetDates(minDate);
+    }
+}

@@ -49,7 +49,7 @@
     font-size: 50px;
 }
 
-.content-items{
+.content-items, .reviews-container{
     display: flex;
     justify-content: center;
 }
@@ -57,5 +57,10 @@
 @media (max-width: 768px){
     .card-main-content-header-icon{
         display: none;
+    }
+
+    .reviews-container{
+        flex-direction: column-reverse;
+        align-items: center;
     }
 }

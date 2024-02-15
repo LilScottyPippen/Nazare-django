@@ -5,4 +5,4 @@ from index.models import *
 class PhotoGalleryInline(admin.TabularInline):
     model = PhotoGallery
     extra = 1
-    fields = ('photo',)
+    fields = ('photo', 'description')

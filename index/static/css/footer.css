@@ -14,7 +14,16 @@ footer{
 
 .footer-main-containers{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-main-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .footer-main-container{
@@ -25,10 +34,11 @@ footer{
 
 .footer-main-logo{
     cursor: pointer;
+    margin-top: 30px;
 }
 
 .footer-main-logo img{
-    width: 100px;
+    width: 200px;
 }
 
 .footer-main-nav-list{
@@ -84,6 +94,7 @@ footer{
     background-color: var(--white-color);
     border-radius: 10px;
     padding: 11px;
+    border: 2px solid;
 }
 
 .footer-main-mailing-btn{
@@ -118,6 +129,22 @@ footer{
     scale: 1.25;
 }
 
+.booking-payments-section{
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+    margin-left: auto;
+    flex-wrap: wrap;
+}
+
+.booking-payments-section img{
+    max-height: 15px;
+}
+
+.footer-secondary{
+    background-color: white;
+}
+
 .footer-secondary-items{
     display: flex;
     justify-content: space-between;
@@ -125,6 +152,10 @@ footer{
     color: var(--dark-blue-color);
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+.footer-main-container-title{
+    max-width: 300px;
 }
 
 .footer-secondary-items *{
@@ -135,14 +166,24 @@ footer{
     .footer-main-containers{
         flex-wrap: wrap;
         justify-content: normal;
-        gap: 50px
+        gap: 30px
     }
 }
 
 @media (max-width: 786px){
+    .footer-main-section{
+        justify-content: normal;
+        gap: 30px;
+    }
+
     .footer-main-mailing-input{
         max-width: 250px;
         width: 100%;
+    }
+
+    .booking-payments-section{
+        margin-left: 0;
+        max-width: 300px;
     }
 
     .footer-secondary-items{

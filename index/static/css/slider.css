@@ -64,13 +64,19 @@
     .slider-container{
         width: 290px;
         padding: 0 3px 10px 3px;
-    }    
-
-    .prevBtn{
-        right: -30px;
     }
 
-    .nextBtn{
-        right: -315px;
+    .slider-container-btn{
+        position: static;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .prevBtn, .nextBtn{
+        right: 0;
+        position: static;
+        margin-top: 0;
     }
 }

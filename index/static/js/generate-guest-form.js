@@ -1,10 +1,10 @@
 function generateGuestInformationBlocks() {
-    let adultCount = parseInt(document.getElementById('guests_count').innerText);
+    const guests_count = parseInt(document.getElementById('guests_count').innerText, 10) || 0;
 
     document.getElementById('guestInformationContainer').innerHTML = '';
 
-    for (var i = 0; i < adultCount; i++) {
-        var guestInformationBlock = document.createElement('div');
+    for (let i = 0; i < guests_count; i++) {
+        let guestInformationBlock = document.createElement('div');
         guestInformationBlock.className = 'form-guest-information-item';
 
         guestInformationBlock.innerHTML = `

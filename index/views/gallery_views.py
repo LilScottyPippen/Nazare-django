@@ -10,9 +10,9 @@ class PhotoGalleryView(TemplateView):
         context = super().get_context_data(**kwargs)
         subcategory = kwargs['subcategory']
         context['photos'] = load_photos(self.request, subcategory)
-        context['category'] = SubCategory.objects.get(
+        context['category'] = SubCategory.objects.filter(
             slug=subcategory
-        ).name.upper()
+        ).first().name.upper()
         return context
 
 

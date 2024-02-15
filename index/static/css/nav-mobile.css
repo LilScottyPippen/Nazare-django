@@ -20,11 +20,6 @@
     padding: 10px 0;
 }
 
-.nav-mobile-item-container:hover .nav-mobile-dropdown-links{
-    max-height: 2000px;
-    transition: max-height .4s ease-in;
-}
-
 .nav-mobile-dropdown-item{
     display: flex;
     justify-content: space-between;

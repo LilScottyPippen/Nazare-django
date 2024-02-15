@@ -12,3 +12,7 @@ def photo_category_path(instance, file_name):
 
 def photo_subcategory_path(instance, file_name):
     return f"subcategories/{instance.slug}/{file_name}"
+
+
+def photo_content_path(instance, file_name):
+    return f"content{instance.slug}/{file_name}"

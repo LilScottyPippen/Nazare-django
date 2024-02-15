@@ -1,0 +1,153 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block link %}
+    <script src="{% static 'js/guest-counter.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/apartment-search.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+{% endblock link %}
+
+
+{% block main %}
+    <section class="content-section main-padding">
+        <section class="content-container">
+            <div class="content-container-items">
+                <div class="content-container-apartment-title">
+                    <span class="content-title color-dark-blue">ПОИСК АПАРТАМЕНТА</span>
+                </div>
+
+                <div class="form-search">
+                    <div class="form-search-apartment-grid">
+                        <div class="search-apartment-dropdown shadow-normal-blur">
+                            <div class="search-apartment-dropdown-header" id="datepicker-checkin">
+                                    <span class="search-apartment-dropdown-title" id="check_in_date">
+                                        {% if check_in_date %}
+                                            {{ check_in_date }}
+                                        {% else %}
+                                            ЗАЕЗД
+                                        {% endif %}
+                                    </span>
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                        </div>
+                        <div class="search-apartment-dropdown shadow-normal-blur">
+                            <div class="search-apartment-dropdown-header" id="datepicker-checkout">
+                                <span class="search-apartment-dropdown-title" id="check_out_date">
+                                    {% if check_out_date %}
+                                        {{ check_out_date }}
+                                    {% else %}
+                                        ВЫЕЗД
+                                    {% endif %}
+                                </span>
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                        </div>
+
+                        <div class="search-apartment-dropdown form-search-apartment-grid-2x2">
+                            <div class="search-apartment-dropdown-header shadow-normal-blur">
+                                <span class="search-apartment-dropdown-title">
+                                    ГОСТИ
+                                </span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="search-apartment-dropdown-footer">
+                                <div class="search-apartment-dropdown-footer-counter" id="adultCounter">
+                                    <span class="apartment-dropdown-footer-counter-title">
+                                        ВЗРОСЛЫЕ
+                                    </span>
+                                    <div class="apartment-dropdown-footer-counter-control">
+                                        <i class="fa-solid fa-square-plus" id="adultIncrement" onclick="incrementCounter('guests')"></i>
+                                        <span id="guests_count" data-guest="{{ default_apartment.guest_count }}">
+                                            {% if adult_count %}
+                                                {{ adult_count }}
+                                            {% else %}
+                                                1
+                                            {% endif %}
+                                        </span>
+                                        <i class="fa-solid fa-square-minus" id="adultDecrement" onclick="decrementCounter('guests')"></i>
+                                    </div>
+                                </div>
+
+                                <div class="search-apartment-dropdown-footer-counter" id="childCounter">
+                                    <span class="apartment-dropdown-footer-counter-title">
+                                        ДЕТИ
+                                    </span>
+                                    <div class="apartment-dropdown-footer-counter-control">
+                                        <i class="fa-solid fa-square-plus" id="childIncrement" onclick="incrementCounter('children')"></i>
+                                        <span id="children_count">
+                                            {% if children_count %}
+                                                {{ children_count }}
+                                            {% else %}
+                                                0
+                                            {% endif %}
+                                        </span>
+                                        <i class="fa-solid fa-square-minus" id="childDecrement" onclick="decrementCounter('children')"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="button-search shadow-normal-blur" onclick="openSearchApartmentPage()">НАЙТИ</span>
+                </div>
+                <div class="content-items">
+                    <script src="{% static 'js/apartment-dropdown-active.js' %}"></script>
+                    {% if apartments %}
+                        {% for apartment in apartments %}
+                            <div class="content-item shadow-normal-blur">
+                                <div class="content-item-container apartment-image" style="background-image: url('{{ apartment.apartment_main_photo.url }}')"></div>
+                                <div class="content-item-container" onclick='window.location="{% url 'index:apartment' apartment.apartment.slug %}"'>
+                                    <div class="content-item-header">
+                                        <span>ДОМ {{ apartment.apartment.title.upper }}</span>
+                                        <span>{{ apartment.apartment.daily_price | floatformat }} BYN / сутки</span>
+                                    </div>
+                                    <div class="content-item-description">
+                                        <span>{{ apartment.apartment_description | linebreaks }}</span>
+                                    </div>
+                                    <div class="content-item-footer">
+                                        <div class="content-item-footer-info">
+                                            <span>
+                                                {% if days == 1 %}
+                                                    {{ days }} сутки
+                                                {% else %}
+                                                    {{ days }} суток
+                                                {% endif %},
+                                                {% if adult_count == 1 %}
+                                                    {{ adult_count }} взрослый
+                                                {% else %}
+                                                    {{ adult_count }} взрослых
+                                                {% endif %}
+
+                                                {% if children_count %}
+                                                    ,
+                                                    {% if children_count == 1 %}
+                                                        {{ children_count }} ребенок
+                                                    {% else %}
+                                                        {{ children_count }} детей
+                                                    {% endif %}
+                                                {% endif %}
+                                            </span>
+                                            <span class="content-item-footer-info-price">{% widthratio apartment.apartment.daily_price 1 days %} BYN</span>
+                                        </div>
+                                        <a href="{% url 'booking:booking' %}?apartment={{ apartment.id }}&check_in_date={{ check_in_date }}&check_out_date={{ check_out_date }}&adult_count={{ adult_count }}&children_count={{ children_count }}" class="content-item-footer-btn">Забронировать</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <span>Нет доступных апартаментов на текущий период</span>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock main %}
+
+{% block script %}
+    <script>
+        window.guest_max = 6
+    </script>
+    <script src="{% static 'js/datepicker.js' %}"></script>
+    <script src="{% static 'js/search-apartment.js' %}"></script>
+{% endblock script %}

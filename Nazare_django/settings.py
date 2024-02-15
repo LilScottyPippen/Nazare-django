@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'admin_reorder',
-    'index.apps.IndexConfig',
+    'index',
     'booking',
 ]
 
@@ -136,8 +136,14 @@ ADMIN_REORDER = (
         'models': ('index.Category', 'index.SubCategory', 'index.RedirectPage',)},
     {'app': 'index', 'label': 'Контактные данные',
         'models': ('index.ContactPage',)},
+    {'app': 'index', 'label': 'Рассылка',
+        'models': ('index.Mailing', 'index.Subscriber')},
+    {'app': 'index', 'label': 'Заявки',
+        'models': ('index.Callback',)},
     {'app': 'booking', 'label': 'Бронирование',
-        'models': ('booking.Booking', 'booking.Guest',)}
+        'models': ('booking.Booking', 'booking.Guest',)},
+    {'app': 'index', 'label': 'Контент',
+            'models': ('index.Content',)}
 )
 
 
@@ -147,3 +153,5 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
 EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL') == 'True'
+
+ONLINE_PAYMENT = os.getenv('ONLINE_PAYMENT') == 'True'

@@ -1,0 +1,305 @@
+
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
+    <link rel="stylesheet" href="{% static 'css/grid-cards.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
+    <script src="{% static 'js/processing-search-apartment-form.js' %}"></script>
+{% endblock link %}
+
+{% block title %}
+    ПАРК ОТЕЛЬ NA ZARE
+{% endblock title %}
+{% block main %}
+        <section class="content-section bg-dark-blue main-padding static-height mobile-flex-column">
+            <div class="content-container space-between color-white mobile-flex-column mobile-content-container-for-second-section">
+                <div class="content flex-end">
+                    <span class="content-title">
+                        ПАРК ОТЕЛЬ NA ZARE
+                    </span>
+                    <div class="content-description">
+                        Это идеальное место для отдыха и проведения свободного времени. Мы предлагаем уютные апартаменты, красивый парк живописными аллеями и озером, а также различные услуги.
+                    </div>
+                </div>
+                <section class="content-container-form-search-apartment">
+                    <div class="form-search-apartment-grid">
+                        <div class="search-apartment-dropdown">
+                            <div class="search-apartment-dropdown-header" id="datepicker-checkin">
+                                <span class="search-apartment-dropdown-title" id="check_in_date">
+                                    ЗАЕЗД
+                                </span>
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                        </div>
+                        <div class="search-apartment-dropdown">
+                            <div class="search-apartment-dropdown-header" id="datepicker-checkout">
+                                <span class="search-apartment-dropdown-title" id="check_out_date">
+                                    ВЫЕЗД
+                                </span>
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                        </div>
+                        <div class="search-apartment-dropdown form-search-apartment-grid-2x2">
+                            <div class="search-apartment-dropdown-header shadow">
+                                <span class="search-apartment-dropdown-title">
+                                    ГОСТИ
+                                </span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="search-apartment-dropdown-footer">
+                                <div class="search-apartment-dropdown-footer-counter" id="adultCounter">
+                                    <span class="apartment-dropdown-footer-counter-title">
+                                        ВЗРОСЛЫЕ
+                                    </span>
+                                    <div class="apartment-dropdown-footer-counter-control">
+                                        <i class="fa-solid fa-square-plus" id="adultIncrement" onclick="incrementCounter('guests')"></i>
+                                        <span id="guests_count" data-guest="6">1</span>
+                                        <i class="fa-solid fa-square-minus" id="adultDecrement" onclick="decrementCounter('guests')"></i>
+                                    </div>
+                                </div>
+
+                                <div class="search-apartment-dropdown-footer-counter" id="childCounter">
+                                    <span class="apartment-dropdown-footer-counter-title">
+                                        ДЕТИ
+                                    </span>
+                                    <div class="apartment-dropdown-footer-counter-control">
+                                        <i class="fa-solid fa-square-plus" onclick="incrementCounter('children')"></i>
+                                        <span id="children_count">0</span>
+                                        <i class="fa-solid fa-square-minus" onclick="decrementCounter('children')"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-apartment-btn form-search-apartment-grid-3x2" onclick="openSearchApartmentPage()">
+                            <span class="search-apartment-btn-title">НАЙТИ АПАРТАМЕНТ</span>
+                        </div>
+                    </div>
+                    <script src="{% static 'js/apartment-dropdown-active.js' %}"></script>
+                </section>
+            </div>
+        </section>
+
+        <section class="content-section main-padding bg-image">
+            <div class="content-container flex-column align-items-center">
+                <div class="content-container-items">
+                    <div class="content-title color-dark-blue">
+                        АПАРТАМЕНТЫ
+                    </div>
+
+                    <section class="content-items flex-wrap gap-40">
+                        {% include "index/index/index_houses.html" %}
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section main-padding">
+            <div class="content-container flex-column align-items-center">
+                <div class="content-container-items">
+                    <div class="content-title color-dark-blue">
+                        ПРЕИМУЩЕСТВА
+                    </div>
+
+                    <section class="content-items">
+                        <div class="grid-container">
+                            <div class="grid-item shadow-blur bg-white object-1">
+                                <div class="grid-item-icon-for-object-2x2 bg-white"><i class="fa-solid fa-wifi"></i></div>
+                                <div class="grid-item-image-container" style="background-image: url('{% static 'img/apartments/resources/cards/olive2.webp' %}');"></div>
+                                <div class="grid-item-content-for-object-2x2">
+                                    <span class="grid-item-section-title">WiFi Free</span>
+                                    <span class="grid-item-section-description">
+                                        Свободный и быстрый доступ к интернету в любой точке отеля. Оставайтесь на связи, общайтесь и делитесь впечатлениями без ограничений.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="grid-item shadow-blur bg-white object-2">
+                                <div class="grid-item-content-for-object-2x1">
+                                    <div class="grid-item-icon"><i class="fa-solid fa-medal"></i></div>
+                                    <div class="grid-item-content-column">
+                                        <span class="font-bold">Комфорт и стиль</span>
+                                        <span class="grid-item-section-description">
+                                            Насладитесь уникальным сочетанием комфорта и стиля в каждой детали. Изысканный дизайн номеров создает уютную атмосферу, где вы почувствуете себя как дома.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-item shadow-blur bg-gray object-3">
+                                <div class="grid-item-content-for-object-1x1">
+                                    <div class="grid-item-icon bg-dark-blue color-white"><i class="fa-regular fa-credit-card"></i></div>
+                                    <span class="font-bold">Лучшая цена</span>
+                                    <span class="grid-item-section-description">
+                                        Непревзойденный комфорт по выгодной стоимости.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="grid-item shadow-blur bg-white object-4">
+                                <div class="grid-item-content-for-object-1x1">
+                                    <div class="grid-item-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                                    <span class="font-bold">10 км от города</span>
+                                    <span class="grid-item-section-description">
+                                        Близость к удобствам, недалеко от природы.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section main-padding bg-green-blue">
+            <div class="content-container flex-column align-items-center">
+                <div class="content-container-items">
+                    <div class="content-title color-dark-blue">
+                        ОТЗЫВЫ
+                    </div>
+
+                    <section class="reviews-container">
+                        <div class="slider-container-btn">
+                            <span class="prevBtn shadow"><i class="fa-solid fa-chevron-left"></i></span>
+                            <span class="nextBtn shadow"><i class="fa-solid fa-chevron-right"></i></span>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider">
+                                <div class="card bg-white shadow review-width">
+                                    <div class="card-main-section-content">
+                                        <div class="card-main-content-header">
+                                            <span class="card-main-content-title">
+                                                Мой лучший отпуск
+                                            </span>
+                                            <div class="card-main-content-header-icon">
+                                                <i class="fa-solid fa-quote-right"></i>
+                                            </div>
+                                        </div>
+                                        <span class="card-main-content-description color-dark-blue">
+                                            Наслаждался каждым моментом в уютном парк-отеле NA ZARE. Безупречный сервис, красивейший пейзаж и непередаваемая атмосфера покоя. Вернусь снова и снова!
+                                        </span>
+                                        <div class="card-main-content-guest">
+                                            <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest1.webp' %});"></div>
+                                            <div class="card-main-content-guest-content">
+                                                <span class="card-main-content-guest-name color-dark-blue">
+                                                    Олег
+                                                </span>
+                                                <div class="card-main-content-guest-score color-dark-blue">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card bg-white shadow review-width">
+                                    <div class="card-main-section-content">
+                                        <div class="card-main-content-header">
+                                            <span class="card-main-content-title">
+                                                Очень хороший отель
+                                            </span>
+                                            <div class="card-main-content-header-icon">
+                                                <i class="fa-solid fa-quote-right"></i>
+                                            </div>
+                                        </div>
+                                        <span class="card-main-content-description">
+                                            Превзошел все ожидания. Уютные номера, великолепный сервис и впечатляющая природа. Незабвенный опыт, рекомендую всем.
+                                        </span>
+                                        <div class="card-main-content-guest">
+                                            <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest2.webp' %});"></div>
+                                            <div class="card-main-content-guest-content">
+                                                <span class="card-main-content-guest-name color-dark-blue">
+                                                    Елена
+                                                </span>
+                                                <div class="card-main-content-guest-score color-dark-blue">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card bg-white shadow review-width">
+                                    <div class="card-main-section-content">
+                                        <div class="card-main-content-header">
+                                            <span class="card-main-content-title">
+                                                Идеальное место
+                                            </span>
+                                            <div class="card-main-content-header-icon">
+                                                <i class="fa-solid fa-quote-right"></i>
+                                            </div>
+                                        </div>
+                                        <span class="card-main-content-description">
+                                            Семейный рай! Отличные условия для детей, множество развлечений и безопасная атмосфера. Наш отдых был полон счастья, дети в восторге, а родители могли наконец-то расслабиться.
+                                        </span>
+                                        <div class="card-main-content-guest">
+                                            <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest3.webp' %});"></div>
+                                            <div class="card-main-content-guest-content">
+                                                <span class="card-main-content-guest-name color-dark-blue">
+                                                    Алексей
+                                                </span>
+                                                <div class="card-main-content-guest-score color-dark-blue">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card bg-white shadow review-width">
+                                    <div class="card-main-section-content">
+                                        <div class="card-main-content-header">
+                                            <span class="card-main-content-title">
+                                                Роскошный отдых
+                                            </span>
+                                            <div class="card-main-content-header-icon">
+                                                <i class="fa-solid fa-quote-right"></i>
+                                            </div>
+                                        </div>
+                                        <span class="card-main-content-description">
+                                            Пятерка звезд не выражает всей красоты этого места! Роскошные номера, великолепный вид из окна и атмосфера уюта. Это был отпуск моей мечты, я влюблена в этот отель!
+                                        </span>
+                                        <div class="card-main-content-guest">
+                                            <div class="card-main-content-guest-image" style="background-image: url({% static 'img/reviews/guest4.webp' %});"></div>
+                                            <div class="card-main-content-guest-content">
+                                                <span class="card-main-content-guest-name color-dark-blue">
+                                                    Мария
+                                                </span>
+                                                <div class="card-main-content-guest-score color-dark-blue">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </section>
+                </div>
+            </div>
+        </section>
+{% endblock main %}
+
+{% block script %}
+    <script>
+        window.guest_max = {{ guest_max }}
+    </script>
+    <script src="{% static 'js/guest-counter.js' %}"></script>
+    <script src="{% static 'js/datepicker.js' %}"></script>
+    <script src="{% static 'js/slider.js' %}"></script>
+{% endblock script %}

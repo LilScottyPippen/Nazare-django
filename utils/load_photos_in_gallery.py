@@ -1,10 +1,10 @@
 from index.models import PhotoGallery
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-
+from index.models.category import SubCategory
 
 def load_photos(request, subcategory):
     page = request.GET.get("page")
-    photos = PhotoGallery.objects.filter(subcategory=subcategory)
+    photos = PhotoGallery.objects.filter(subcategory=SubCategory.objects.filter(slug=subcategory).first())
     paginator = Paginator(photos, 6)
     try:
         photos = paginator.page(page)
