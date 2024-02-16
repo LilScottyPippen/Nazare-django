@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% block title %}Дом {{ apartment.title.upper }}{% endblock title %}
+
 {% block link %}
 <link rel="stylesheet" href="{% static 'css/apartment.css' %}">
 <link rel="stylesheet" href="{% static 'css/grid-cards.css' %}">

@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.views.generic import TemplateView
 from index.models import *
 from utils.load_photos_in_gallery import load_photos
@@ -10,9 +11,12 @@ class PhotoGalleryView(TemplateView):
         context = super().get_context_data(**kwargs)
         subcategory = kwargs['subcategory']
         context['photos'] = load_photos(self.request, subcategory)
-        context['category'] = SubCategory.objects.filter(
-            slug=subcategory
-        ).first().name.upper()
+        try:
+            context['category'] = SubCategory.objects.filter(
+                slug=subcategory
+            ).first().name
+        except AttributeError:
+            raise Http404
         return context
 
 

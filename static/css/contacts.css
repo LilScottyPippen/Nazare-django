@@ -1,0 +1,74 @@
+@import url('variables.css');
+
+.content-section{
+    height: 100%;
+}
+
+.content-container {
+    padding: 50px 0 0 0;
+}
+
+.content-container-items{
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.content-items{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+body {
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('/static/img/backgrounds/background-image2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: -5;
+}
+
+.map{
+    max-width: 500px;
+}
+
+.contact-information-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.contact-information{
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+}
+
+.contact-information-coordinates{
+    text-decoration: underline;
+}
+
+.qr-code-section{
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.qr-code{
+    max-width: 100px;
+}
+
+.qr-code-information{
+    max-width: 210px;
+}

@@ -27,8 +27,7 @@ class SubCategoryView(TemplateView):
 
     def get(self, *args, **kwargs):
         try:
-            subcategory = SubCategory.objects.filter(
-                category=kwargs['category'])
+            subcategory = SubCategory.objects.get(category=kwargs['category'])
         except ObjectDoesNotExist:
             raise Http404
         if subcategory.count() == 1:

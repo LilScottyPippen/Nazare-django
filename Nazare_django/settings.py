@@ -15,7 +15,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = env('DEBUG') == 'True'
 
-ALLOWED_HOSTS = ['192.168.0.105', '127.0.0.1', '192.168.100.10',
+ALLOWED_HOSTS = ['192.168.0.105', '127.0.0.1', '192.168.100.80',
                  '192.168.0.120', '192.168.0.121']
 
 INSTALLED_APPS = [
@@ -68,15 +68,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Nazare_django.wsgi.application'
 
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -120,9 +111,9 @@ USE_TZ = False
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/index/static')
+STATIC_ROOT = os.path.join(BASE_DIR, '/static')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'globalstatic')
+    os.path.join(BASE_DIR, 'static')
 ]
 
 MEDIA_URL = '/media/'
@@ -143,7 +134,7 @@ ADMIN_REORDER = (
     {'app': 'booking', 'label': 'Бронирование',
         'models': ('booking.Booking', 'booking.Guest',)},
     {'app': 'index', 'label': 'Контент',
-            'models': ('index.Content',)}
+        'models': ('index.Content',)}
 )
 
 

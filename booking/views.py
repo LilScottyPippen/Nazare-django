@@ -6,7 +6,7 @@ from utils.booking import get_booking_in_range_date
 from .forms.booking_form import *
 from utils.send_mail import *
 import json
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from utils.constants import *
 from datetime import datetime
 
@@ -27,7 +27,10 @@ class BookingView(TemplateView):
 
         if apartment_id:
             try:
-                apartment = Apartment.objects.get(id=apartment_id)
+                try:
+                    apartment = Apartment.objects.get(id=apartment_id)
+                except ValueError:
+                    raise Http404
                 context['default_apartment'] = apartment
                 context['guest_max'] = apartment.guest_count
             except Apartment.DoesNotExist:
@@ -71,6 +74,8 @@ class BookingView(TemplateView):
                 if client_key == 'payment_method':
                     if client_value == PAYMENT_METHOD_CHOICES[0][0] and settings.ONLINE_PAYMENT == False:
                         return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_payment_method']}, status=400)
+                if client_key == 'client_phone' and is_valid_phone(client_value) is False:
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']})
             guest_data = data.get('guestData', [])
             for guest in guest_data:
                 if not type(guest) is dict:

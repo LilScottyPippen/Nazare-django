@@ -10,7 +10,7 @@
 {% endblock link %}
 
 {% block title %}
-    ПАРК ОТЕЛЬ NA ZARE
+    {{ category }}
 {% endblock title %}
 
 {% block main %}
@@ -19,7 +19,7 @@
             <div class="content-container flex-column">
                 <div class="content-container-items">
                     <div class="content-title color-dark-blue">
-                        {{ category }}
+                        {{ category.upper }}
                     </div>
 
                     {% include 'index/gallery/photo_gallery/photo_gallery_item.html' %}

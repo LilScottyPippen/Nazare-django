@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 from utils.constants import *
 from django.http import Http404
 from django.views.generic import TemplateView
@@ -12,9 +12,10 @@ class ApartmentPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        apartment = Apartment.objects.get(
-            slug=kwargs['apartment'])
-
+        try:
+            apartment = Apartment.objects.get(slug=kwargs['apartment'])
+        except Apartment.DoesNotExist:
+            raise Http404
         context["apartment"] = apartment
         context["price_lists"] = ApartmentPriceList.objects.filter(
             apartment=apartment)
@@ -35,17 +36,18 @@ class ApartmentSearchView(TemplateView):
         check_out_date = kwargs.get('check_out_date')
         guest_count = int(kwargs.get('guest_count'))
         children_count = int(kwargs.get('children_count'))
-
         total_guests = guest_count + children_count
         apartment_dict = Apartment.objects.all()
 
         try:
-            check_in_date_formatted = datetime.strptime(check_in_date, "%Y-%m-%d")
-            check_out_date_formatted = datetime.strptime(check_out_date, "%Y-%m-%d")
+            check_in_date_formatted = datetime.datetime.strptime(check_in_date, "%Y-%m-%d")
+            check_out_date_formatted = datetime.datetime.strptime(check_out_date, "%Y-%m-%d")
         except ValueError:
             raise Http404(ERROR_MESSAGES['invalid_date'])
 
-        if check_out_date_formatted > check_in_date_formatted >= datetime.now():
+        current_date = datetime.date.today()
+
+        if check_out_date_formatted.date() > check_in_date_formatted.date() >= current_date:
             booking_dict = self.get_available_apartments_for_date_availability(
                 apartment_dict,
                 check_in_date_formatted,

@@ -1,5 +1,5 @@
 import json
-from django.http import JsonResponse, Http404, HttpResponseNotFound
+from django.http import JsonResponse, Http404
 from django.views import View
 from django.views.generic import TemplateView
 import folium
@@ -59,6 +59,10 @@ class CallbackView(View):
         try:
             data = json.loads(request.body)
             client_data = data.get('client_data', {})
+
+            for client_key, client_value in client_data.items():
+                if client_key == 'phone' and is_valid_phone(client_value) is False:
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']})
         except ValueError:
             return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
 

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{% static 'css/content.css' %}">
 {% endblock link %}
 
+{% block title %}{{ content.title }}{% endblock title %}
+
 {% block main%}
     <section class="content-section main-padding">
         <div class="content-container flex-column">

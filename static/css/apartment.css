@@ -1,0 +1,166 @@
+@import url('variables.css');
+
+.content-container{
+    padding: 50px 0 50px 0;
+}
+
+.content-container-apartment-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-title-price{
+    font-size: var(--main-line-font);
+    font-weight: bold;
+}
+
+.content-container-items {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-container-item{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.apartment-index{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.apartment-info{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 50px;
+}
+
+.apartment-info-item{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--dark-blue-color);
+}
+
+.apartment-info-item span{
+    font-size: var(--main-line-font);
+    font-weight: bold;
+}
+
+.apartment-info-item i{
+    font-size: 48px;
+}
+
+.apartment-booking-btn{
+    border: none;
+    color: white;
+    background-color: var(--dark-blue-color);
+    padding: 18px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.apartment-description{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.container-apartment-list{
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.apartment-list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 270px;
+}
+
+.content-item-apartment-list{
+    display: flex;
+    gap: 10px;
+    color: var(--dark-blue-color);
+    font-weight: bold;
+    align-items: center;
+    width: fit-content;
+    font-size: var(--content-font);
+}
+
+.apartment-list i{
+    font-size: 25px;
+}
+
+@media (max-width: 1150px){
+    .container-apartment-list{
+        gap: 50px;
+        justify-content: left;
+    }
+}
+
+@media (max-width: 768px){
+    main{
+        padding: 100px 0 50px 0;
+    }
+
+    .apartment-index{
+        gap: 20px;
+    }
+
+    .content-container-apartment-title{
+        align-items: normal;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .content-title-price{
+        margin-left: auto;
+    }
+
+    .content-title-price{
+        white-space: normal;
+        font-size: var(--main-line-font-mobile);
+    }
+
+    .apartment-info-item{
+        gap: 5px;
+    }
+
+    .apartment-info span{
+        white-space: normal;
+        font-size: var(--content-font);
+    }
+
+    .container-apartment-list{
+        gap: 20px;
+        justify-content: left;
+    }
+
+    .apartment-info{
+        gap: 20px;
+    }
+
+    .apartment-info-item i{
+        font-size: 25px;
+    }
+
+    .apartment-list{
+        max-height: 100%;
+        flex-wrap: nowrap;
+    }
+
+    sup{
+        font-size: 10px;
+    }
+}

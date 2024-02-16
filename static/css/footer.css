@@ -1,0 +1,194 @@
+@import url('variables.css');
+
+footer{
+    font-size: var(--content-font);
+}
+
+.footer-main{
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: var(--dark-blue-color);
+    color: var(--white-color);
+}
+
+.footer-main-containers{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-main-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-main-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-main-logo{
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.footer-main-logo img{
+    width: 200px;
+}
+
+.footer-main-nav-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: var(--button-font);
+}
+
+.footer-main-container-items{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-main-container-item{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.footer-main-container-item i{
+    font-size: 18px;
+}
+
+.footer-main-container-social-contacts{
+    display: flex;
+    gap: 15px;
+}
+
+.footer-main-social-contact{
+    font-size: 24px;
+}
+
+.footer-main-mailing{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-main-mailing-form{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-main-mailing-input{
+    width: 250px;
+    border: none;
+    outline: none;
+    color: var(--dark-blue-color);
+    background-color: var(--white-color);
+    border-radius: 10px;
+    padding: 11px;
+    border: 2px solid;
+}
+
+.footer-main-mailing-btn{
+    border: 1px var(--white-color) solid;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.footer-main-mailing-btn:hover{
+    background-color: var(--white-color);
+    color: var(--dark-blue-color);
+}
+
+.footer-main-follow{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.footer-main-follow-socials{
+    width: fit-content;
+}
+
+.footer-main-follow-social{
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.footer-main-social-contact:hover,
+.footer-main-follow-social i:hover{
+    scale: 1.25;
+}
+
+.booking-payments-section{
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+    margin-left: auto;
+    flex-wrap: wrap;
+}
+
+.booking-payments-section img{
+    max-height: 15px;
+}
+
+.footer-secondary{
+    background-color: white;
+}
+
+.footer-secondary-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--dark-blue-color);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.footer-main-container-title{
+    max-width: 300px;
+}
+
+.footer-secondary-items *{
+    width: fit-content;
+}
+
+@media (max-width: 1300px){
+    .footer-main-containers{
+        flex-wrap: wrap;
+        justify-content: normal;
+        gap: 30px
+    }
+}
+
+@media (max-width: 786px){
+    .footer-main-section{
+        justify-content: normal;
+        gap: 30px;
+    }
+
+    .footer-main-mailing-input{
+        max-width: 250px;
+        width: 100%;
+    }
+
+    .booking-payments-section{
+        margin-left: 0;
+        max-width: 300px;
+    }
+
+    .footer-secondary-items{
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+}

@@ -4,7 +4,8 @@ ERROR_MESSAGES = {
     'invalid_date': 'Некорректный формат даты. Используйте формат YYYY-MM-DD.',
     'invalid_mail': 'Данный mail уже подписан на рассылку',
     'unavailable_period': 'На данный период нельзя забронировать апартамент',
-    'invalid_payment_method': 'Данный методы оплаты не доступен'
+    'invalid_payment_method': 'Данный методы оплаты не доступен',
+    'invalid_phone': 'Введите корректный номер телефона'
 }
 
 SUCCESS_MESSAGES = {

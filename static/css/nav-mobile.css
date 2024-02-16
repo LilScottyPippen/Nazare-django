@@ -1,0 +1,44 @@
+@import url('variables.css');
+
+.nav-mobile{
+    color: var(--white-color);
+    position: fixed;
+    width: 100%;
+    background-color: var(--dark-blue-color);
+    padding-top: 100px;
+    top: -200%;
+    transition: top .2s;
+}
+
+.nav-mobile{
+    display: flex;
+    flex-direction: column;
+    z-index: var(--nav-mobile-index);
+}
+
+.nav-mobile-item-container{
+    padding: 10px 0;
+}
+
+.nav-mobile-dropdown-item{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.nav-mobile-dropdown-links{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease-out;
+    white-space: nowrap;
+}
+
+.nav-mobile-dropdown-link{
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 10px 20px;
+}
+
+.show-menu{
+    top: 0;
+}
