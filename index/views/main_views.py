@@ -1,5 +1,5 @@
 import json
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse, Http404, HttpResponse
 from django.views import View
 from django.views.generic import TemplateView
 import folium
@@ -82,4 +82,20 @@ class ContentView(TemplateView):
             context['content'] = Content.objects.get(slug=kwargs.get('slug'))
         except Content.DoesNotExist:
             raise Http404
+        return context
+
+
+class PolicyView(TemplateView):
+    template_name = 'index/policy/policy.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class MaintenanceView(TemplateView):
+    template_name = "index/maintenance/maintenance.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         return context

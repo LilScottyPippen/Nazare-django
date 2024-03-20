@@ -9,6 +9,7 @@ import json
 from django.http import JsonResponse, Http404
 from utils.constants import *
 from datetime import datetime
+from django.core.exceptions import PermissionDenied
 
 
 class BookingView(TemplateView):
@@ -40,7 +41,10 @@ class BookingView(TemplateView):
         else:
             apartment = Apartment.objects.first()
             context['default_apartment'] = apartment
-            context['guest_max'] = apartment.guest_count
+            try:
+                context['guest_max'] = apartment.guest_count
+            except AttributeError:
+                raise PermissionDenied()
 
         if check_in_date and check_out_date:
             context['check_in_date'] = check_in_date

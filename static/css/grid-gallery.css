@@ -34,6 +34,10 @@
     grid-row: 3;
 }
 
+.grid-gallery-image:nth-child(n + 8) {
+    position: absolute;
+}
+
 @media (max-width: 768px){
     .grid-gallery-image {
         grid-row: auto;

@@ -1,0 +1,28 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/policy.css' %}">
+{% endblock link %}
+
+{% block title %}
+    Политика конфиденциальности
+{% endblock title %}
+
+{% block main %}
+
+    <section class="content-section main-padding ">
+        <div class="content-container flex-column">
+            <div class="content-container-items align-items-center">
+                <div class="content-title color-dark-blue">
+                    ПОЛИТИКА КОНФЕДЕНЦИАЛЬНОСТИ
+                </div>
+
+                <div class="content-items">
+                    <object type="text/html" data="{% static 'doc/Policy.htm' %}"></object>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock main %}

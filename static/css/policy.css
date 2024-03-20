@@ -1,0 +1,25 @@
+@import url('variables.css');
+
+.content-container{
+    display: flex;
+    align-items: center;
+    padding: 50px 0 0 0;
+}
+
+.content-container-items{
+    flex-direction: column;
+    gap: 30px;
+}
+
+object{
+    height: 60vh;
+    width: 100vh;
+    overflow-y: hidden;
+}
+
+
+@media (max-width: 768px){
+    .content-items{
+        gap: 30px;
+    }
+}

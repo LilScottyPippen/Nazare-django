@@ -138,6 +138,7 @@ celerybeat.pid
 # Environments
 Nazare_django/.env
 .venv
+.env
 env/
 venv/
 ENV/

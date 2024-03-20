@@ -1,22 +1,19 @@
 import os
 from datetime import datetime, timezone
 
-import environ
-from django.urls import reverse
+from dotenv import load_dotenv
 
-
-env = environ.Env()
-environ.Env.read_env()
+load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = env('DEBUG') == 'True'
+DEBUG = os.getenv('DEBUG') == 'True'
 
 ALLOWED_HOSTS = ['192.168.0.105', '127.0.0.1', '192.168.100.80',
-                 '192.168.0.120', '192.168.0.121']
+                 '192.168.0.120', '192.168.0.121', 'localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -146,3 +143,5 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
 EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL') == 'True'
 
 ONLINE_PAYMENT = os.getenv('ONLINE_PAYMENT') == 'True'
+
+MAINTENANCE_MODE = os.getenv('MAINTENANCE_MODE') == 'True'

@@ -25,14 +25,16 @@
                 <span class="content-title-price color-dark-blue">{{apartment.daily_price | floatformat}} BYN/сутки</span>
             </div>
 
-            <div class="content-items">
-                <div class="grid-gallery">
-                    {% for photo in photos %}
-                    <div class="grid-gallery-image shadow" data-caption="{{ photo.description }}" style="background-image: url('{{photo.photo.url}}');"
-                        onclick="openModal(this.style.backgroundImage)"></div>
-                    {% endfor %}
+            {% if photos %}
+                <div class="content-items">
+                    <div class="grid-gallery">
+                        {% for photo in photos %}
+                        <div class="grid-gallery-image shadow" data-caption="{{ photo.description }}" style="background-image: url('{{photo.photo.url}}');"
+                            onclick="openModal(this.style.backgroundImage)"></div>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
             {% include 'base/modal-gallery.html' %}
 
