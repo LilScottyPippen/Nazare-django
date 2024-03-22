@@ -11,15 +11,25 @@
     gap: 30px;
 }
 
-object{
-    height: 60vh;
-    width: 100vh;
-    overflow-y: hidden;
+.content-items{
+    width: 100%;
 }
 
+object {
+    height: 60vh;
+    max-width: 100%;
+    width: 100%;
+}
 
 @media (max-width: 768px){
     .content-items{
         gap: 30px;
+    }
+}
+
+@media (max-width: 420px) {
+    .content-title{
+        white-space: pre-line;
+        font-size: var(--default-font);
     }
 }
