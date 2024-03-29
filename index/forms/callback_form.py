@@ -1,5 +1,4 @@
 from django import forms
-
 from utils.is_valid_phone import is_valid_phone
 from ..models.callback import Callback
 

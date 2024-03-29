@@ -69,10 +69,10 @@
                 </div>
 
                 <div class="content-items apartment-list">
-                    {% for price_list in price_lists %}
+                    {% for service in included_services %}
                     <div class="content-item-apartment-list">
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>{{price_list}}</span>
+                        <span>{{ service.name }}</span>
                     </div>
                     {% endfor %}
                 </div>
@@ -84,10 +84,10 @@
                 </div>
 
                 <div class="content-items apartment-list">
-                    {% for elem in conveniences %}
+                    {% for convenience in conveniences %}
                     <div class="content-item-apartment-list">
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>{{elem}}</span>
+                        <span>{{ convenience.name }}</span>
                     </div>
                     {% endfor %}
                 </div>

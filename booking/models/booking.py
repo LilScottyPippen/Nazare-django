@@ -1,4 +1,9 @@
+from django.core.exceptions import ValidationError
 from django.db import models
+from index.models import Apartment
+from utils.constants import ERROR_MESSAGES
+from utils.is_valid_date import is_valid_date_booking
+from utils.is_valid_phone import is_valid_phone
 
 PAYMENT_METHOD_CHOICES = [
     ("ON", "Online"),
@@ -7,7 +12,7 @@ PAYMENT_METHOD_CHOICES = [
 
 
 class Booking(models.Model):
-    apartment = models.IntegerField(verbose_name='Апартамент')
+    apartment = models.ForeignKey(Apartment, on_delete=models.CASCADE, verbose_name='Апартамент')
     check_in_date = models.DateField(verbose_name='Дата заезда')
     check_out_date = models.DateField(verbose_name='Дата выезда')
     guests_count = models.IntegerField(verbose_name='Количество гостей')
@@ -30,3 +35,10 @@ class Booking(models.Model):
     class Meta:
         verbose_name = "Бронирование"
         verbose_name_plural = "Бронирования"
+
+    def clean(self):
+        if not is_valid_date_booking(self.check_in_date, self.check_out_date):
+            raise ValidationError(ERROR_MESSAGES['unavailable_period'])
+
+        if not is_valid_phone(self.client_phone):
+            raise ValidationError(ERROR_MESSAGES['invalid_phone'])

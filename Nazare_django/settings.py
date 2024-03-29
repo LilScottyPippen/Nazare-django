@@ -131,7 +131,13 @@ ADMIN_REORDER = (
     {'app': 'booking', 'label': 'Бронирование',
         'models': ('booking.Booking', 'booking.Guest',)},
     {'app': 'index', 'label': 'Контент',
-        'models': ('index.Content',)}
+        'models': ('index.Content',)},
+    {'app': 'auth', 'label': 'Персонал',
+        'models': ('auth.User',)},
+    {'app': 'index', 'label': 'Удобства',
+        'models': ('index.ApartmentConvenience', 'index.ConveniencePackage')},
+    {'app': 'index', 'label': 'Услуги входящие в стоимость',
+        'models': ('index.ApartmentIncludedService', 'index.IncludedServicePackage')}
 )
 
 

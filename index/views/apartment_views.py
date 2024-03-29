@@ -1,5 +1,4 @@
 import datetime
-from utils.constants import *
 from django.http import Http404
 from django.views.generic import TemplateView
 from index.models import *
@@ -17,12 +16,15 @@ class ApartmentPageView(TemplateView):
         except Apartment.DoesNotExist:
             raise Http404
         context["apartment"] = apartment
-        context["price_lists"] = ApartmentPriceList.objects.filter(
-            apartment=apartment)
-        context["photos"] = ApartmentPhotoGallery.objects.filter(
-            apartment=apartment)
-        context["conveniences"] = ApartmentConvenience.objects.filter(
-            apartment=apartment)
+        try:
+            context["included_services"] = apartment.includedService_package.included_services.all()
+        except AttributeError:
+            context["included_services"] = []
+        context["photos"] = ApartmentPhotoGallery.objects.filter(apartment=apartment)
+        try:
+            context["conveniences"] = apartment.convenience_package.conveniences.all()
+        except AttributeError:
+            context["conveniences"] = []
         context["first_photo"] = context["photos"].first()
         return context
 
@@ -92,7 +94,7 @@ class ApartmentSearchView(TemplateView):
 
         if booking_dict is not False:
             for booking in booking_dict:
-                apartment_from_booking = Apartment.objects.filter(id=Booking.objects.get(id=booking.id).apartment)
+                apartment_from_booking = Apartment.objects.filter(id=Booking.objects.get(id=booking.id).apartment.id)
                 apartments_list[apartment_from_booking.get().id] += 1
 
             for apartment in apartments_list:

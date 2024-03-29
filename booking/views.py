@@ -76,7 +76,7 @@ class BookingView(TemplateView):
 
             for client_key, client_value in client_data.items():
                 if client_key == 'payment_method':
-                    if client_value == PAYMENT_METHOD_CHOICES[0][0] and settings.ONLINE_PAYMENT == False:
+                    if client_value == PAYMENT_METHOD_CHOICES[0][0] and settings.ONLINE_PAYMENT is False:
                         return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_payment_method']}, status=400)
                 if client_key == 'client_phone' and is_valid_phone(client_value) is False:
                     return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']})
@@ -92,16 +92,16 @@ class BookingView(TemplateView):
         if form.is_valid():
             booking_instance = form.save(commit=False)
 
-            if self.check_available_date(client_data) is False:
-                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['unavailable_period']})
+            if not self.check_available_date(client_data):
+                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['unavailable_period']}, status=400)
 
-            if self.check_guest_count(guest_data, booking_instance) is False:
+            if not self.check_guest_count(guest_data, booking_instance):
                 return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
 
-            if self.check_price(client_data) is False:
+            if not self.check_price(client_data):
                 return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
 
-            if self.check_privacy_policy(client_data) is False:
+            if not self.check_privacy_policy(client_data):
                 return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_privacy_policy']}, status=400)
 
             booking_instance.save()
@@ -121,22 +121,36 @@ class BookingView(TemplateView):
             return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
 
     def send_mailing(self, booking_instance):
+        base_context = {
+            'booking_id': booking_instance.id,
+            'apartment': Apartment.objects.get(id=booking_instance.apartment.id).title,
+            'name': booking_instance.client_name,
+            'check_in': booking_instance.check_in_date,
+            'check_out': booking_instance.check_out_date,
+            'total_sum': booking_instance.total_sum
+        }
+
+        admin_context = {
+            **base_context,
+            'phone': booking_instance.client_phone,
+            'created': booking_instance.created_at,
+            'is_paid': booking_instance.is_paid,
+            'payment_method': booking_instance.payment_method
+        }
+
+        client_context = {
+            **base_context,
+        }
+
+        threading.Thread(target=send_mail_for_admin,
+                         args=('mailing/admin_booking.html', admin_context)).start()
+
         if booking_instance.payment_method == PAYMENT_METHOD_CHOICES[1][0]:
-            threading.Thread(target=send_mail_for_admin,
-                             args=('mailing/admin_callback.html', {
-                                 'name': booking_instance.client_name,
-                                 'phone': booking_instance.client_phone,
-                                 'created': booking_instance.created_at
-                             })).start()
-        if booking_instance.payment_method == PAYMENT_METHOD_CHOICES[0][0]:
             threading.Thread(target=send_mail_for_client,
-                             args=(booking_instance.client_mail, 'mailing/client_receipt.html', {
-                                 'name': booking_instance.client_name,
-                                 'check_in': booking_instance.check_in_date,
-                                 'check_out': booking_instance.check_out_date,
-                                 'is_paid': booking_instance.is_paid,
-                                 'total_sum': booking_instance.total_sum
-                             })).start()
+                             args=(booking_instance.client_mail, 'mailing/client_booking_offline.html', client_context)).start()
+        elif booking_instance.payment_method == PAYMENT_METHOD_CHOICES[0][0]:
+            threading.Thread(target=send_mail_for_client,
+                             args=(booking_instance.client_mail, 'mailing/client_booking_online.html', client_context)).start()
 
     def check_available_date(self, client_data):
         try:
@@ -149,7 +163,7 @@ class BookingView(TemplateView):
         booking_dict = get_booking_in_range_date(check_in_date, check_out_date)
         if booking_dict is not False:
             for booking in booking_dict:
-                if int(apartment) == booking.apartment:
+                if int(apartment) == booking.apartment.id:
                     return False
         else:
             return False
@@ -169,7 +183,7 @@ class BookingView(TemplateView):
         return True
 
     def check_guest_count(self, guest_data, booking_instance):
-        if 0 < len(guest_data) <= Apartment.objects.get(id=booking_instance.apartment).guest_count:
+        if 0 < len(guest_data) <= Apartment.objects.get(id=booking_instance.apartment.id).guest_count:
             if len(guest_data) != booking_instance.guests_count:
                 return False
         else:

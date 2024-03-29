@@ -1,5 +1,5 @@
 import json
-from django.http import JsonResponse, Http404, HttpResponse
+from django.http import JsonResponse, Http404
 from django.views import View
 from django.views.generic import TemplateView
 import folium
@@ -8,6 +8,8 @@ from utils.constants import *
 from utils.get_max_guest_count import get_max_guest_count
 from ..forms.subscriber_form import *
 from ..forms.callback_form import *
+from utils.send_mail import send_mail_for_admin
+import datetime
 
 
 class IndexPageView(TemplateView):
@@ -69,6 +71,11 @@ class CallbackView(View):
         form = CallbackForm(client_data)
         if form.is_valid():
             form.save()
+            send_mail_for_admin('mailing/admin_callback.html', {
+                'name': client_data['name'],
+                'phone': client_data['phone'],
+                'created': datetime.datetime.now()
+            })
             return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_callback']}, status=200)
         return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
 
