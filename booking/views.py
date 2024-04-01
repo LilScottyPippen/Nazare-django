@@ -67,6 +67,7 @@ class BookingView(TemplateView):
                         booking.check_out_date.strftime("%Y-%m-%d")
                     ])
         context['booking_list'] = booking_list
+        context['check_in_time'] = os.environ.get('CHECK_IN_TIME', '14:00')
         return context
 
     def post(self, request):

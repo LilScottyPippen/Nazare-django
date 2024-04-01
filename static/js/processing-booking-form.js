@@ -27,12 +27,11 @@ function getClientFormData(method){
         children_count: document.getElementById('children_count').innerText,
         client_surname: document.getElementById('client_surname').value,
         client_name: document.getElementById('client_name').value,
-        client_father_name: document.getElementById('client_father_name').value,
         client_phone: document.getElementById('client_phone').value,
         client_mail: document.getElementById('client_mail').value,
     }
 
-    const nameFields = ['client_surname', 'client_name', 'client_father_name'];
+    const nameFields = ['client_surname', 'client_name'];
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const dateRegex = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
     const phoneRegex = /^(?:\+375|375)\d{9}$|^(?:\+7|7)\d{10}$/;
@@ -111,7 +110,7 @@ function getClientFormData(method){
     if (hasError) {
         return false;
     }
-
+    formData.client_father_name = document.getElementById('client_father_name').value
     formData.payment_method = method;
     formData.total_sum = document.getElementById('totalCost').innerText
     formData.is_privacy_policy = is_checked
@@ -146,7 +145,6 @@ function getGuestFormData(guestForm) {
     const formData = {
         guest_surname: guestForm.querySelector('.text-input[id="guest_surname"]').value,
         guest_name: guestForm.querySelector('.text-input[id="guest_name"]').value,
-        guest_father_name: guestForm.querySelector('.text-input[id="guest_father_name"]').value,
         citizenship: citizenship.value,
     };
 
@@ -180,6 +178,7 @@ function getGuestFormData(guestForm) {
         return false;
     }
 
+    formData.guest_father_name = guestForm.querySelector('.text-input[id="guest_father_name"]').value;
     return formData;
 }
 

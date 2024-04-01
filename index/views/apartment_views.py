@@ -89,9 +89,9 @@ class ApartmentSearchView(TemplateView):
 
         for apartment in apartment_dict:
             apartments_list[apartment.id] = 0
-
+        if not is_valid_date_booking(check_in_date, check_out_date):
+            return False
         booking_dict = get_booking_in_range_date(check_in_date, check_out_date)
-
         if booking_dict is not False:
             for booking in booking_dict:
                 apartment_from_booking = Apartment.objects.filter(id=Booking.objects.get(id=booking.id).apartment.id)

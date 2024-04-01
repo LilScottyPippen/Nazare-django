@@ -14,8 +14,18 @@ const defaultCheckOutDate = moment(document.getElementById('check_out_date').inn
 
 let titleElementCheckin, titleElementCheckout
 
-moment.locale('ru');
-let minDate = moment().toDate();
+let minDate = new Date();
+
+const currentHour = minDate.getHours();
+const currentMinute = minDate.getMinutes();
+
+const checkInTime = window.check_in_time;
+const [hours, minutes] = checkInTime.split(':').map(str => parseInt(str, 10));
+
+if (currentHour > hours || (currentHour === hours && currentMinute > minutes)) {
+    minDate.setDate(minDate.getDate() + 1);
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('#datepicker-checkin').forEach(function (element) {

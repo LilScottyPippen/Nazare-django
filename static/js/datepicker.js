@@ -1,8 +1,7 @@
 let pickerCheckin, pickerCheckout;
 
 document.querySelectorAll('#datepicker-checkin, #datepicker-checkout').forEach(function (element) {
-    moment.locale('ru');
-    let minDate = moment().toDate();
+    let minDate = new Date();
     let maxDate = moment().add(365, 'days');
     let titleElement = element.querySelector('.search-apartment-dropdown-title');
 
