@@ -1,4 +1,7 @@
 import json
+import random
+import threading
+
 from django.http import JsonResponse, Http404
 from django.views import View
 from django.views.generic import TemplateView
@@ -8,8 +11,9 @@ from utils.constants import *
 from utils.get_max_guest_count import get_max_guest_count
 from ..forms.subscriber_form import *
 from ..forms.callback_form import *
-from utils.send_mail import send_mail_for_admin
-import datetime
+from utils.send_mail import send_mail_for_admin, send_mail_for_client
+from django.utils import timezone
+from datetime import datetime
 
 
 class IndexPageView(TemplateView):
@@ -74,7 +78,7 @@ class CallbackView(View):
             send_mail_for_admin('mailing/admin_callback.html', {
                 'name': client_data['name'],
                 'phone': client_data['phone'],
-                'created': datetime.datetime.now()
+                'created': datetime.now()
             })
             return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_callback']}, status=200)
         return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
@@ -106,3 +110,35 @@ class MaintenanceView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+
+class SendConfirmationCodeView(View):
+    def get(self, request, mail):
+        last_request_time_str = request.session.get('last_confirmation_code_request_time')
+        if last_request_time_str:
+            last_request_time = datetime.strptime(last_request_time_str, "%Y-%m-%d %H:%M:%S.%f")
+            if (timezone.now() - last_request_time).seconds < 60:
+                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['code_request_too_soon']}, status=200)
+
+        confirmation_code = ''.join(str(random.randint(0, 9)) for _ in range(6))
+
+        try:
+            request.session['confirmation_code'] = confirmation_code
+            request.session['last_confirmation_code_request_time'] = str(timezone.now())
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_send_code']}, status=500)
+
+        threading.Thread(target=send_mail_for_client,
+                         args=(mail, 'mailing/confirmation_code.html', {'code': confirmation_code})).start()
+
+        return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_send_code']}, status=200)
+
+
+class ConfirmEmailView(View):
+    def get(self, request, confirmation_code):
+        saved_confirmation_code = request.session.get('confirmation_code')
+        if saved_confirmation_code == confirmation_code:
+            del request.session['confirmation_code']
+            return JsonResponse({'status': 'success'}, status=200)
+        else:
+            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['incorrect_code']}, status=500)

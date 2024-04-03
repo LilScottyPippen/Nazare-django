@@ -3,6 +3,7 @@ let viberModal, callbackModal;
 document.addEventListener('DOMContentLoaded', function () {
     viberModal = document.getElementById('viberModal');
     callbackModal = document.getElementById('callbackModal');
+    emailModal = document.getElementById('emailModal');
 });
 
 function openViberModal(){
@@ -13,6 +14,11 @@ function openViberModal(){
 function openCallbackModal(){
     callbackModal.style.display = 'flex';
     document.body.style.overflow = "hidden";
+}
+
+function openEmailModal(){
+    emailModal.style.display = 'flex';
+    document.body.style.overflow = "hidden"
 }
 
 function closeModal(object){

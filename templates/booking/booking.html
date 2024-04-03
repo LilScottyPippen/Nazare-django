@@ -12,6 +12,7 @@
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 {% endblock link %}
 {% block main %}
+    {% include 'base/email-confirm.html' %}
     <section class="content-section main-padding">
         <div class="content-container flex-column align-items-center">
             <div class="content-container-items">
@@ -166,7 +167,8 @@
                                     <i class="fa-brands fa-cc-visa"></i>
                                     <i class="fa-brands fa-cc-mastercard"></i>
                                 </div>
-                                <input type="button" id="btn-online-pay" class="button-input shadow-normal-blur" onclick="handlePayment('ON', '{{ csrf_token }}')" value="Оплатить">
+{#                                <input type="button" id="btn-online-pay" class="button-input shadow-normal-blur" onclick="handlePayment('ON', '{{ csrf_token }}')" value="Оплатить">#}
+                                <input type="button" id="btn-online-pay" class="button-input shadow-normal-blur" onclick="handleBookingForm('ON')" value="Оплатить">
                             </div>
                             {% endif %}
 
@@ -178,7 +180,8 @@
                                     Без предоплаты.<br>
                                     Администратор свяжется с вами по контактному номеру телефона для подтверждения бронирования и уточнения всех необходимых деталей.
                                 </div>
-                                <input type="button" id="btn-offline-pay" class="button-input shadow-normal-blur" onclick="handlePayment('OF', '{{ csrf_token }}')" value="Оставить заявку">
+{#                                <input type="button" id="btn-offline-pay" class="button-input shadow-normal-blur" onclick="handlePayment('OF', '{{ csrf_token }}')" value="Оставить заявку">#}
+                                <input type="button" class="button-input shadow-normal-blur" onclick="handleBookingForm('OF')" value="Оставить заявку">
                             </div>
 
                             <div class="form-privacy-policy">

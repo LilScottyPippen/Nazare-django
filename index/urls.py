@@ -24,6 +24,8 @@ if not settings.MAINTENANCE_MODE:
         path('callback/', CallbackView.as_view(), name="callback"),
         path('content/<str:slug>', ContentView.as_view(), name="content"),
         path('policy/', PolicyView.as_view(), name="policy"),
+        path('send_confirmation_code/<str:mail>', SendConfirmationCodeView.as_view(), name='send_confirmation_code'),
+        path('confirm_email/<str:confirmation_code>', ConfirmEmailView.as_view(), name='confirm_email'),
     ]
 else:
     urlpatterns = [

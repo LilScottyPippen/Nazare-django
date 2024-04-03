@@ -1,0 +1,18 @@
+{% load static %}
+<section class="modal-container" id="emailModal">
+    <div class="container">
+        <div class="modal-items">
+            <div class="modal-close-btn" onclick="closeModal('emailModal')">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <span class="modal-title">ПОДТВЕРЖДЕНИЕ E-MAIL</span>
+            <form method="POST" class="modal-form" id="emailConfirmForm">
+                <input type="number" class="modal-form-input" id="email-code" placeholder="КОД ПОДТВЕРЖДЕНИЯ">
+                <span class="modal-form-btn" onclick="handleBookingConfirmForm('OF', '{{ csrf_token }}')">ПОДТВЕРДИТЬ</span>
+            </form>
+            <div class="footer-form">
+                <span onclick="resendCode()" style="text-decoration: underline; cursor: pointer">Запросить повторный код подтверждения</span>
+            </div>
+        </div>
+    </div>
+</section>

@@ -15,7 +15,7 @@
     gap: 30px
 }
 
-.modal-container {
+.modal-container-gallery {
     display: flex;
     flex-direction: column;
     position: relative;

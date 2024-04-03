@@ -1,18 +1,17 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/callback.css' %}">
-<section class="callback-container" id="callbackModal">
-    <div class="callback">
-        <div class="callback-items">
-            <div class="callback-close-btn" onclick="closeModal('callbackModal')">
+<section class="modal-container" id="callbackModal">
+    <div class="container">
+        <div class="modal-items">
+            <div class="modal-close-btn" onclick="closeModal('callbackModal')">
                 <i class="fa-solid fa-xmark"></i>
             </div>
-            <span class="callback-title">ЗАКАЗАТЬ ЗВОНОК</span>
-            <form action="{% url 'index:callback' %}" method="POST" class="callback-form" id="callbackForm">
-                <input type="text" class="callback-form-input" id="name" placeholder="ИМЯ">
-                <input type="text" class="callback-form-input" id="phone" placeholder="ТЕЛЕФОН">
-                <span class="callback-form-btn" onclick="handleCallback('{{ csrf_token }}')">ЗАКАЗАТЬ</span>
+            <span class="modal-title">ЗАКАЗАТЬ ЗВОНОК</span>
+            <form action="{% url 'index:callback' %}" method="POST" class="modal-form" id="callbackForm">
+                <input type="text" class="modal-form-input" id="name" placeholder="ИМЯ">
+                <input type="text" class="modal-form-input" id="phone" placeholder="ТЕЛЕФОН">
+                <span class="modal-form-btn" onclick="handleCallback('{{ csrf_token }}')">ЗАКАЗАТЬ</span>
             </form>
-            <div class="callback-form-privacy-policy">
+            <div class="footer-form">
                 <input id="callback-privacy_policy" type="checkbox" name="">
                 <span>Я даю согласие на <a class="url-decorate-underline" href="{% url 'index:policy' %}" target="_blank">обработку персональных данных</a></span>
             </div>

@@ -182,7 +182,22 @@ function getGuestFormData(guestForm) {
     return formData;
 }
 
-function handlePayment(method, csrf_token) {
+function resendCode(){
+    $.ajax({
+        type: "GET",
+        url: `/send_confirmation_code/${document.getElementById('client_mail').value}`,
+        contentType: "application/json",
+        success: function(response) {
+            openEmailModal()
+            showNotification(response.status, response.message);
+        },
+        error: function(response) {
+            showNotification(response.responseJSON.status, response.responseJSON.message);
+        }
+    });
+}
+
+const formData = (method) => {
     const clientData = getClientFormData(method);
     const guestData = [];
 
@@ -195,25 +210,61 @@ function handlePayment(method, csrf_token) {
         }
     });
 
-    const formData = {
+    return {
         clientData: clientData,
         guestData: guestData
-    };
+    }
+}
 
-    if (clientData === false || guestData === false){
-         showNotification("error", ERROR_MESSAGES['invalid_form']);
+function handleBookingForm(method) {
+    const data = formData(method);
+    if (data.clientData === false || data.guestData[0] === false || data.clientData.is_privacy_policy === false){
+        showNotification("error", ERROR_MESSAGES['invalid_form']);
     }else{
         $.ajax({
-            type: "POST",
-            url: "/booking",
-            data: JSON.stringify(formData),
+            type: "GET",
+            url: `/send_confirmation_code/${data.clientData.client_mail}`,
             contentType: "application/json",
-            headers: {
-                'X-CSRFToken': csrf_token
-            },
             success: function(response) {
-                clearForm()
+                openEmailModal()
                 showNotification(response.status, response.message);
+            },
+            error: function(response) {
+                showNotification(response.responseJSON.status, response.responseJSON.message);
+            }
+        });
+    }
+}
+
+function handleBookingConfirmForm(method, csrf_token){
+    const data = formData(method);
+
+    if (data.clientData === false || data.guestData[0] === false || data.clientData.is_privacy_policy === false){
+        showNotification("error", ERROR_MESSAGES['invalid_form']);
+    }else{
+        const code = document.getElementById('email-code').value;
+        $.ajax({
+            type: "GET",
+            url: `/confirm_email/${code}`,
+            contentType: "application/json",
+
+            success: function(response) {
+                $.ajax({
+                    type: "POST",
+                    url: "/booking",
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    headers: {
+                        'X-CSRFToken': csrf_token
+                    },
+                    success: function(response) {
+                        clearForm()
+                        showNotification(response.status, response.message);
+                    },
+                    error: function(response) {
+                        showNotification(response.responseJSON.status, response.responseJSON.message);
+                    }
+                });
             },
             error: function(response) {
                 showNotification(response.responseJSON.status, response.responseJSON.message);
@@ -225,8 +276,8 @@ function handlePayment(method, csrf_token) {
 function clearForm() {
     let formInputs = document.querySelectorAll('.booking-form input[type="input"]');
     let formCheckboxes = document.querySelectorAll('.booking-form input[type="checkbox"]');
-    document.getElementById('children_count').innerText = 0
-    document.getElementById('guests_count').innerText = 1
+    document.getElementById('children_count').innerText = 0;
+    document.getElementById('guests_count').innerText = 1;
 
     formInputs.forEach(function(input) {
         input.value = '';
@@ -236,7 +287,9 @@ function clearForm() {
         checkbox.checked = false;
     });
 
-    resetDates(moment().toDate())
+    resetDates(moment().toDate());
 
     generateGuestInformationBlocks();
+
+    closeModal('emailModal');
 }

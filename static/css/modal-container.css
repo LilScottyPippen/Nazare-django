@@ -1,0 +1,123 @@
+@import "variables.css";
+
+.modal-container{
+    display: none;
+    z-index: var(--callback-index);
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container .container{
+    position: relative;
+    background-color: white;
+    align-items: center;
+    padding: 20px 50px;
+    border-radius: 10px;
+    justify-content: center;
+    margin: 50px;
+}
+
+.modal-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.modal-title{
+    font-size: var(--main-line-font);
+    font-weight: bold;
+    color: var(--dark-blue-color);
+    text-align: center;
+}
+
+.modal-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-form-btn{
+    font-size: var(--content-font);
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid var(--dark-blue-color);
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--dark-blue-color);
+    background-color: white;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
+.modal-form-btn:hover{
+    background-color: var(--dark-blue-color);
+    color: white;
+}
+
+.modal-form-privacy-policy{
+    display: flex;
+    gap: 5px;
+    font-size: var(--content-font);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.modal-form-input{
+    outline: none;
+    border: 2px solid var(--dark-blue-color);
+    padding: 10px;
+    min-width: 220px;
+    border-radius: 10px;
+    color: var(--dark-blue-color);
+    font-size: var(--content-font);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--dark-blue-color);
+}
+
+.footer-form{
+    display: flex;
+    gap: 5px;
+    font-size: var(--content-font);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+@media (max-width: 768px){
+    .modal-container .container{
+        padding: 20px;
+    }
+
+    .modal-title{
+        font-size: var(--main-line-font-mobile);
+    }
+
+    .modal-close-btn {
+        top: 10px;
+        right: 10px;
+    }
+}
