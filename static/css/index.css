@@ -42,10 +42,10 @@
 
 .card-main-content-header{
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
 }
 
-.card-main-content-header-icon{
+.card-main-content-header-icon i{
     font-size: 50px;
 }
 

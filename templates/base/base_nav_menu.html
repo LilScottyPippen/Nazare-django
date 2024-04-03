@@ -1,72 +1,79 @@
 <section class="nav-mobile shadow main-padding" id="nav-mobile">
-  <ul class="nav-mobile-dropdown-items-container">
-    <li class="nav-mobile-item-container">
-      <div class="nav-mobile-dropdown-item">
-        <span>О нас</span>
-        <i class="fa-solid fa-caret-down"></i>
-      </div>
+    <ul class="nav-mobile-dropdown-items-container">
+        <li class="nav-mobile-item-container">
+            <div class="nav-mobile-dropdown-item">
+                <span>О нас</span>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+            
+            <ul class="nav-mobile-dropdown-links">
+                <div class="nav-mobile-dropdown-link">
+                    <a href="{% url 'index:content' 'booking' %}">Бронирование и оплата</a>
+                </div>
+                <div class="nav-mobile-dropdown-link">
+                    <a href="{% url 'index:content' 'history' %}">О компании</a>
+                </div>
+            </ul>
+        </li>
 
-      <ul class="nav-mobile-dropdown-links">
-        <div class="nav-mobile-dropdown-link">
-          <a href="{% url 'index:content' 'booking' %}">Бронирование и оплата</a>
-        </div>
-        <div class="nav-mobile-dropdown-link">
-          <a href="{% url 'index:content' 'history' %}">О компании</a>
-        </div>
-      </ul>
-    </li>
+        <li class="nav-mobile-item-container">
+            <div class="nav-mobile-dropdown-item">
+                <span>Апартаменты</span>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
 
-    <li class="nav-mobile-item-container">
-      <div class="nav-mobile-dropdown-item">
-        <span>Апартаменты</span>
-        <i class="fa-solid fa-caret-down"></i>
-      </div>
+            <ul class="nav-mobile-dropdown-links">
+                {% for house in houses %}
+                    <div class="nav-mobile-dropdown-link">
+                        <a href="{% url 'index:apartment' house.apartment.slug %}">Дом {{ house.apartment.title.upper }}</a>
+                    </div>
+                {% endfor %}
+            </ul>
+        </li>
+        
+        <li class="nav-mobile-item-container">
+            <div class="nav-mobile-dropdown-item">
+                <span>Услуги</span>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+        
+            <ul class="nav-mobile-dropdown-links">
+                <div class="nav-mobile-dropdown-link">
+                    <a href="{% url 'index:content' 'rental' %}">Прокат и аренда</a>
+                </div>
+                <div class="nav-mobile-dropdown-link">
+                    <a href="{% url 'index:content' 'delivery' %}">Доставка еды</a>
+                </div>
+                <div class="nav-mobile-dropdown-link">
+                    <a href="{% url 'index:content' 'transfer' %}">Трансфер</a>
+                </div>
+            </ul>
+        </li>
+        <li class="nav-mobile-item-container">
+            <div class="nav-mobile-dropdown-item">
+                <span>Галерея</span>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
 
-      <ul class="nav-mobile-dropdown-links">
-          {% for house in houses %}
-              <div class="nav-mobile-dropdown-link">
-                <a href="{% url 'index:apartment' house.apartment.slug %}">Дом {{ house.apartment.title.upper }}</a>
-              </div>
-          {% endfor %}
-      </ul>
-    </li>
+            <ul class="nav-mobile-dropdown-links">
+                <div class="nav-mobile-dropdown-link">
+                    <a href="{% url 'index:category' 'photogallery' %}">Фотогалерея</a>
+                </div>
+            </ul>
+        </li>
 
-    <li class="nav-mobile-item-container">
-      <div class="nav-mobile-dropdown-item">
-        <span>Услуги</span>
-        <i class="fa-solid fa-caret-down"></i>
-      </div>
-
-      <ul class="nav-mobile-dropdown-links">
-        <div class="nav-mobile-dropdown-link">
-          <a href="{% url 'index:content' 'rental' %}">Прокат и аренда</a>
-        </div>
-        <div class="nav-mobile-dropdown-link">
-          <a href="{% url 'index:content' 'delivery' %}">Доставка еды</a>
-        </div>
-        <div class="nav-mobile-dropdown-link">
-          <a href="{% url 'index:content' 'transfer' %}">Трансфер</a>
-        </div>
-      </ul>
-    </li>
-
-    <li class="nav-mobile-item-container">
-      <div class="nav-mobile-dropdown-item">
-        <span>Галерея</span>
-        <i class="fa-solid fa-caret-down"></i>
-      </div>
-
-      <ul class="nav-mobile-dropdown-links">
-        <div class="nav-mobile-dropdown-link">
-          <a href="{% url 'index:category' 'photogallery' %}">Фотогалерея</a>
-        </div>
-      </ul>
-    </li>
-
-    <li class="nav-mobile-item-container">
-      <div class="nav-mobile-dropdown-item">
-        <a href="{% url 'index:contact' %}">Контакты</a>
-      </div>
-    </li>
-  </ul>
+        <li class="nav-mobile-item-container">
+            <div class="nav-mobile-dropdown-item">
+                <a href="{% url 'index:contact' %}">Контакты</a>
+            </div>
+        </li>
+    </ul>
+    <div class="nav-mobile-footer">
+        <span class="nav-btn-call" onclick="openCallbackModal()">
+            ЗАКАЗАТЬ ЗВОНОК
+        </span>
+        <span class="nav-btn-book" onclick="window.location = '{% url "booking:booking" %}'">
+            ЗАБРОНИРОВАТЬ
+        </span>
+    </div>
 </section>

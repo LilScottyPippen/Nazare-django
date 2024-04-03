@@ -4,6 +4,12 @@
     padding: 50px 0 50px 0;
 }
 
+.content-container-sup{
+    width: 3px;
+    background-color: var(--dark-blue-color);
+    border-radius: 10px;
+}
+
 .content-container-apartment-title{
     display: flex;
     justify-content: space-between;
@@ -53,7 +59,7 @@
 }
 
 .apartment-info-item i{
-    font-size: 48px;
+    font-size: 38px;
 }
 
 .apartment-booking-btn{
@@ -102,10 +108,23 @@
     font-size: 25px;
 }
 
+@media (max-width: 1300px) {
+    .container-apartment-list{
+        gap: 20px;
+        justify-content: left;
+    }
+}
+
 @media (max-width: 1150px){
     .container-apartment-list{
         gap: 50px;
         justify-content: left;
+    }
+}
+
+@media (max-width: 880px) {
+    .content-container-sup{
+        display: none;
     }
 }
 
@@ -140,11 +159,6 @@
     .apartment-info span{
         white-space: normal;
         font-size: var(--content-font);
-    }
-
-    .container-apartment-list{
-        gap: 20px;
-        justify-content: left;
     }
 
     .apartment-info{
