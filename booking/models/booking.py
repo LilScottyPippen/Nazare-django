@@ -44,6 +44,7 @@ class Booking(BaseBooking):
     client_mail = models.EmailField(verbose_name='Электронная почта')
     client_phone = models.CharField(max_length=50, verbose_name='Номер телефона')
     is_privacy_policy = models.BooleanField(default=False, verbose_name='Соглашение о конфиденциальности')
+    confirmed = models.BooleanField(default=False, verbose_name='Подтверждение')
 
     def clean(self):
         super().clean()

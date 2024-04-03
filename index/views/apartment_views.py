@@ -94,8 +94,9 @@ class ApartmentSearchView(TemplateView):
         booking_dict = get_booking_in_range_date(check_in_date, check_out_date)
         if booking_dict is not False:
             for booking in booking_dict:
-                apartment_from_booking = Apartment.objects.filter(id=Booking.objects.get(id=booking.id).apartment.id)
-                apartments_list[apartment_from_booking.get().id] += 1
+                if booking.confirmed:
+                    apartment_from_booking = Apartment.objects.filter(id=Booking.objects.get(id=booking.id).apartment.id)
+                    apartments_list[apartment_from_booking.get().id] += 1
 
             for apartment in apartments_list:
                 if apartments_list[apartment] == 0:

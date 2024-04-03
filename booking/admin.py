@@ -26,6 +26,7 @@ class BookingAdmin(admin.ModelAdmin):
     fields = [
         'apartment',
         *baseBookingFields,
+        'confirmed',
         'is_privacy_policy'
     ]
 
