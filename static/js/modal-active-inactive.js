@@ -1,10 +1,12 @@
 let viberModal, callbackModal, emailModal, subscribeModal;
-
+let navMobileSection
 document.addEventListener('DOMContentLoaded', function () {
     viberModal = document.getElementById('viberModal');
     callbackModal = document.getElementById('callbackModal');
     emailModal = document.getElementById('emailModal');
     subscribeModal = document.getElementById('subscribeModal')
+
+    navMobileSection = document.getElementById('nav-mobile');
 });
 
 function openViberModal(){
@@ -29,5 +31,8 @@ function openSubscribeModal(){
 
 function closeModal(object){
     document.getElementById(object).style.display = 'none';
-    document.body.style.overflow = "auto";
+    const isOpenSection = navMobileSection.classList.contains('show-menu')
+    if (isOpenSection === false){
+        document.body.style.overflow = "auto";
+    }
 }
