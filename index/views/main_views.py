@@ -1,12 +1,11 @@
 import json
 import random
 import threading
-
 from django.http import JsonResponse, Http404
 from django.views import View
 from django.views.generic import TemplateView
 import folium
-from index.models import *
+from index.models import ApartmentMenu, ContactPage, Address, Email, Phone, Content
 from utils.constants import *
 from utils.get_max_guest_count import get_max_guest_count
 from ..forms.subscriber_form import *
@@ -43,13 +42,18 @@ class ContactPageView(TemplateView):
         context['map'] = map._repr_html_()
         context['addresses'] = Address.objects.filter(contact=contact)
         context['emails'] = Email.objects.filter(contact=contact)
-        context['telephones'] = Telephone.objects.filter(contact=contact)
+        context['phones'] = Phone.objects.filter(contact=contact)
         return context
 
 
 class SubscriberView(View):
     def post(self, request, **kwargs):
         client_mail = request.POST.get('mail')
+        captcha_response = request.POST.get('captcha')
+
+        if len(captcha_response) == 0:
+            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_captcha']}, status=400)
+
         form = SubscriberForm(request.POST)
         if form.is_valid():
             form.save()
@@ -68,18 +72,24 @@ class CallbackView(View):
 
             for client_key, client_value in client_data.items():
                 if client_key == 'phone' and is_valid_phone(client_value) is False:
-                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']})
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']}, status=400)
+                if client_key == 'captcha' and len(client_value) == 0:
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_captcha']}, status=400)
         except ValueError:
             return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
 
         form = CallbackForm(client_data)
+
+        callback_context = {
+            'name': client_data['name'],
+            'phone': client_data['phone'],
+            'created': datetime.now()
+        }
+
         if form.is_valid():
             form.save()
-            send_mail_for_admin('mailing/admin_callback.html', {
-                'name': client_data['name'],
-                'phone': client_data['phone'],
-                'created': datetime.now()
-            })
+            threading.Thread(target=send_mail_for_admin,
+                             args=('mailing/admin_booking.html', callback_context)).start()
             return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_callback']}, status=200)
         return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
 

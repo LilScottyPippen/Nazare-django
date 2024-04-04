@@ -12,11 +12,11 @@ class EmailInline(admin.TabularInline):
     extra = 1
 
 
-class TelephoneInline(admin.TabularInline):
-    model = Telephone
+class PhoneInline(admin.TabularInline):
+    model = Phone
     extra = 1
 
 
 @admin.register(ContactPage)
 class ContactPageView(admin.ModelAdmin):
-    inlines = [AddressInline, EmailInline, TelephoneInline]
+    inlines = [AddressInline, EmailInline, PhoneInline]

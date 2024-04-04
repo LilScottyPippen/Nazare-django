@@ -1,6 +1,6 @@
 from django.http import Http404
 from django.views.generic import TemplateView
-from index.models import *
+from index.models import SubCategory
 from utils.load_photos_in_gallery import load_photos
 
 

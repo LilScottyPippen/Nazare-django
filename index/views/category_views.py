@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from index.models import *
+from index.models import Category, SubCategory
 from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 

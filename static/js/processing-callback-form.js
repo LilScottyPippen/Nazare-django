@@ -1,3 +1,10 @@
+let captchaCallbackInput
+let captchaCallbackResponse = ''
+
+function handleCallbackCaptcha(response){
+    captchaCallbackResponse = response
+}
+
 function is_valid_phone(phone) {
     const belarus_pattern = /^(?:\+375|375)\d{9}$/;
     const russia_pattern = /^(?:\+7|7)\d{10}$/;
@@ -45,7 +52,7 @@ function handleCallback(csrf_token) {
         }
     }
 
-    const privacy_policy_block = document.querySelector('.callback-form-privacy-policy')
+    const privacy_policy_block = document.querySelector('.footer-form')
     const privacy_policy = document.getElementById('callback-privacy_policy')
     const is_checked = privacy_policy.checked
 
@@ -54,6 +61,17 @@ function handleCallback(csrf_token) {
         hasError = true
     } else {
         privacy_policy_block.style.border = '';
+    }
+
+    captchaCallbackInput = document.getElementById('callback-recaptcha')
+
+    if (checkCaptcha(captchaCallbackResponse, captchaCallbackInput)){
+        captchaCallbackInput.style.border = 'none';
+        client_data.client_data.captcha = captchaCallbackResponse
+    }else{
+        hasError = true;
+        captchaCallbackInput.style.border = '2px solid red';
+        showNotification('error', ERROR_MESSAGES['invalid_captcha']);
     }
 
     if (!hasError) {
@@ -68,6 +86,8 @@ function handleCallback(csrf_token) {
             },
             success: function (response) {
                 form.reset();
+                resetALlCaptcha()
+                captchaCallbackResponse = ''
                 document.getElementById('callback-privacy_policy').checked = false;
                 showNotification(response.status, response.message);
             },

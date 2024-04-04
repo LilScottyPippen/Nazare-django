@@ -1,13 +1,16 @@
+import os
 import threading
 from django.views.generic import TemplateView
-from booking.models.booking import *
-from index.models.apartments import *
+from Nazare_django import settings
+from booking.models.booking import Booking, PAYMENT_METHOD_CHOICES
+from index.models.apartments import Apartment
 from utils.booking import get_booking_in_range_date
-from .forms.booking_form import *
-from utils.send_mail import *
+from utils.is_valid_phone import is_valid_phone
+from .forms.booking_form import BookingForm, Guest
+from utils.send_mail import send_mail_for_client, send_mail_for_admin
 import json
 from django.http import JsonResponse, Http404
-from utils.constants import *
+from utils.constants import SUCCESS_MESSAGES, ERROR_MESSAGES
 from datetime import datetime
 from django.core.exceptions import PermissionDenied
 
@@ -80,7 +83,9 @@ class BookingView(TemplateView):
                     if client_value == PAYMENT_METHOD_CHOICES[0][0] and settings.ONLINE_PAYMENT is False:
                         return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_payment_method']}, status=400)
                 if client_key == 'client_phone' and is_valid_phone(client_value) is False:
-                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']})
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']}, status=400)
+                if client_key == 'captcha' and len(client_value) == 0:
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_captcha']}, status=400)
             guest_data = data.get('guestData', [])
             for guest in guest_data:
                 if not type(guest) is dict:

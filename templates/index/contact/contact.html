@@ -26,16 +26,16 @@
                                 <div class="contact-information-item">
                                     <span>E-mail:</span>
                                     {% for email in emails %}
-                                        <a href="mailto:{{ email }}">{{email}}</a>
+                                        <a href="mailto:{{ email }}">{{ email }}</a>
                                     {% endfor %}
                                 </div>
                             {% endif %}
 
-                            {% if telephones %}
+                            {% if phones %}
                                 <div class="contact-information-item">
                                     <span>Телефон:</span>
-                                    {% for telephone in telephones %}
-                                        <a href="tel:{{ telephone }}">{{telephone}}</a>
+                                    {% for phone in phones %}
+                                        <a href="tel:{{ phone }}">{{ phone }}</a>
                                     {% endfor %}
                                 </div>
                             {% endif %}
@@ -44,7 +44,7 @@
                                 <div class="contact-information-item">
                                     <span>Адрес:</span>
                                     {% for address in addresses %}
-                                        <span>{{address}}</span>
+                                        <span>{{ address }}</span>
                                     {% endfor %}
                                 </div>
                             {% endif %}

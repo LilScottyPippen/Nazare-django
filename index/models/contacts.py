@@ -23,7 +23,7 @@ class Address(models.Model):
         verbose_name_plural = "Адреса"
 
 
-class Telephone(models.Model):
+class Phone(models.Model):
     contact = models.ForeignKey(
         ContactPage, on_delete=models.PROTECT, verbose_name="Контактная страница")
 

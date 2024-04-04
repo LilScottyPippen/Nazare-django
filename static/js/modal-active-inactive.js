@@ -1,9 +1,10 @@
-let viberModal, callbackModal;
+let viberModal, callbackModal, emailModal, subscribeModal;
 
 document.addEventListener('DOMContentLoaded', function () {
     viberModal = document.getElementById('viberModal');
     callbackModal = document.getElementById('callbackModal');
     emailModal = document.getElementById('emailModal');
+    subscribeModal = document.getElementById('subscribeModal')
 });
 
 function openViberModal(){
@@ -18,6 +19,11 @@ function openCallbackModal(){
 
 function openEmailModal(){
     emailModal.style.display = 'flex';
+    document.body.style.overflow = "hidden"
+}
+
+function openSubscribeModal(){
+    subscribeModal.style.display = 'flex'
     document.body.style.overflow = "hidden"
 }
 

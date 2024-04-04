@@ -70,7 +70,7 @@
                         <form method="POST" class="footer-main-mailing-form" id="mailingForm">
                             {% csrf_token %}
                             <input type="email" id="input-mail" class="footer-main-mailing-input" placeholder="ВАШ E-MAIL">
-                            <span class="footer-main-mailing-btn" onclick="handleSubscriber('{{ csrf_token }}')">
+                            <span class="footer-main-mailing-btn" onclick="openSubscribeModal()">
                                 ПОДПИСАТЬСЯ
                             </span>
                         </form>

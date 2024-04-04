@@ -1,8 +1,10 @@
-function handleSubscriber(csrf_token) {
+function handleSubscriber(response) {
     let hasError = false;
     const form = document.getElementById('mailingForm');
     const mail = document.getElementById('input-mail').value;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const captcha = document.getElementById('subscribe-recaptcha')
+    const csrf_token = captcha.getAttribute('data-csrf');
 
     if (!emailRegex.test(mail)){
         hasError = true;
@@ -12,14 +14,15 @@ function handleSubscriber(csrf_token) {
 
     if (!hasError) {
         const activeFields = document.getElementById('input-mail');
-        activeFields.style.border = '';
+        activeFields.style.border = 'none';
     }
 
     $.ajax({
         type: "POST",
         url: "/subscribe/",
         data: {
-            'mail': mail
+            'mail': mail,
+            'captcha': response
         },
         contentType: "application/x-www-form-urlencoded",
         headers: {
@@ -33,4 +36,7 @@ function handleSubscriber(csrf_token) {
             showNotification(response.responseJSON.status, response.responseJSON.message);
         }
     });
+
+    closeModal('subscribeModal')
+    resetALlCaptcha()
 }

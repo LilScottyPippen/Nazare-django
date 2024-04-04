@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models.booking import *
+from .models.booking import Booking, MultiApartmentBooking
 from .models.guest import Guest
 
 

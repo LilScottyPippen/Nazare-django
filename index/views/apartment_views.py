@@ -1,9 +1,12 @@
 import datetime
 from django.http import Http404
 from django.views.generic import TemplateView
-from index.models import *
+from index.models import Apartment, ApartmentPhotoGallery, ApartmentMenu
+from booking.models.booking import Booking
 from utils.booking import get_booking_in_range_date
+from utils.constants import ERROR_MESSAGES
 from utils.get_max_guest_count import get_max_guest_count
+from utils.is_valid_date import is_valid_date_booking
 
 
 class ApartmentPageView(TemplateView):

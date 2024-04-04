@@ -151,3 +151,5 @@ EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL') == 'True'
 ONLINE_PAYMENT = os.getenv('ONLINE_PAYMENT') == 'True'
 
 MAINTENANCE_MODE = os.getenv('MAINTENANCE_MODE') == 'True'
+
+RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')

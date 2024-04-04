@@ -62,9 +62,9 @@
             </ul>
         </li>
 
-        <li class="nav-mobile-item-container">
+        <li class="nav-mobile-item-container" onclick="window.location=`${ {% url 'index:contact' %} }`">
             <div class="nav-mobile-dropdown-item">
-                <a href="{% url 'index:contact' %}">Контакты</a>
+                <span>Контакты</span>
             </div>
         </li>
     </ul>

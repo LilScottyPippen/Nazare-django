@@ -31,6 +31,7 @@
     <script src="{% static 'js/processing-callback-form.js' %}"></script>
     <script src="{% static 'js/modal-active-inactive.js' %}"></script>
     <script src="{% static 'js/disable-button-enter-for-forms.js' %}"></script>
+    <script src="{% static 'js/reCaptcha.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
@@ -40,6 +41,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ru.js"></script>
     <script src="{% static 'js/yandex_metrika.js' %}"></script>
     <noscript><div><img src="https://mc.yandex.ru/watch/94565440" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -54,6 +56,7 @@
 
     {% include "base/base_nav_menu.html" %}
     {% include 'base/callback.html' %}
+    {% include 'base/subscribe-captcha.html' %}
 
     <main class="padding-for-main">
         {% block main %}

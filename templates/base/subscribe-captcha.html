@@ -1,0 +1,11 @@
+{% load static %}
+<section class="modal-container" id="subscribeModal">
+    <div class="container">
+        <div class="modal-items">
+            <div class="modal-close-btn" onclick="closeModal('subscribeModal')">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="g-recaptcha" id="subscribe-recaptcha" data-sitekey="{{ recaptcha_public_key }}" data-callback="handleSubscriber" data-csrf="{{ csrf_token }}"></div>
+        </div>
+    </div>
+</section>

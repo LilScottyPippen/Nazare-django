@@ -1,3 +1,10 @@
+let captchaBookingInput
+let captchaBookingResponse = ''
+
+function handleBookingCaptcha(response){
+    captchaBookingResponse = response
+}
+
 function getClientFormData(method){
     let hasError = false;
     let apartment_id
@@ -105,6 +112,17 @@ function getClientFormData(method){
         privacy_policy_block.style.border = '2px solid red';
     } else {
         privacy_policy_block.style.border = '';
+    }
+
+    captchaBookingInput = document.getElementById('booking-recaptcha')
+
+    if (checkCaptcha(captchaBookingResponse, captchaBookingInput)){
+        captchaBookingInput.style.border = 'none';
+        formData.captcha = captchaBookingResponse;
+    }else{
+        hasError = true;
+        captchaBookingInput.style.border = '2px solid red';
+        showNotification('error', ERROR_MESSAGES['invalid_captcha']);
     }
 
     if (hasError) {
@@ -259,6 +277,8 @@ function handleBookingConfirmForm(method, csrf_token){
                     },
                     success: function(response) {
                         clearForm()
+                        resetALlCaptcha()
+                        captchaBookingResponse = ''
                         showNotification(response.status, response.message);
                     },
                     error: function(response) {
@@ -274,8 +294,10 @@ function handleBookingConfirmForm(method, csrf_token){
 }
 
 function clearForm() {
-    let formInputs = document.querySelectorAll('.booking-form input[type="input"]');
-    let formCheckboxes = document.querySelectorAll('.booking-form input[type="checkbox"]');
+    const formInputs = document.querySelectorAll('.booking-form input[type="input"]');
+    const formCheckboxes = document.querySelectorAll('.booking-form input[type="checkbox"]');
+    const modalNumbers = document.querySelectorAll('.modal-form input[type="number"]')
+    console.log(modalNumbers)
     document.getElementById('children_count').innerText = 0;
     document.getElementById('guests_count').innerText = 1;
 
@@ -286,6 +308,10 @@ function clearForm() {
     formCheckboxes.forEach(function(checkbox) {
         checkbox.checked = false;
     });
+
+    modalNumbers.forEach(function (input){
+        input.value = '';
+    })
 
     resetDates(moment().toDate());
 
