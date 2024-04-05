@@ -1,5 +1,3 @@
-@import url('variables.css');
-
 footer{
     font-size: var(--content-font);
 }

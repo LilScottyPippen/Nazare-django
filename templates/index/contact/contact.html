@@ -6,6 +6,9 @@
 
 {% block link %}
     <link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+    <script>
+        document.documentElement.style.setProperty('--bg-image', 'url(' + '{% static 'img/backgrounds/background-image2.jpg' %}' + ')');
+    </script>
 {% endblock link %}
 
 {% block main%}

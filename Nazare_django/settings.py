@@ -12,7 +12,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'nazare.by']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -105,15 +105,26 @@ USE_L10N = True
 
 USE_TZ = False
 
+IS_HOSTER = os.getenv('IS_HOSTER') == 'True'
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+if IS_HOSTER:
+    STATIC_URL = '/nazare/static/'
+    STATIC_ROOT = '/home/nazareby/public_html/nazare/static/'
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+    ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_URL = '/nazare/media/'
+    MEDIA_ROOT = '/home/nazareby/public_html/nazare/media/'
+else:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, '/static')
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+    ]
+
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 ADMIN_REORDER = (

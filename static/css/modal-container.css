@@ -1,5 +1,3 @@
-@import "variables.css";
-
 .modal-container{
     display: none;
     z-index: var(--callback-index);

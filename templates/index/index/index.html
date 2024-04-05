@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="{% static 'css/slider.css' %}">
     <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
     <script src="{% static 'js/processing-search-apartment-form.js' %}"></script>
+    <script>
+        document.documentElement.style.setProperty('--bg-image', 'url(' + '{% static 'img/backgrounds/background-image.jpg' %}' + ')');
+    </script>
 {% endblock link %}
 
 {% block title %}

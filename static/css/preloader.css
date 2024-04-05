@@ -1,5 +1,3 @@
-@import url('variables.css');
-
 .preloader {
     display: flex;
     flex-direction: column;
