@@ -89,7 +89,7 @@ class CallbackView(View):
         if form.is_valid():
             form.save()
             threading.Thread(target=send_mail_for_admin,
-                             args=('mailing/admin_booking.html', callback_context)).start()
+                             args=('mailing/admin_callback.html', callback_context)).start()
             return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_callback']}, status=200)
         return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
 
