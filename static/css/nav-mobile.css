@@ -45,8 +45,14 @@
 }
 
 .nav-mobile-footer{
-    display: inline-flex;
+    display: none;
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .nav-mobile-footer{
+        display: flex;
+    }
 }

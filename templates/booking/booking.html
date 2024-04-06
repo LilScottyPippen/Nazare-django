@@ -7,7 +7,9 @@
 {% block link %}
     <link rel="stylesheet" href="{% static 'css/booking.css' %}">
     <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
-
+    <script src="{% static 'js/datepicker-constants.js' %}"></script>
+    <script src="{% static 'js/datepicker-calculate.js' %}"></script>
+    <script src="{% static 'pikaday/pikaday.js' %}"></script>
     <script src="{% static 'js/guest-counter.js' %}"></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 {% endblock link %}
@@ -199,7 +201,7 @@
     <script>
         window.guest_max = {{ guest_max }};
         window.booking_list = {{ booking_list|safe }};
-        window.check_in_time = "{{ check_in_time }}";
+        window.check_in_time = "{{ check_in_time }}"
     </script>
     <script src="{% static 'js/booking-active-items.js' %}"></script>
     <script src="{% static 'js/generate-guest-form.js' %}"></script>

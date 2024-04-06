@@ -19,10 +19,11 @@
     {% block link %}
     {% endblock link %}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome.css' %}" >
+    <link rel="stylesheet" href="{% static 'fontawesome/css/brands.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/solid.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/regular.css' %}">
+    <link rel="stylesheet" href="{% static 'pikaday/css/pikaday.css' %}">
 
     <script src="{% static 'js/is-valid-date.js' %}"></script>
     <script src="{% static 'js/preloader.js' %}"></script>
@@ -31,17 +32,21 @@
     <script src="{% static 'js/processing-subscribe-form.js' %}"></script>
     <script src="{% static 'js/processing-callback-form.js' %}"></script>
     <script src="{% static 'js/modal-active-inactive.js' %}"></script>
-    <script src="{% static 'js/disable-button-enter-for-forms.js' %}"></script>
+    <script src="{% static 'js/disable-button-enter-for-forms.js' %}" ></script>
     <script src="{% static 'js/reCaptcha.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+
+    <script src="{% static 'ajax/moment-with-locales.min.js' %}"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js" defer></script>
+    
+    <script src="{% static 'ajax/jquery-3.6.4.min.js' %}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ru.js"></script>
-    <script src="{% static 'js/yandex_metrika.js' %}"></script>
+
+    <script src="{% static 'js/yandex_metrika.js' %}" defer></script>
     <noscript><div><img src="https://mc.yandex.ru/watch/94565440" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 

@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="{% static 'css/grid-cards.css' %}">
     <link rel="stylesheet" href="{% static 'css/slider.css' %}">
     <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
+    
     <script src="{% static 'js/processing-search-apartment-form.js' %}"></script>
+    <script src="{% static 'js/datepicker-constants.js' %}"></script>
+    <script src="{% static 'js/datepicker-calculate.js' %}"></script>
+    <script src="{% static 'pikaday/pikaday.js' %}"></script>
     <script>
         document.documentElement.style.setProperty('--bg-image', 'url(' + '{% static 'img/backgrounds/background-image.jpg' %}' + ')');
     </script>
@@ -111,7 +115,7 @@
                         <div class="grid-container">
                             <div class="grid-item shadow-blur bg-white object-1">
                                 <div class="grid-item-icon-for-object-2x2 bg-white"><i class="fa-solid fa-wifi"></i></div>
-                                <div class="grid-item-image-container" style="background-image: url('{% static 'img/apartments/resources/cards/olive2.webp' %}');"></div>
+                                <div class="grid-item-image-container" style="background-image: url('{% static 'img/apartments/olive/olive.webp' %}');"></div>
                                 <div class="grid-item-content-for-object-2x2">
                                     <span class="grid-item-section-title">WiFi Free</span>
                                     <span class="grid-item-section-description">
@@ -301,6 +305,7 @@
 {% block script %}
     <script>
         window.guest_max = {{ guest_max }}
+        window.check_in_time = "{{ check_in_time }}"
     </script>
     <script src="{% static 'js/guest-counter.js' %}"></script>
     <script src="{% static 'js/datepicker.js' %}"></script>

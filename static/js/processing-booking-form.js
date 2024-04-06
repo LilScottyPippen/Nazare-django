@@ -1,29 +1,28 @@
-let captchaBookingInput
-let captchaBookingResponse = ''
+let captchaBookingInput, captchaBookingResponse
 
 function handleBookingCaptcha(response){
     captchaBookingResponse = response
 }
 
 function getClientFormData(method){
-    let hasError = false;
+    let hasError = false
     let apartment_id
 
     try {
-        apartment_id = document.querySelector('.form-apartment-items .choose-input.active').getAttribute('data-id');
+        apartment_id = document.querySelector('.form-apartment-items .choose-input.active').getAttribute('data-id')
     } catch (error) {
-        hasError = true;
-        const errorFields = document.querySelectorAll('.form-apartment-items .choose-input');
+        hasError = true
+        const errorFields = document.querySelectorAll('.form-apartment-items .choose-input')
         errorFields.forEach((field) => {
-            field.style.borderColor = 'red';
-        });
+            field.style.borderColor = 'red'
+        })
     }
 
     if (!hasError) {
-        const activeFields = document.querySelectorAll('.form-apartment-items .choose-input');
+        const activeFields = document.querySelectorAll('.form-apartment-items .choose-input')
         activeFields.forEach((field) => {
-            field.style.borderColor = '';
-        });
+            field.style.borderColor = ''
+        })
     }
 
     const formData = {
@@ -38,67 +37,67 @@ function getClientFormData(method){
         client_mail: document.getElementById('client_mail').value,
     }
 
-    const nameFields = ['client_surname', 'client_name'];
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const dateRegex = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
-    const phoneRegex = /^(?:\+375|375)\d{9}$|^(?:\+7|7)\d{10}$/;
+    const nameFields = ['client_surname', 'client_name']
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const dateRegex = /^\d{4}\-\d{1,2}\-\d{1,2}$/
+    const phoneRegex = /^(?:\+375|375)\d{9}$|^(?:\+7|7)\d{10}$/
 
     for (const key in formData) {
-        const input = document.getElementById(key);
-        const parentElement = input.closest('.search-apartment-dropdown');
+        const input = document.getElementById(key)
+        const parentElement = input.closest('.search-apartment-dropdown')
 
         if (nameFields.includes(key)) {
-            const fullNamePart = formData[key];
+            const fullNamePart = formData[key]
             if (!fullNamePart.trim() || !/^[\p{L}]+$/u.test(fullNamePart) || fullNamePart.length < 3) {
-                hasError = true;
+                hasError = true
                 if (input) {
-                    input.style.borderColor = 'red';
+                    input.style.borderColor = 'red'
                     if (parentElement) {
-                        parentElement.style.borderColor = 'red';
+                        parentElement.style.borderColor = 'red'
                     }
                 }
             } else {
-                input.style.borderColor = '';
+                input.style.borderColor = ''
                 if (parentElement) {
-                    parentElement.style.borderColor = '';
+                    parentElement.style.borderColor = ''
                 }
             }
         } else if (key === 'client_phone' && !phoneRegex.test(formData[key])) {
-            hasError = true;
-            input.style.borderColor = 'red';
+            hasError = true
+            input.style.borderColor = 'red'
             if (parentElement) {
-                parentElement.style.borderColor = 'red';
+                parentElement.style.borderColor = 'red'
             }
         } else {
             if (!formData[key]) {
-                hasError = true;
+                hasError = true
                 if (input) {
-                    input.style.borderColor = 'red';
+                    input.style.borderColor = 'red'
                     if (parentElement) {
-                        parentElement.style.borderColor = 'red';
+                        parentElement.style.borderColor = 'red'
                     }
                 }
             } else {
-                input.style.borderColor = '';
+                input.style.borderColor = ''
                 if (parentElement) {
-                    parentElement.style.borderColor = '';
+                    parentElement.style.borderColor = ''
                 }
             }
 
             if (key === 'check_in_date' || key === 'check_out_date') {
                 if (!dateRegex.test(formData[key])) {
-                    hasError = true;
-                    parentElement.style.borderColor = 'red';
+                    hasError = true
+                    parentElement.style.borderColor = 'red'
                 } else {
-                    parentElement.style.borderColor = '';
+                    parentElement.style.borderColor = ''
                 }
             }
 
             if (key === 'client_mail' && !emailRegex.test(formData[key])) {
-                hasError = true;
-                input.style.borderColor = 'red';
+                hasError = true
+                input.style.borderColor = 'red'
                 if (parentElement) {
-                    parentElement.style.borderColor = 'red';
+                    parentElement.style.borderColor = 'red'
                 }
             }
         }
@@ -109,83 +108,83 @@ function getClientFormData(method){
     const is_checked = privacy_policy.checked
 
     if (is_checked === false) {
-        privacy_policy_block.style.border = '2px solid red';
+        privacy_policy_block.style.border = '2px solid red'
     } else {
-        privacy_policy_block.style.border = '';
+        privacy_policy_block.style.border = ''
     }
 
     captchaBookingInput = document.getElementById('booking-recaptcha')
 
     if (checkCaptcha(captchaBookingResponse, captchaBookingInput)){
-        captchaBookingInput.style.border = 'none';
-        formData.captcha = captchaBookingResponse;
+        captchaBookingInput.style.border = 'none'
+        formData.captcha = captchaBookingResponse
     }else{
-        hasError = true;
-        captchaBookingInput.style.border = '2px solid red';
-        showNotification('error', ERROR_MESSAGES['invalid_captcha']);
+        hasError = true
+        captchaBookingInput.style.border = '2px solid red'
+        showNotification('error', ERROR_MESSAGES['invalid_captcha'])
     }
 
     if (hasError) {
-        return false;
+        return false
     }
     formData.client_father_name = document.getElementById('client_father_name').value
-    formData.payment_method = method;
+    formData.payment_method = method
     formData.total_sum = document.getElementById('totalCost').innerText
     formData.is_privacy_policy = is_checked
 
-    return formData;
+    return formData
 }
 
 function getGuestFormData(guestForm) {
-    let hasError = false;
+    let hasError = false
 
-    let citizenship = guestForm.querySelectorAll('.form-guest-information-citizenship-items .choose-input');
+    let citizenship = guestForm.querySelectorAll('.form-guest-information-citizenship-items .choose-input')
 
     try {
         if(Array.from(citizenship).find(button => button.classList.contains('active')).value) {
-            citizenship = guestForm.querySelector('.form-guest-information-citizenship-items .choose-input.active');
+            citizenship = guestForm.querySelector('.form-guest-information-citizenship-items .choose-input.active')
         }
     } catch (error) {
-        hasError = true;
-        const errorFields = document.querySelectorAll('.form-guest-information-citizenship-items .choose-input');
+        hasError = true
+        const errorFields = document.querySelectorAll('.form-guest-information-citizenship-items .choose-input')
         errorFields.forEach((field) => {
-            field.style.borderColor = 'red';
-        });
+            field.style.borderColor = 'red'
+        })
     }
 
     if (!hasError) {
-        const activeFields = document.querySelectorAll('.form-guest-information-citizenship-items .choose-input');
+        const activeFields = document.querySelectorAll('.form-guest-information-citizenship-items .choose-input')
         activeFields.forEach((field) => {
-            field.style.borderColor = '';
-        });
+            field.style.borderColor = ''
+        })
     }
 
     const formData = {
         guest_surname: guestForm.querySelector('.text-input[id="guest_surname"]').value,
         guest_name: guestForm.querySelector('.text-input[id="guest_name"]').value,
         citizenship: citizenship.value,
-    };
+    }
 
-    const nameRegex = /^[\p{L}]+$/u;
+    const nameRegex = /^[\p{L}]+$/u
 
     for (const key in formData) {
-        const input = guestForm.querySelector(`#${key}`);
+        const input = guestForm.querySelector(`#${key}`)
 
         if (!formData[key]) {
-            hasError = true;
+            hasError = true
             if (input) {
-                input.style.borderColor = 'red';
+                input.style.borderColor = 'red'
             }
         } else {
             if (input) {
-                input.style.borderColor = '';
+                input.style.borderColor = ''
             }
         }
 
         if(key === 'guest_name' || key === 'guest_surname' || key === 'guest_father_name'){
             if(formData[key].length < 3 || !nameRegex.test(formData[key])){
                 hasError = true
-                input.style.borderColor = 'red';
+                input.style.borderColor = 'red'
             } else{
                 input.style.borderColor = ''
             }
@@ -193,11 +192,11 @@ function getGuestFormData(guestForm) {
     }
 
     if (hasError) {
-        return false;
+        return false
     }
 
-    formData.guest_father_name = guestForm.querySelector('.text-input[id="guest_father_name"]').value;
-    return formData;
+    formData.guest_father_name = guestForm.querySelector('.text-input[id="guest_father_name"]').value
+    return formData
 }
 
 function resendCode(){
@@ -207,26 +206,26 @@ function resendCode(){
         contentType: "application/json",
         success: function(response) {
             openEmailModal()
-            showNotification(response.status, response.message);
+            showNotification(response.status, response.message)
         },
         error: function(response) {
-            showNotification(response.responseJSON.status, response.responseJSON.message);
+            showNotification(response.responseJSON.status, response.responseJSON.message)
         }
-    });
+    })
 }
 
 const formData = (method) => {
-    const clientData = getClientFormData(method);
-    const guestData = [];
+    const clientData = getClientFormData(method)
+    const guestData = []
 
-    const guestForms = document.querySelectorAll('.form-guest-information-item');
+    const guestForms = document.querySelectorAll('.form-guest-information-item')
 
     guestForms.forEach((form) => {
-        const formData = getGuestFormData(form);
+        const formData = getGuestFormData(form)
         if (formData !== null) {
-            guestData.push(formData);
+            guestData.push(formData)
         }
-    });
+    })
 
     return {
         clientData: clientData,
@@ -235,9 +234,9 @@ const formData = (method) => {
 }
 
 function handleBookingForm(method) {
-    const data = formData(method);
+    const data = formData(method)
     if (data.clientData === false || data.guestData[0] === false || data.clientData.is_privacy_policy === false){
-        showNotification("error", ERROR_MESSAGES['invalid_form']);
+        showNotification("error", ERROR_MESSAGES['invalid_form'])
     }else{
         $.ajax({
             type: "GET",
@@ -245,22 +244,22 @@ function handleBookingForm(method) {
             contentType: "application/json",
             success: function(response) {
                 openEmailModal()
-                showNotification(response.status, response.message);
+                showNotification(response.status, response.message)
             },
             error: function(response) {
-                showNotification(response.responseJSON.status, response.responseJSON.message);
+                showNotification(response.responseJSON.status, response.responseJSON.message)
             }
-        });
+        })
     }
 }
 
 function handleBookingConfirmForm(method, csrf_token){
-    const data = formData(method);
+    const data = formData(method)
 
     if (data.clientData === false || data.guestData[0] === false || data.clientData.is_privacy_policy === false){
-        showNotification("error", ERROR_MESSAGES['invalid_form']);
+        showNotification("error", ERROR_MESSAGES['invalid_form'])
     }else{
-        const code = document.getElementById('email-code').value;
+        const code = document.getElementById('email-code').value
         $.ajax({
             type: "GET",
             url: `/confirm_email/${code}`,
@@ -279,43 +278,43 @@ function handleBookingConfirmForm(method, csrf_token){
                         clearForm()
                         resetALlCaptcha()
                         captchaBookingResponse = ''
-                        showNotification(response.status, response.message);
+                        showNotification(response.status, response.message)
                     },
                     error: function(response) {
-                        showNotification(response.responseJSON.status, response.responseJSON.message);
+                        showNotification(response.responseJSON.status, response.responseJSON.message)
                     }
-                });
+                })
             },
             error: function(response) {
-                showNotification(response.responseJSON.status, response.responseJSON.message);
+                showNotification(response.responseJSON.status, response.responseJSON.message)
             }
-        });
+        })
     }
 }
 
 function clearForm() {
-    const formInputs = document.querySelectorAll('.booking-form input[type="input"]');
-    const formCheckboxes = document.querySelectorAll('.booking-form input[type="checkbox"]');
+    const formInputs = document.querySelectorAll('.booking-form input[type="input"]')
+    const formCheckboxes = document.querySelectorAll('.booking-form input[type="checkbox"]')
     const modalNumbers = document.querySelectorAll('.modal-form input[type="number"]')
-    console.log(modalNumbers)
-    document.getElementById('children_count').innerText = 0;
-    document.getElementById('guests_count').innerText = 1;
+
+    document.getElementById('children_count').innerText = 0
+    document.getElementById('guests_count').innerText = 1
 
     formInputs.forEach(function(input) {
-        input.value = '';
-    });
-
-    formCheckboxes.forEach(function(checkbox) {
-        checkbox.checked = false;
-    });
-
-    modalNumbers.forEach(function (input){
-        input.value = '';
+        input.value = ''
     })
 
-    resetDates(moment().toDate());
+    formCheckboxes.forEach(function(checkbox) {
+        checkbox.checked = false
+    })
 
-    generateGuestInformationBlocks();
+    modalNumbers.forEach(function (input){
+        input.value = ''
+    })
 
-    closeModal('emailModal');
+    resetDates(moment().toDate())
+
+    generateGuestInformationBlocks()
+
+    closeModal(modals.emailModal.id)
 }

@@ -1,11 +1,11 @@
 function generateGuestInformationBlocks() {
-    const guests_count = parseInt(document.getElementById('guests_count').innerText, 10) || 0;
+    const guests_count = parseInt(document.getElementById('guests_count').innerText, 10) || 0
 
-    document.getElementById('guestInformationContainer').innerHTML = '';
+    document.getElementById('guestInformationContainer').innerHTML = ''
 
     for (let i = 0; i < guests_count; i++) {
-        let guestInformationBlock = document.createElement('div');
-        guestInformationBlock.className = 'form-guest-information-item';
+        let guestInformationBlock = document.createElement('div')
+        guestInformationBlock.className = 'form-guest-information-item'
 
         guestInformationBlock.innerHTML = `
             <input id="guest_surname" type="input" class="text-input shadow-normal-blur" placeholder="ФАМИЛИЯ">
@@ -20,14 +20,14 @@ function generateGuestInformationBlocks() {
                     <input type="button" class="choose-input shadow-normal-blur" value="РФ">
                 </div>
             </div>
-        `;
-        document.getElementById('guestInformationContainer').appendChild(guestInformationBlock);
+        `
+        document.getElementById('guestInformationContainer').appendChild(guestInformationBlock)
     }
-    addActiveClassOnClick('form-guest-information-item', 'form-guest-information-citizenship-items');
+    addActiveClassOnClick('form-guest-information-item', 'form-guest-information-citizenship-items')
 }
 
 window.onload = function () {
-    generateGuestInformationBlocks();
-    document.getElementById('adultIncrement').addEventListener('click', generateGuestInformationBlocks);
-    document.getElementById('adultDecrement').addEventListener('click', generateGuestInformationBlocks);
-};
+    generateGuestInformationBlocks()
+    document.getElementById('adultIncrement').addEventListener('click', generateGuestInformationBlocks)
+    document.getElementById('adultDecrement').addEventListener('click', generateGuestInformationBlocks)
+}

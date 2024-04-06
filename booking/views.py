@@ -70,7 +70,6 @@ class BookingView(TemplateView):
                         booking.check_out_date.strftime("%Y-%m-%d")
                     ])
         context['booking_list'] = booking_list
-        context['check_in_time'] = os.environ.get('CHECK_IN_TIME', '14:00')
         return context
 
     def post(self, request):
@@ -81,17 +80,17 @@ class BookingView(TemplateView):
             for client_key, client_value in client_data.items():
                 if client_key == 'payment_method':
                     if client_value == PAYMENT_METHOD_CHOICES[0][0] and settings.ONLINE_PAYMENT is False:
-                        return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_payment_method']}, status=400)
+                        return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_payment_method']}, status=500)
                 if client_key == 'client_phone' and is_valid_phone(client_value) is False:
-                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']}, status=400)
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']}, status=500)
                 if client_key == 'captcha' and len(client_value) == 0:
-                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_captcha']}, status=400)
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_captcha']}, status=500)
             guest_data = data.get('guestData', [])
             for guest in guest_data:
                 if not type(guest) is dict:
-                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
         except ValueError:
-            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
+            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
 
         form = BookingForm(client_data)
 
@@ -99,16 +98,16 @@ class BookingView(TemplateView):
             booking_instance = form.save(commit=False)
 
             if not self.check_available_date(client_data):
-                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['unavailable_period']}, status=400)
+                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['unavailable_period']}, status=500)
 
             if not self.check_guest_count(guest_data, booking_instance):
-                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
+                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
 
             if not self.check_price(client_data):
-                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
+                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
 
             if not self.check_privacy_policy(client_data):
-                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_privacy_policy']}, status=400)
+                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_privacy_policy']}, status=500)
 
             booking_instance.save()
 
@@ -124,7 +123,7 @@ class BookingView(TemplateView):
                 )
             return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_booking']}, status=200)
         else:
-            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
+            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
 
     def send_mailing(self, booking_instance):
         base_context = {

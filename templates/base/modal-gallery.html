@@ -1,11 +1,11 @@
 <div class="modal" id="galleryModal">
     <span class="close" onclick="closeModal('galleryModal')">&times;</span>
     <div class="modal-container-gallery">
-        <img class="modal-content" id="modalImg">
+        <img loading="lazy" class="modal-content" id="modalImg">
     </div>
     <div class="modal-caption" id="caption"></div>
     <div class="modal-control">
-        <i class="fa-solid fa-chevron-left prev" onclick="plusSlides(-1)"></i>
-        <i class="fa-solid fa-chevron-right next" onclick="plusSlides(1)"></i>
+        <i class="fa-solid fa-chevron-left prev" onclick="showImage(-1)"></i>
+        <i class="fa-solid fa-chevron-right next" onclick="showImage(1)"></i>
     </div>
 </div>

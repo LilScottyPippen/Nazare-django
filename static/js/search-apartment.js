@@ -11,10 +11,10 @@ if (isValidDate(check_in_date) && isValidDate(check_out_date)) {
     pickerCheckin.setDate(checkin_date_object)
     pickerCheckin.setMaxDate(checkout_date_object)
 
-    const disable_check_in_date = new Date(checkin_date_object);
-    disable_check_in_date.setDate(disable_check_in_date.getDate() + 1);
+    const disable_check_in_date = new Date(checkin_date_object)
+    disable_check_in_date.setDate(disable_check_in_date.getDate() + 1)
     pickerCheckout.setDate(checkout_date_object)
-    pickerCheckout.setMinDate(disable_check_in_date);
+    pickerCheckout.setMinDate(disable_check_in_date)
 }
 
 function openSearchApartmentPage(){

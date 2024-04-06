@@ -5,10 +5,13 @@
 {% block title %}Поиск апартамента{% endblock title %}
 
 {% block link %}
-    <script src="{% static 'js/guest-counter.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/apartment-search.css' %}">
     <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    <script src="{% static 'js/guest-counter.js' %}"></script>
+    <script src="{% static 'js/datepicker-constants.js' %}"></script>
+    <script src="{% static 'js/datepicker-calculate.js' %}"></script>
+    <script src="{% static 'pikaday/pikaday.js' %}"></script>
 {% endblock link %}
 
 
@@ -149,6 +152,7 @@
 {% block script %}
     <script>
         window.guest_max = 6
+        window.check_in_time = "{{ check_in_time }}"
     </script>
     <script src="{% static 'js/datepicker.js' %}"></script>
     <script src="{% static 'js/search-apartment.js' %}"></script>

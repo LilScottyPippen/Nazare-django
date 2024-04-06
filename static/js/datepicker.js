@@ -1,48 +1,35 @@
-let pickerCheckin, pickerCheckout;
+let pickerCheckin, pickerCheckout
+const checkInTime = window.check_in_time
+let minDate = calculateMinDate(checkInTime)
 
 document.querySelectorAll('#datepicker-checkin, #datepicker-checkout').forEach(function (element) {
-    let minDate = new Date();
-    let maxDate = moment().add(365, 'days');
-    let titleElement = element.querySelector('.search-apartment-dropdown-title');
+    let maxDate = moment().add(180, 'days')
+    let titleElement = element.querySelector('.search-apartment-dropdown-title')
 
     let picker = new Pikaday({
         field: element,
-        format: 'D/M/YYYY',
+        format: getFormatDatepicker(),
         minDate: minDate,
-        maxDate: maxDate.toDate(),
+        maxDate: getMaxDateDatepicker(),
         onSelect: function (date) {
-            titleElement.textContent = this.toString(date, 'D/M/YYYY');
+            titleElement.textContent = this.toString(date, getFormatDatepicker())
             
             if (element.id === 'datepicker-checkin') {
-                pickerCheckout.setMinDate(moment(date).add(1, 'days').toDate());
+                pickerCheckout.setMinDate(moment(date).add(1, 'days').toDate())
             } else if (element.id === 'datepicker-checkout') {
-                pickerCheckin.setMaxDate(moment(date).subtract(1, 'days').toDate());
+                pickerCheckin.setMaxDate(moment(date).subtract(1, 'days').toDate())
             }
         },
-        toString(date, format) {
-            const day = date.getDate();
-            const month = date.getMonth() + 1;
-            const year = date.getFullYear();
-            return `${year}-${month}-${day}`;
+        toString(date) {
+            return getToStringDatepicker(date)
         },
-        parse(dateString, format) {
-            const parts = dateString.split('/');
-            const day = parseInt(parts[0], 10);
-            const month = parseInt(parts[1], 10) - 1;
-            const year = parseInt(parts[2], 10);
-            return new Date(year, month, day);
-        },
-        i18n: {
-            months: moment.months(),
-            weekdays: moment.weekdaysShort(),
-            weekdaysShort: moment.weekdaysShort()
-        },
+        i18n: getI18nDatepicker(),
         firstDay: 1,
-    });
+    })
 
     if (element.id === 'datepicker-checkin') {
-        pickerCheckin = picker;
+        pickerCheckin = picker
     } else if (element.id === 'datepicker-checkout') {
-        pickerCheckout = picker;
+        pickerCheckout = picker
     }
-});
+})

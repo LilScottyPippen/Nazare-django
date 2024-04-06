@@ -52,7 +52,7 @@ class SubscriberView(View):
         captcha_response = request.POST.get('captcha')
 
         if len(captcha_response) == 0:
-            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_captcha']}, status=400)
+            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_captcha']}, status=500)
 
         form = SubscriberForm(request.POST)
         if form.is_valid():
@@ -60,8 +60,8 @@ class SubscriberView(View):
             return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_subscribed']}, status=200)
         else:
             if Subscriber.objects.filter(mail=client_mail):
-                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_mail']}, status=400)
-            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
+                return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_mail']}, status=500)
+            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
 
 
 class CallbackView(View):
@@ -72,11 +72,11 @@ class CallbackView(View):
 
             for client_key, client_value in client_data.items():
                 if client_key == 'phone' and is_valid_phone(client_value) is False:
-                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']}, status=400)
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']}, status=500)
                 if client_key == 'captcha' and len(client_value) == 0:
-                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_captcha']}, status=400)
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_captcha']}, status=500)
         except ValueError:
-            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
+            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
 
         form = CallbackForm(client_data)
 
@@ -91,7 +91,7 @@ class CallbackView(View):
             threading.Thread(target=send_mail_for_admin,
                              args=('mailing/admin_callback.html', callback_context)).start()
             return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_callback']}, status=200)
-        return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=400)
+        return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
 
 
 class ContentView(TemplateView):
