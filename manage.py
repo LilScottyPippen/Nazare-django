@@ -3,7 +3,7 @@
 
 from Nazare_django.settings import IS_HOSTER
 
-if IS_HOSTER == True:
+if IS_HOSTER:
     try:
         import pymysql
         pymysql.install_as_MySQLdb()
