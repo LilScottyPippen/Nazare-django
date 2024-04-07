@@ -1,5 +1,3 @@
-@import url('variables.css');
-
 .nav-mobile{
     color: var(--white-color);
     position: fixed;

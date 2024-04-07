@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     images = document.querySelectorAll('.grid-gallery-image')
 })
 
-function openModal(backgroundImage) {
+function openImageModal(backgroundImage) {
     document.body.style.overflow = "hidden"
     modal.style.display = "flex"
 

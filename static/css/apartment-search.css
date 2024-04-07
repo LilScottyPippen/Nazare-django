@@ -118,9 +118,6 @@
         display: flex;
         justify-content: center;
     }
-    .content-items{
-        width: fit-content;
-    }
 }
 
 @media (max-width: 768px){

@@ -30,7 +30,7 @@
                     <div class="grid-gallery">
                         {% for photo in photos %}
                         <div class="grid-gallery-image shadow" data-caption="{{ photo.description }}" style="background-image: url('{{photo.photo.url}}');"
-                            onclick="openModal(this.style.backgroundImage)"></div>
+                            onclick="openImageModal(this.style.backgroundImage)"></div>
                         {% endfor %}
                     </div>
                 </div>

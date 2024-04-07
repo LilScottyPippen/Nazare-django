@@ -64,7 +64,7 @@ class BookingView(TemplateView):
         for apartment in apartment_dict:
             booking_list[apartment.id] = []
             for booking in Booking.objects.filter(apartment=apartment.id):
-                if booking.check_out_date > datetime.today().date() and booking.confirmed:
+                if booking.check_out_date >= datetime.today().date() and booking.confirmed:
                     booking_list[apartment.id].append([
                         booking.check_in_date.strftime("%Y-%m-%d"),
                         booking.check_out_date.strftime("%Y-%m-%d")

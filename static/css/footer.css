@@ -46,6 +46,10 @@ footer{
     font-size: var(--button-font);
 }
 
+.footer-main-nav-list a{
+    width: fit-content;
+}
+
 .footer-main-container-items{
     display: flex;
     flex-direction: column;
