@@ -1,6 +1,6 @@
 from Nazare_django.settings import IS_HOSTER
 
-if IS_HOSTER == 'True':
+if IS_HOSTER == True:
     try:
         import pymysql
         pymysql.install_as_MySQLdb()
@@ -10,7 +10,7 @@ if IS_HOSTER == 'True':
     import sys, os
     cwd = os.getcwd()
     sys.path.append(cwd)
-    sys.path.append(cwd + '/nazare')
+    sys.path.append(cwd + '/git')
     os.environ['DJANGO_SETTINGS_MODULE'] = "Nazare_django.settings"
     from django.core.wsgi import get_wsgi_application
     application = get_wsgi_application()

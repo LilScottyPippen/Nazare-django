@@ -1,7 +1,18 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
+
+from Nazare_django.settings import IS_HOSTER
+
+if IS_HOSTER == True:
+    try:
+        import pymysql
+        pymysql.install_as_MySQLdb()
+    except ImportError:
+        pass
+
 import os
 import sys
+
 
 
 def main():
