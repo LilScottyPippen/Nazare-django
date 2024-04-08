@@ -150,10 +150,6 @@
 {% endblock main %}
 
 {% block script %}
-    <script>
-        window.guest_max = 6
-        window.check_in_time = "{{ check_in_time }}"
-    </script>
     <script src="{% static 'js/datepicker.js' %}"></script>
     <script src="{% static 'js/search-apartment.js' %}"></script>
 {% endblock script %}

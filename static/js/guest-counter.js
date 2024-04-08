@@ -3,13 +3,19 @@ function sumCounters() {
     const childrenCount = parseInt(document.getElementById('children_count').innerText)
 
     const total = adultsCount + childrenCount
-    return total < guest_max
+
+    try{
+        return total < guest_max
+    }
+    catch (ReferenceError) {
+        return total < getGuestMax() || 0
+    }
 }
 
 function incrementCounter(type) {
     let counterId = type + '_count'
     let counter = document.getElementById(counterId)
-    let count = parseInt(counter.innerText)
+    let count = counter.innerText
 
     if (sumCounters()) {
         count++
@@ -20,7 +26,7 @@ function incrementCounter(type) {
 function decrementCounter(type) {
     let counterId = type + '_count'
     let counter = document.getElementById(counterId)
-    let count = parseInt(counter.innerText)
+    let count = counter.innerText
 
     sumCounters()
 

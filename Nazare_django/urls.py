@@ -10,6 +10,7 @@ urlpatterns = [
 
 if not settings.MAINTENANCE_MODE:
     urlpatterns.append(path('', include('booking.urls')))
+    urlpatterns.append(path('api/', include('api.urls')))
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

@@ -11,7 +11,6 @@
     <script src="{% static 'js/datepicker-calculate.js' %}"></script>
     <script src="{% static 'pikaday/pikaday.js' %}"></script>
     <script src="{% static 'js/guest-counter.js' %}"></script>
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 {% endblock link %}
 {% block main %}
     {% include 'base/email-confirm.html' %}
@@ -84,13 +83,7 @@
                                                     </span>
                                                     <div class="apartment-dropdown-footer-counter-control">
                                                         <i class="fa-solid fa-square-plus" id="adultIncrement" onclick="incrementCounter('guests')"></i>
-                                                        <span id="guests_count" data-guest="{{ default_apartment.guest_count }}">
-                                                            {% if adult_count %}
-                                                                {{ adult_count }}
-                                                            {% else %}
-                                                                1
-                                                            {% endif %}
-                                                        </span>
+                                                        <span id="guests_count" data-guest="{{ default_apartment.guest_count }}">{% if adult_count > 1 %}{{ adult_count }}{% else %}1{% endif %}</span>
                                                         <i class="fa-solid fa-square-minus" id="adultDecrement" onclick="decrementCounter('guests')"></i>
                                                     </div>
                                                 </div>
@@ -101,13 +94,7 @@
                                                     </span>
                                                     <div class="apartment-dropdown-footer-counter-control">
                                                         <i class="fa-solid fa-square-plus" id="childIncrement" onclick="incrementCounter('children')"></i>
-                                                        <span id="children_count">
-                                                            {% if children_count %}
-                                                                {{ children_count }}
-                                                            {% else %}
-                                                                0
-                                                            {% endif %}
-                                                        </span>
+                                                        <span id="children_count">{% if children_count >= 0 %}{{ children_count }}{% else %}0{% endif %}</span>
                                                         <i class="fa-solid fa-square-minus" id="childDecrement" onclick="decrementCounter('children')"></i>
                                                     </div>
                                                 </div>
@@ -198,11 +185,6 @@
 {% endblock main %}
 
 {% block script %}
-    <script>
-        window.guest_max = {{ guest_max }};
-        window.booking_list = {{ booking_list|safe }};
-        window.check_in_time = "{{ check_in_time }}"
-    </script>
     <script src="{% static 'js/booking-active-items.js' %}"></script>
     <script src="{% static 'js/generate-guest-form.js' %}"></script>
     <script src="{% static 'js/datepicker-booking.js' %}"></script>

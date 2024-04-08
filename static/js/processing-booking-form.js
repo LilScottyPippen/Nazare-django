@@ -100,6 +100,24 @@ function getClientFormData(method){
                     parentElement.style.borderColor = 'red'
                 }
             }
+
+            if (key === 'children_count') {
+                if (parseInt(formData[key]) < 0) {
+                    hasError = true
+                    parentElement.style.borderColor = 'red'
+                } else {
+                    parentElement.style.borderColor = ''
+                }
+            }
+
+            if (key === 'guests_count'){
+                if (parseInt(formData[key]) < 1) {
+                    hasError = true
+                    parentElement.style.borderColor = 'red'
+                } else {
+                    parentElement.style.borderColor = ''
+                }
+            }
         }
     }
 

@@ -1,9 +1,8 @@
 let pickerCheckin, pickerCheckout
-const checkInTime = window.check_in_time
+const checkInTime = getCheckInTime()
 let minDate = calculateMinDate(checkInTime)
 
 document.querySelectorAll('#datepicker-checkin, #datepicker-checkout').forEach(function (element) {
-    let maxDate = moment().add(180, 'days')
     let titleElement = element.querySelector('.search-apartment-dropdown-title')
 
     let picker = new Pikaday({

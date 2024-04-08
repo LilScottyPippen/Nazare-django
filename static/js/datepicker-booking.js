@@ -1,6 +1,6 @@
 let pickerCheckin, pickerCheckout, selectedStartDate, selectedEndDate, inputs, totalCostElement,
     selectedInput, selectedPrice, bookedDates, dateFormat, defaultCheckInDate, defaultCheckOutDate,
-    titleElementCheckin, titleElementCheckout, checkInTime, minDate
+    titleElementCheckin, titleElementCheckout, checkInTime, minDate, booking_list, guest_max
 
 function getPikadayConfig(fieldId, defaultDate, onSelectHandler) {
     return {
@@ -18,27 +18,33 @@ function getPikadayConfig(fieldId, defaultDate, onSelectHandler) {
         i18n: getI18nDatepicker(),
         disableDayFn: function (date) {
             const dateString = moment(date).format(dateFormat)
+            try {
+                return bookedDates.some(range => {
+                    const [startDate, endDate] = range.map(d => moment(d).format(dateFormat))
+                    return dateString >= startDate && dateString <= endDate
+                })
+            } catch (TypeError){
 
-            return bookedDates.some(range => {
-                const [startDate, endDate] = range.map(d => moment(d).format(dateFormat))
-                return dateString >= startDate && dateString <= endDate
-            })
+            }
         },
         firstDay: 1,
     }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    booking_list = getBookingList() || {}
     inputs = document.querySelectorAll('.form-apartment-items input')
     totalCostElement = document.getElementById('totalCost')
     selectedInput = document.querySelector('.form-apartment-items input.active')
+    let selectedInputDataId = selectedInput.getAttribute('data-id')
     selectedPrice = selectedInput ? parseFloat(selectedInput.getAttribute('data-price')) || 0 : 0
-    bookedDates = booking_list[selectedInput.getAttribute('data-id')] || []
+    bookedDates = booking_list[selectedInputDataId]
     dateFormat = 'YYYY-MM-DD'
     defaultCheckInDate = moment(document.getElementById('check_in_date').innerText, dateFormat)
     defaultCheckOutDate = moment(document.getElementById('check_out_date').innerText, dateFormat)
-    checkInTime = window.check_in_time
+    checkInTime = getCheckInTime()
     minDate = calculateMinDate(checkInTime)
+    guest_max = getGuestMaxApartment(selectedInputDataId) || 0
 
     document.querySelectorAll('#datepicker-checkin').forEach(function (element) {
         titleElementCheckin = element.querySelector('.search-apartment-dropdown-title')

@@ -54,22 +54,18 @@ class BookingView(TemplateView):
             context['check_out_date'] = check_out_date
 
         if adult_count and children_count:
-            context['adult_count'] = adult_count
-            context['children_count'] = children_count
+            if int(adult_count) > apartment.guest_count:
+                context['adult_count'] = 1
+            else:
+                context['adult_count'] = adult_count
+
+            if int(children_count) > apartment.guest_count - 1:
+                context['children_count'] = 0
+            else:
+                context['children_count'] = children_count
 
         apartment_dict = Apartment.objects.all()
         context['apartments'] = apartment_dict
-
-        booking_list = {}
-        for apartment in apartment_dict:
-            booking_list[apartment.id] = []
-            for booking in Booking.objects.filter(apartment=apartment.id):
-                if booking.check_out_date >= datetime.today().date() and booking.confirmed:
-                    booking_list[apartment.id].append([
-                        booking.check_in_date.strftime("%Y-%m-%d"),
-                        booking.check_out_date.strftime("%Y-%m-%d")
-                    ])
-        context['booking_list'] = booking_list
         return context
 
     def post(self, request):
@@ -85,6 +81,10 @@ class BookingView(TemplateView):
                     return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']}, status=500)
                 if client_key == 'captcha' and len(client_value) == 0:
                     return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_captcha']}, status=500)
+                if client_key == 'guests_count' and int(client_value) <= 0:
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
+                if client_key == 'children_count' and int(client_value) < 0:
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
             guest_data = data.get('guestData', [])
             for guest in guest_data:
                 if not type(guest) is dict:

@@ -10,14 +10,15 @@ ERROR_MESSAGES = {
     'invalid_send_code': 'Произошла ошибка при отправке. Свяжитесь с администратором.',
     'incorrect_code': 'Код подтверждения неверный.',
     'code_request_too_soon': 'Вы уже запрашивали код подтверждения менее минуты назад.',
-    'invalid_captcha': 'Пройдите reCaptcha'
+    'invalid_captcha': 'Пройдите reCaptcha',
+    'apartment_not_found': 'Апартамента не существует',
 }
 
 SUCCESS_MESSAGES = {
     'success_booking': 'Апартамент забронирован',
     'success_callback': 'Заявка на звонок упешно создана',
     'success_subscribed': 'Вы успешно подписались на рассылку',
-    'success_send_code': 'Код подтверждения отправлен на ваш e-mail.'
+    'success_send_code': 'Код подтверждения отправлен на ваш e-mail.',
 }
 
 MAILING_SUBJECTS = {
