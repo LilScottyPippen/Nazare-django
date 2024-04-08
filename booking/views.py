@@ -10,7 +10,7 @@ from .forms.booking_form import BookingForm, Guest
 from utils.send_mail import send_mail_for_client, send_mail_for_admin
 import json
 from django.http import JsonResponse, Http404
-from utils.constants import SUCCESS_MESSAGES, ERROR_MESSAGES
+from utils.constants import SUCCESS_MESSAGES, ERROR_MESSAGES, MAILING_SUBJECTS
 from datetime import datetime
 from django.core.exceptions import PermissionDenied
 
@@ -132,30 +132,33 @@ class BookingView(TemplateView):
             'name': booking_instance.client_name,
             'check_in': booking_instance.check_in_date,
             'check_out': booking_instance.check_out_date,
-            'total_sum': booking_instance.total_sum
+            'total_sum': booking_instance.total_sum,
         }
 
         admin_context = {
             **base_context,
             'phone': booking_instance.client_phone,
             'created': booking_instance.created_at,
-            'is_paid': booking_instance.is_paid,
-            'payment_method': booking_instance.payment_method
+            'payment_method': booking_instance.get_payment_method_display(),
         }
 
         client_context = {
             **base_context,
+            'check_in_time': os.getenv('CHECK_IN_TIME'),
+            'check_out_time': os.getenv('CHECK_OUT_TIME'),
         }
 
         threading.Thread(target=send_mail_for_admin,
-                         args=('mailing/admin_booking.html', admin_context)).start()
+                         args=(MAILING_SUBJECTS['booking_admin'], 'mailing/admin_booking.html', admin_context)).start()
 
         if booking_instance.payment_method == PAYMENT_METHOD_CHOICES[1][0]:
             threading.Thread(target=send_mail_for_client,
-                             args=(booking_instance.client_mail, 'mailing/client_booking_offline.html', client_context)).start()
+                             args=(MAILING_SUBJECTS['booking_client'], booking_instance.client_mail,
+                                   'mailing/client_booking_offline.html', client_context)).start()
         elif booking_instance.payment_method == PAYMENT_METHOD_CHOICES[0][0]:
             threading.Thread(target=send_mail_for_client,
-                             args=(booking_instance.client_mail, 'mailing/client_booking_online.html', client_context)).start()
+                             args=(MAILING_SUBJECTS['booking_client'], booking_instance.client_mail,
+                                   'mailing/client_booking_online.html', client_context)).start()
 
     def check_available_date(self, client_data):
         try:

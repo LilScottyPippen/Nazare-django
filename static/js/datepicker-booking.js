@@ -129,13 +129,14 @@ function updateGuestCount(){
 function resetDates(minDate){
     document.getElementById('check_in_date').innerText = "ЗАЕЗД"
     document.getElementById('check_out_date').innerText = "ВЫЕЗД"
+    const maxDate = getMaxDateDatepicker()
 
     pickerCheckin.setDate(null)
     pickerCheckout.setDate(null)
     pickerCheckin.setMinDate(minDate)
-    pickerCheckin.setMaxDate(null)
+    pickerCheckin.setMaxDate(maxDate)
     pickerCheckout.setMinDate(minDate)
-    pickerCheckout.setMaxDate(null)
+    pickerCheckout.setMaxDate(maxDate)
 
     updateTotalCost(totalCostElement)
 }

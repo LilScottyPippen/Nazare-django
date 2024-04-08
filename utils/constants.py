@@ -19,3 +19,10 @@ SUCCESS_MESSAGES = {
     'success_subscribed': 'Вы успешно подписались на рассылку',
     'success_send_code': 'Код подтверждения отправлен на ваш e-mail.'
 }
+
+MAILING_SUBJECTS = {
+    'confirm_email': 'Код подтверждения NA ZARE',
+    'booking_client': 'Заявка на бронирование NA ZARE',
+    'booking_admin': 'Заявка на бронирование',
+    'callback_admin': 'Заявка на звонок',
+}

@@ -1,0 +1,54 @@
+{% load static %}
+<div class="form-search-apartment-grid">
+    <div class="search-apartment-dropdown">
+        <div class="search-apartment-dropdown-header" id="datepicker-checkin">
+            <span class="search-apartment-dropdown-title" id="check_in_date">
+                ЗАЕЗД
+            </span>
+            <i class="fa-solid fa-calendar-days"></i>
+        </div>
+    </div>
+    <div class="search-apartment-dropdown">
+        <div class="search-apartment-dropdown-header" id="datepicker-checkout">
+            <span class="search-apartment-dropdown-title" id="check_out_date">
+                ВЫЕЗД
+            </span>
+            <i class="fa-solid fa-calendar-days"></i>
+        </div>
+    </div>
+    <div class="search-apartment-dropdown form-search-apartment-grid-2x2">
+        <div class="search-apartment-dropdown-header shadow">
+            <span class="search-apartment-dropdown-title">
+                ГОСТИ
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="search-apartment-dropdown-footer">
+            <div class="search-apartment-dropdown-footer-counter" id="adultCounter">
+                <span class="apartment-dropdown-footer-counter-title">
+                    ВЗРОСЛЫЕ
+                </span>
+                <div class="apartment-dropdown-footer-counter-control">
+                    <i class="fa-solid fa-square-plus" id="adultIncrement" onclick="incrementCounter('guests')"></i>
+                    <span id="guests_count" data-guest="6">1</span>
+                    <i class="fa-solid fa-square-minus" id="adultDecrement" onclick="decrementCounter('guests')"></i>
+                </div>
+            </div>
+    
+            <div class="search-apartment-dropdown-footer-counter" id="childCounter">
+                <span class="apartment-dropdown-footer-counter-title">
+                    ДЕТИ
+                </span>
+                <div class="apartment-dropdown-footer-counter-control">
+                    <i class="fa-solid fa-square-plus" onclick="incrementCounter('children')"></i>
+                    <span id="children_count">0</span>
+                    <i class="fa-solid fa-square-minus" onclick="decrementCounter('children')"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search-apartment-btn form-search-apartment-grid-3x2" onclick="openSearchApartmentPage()">
+        <span class="search-apartment-btn-title">НАЙТИ АПАРТАМЕНТ</span>
+    </div>
+</div>
+<script src="{% static 'js/apartment-dropdown-active.js' %}"></script>

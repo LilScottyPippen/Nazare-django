@@ -89,7 +89,7 @@ class CallbackView(View):
         if form.is_valid():
             form.save()
             threading.Thread(target=send_mail_for_admin,
-                             args=('mailing/admin_callback.html', callback_context)).start()
+                             args=(MAILING_SUBJECTS['callback_admin'], 'mailing/admin_callback.html', callback_context)).start()
             return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_callback']}, status=200)
         return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
 
@@ -139,7 +139,8 @@ class SendConfirmationCodeView(View):
             return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_send_code']}, status=500)
 
         threading.Thread(target=send_mail_for_client,
-                         args=(mail, 'mailing/confirmation_code.html', {'code': confirmation_code})).start()
+                         args=(MAILING_SUBJECTS['confirm_email'], mail, 'mailing/confirmation_code.html',
+                               {'code': confirmation_code})).start()
 
         return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_send_code']}, status=200)
 
