@@ -5,7 +5,7 @@ from index.models import Apartment, ApartmentPhotoGallery, ApartmentMenu
 from booking.models.booking import Booking
 from utils.booking import get_booking_in_range_date
 from utils.constants import ERROR_MESSAGES
-from utils.get_max_guest_count import get_max_guest_count
+from utils.guest_count import get_max_guest_count, check_correct_guest_count
 from utils.is_valid_date import is_valid_date_booking
 
 
@@ -37,12 +37,20 @@ class ApartmentSearchView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        check_in_date = kwargs.get('check_in_date')
-        check_out_date = kwargs.get('check_out_date')
-        guest_count = int(kwargs.get('guest_count'))
-        children_count = int(kwargs.get('children_count'))
-        total_guests = guest_count + children_count
+        check_in_date, check_out_date = kwargs.get('check_in_date'), kwargs.get('check_out_date')
+
+        adult_count, children_count = int(kwargs.get('adult_count')), int(kwargs.get('children_count'))
+
+        adult_count = adult_count if check_correct_guest_count(adult_count) else 1
+        children_count = children_count if check_correct_guest_count(children_count) else 0
+
         apartment_dict = Apartment.objects.all()
+
+        total_guests = adult_count + children_count
+
+        if total_guests > get_max_guest_count():
+            adult_count, children_count = 1, 0
+            total_guests = adult_count + children_count
 
         try:
             check_in_date_formatted = datetime.datetime.strptime(check_in_date, "%Y-%m-%d")
@@ -68,7 +76,7 @@ class ApartmentSearchView(TemplateView):
         context['check_in_date'] = check_in_date
         context['check_out_date'] = check_out_date
         context["days"] = (check_out_date_formatted - check_in_date_formatted).days
-        context["adult_count"] = guest_count
+        context["adult_count"] = adult_count
         context["children_count"] = children_count
         return context
 
@@ -87,8 +95,7 @@ class ApartmentSearchView(TemplateView):
         return available_apartments
 
     def get_available_apartments_for_date_availability(self, apartment_dict, check_in_date, check_out_date):
-        apartments_list = {}
-        available_apartments = []
+        apartments_list, available_apartments = {}, []
 
         for apartment in apartment_dict:
             apartments_list[apartment.id] = 0

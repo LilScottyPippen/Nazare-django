@@ -2,11 +2,12 @@ import os
 import threading
 from django.views.generic import TemplateView
 from Nazare_django import settings
-from booking.models.booking import Booking, PAYMENT_METHOD_CHOICES
+from booking.models.booking import PAYMENT_METHOD_CHOICES
 from index.models.apartments import Apartment
 from utils.booking import get_booking_in_range_date
+from utils.guest_count import check_guest_count_limit
 from utils.is_valid_phone import is_valid_phone
-from .forms.booking_form import BookingForm, Guest
+from .forms.booking_form import BookingForm, GuestsForm
 from utils.send_mail import send_mail_for_client, send_mail_for_admin
 import json
 from django.http import JsonResponse, Http404
@@ -26,8 +27,14 @@ class BookingView(TemplateView):
         apartment_id = self.request.GET.get('apartment')
         check_in_date = self.request.GET.get('check_in_date')
         check_out_date = self.request.GET.get('check_out_date')
-        adult_count = self.request.GET.get('adult_count')
-        children_count = self.request.GET.get('children_count')
+
+        adult_count, children_count = 1, 0
+
+        try:
+            adult_count = int(self.request.GET.get('adult_count'))
+            children_count = int(self.request.GET.get('children_count'))
+        except (ValueError, TypeError):
+            pass
 
         if apartment_id:
             try:
@@ -53,26 +60,17 @@ class BookingView(TemplateView):
             context['check_in_date'] = check_in_date
             context['check_out_date'] = check_out_date
 
-        if adult_count and children_count:
-            if int(adult_count) > apartment.guest_count:
-                context['adult_count'] = 1
-            else:
-                context['adult_count'] = adult_count
+        if check_guest_count_limit(adult_count + children_count, apartment.guest_count):
+            context['adult_count'] = adult_count
+            context['children_count'] = children_count
 
-            if int(children_count) > apartment.guest_count - 1:
-                context['children_count'] = 0
-            else:
-                context['children_count'] = children_count
-
-        apartment_dict = Apartment.objects.all()
-        context['apartments'] = apartment_dict
+        context['apartments'] = Apartment.objects.all()
         return context
 
     def post(self, request):
         try:
             data = json.loads(request.body)
             client_data = data.get('clientData', {})
-
             for client_key, client_value in client_data.items():
                 if client_key == 'payment_method':
                     if client_value == PAYMENT_METHOD_CHOICES[0][0] and settings.ONLINE_PAYMENT is False:
@@ -86,6 +84,7 @@ class BookingView(TemplateView):
                 if client_key == 'children_count' and int(client_value) < 0:
                     return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
             guest_data = data.get('guestData', [])
+
             for guest in guest_data:
                 if not type(guest) is dict:
                     return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
@@ -114,13 +113,13 @@ class BookingView(TemplateView):
             self.send_mailing(booking_instance)
 
             for guest_form_data in guest_data:
-                Guest.objects.create(
-                    guest_second_name=guest_form_data['guest_surname'],
-                    guest_name=guest_form_data['guest_name'],
-                    guest_father_name=guest_form_data['guest_father_name'],
-                    citizenship=guest_form_data['citizenship'],
-                    booking=booking_instance,
-                )
+                guest_form = GuestsForm(guest_form_data)
+                if guest_form.is_valid():
+                    guest_instance = guest_form.save(commit=False)
+                    guest_instance.booking = booking_instance
+                    guest_instance.save()
+                else:
+                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
             return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_booking']}, status=200)
         else:
             return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)

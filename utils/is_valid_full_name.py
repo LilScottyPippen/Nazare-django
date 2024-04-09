@@ -9,7 +9,7 @@ def is_valid_full_name(name, surname, *args):
     for i in args:
         if not i.isalpha():
             return False
-        if not len(i) < 2:
+        if len(i) < 2:
             return False
 
     return True

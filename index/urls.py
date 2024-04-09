@@ -9,7 +9,7 @@ if not settings.MAINTENANCE_MODE:
         path('', IndexPageView.as_view(), name="index"),
         path('apartments/<slug:apartment>',
              ApartmentPageView.as_view(), name="apartment"),
-        path('apartments/<str:check_in_date>/<str:check_out_date>/<int:guest_count>/<int:children_count>',
+        path('apartments/<str:check_in_date>/<str:check_out_date>/<int:adult_count>/<int:children_count>',
              ApartmentSearchView.as_view(), name="apartment_search"),
         path('category/<slug:category>',
              CategoryView.as_view(), name="category"),

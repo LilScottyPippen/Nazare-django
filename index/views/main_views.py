@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 import folium
 from index.models import ApartmentMenu, ContactPage, Address, Email, Phone, Content
 from utils.constants import *
-from utils.get_max_guest_count import get_max_guest_count
+from utils.guest_count import get_max_guest_count
 from ..forms.subscriber_form import *
 from ..forms.callback_form import *
 from utils.send_mail import send_mail_for_admin, send_mail_for_client
