@@ -1,4 +1,7 @@
-from .category import *
+from django.urls import reverse
+from django.db import models
+from utils.pathes import photo_gallery_path
+from .category import SubCategory
 
 
 class PhotoGallery(models.Model):
@@ -7,6 +10,12 @@ class PhotoGallery(models.Model):
     photo = models.ImageField(
         upload_to=photo_gallery_path, verbose_name="Фото")
     description = models.CharField(max_length=255, default="Фото", verbose_name="Описание")
+
+    def __str__(self):
+        return self.photo.name
+
+    def get_absolute_url(self):
+        return reverse('index:photo_gallery', kwargs={'subcategory': self.subcategory.slug})
 
     class Meta:
         verbose_name = "Фото для фотогалереи"

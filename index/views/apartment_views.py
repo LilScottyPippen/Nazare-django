@@ -1,6 +1,8 @@
 import datetime
 from django.http import Http404
 from django.views.generic import TemplateView
+
+from api.views import BookingListAPIView
 from index.models import Apartment, ApartmentPhotoGallery, ApartmentMenu
 from booking.models.booking import Booking
 from utils.booking import get_booking_in_range_date

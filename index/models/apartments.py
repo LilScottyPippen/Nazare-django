@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from utils.pathes import apartment_photo_path
 
 
@@ -63,6 +65,9 @@ class Apartment(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('index:apartment', kwargs={"apartment": str(self.id)})
 
     class Meta:
         verbose_name = "Наполнение страницы с апартаментом"

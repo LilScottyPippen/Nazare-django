@@ -47,6 +47,7 @@
 }
 
 .form-apartment-choose-title, .form-guest-information-title{
+    width: fit-content;
     color: var(--dark-blue-color);
     font-weight: bold;
 }
@@ -107,7 +108,7 @@
 }
 
 .form-contact-information-items{
-    max-width: 600px;
+    max-width: 470px;
     flex-wrap: wrap;
 }
 
@@ -123,6 +124,7 @@
 }
 
 .form-online-payment-title{
+    width: fit-content;
     color: var(--dark-blue-color);
     font-weight: bold;
 }
@@ -130,6 +132,10 @@
 .form-online-payment-description{
     max-width: 780px;
     color: var(--dark-blue-color);
+}
+
+.form-online-payment-methods{
+    width: fit-content;
 }
 
 .form-online-payment-methods i{

@@ -5,7 +5,7 @@ from index.models.category import SubCategory
 
 def load_photos(request, subcategory):
     page = request.GET.get("page")
-    photos = PhotoGallery.objects.filter(subcategory=SubCategory.objects.filter(slug=subcategory).first())
+    photos = PhotoGallery.objects.filter(subcategory=SubCategory.objects.filter(slug=subcategory).first()).order_by('id')
     paginator = Paginator(photos, 6)
     try:
         photos = paginator.page(page)

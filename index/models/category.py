@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from utils.pathes import *
 
 
@@ -23,6 +25,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('index:category', kwargs={'category': self.slug})
+
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
@@ -41,6 +46,9 @@ class SubCategory(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('index:subcategory', kwargs={'category': self.slug})
 
     class Meta:
         verbose_name = "Подкатегория"

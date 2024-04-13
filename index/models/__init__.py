@@ -5,3 +5,4 @@ from .mailing import *
 from .callback import *
 from booking.models.booking import *
 from .content import *
+from .category import *

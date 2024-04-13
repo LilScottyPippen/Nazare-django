@@ -81,6 +81,10 @@ footer{
     gap: 10px;
 }
 
+.footer-main-mailing-title{
+    width: fit-content;
+}
+
 .footer-main-mailing-form{
     display: flex;
     flex-wrap: wrap;

@@ -1,0 +1,28 @@
+User-agent: *
+
+Disallow: /root/
+Disallow: /api/
+Disallow: /booking/
+Disallow: /category/
+Disallow: /subcategory/
+Disallow: /photo-gallery/
+Disallow: /contact/
+Disallow: /subscribe/
+Disallow: /callback/
+Disallow: /content/
+Disallow: /policy/
+Disallow: /send_confirmation_code/
+Disallow: /confirm_email/
+Allow: /nazare/static/img/
+Allow: /nazare/static/svg/
+Allow: /nazare/static/js/
+Allow: /nazare/static/css/
+Allow: /nazare/static/fonts/
+Allow: /nazare/static/ajax/
+Allow: /nazare/static/doc/
+Allow: /nazare/static/fontawesome/
+Allow: /nazare/static/pikaday/
+Allow: /nazare/media/
+
+Host: https://nazare.by
+Sitemap: https://nazare.by/sitemap.xml
