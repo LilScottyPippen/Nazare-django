@@ -12,6 +12,6 @@ urlpatterns = [
     path('get-check-out-time', CheckOutTimeAPIView.as_view(), name='get_check_out_time'),
     path('send_confirmation_code/<str:mail>', SendConfirmationCodeAPIView.as_view(), name='send_confirmation_code'),
     path('confirm_email/<str:confirmation_code>', ConfirmEmailAPIView.as_view(), name='confirm_email'),
-    path('callback/', CallbackAPIView.as_view(), name="callback"),
-    path('subscribe/', SubscriberAPIView.as_view(), name="subscribe"),
+    path('callback', CallbackAPIView.as_view(), name="callback"),
+    path('subscribe', SubscriberAPIView.as_view(), name="subscribe"),
 ]

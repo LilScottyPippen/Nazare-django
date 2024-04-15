@@ -7,12 +7,12 @@
             </div>
             
             <ul class="nav-mobile-dropdown-links">
-                <div class="nav-mobile-dropdown-link">
+                <li class="nav-mobile-dropdown-link">
                     <a href="{% url 'index:content' 'booking' %}">Бронирование и оплата</a>
-                </div>
-                <div class="nav-mobile-dropdown-link">
+                </li>
+                <li class="nav-mobile-dropdown-link">
                     <a href="{% url 'index:content' 'history' %}">О компании</a>
-                </div>
+                </li>
             </ul>
         </li>
 
@@ -24,9 +24,9 @@
 
             <ul class="nav-mobile-dropdown-links">
                 {% for house in houses %}
-                    <div class="nav-mobile-dropdown-link">
+                    <li class="nav-mobile-dropdown-link">
                         <a href="{% url 'index:apartment' house.apartment.slug %}">Дом {{ house.apartment.title.upper }}</a>
-                    </div>
+                    </li>
                 {% endfor %}
             </ul>
         </li>
@@ -38,15 +38,15 @@
             </div>
         
             <ul class="nav-mobile-dropdown-links">
-                <div class="nav-mobile-dropdown-link">
+                <li class="nav-mobile-dropdown-link">
                     <a href="{% url 'index:content' 'rental' %}">Прокат и аренда</a>
-                </div>
-                <div class="nav-mobile-dropdown-link">
+                </li>
+                <li class="nav-mobile-dropdown-link">
                     <a href="{% url 'index:content' 'delivery' %}">Доставка еды</a>
-                </div>
-                <div class="nav-mobile-dropdown-link">
+                </li>
+                <li class="nav-mobile-dropdown-link">
                     <a href="{% url 'index:content' 'transfer' %}">Трансфер</a>
-                </div>
+                </li>
             </ul>
         </li>
         <li class="nav-mobile-item-container">
@@ -56,9 +56,9 @@
             </div>
 
             <ul class="nav-mobile-dropdown-links">
-                <div class="nav-mobile-dropdown-link">
+                <li class="nav-mobile-dropdown-link">
                     <a href="{% url 'index:category' 'photogallery' %}">Фотогалерея</a>
-                </div>
+                </li>
             </ul>
         </li>
 

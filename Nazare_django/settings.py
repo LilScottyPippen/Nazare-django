@@ -163,4 +163,6 @@ ONLINE_PAYMENT = os.getenv('ONLINE_PAYMENT') == 'True'
 
 MAINTENANCE_MODE = os.getenv('MAINTENANCE_MODE') == 'True'
 
+RECAPTCHA_API_URL = "https://www.google.com/recaptcha/api/siteverify"
 RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY')

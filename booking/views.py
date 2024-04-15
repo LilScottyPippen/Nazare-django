@@ -5,11 +5,13 @@ from datetime import datetime
 from Nazare_django import settings
 from django.views.generic import TemplateView
 from index.models.apartments import Apartment
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse, Http404, RawPostDataException
 from utils.is_valid_phone import is_valid_phone
+from utils.is_valid_captcha import is_valid_captcha
 from utils.booking import get_booking_in_range_date
 from django.core.exceptions import PermissionDenied
 from utils.guest_count import check_guest_count_limit
+from utils.json_responses import error_response
 from .forms.booking_form import BookingForm, GuestsForm
 from booking.models.booking import PAYMENT_METHOD_CHOICES
 from utils.send_mail import send_mail_for_client, send_mail_for_admin
@@ -69,16 +71,20 @@ class BookingView(TemplateView):
 
     def post(self, request):
         try:
-            data = json.loads(request.body)
-            client_data = data.get('clientData', {})
+            try:
+                data = json.loads(request.body)
+            except RawPostDataException:
+                return error_response(ERROR_MESSAGES['bad_request'])
+
+            client_data = data.get('clientData')
 
             for client_key, client_value in client_data.items():
                 if client_key == 'payment_method':
-                    if client_value == PAYMENT_METHOD_CHOICES[0][0] and settings.ONLINE_PAYMENT is False:
+                    if client_value == PAYMENT_METHOD_CHOICES[0][0] and not settings.ONLINE_PAYMENT:
                         return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_payment_method']}, status=500)
-                if client_key == 'client_phone' and is_valid_phone(client_value) is False:
+                if client_key == 'client_phone' and not is_valid_phone(client_value):
                     return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_phone']}, status=500)
-                if client_key == 'captcha' and len(client_value) == 0:
+                if client_key == 'captcha' and not is_valid_captcha(client_value):
                     return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_captcha']}, status=500)
                 if client_key == 'guests_count' and int(client_value) <= 0:
                     return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
@@ -169,7 +175,7 @@ class BookingView(TemplateView):
             return False
 
         booking_dict = get_booking_in_range_date(check_in_date, check_out_date)
-        if booking_dict is not False:
+        if booking_dict:
             for booking in booking_dict:
                 if booking.confirmed and int(apartment) == booking.apartment.id:
                     return False

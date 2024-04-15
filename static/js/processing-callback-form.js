@@ -77,7 +77,7 @@ function handleCallback(csrf_token) {
         client_data.client_data.is_privacy_policy = true
         $.ajax({
             type: "POST",
-            url: "/api/callback/",
+            url: "/api/callback",
             data: JSON.stringify(client_data),
             contentType: "application/json",
             headers: {
