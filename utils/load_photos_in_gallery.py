@@ -1,16 +1,19 @@
 from index.models import PhotoGallery
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from index.models.category import SubCategory
+from django.shortcuts import get_object_or_404
 
 
-def load_photos(request, subcategory):
+def load_photos(request, subcategory, count):
     page = request.GET.get("page")
-    photos = PhotoGallery.objects.filter(subcategory=SubCategory.objects.filter(slug=subcategory).first()).order_by('id')
-    paginator = Paginator(photos, 6)
+    subcategory_obj = get_object_or_404(SubCategory, slug=subcategory)
+    photos_queryset = PhotoGallery.objects.filter(subcategory=subcategory_obj).order_by('id')
+    paginator = Paginator(photos_queryset, count)
     try:
-        photos = paginator.page(page)
+        photos_page = paginator.page(page)
     except PageNotAnInteger:
-        photos = paginator.page(1)
+        photos_page = paginator.page(1)
     except EmptyPage:
-        photos = paginator.page(paginator.num_pages)
-    return photos
+        photos_page = paginator.page(paginator.num_pages)
+    return photos_page
+

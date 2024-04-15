@@ -1,5 +1,5 @@
-from django.urls import path
 from index.views import *
+from django.urls import path
 from django.conf import settings
 
 app_name = "index"
@@ -20,12 +20,8 @@ if not settings.MAINTENANCE_MODE:
         path('photo-gallery/load-more/<slug:subcategory>',
              PhotoGalleryLoadMoreView.as_view(), name="photo_gallery_load_more"),
         path('contact/', ContactPageView.as_view(), name="contact"),
-        path('subscribe/', SubscriberView.as_view(), name="subscribe"),
-        path('callback/', CallbackView.as_view(), name="callback"),
         path('content/<str:slug>', ContentView.as_view(), name="content"),
         path('policy/', PolicyView.as_view(), name="policy"),
-        path('send_confirmation_code/<str:mail>', SendConfirmationCodeView.as_view(), name='send_confirmation_code'),
-        path('confirm_email/<str:confirmation_code>', ConfirmEmailView.as_view(), name='confirm_email'),
     ]
 else:
     urlpatterns = [

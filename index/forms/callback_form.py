@@ -1,6 +1,8 @@
 from django import forms
-from utils.is_valid_phone import is_valid_phone
 from ..models.callback import Callback
+from utils.constants import ERROR_MESSAGES
+from utils.is_valid_name import is_valid_name
+from utils.is_valid_phone import is_valid_phone
 
 
 class CallbackForm(forms.ModelForm):
@@ -14,15 +16,11 @@ class CallbackForm(forms.ModelForm):
         phone = cleaned_data.get('phone')
         is_privacy_policy = cleaned_data.get('is_privacy_policy')
 
-        if not name:
-            raise forms.ValidationError("Name is invalid")
-        if not name.isalpha():
-            raise forms.ValidationError("Name is invalid")
-        if len(name) < 2:
-            raise forms.ValidationError("Name is invalid")
+        if not is_valid_name(name):
+            raise forms.ValidationError(ERROR_MESSAGES['invalid_name'])
 
-        if is_privacy_policy is False:
-            raise forms.ValidationError("Privacy policy is invalid")
+        if not is_privacy_policy or type(is_privacy_policy) != bool:
+            raise forms.ValidationError(ERROR_MESSAGES['invalid_privacy_policy'])
 
         if not is_valid_phone(phone):
-            raise forms.ValidationError("Phone number is invalid")
+            raise forms.ValidationError(ERROR_MESSAGES['invalid_phone'])

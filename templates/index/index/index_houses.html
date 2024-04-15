@@ -2,7 +2,9 @@
     {% if house.id|divisibleby:2  %}
         <div class="card blue-card bg-dark-blue shadow" onclick="window.location = '{% url 'index:apartment' house.apartment.slug %}'" style="cursor: pointer">
             <div class="card-main-section">
-              <div class="card-image-container" style="background-image: url('{{house.apartment_main_photo.url}}');"></div>
+              <div class="card-image-container">
+                  <img loading="lazy" src="{{house.apartment_main_photo.url}}" alt="image">
+              </div>
               <div class="card-main-section-content">
                 <span class="card-main-content-title color-white">
                   {{house.apartment.title.upper}}
@@ -22,7 +24,9 @@
     {% else %}
         <div class="card blue-card bg-white shadow" onclick="window.location = '{% url 'index:apartment' house.apartment.slug %}'" style="cursor: pointer">
             <div class="card-main-section">
-              <div class="card-image-container" style="background-image: url('{{house.apartment_main_photo.url}}');"></div>
+              <div class="card-image-container">
+                  <img loading="lazy" src="{{house.apartment_main_photo.url}}" alt="image">
+              </div>
               <div class="card-main-section-content">
                 <span class="card-main-content-title color-dark-blue">
                   {{house.apartment.title.upper}}

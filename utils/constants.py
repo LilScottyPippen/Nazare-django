@@ -2,7 +2,7 @@ ERROR_MESSAGES = {
     'invalid_form': 'Ошибка в форме.',
     'invalid_privacy_policy': 'Примите политику обработки персональных данных пользователя.',
     'invalid_date': 'Некорректный формат даты. Используйте формат YYYY-MM-DD.',
-    'invalid_mail': 'Данный mail уже подписан на рассылку',
+    'duplicate_mail': 'Данный mail уже подписан на рассылку',
     'unavailable_period': 'На данный период нельзя забронировать апартамент',
     'invalid_payment_method': 'Данный методы оплаты не доступен',
     'invalid_phone': 'Введите корректный номер телефона',
@@ -13,11 +13,13 @@ ERROR_MESSAGES = {
     'invalid_captcha': 'Пройдите reCaptcha.',
     'apartment_not_found': 'Апартамента не существует.',
     'invalid_full_name': 'ФИО некорректно.',
+    'invalid_name': 'Имя неккорректно.',
     'invalid_citizenship': 'Неверное гражданство.',
     'bad_request': 'Неправильный запрос.'
 }
 
 SUCCESS_MESSAGES = {
+    'success': 'Успех',
     'success_booking': 'Апартамент успешно забронирован.',
     'success_callback': 'Заявка на звонок упешно создана.',
     'success_subscribed': 'Вы успешно подписались на рассылку.',

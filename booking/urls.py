@@ -1,6 +1,6 @@
 from django.urls import path
-from Nazare_django import settings
 from .views import BookingView
+from Nazare_django import settings
 from django.conf.urls.static import static
 
 app_name = "booking"

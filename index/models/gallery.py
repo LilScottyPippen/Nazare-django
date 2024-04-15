@@ -1,7 +1,7 @@
-from django.urls import reverse
 from django.db import models
-from utils.pathes import photo_gallery_path
+from django.urls import reverse
 from .category import SubCategory
+from utils.pathes import photo_gallery_path
 
 
 class PhotoGallery(models.Model):

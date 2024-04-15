@@ -29,8 +29,9 @@
                 <div class="content-items">
                     <div class="grid-gallery">
                         {% for photo in photos %}
-                        <div class="grid-gallery-image shadow" data-caption="{{ photo.description }}" style="background-image: url('{{photo.photo.url}}');"
-                            onclick="openImageModal(this.style.backgroundImage)"></div>
+                        <div class="grid-gallery-image shadow" data-caption="{{ photo.description }}">
+                            <img loading="lazy" src="{{ photo.photo.url }}" alt="image" onclick="openImageModal('{{ photo.photo.url }}')">
+                        </div>
                         {% endfor %}
                     </div>
                 </div>
@@ -107,8 +108,9 @@
                 <div class="grid-container">
                     <div class="grid-item shadow-blur bg-white object-1">
                         <div class="grid-item-icon-for-object-2x2 bg-white"><i class="fa-solid fa-wifi"></i></div>
-                        <div class="grid-item-image-container"
-                            style="background-image: url('{{first_photo.photo.url}}');"></div>
+                        <div class="grid-item-image-container">
+                            <img loading="lazy" src="{{first_photo.photo.url}}" alt="image">
+                        </div>
                         <div class="grid-item-content-for-object-2x2">
                             <span class="grid-item-section-title">WiFi Free</span>
                             <span class="grid-item-section-description">

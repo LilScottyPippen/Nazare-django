@@ -1,9 +1,8 @@
 import threading
-
+from index.models import *
 from django.conf import settings
 from django.contrib import admin
 from django.core.mail import EmailMultiAlternatives
-from index.models import *
 
 
 admin.site.register(Subscriber)

@@ -25,7 +25,9 @@
                         {% else %}
                             <div class="grid-item shadow" onclick="window.location.href='{% url 'index:category' subcategory.slug %}'">
                         {% endif %}
-                            <div class="grid-item-image" style="background-image: url({{ subcategory.image.url }});"></div>
+                            <div class="grid-item-image">
+                                <img loading="lazy" src="{{ subcategory.image.url }}" alt="image">
+                            </div>
                             <div class="grid-item-title">{{ subcategory.name.upper }}</div>
                         </div>
                     {% endfor %}

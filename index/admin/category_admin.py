@@ -1,5 +1,5 @@
-from django.contrib import admin
 from index.models import *
+from django.contrib import admin
 from .gallery_admin import PhotoGalleryInline
 
 

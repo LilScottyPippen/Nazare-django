@@ -6,7 +6,7 @@
                 <i class="fa-solid fa-xmark"></i>
             </div>
             <span class="modal-title">ЗАКАЗАТЬ ЗВОНОК</span>
-            <form action="{% url 'index:callback' %}" method="POST" class="modal-form" id="callbackForm">
+            <form action="{% url 'api:callback' %}" method="POST" class="modal-form" id="callbackForm">
                 <input type="text" class="modal-form-input" id="name" placeholder="ИМЯ">
                 <input type="text" class="modal-form-input" id="phone" placeholder="ТЕЛЕФОН">
                 <span class="modal-form-btn" onclick="handleCallback('{{ csrf_token }}')">ЗАКАЗАТЬ</span>

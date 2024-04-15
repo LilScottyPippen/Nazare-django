@@ -1,5 +1,5 @@
-from django.contrib import admin
 from index.models import *
+from django.contrib import admin
 
 
 class ApartmentMenuInline(admin.StackedInline):
@@ -19,9 +19,9 @@ class ApartmentAdmin(admin.ModelAdmin):
                     'square', 'daily_price', 'slug')
     list_editable = ('title', 'guest_count', 'square', 'slug')
 
-    fields = [('title', 'slug'), ('guest_count',
+    fields = (('title', 'slug'), ('guest_count',
                                   'square', 'room_count', 'sleep_place_count'), 'daily_price',
-                                  ('convenience_package', 'includedService_package')]
+                                  ('convenience_package', 'includedService_package'))
 
     inlines = [ApartmentMenuInline, ApartmentPhotoInline]
 

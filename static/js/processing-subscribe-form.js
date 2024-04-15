@@ -19,7 +19,7 @@ function handleSubscriber(response) {
 
     $.ajax({
         type: "POST",
-        url: "/subscribe/",
+        url: "/api/subscribe/",
         data: {
             'mail': mail,
             'captcha': response

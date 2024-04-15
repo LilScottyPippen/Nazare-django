@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-
 from utils.pathes import apartment_photo_path
 
 

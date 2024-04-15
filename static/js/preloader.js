@@ -7,4 +7,4 @@ function hidePreloader() {
     }, 800)
 }
 
-window.addEventListener("load", hidePreloader)
+window.addEventListener("DOMContentLoaded", hidePreloader)

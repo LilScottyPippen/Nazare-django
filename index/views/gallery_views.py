@@ -1,6 +1,6 @@
 from django.http import Http404
-from django.views.generic import TemplateView
 from index.models import SubCategory
+from django.views.generic import TemplateView
 from utils.load_photos_in_gallery import load_photos
 
 
@@ -10,7 +10,7 @@ class PhotoGalleryView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         subcategory = kwargs['subcategory']
-        context['photos'] = load_photos(self.request, subcategory)
+        context['photos'] = load_photos(self.request, subcategory, 6)
         try:
             context['category'] = SubCategory.objects.filter(
                 slug=subcategory
@@ -25,7 +25,7 @@ class PhotoGalleryLoadMoreView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['photos'] = load_photos(self.request, kwargs['subcategory'])
+        context['photos'] = load_photos(self.request, kwargs['subcategory'], 6)
         return context
 
 

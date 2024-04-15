@@ -1,6 +1,6 @@
+from .models.guest import Guest
 from django.contrib import admin
 from .models.booking import Booking, MultiApartmentBooking
-from .models.guest import Guest
 
 
 class GuestInline(admin.TabularInline):

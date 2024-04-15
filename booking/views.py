@@ -1,19 +1,19 @@
 import os
-import threading
-from django.views.generic import TemplateView
-from Nazare_django import settings
-from booking.models.booking import PAYMENT_METHOD_CHOICES
-from index.models.apartments import Apartment
-from utils.booking import get_booking_in_range_date
-from utils.guest_count import check_guest_count_limit
-from utils.is_valid_phone import is_valid_phone
-from .forms.booking_form import BookingForm, GuestsForm
-from utils.send_mail import send_mail_for_client, send_mail_for_admin
 import json
-from django.http import JsonResponse, Http404
-from utils.constants import SUCCESS_MESSAGES, ERROR_MESSAGES, MAILING_SUBJECTS
+import threading
 from datetime import datetime
+from Nazare_django import settings
+from django.views.generic import TemplateView
+from index.models.apartments import Apartment
+from django.http import JsonResponse, Http404
+from utils.is_valid_phone import is_valid_phone
+from utils.booking import get_booking_in_range_date
 from django.core.exceptions import PermissionDenied
+from utils.guest_count import check_guest_count_limit
+from .forms.booking_form import BookingForm, GuestsForm
+from booking.models.booking import PAYMENT_METHOD_CHOICES
+from utils.send_mail import send_mail_for_client, send_mail_for_admin
+from utils.constants import SUCCESS_MESSAGES, ERROR_MESSAGES, MAILING_SUBJECTS
 
 
 class BookingView(TemplateView):
@@ -71,6 +71,7 @@ class BookingView(TemplateView):
         try:
             data = json.loads(request.body)
             client_data = data.get('clientData', {})
+
             for client_key, client_value in client_data.items():
                 if client_key == 'payment_method':
                     if client_value == PAYMENT_METHOD_CHOICES[0][0] and settings.ONLINE_PAYMENT is False:

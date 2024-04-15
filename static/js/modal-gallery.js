@@ -12,10 +12,8 @@ function openImageModal(backgroundImage) {
     document.body.style.overflow = "hidden"
     modal.style.display = "flex"
 
-    const imageUrl = backgroundImage.slice(5, -2)
-
-    modalImg.src = imageUrl
-    slideIndex = findIndex(imageUrl)
+    modalImg.src = backgroundImage
+    slideIndex = findIndex(backgroundImage)
 
     updateCaption()
 }
@@ -26,7 +24,7 @@ function updateCaption() {
 }
 
 function showImage(n) {
-    images = document.querySelectorAll('.grid-gallery-image')
+    images = document.getElementsByClassName('grid-gallery-image')
 
     slideIndex += n
 
@@ -36,7 +34,8 @@ function showImage(n) {
     if (slideIndex < 0) {
         slideIndex = images.length - 1
     }
-    modalImg.src = images[slideIndex].style.backgroundImage.slice(5, -2)
+
+    modalImg.src = images[slideIndex].querySelector('img').src
 
     updateCaption()
 }

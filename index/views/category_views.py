@@ -1,8 +1,8 @@
-from django.views.generic import TemplateView
-from django.http import HttpResponseRedirect
 from django.urls import reverse
-from index.models import Category, SubCategory
 from django.http import Http404
+from django.http import HttpResponseRedirect
+from django.views.generic import TemplateView
+from index.models import Category, SubCategory
 from django.core.exceptions import ObjectDoesNotExist
 
 

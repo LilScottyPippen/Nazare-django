@@ -15,12 +15,20 @@
 }
 
 .card-image-container{
+    position: relative;
+    overflow: hidden;
     width: 100%;
     height: 170px;
     border-radius: 10px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+}
+
+.card-image-container img{
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .card-main-section-content{
@@ -85,12 +93,20 @@
 }
 
 .card-main-content-guest-image{
+    position: relative;
+    overflow: hidden;
     width: 80px;
     height: 80px;
     border-radius: 50px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;  
+}
+
+.card-main-content-guest-image img{
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .card-main-content-guest-content{

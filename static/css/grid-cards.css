@@ -22,6 +22,7 @@
     align-items: center;
     flex-shrink: 0;
     font-size: 50px;
+    z-index: 2;
 }
 
 .grid-item-content-for-object-2x2{
@@ -55,12 +56,20 @@
 }
 
 .grid-item-image-container {
+    position: relative;
+    overflow: hidden;
     width: 100%;
     height: 250px;
     border-radius: 15px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+}
+
+.grid-item-image-container img{
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .grid-item-section-title{

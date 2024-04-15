@@ -17,7 +17,9 @@
                 </div>
 
                 <section class="content-items">
-                    <div class="content-image-item shadow-blur" style="background-image: url('{{ content.img.url }}')"></div>
+                    <div class="content-image-item shadow-blur">
+                        <img loading="lazy" src="{{ content.img.url }}" alt="image">
+                    </div>
 
                     <div class="content-description-item">
                         {{ content.description|linebreaksbr  }}

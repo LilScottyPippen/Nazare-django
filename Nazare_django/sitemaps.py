@@ -1,7 +1,6 @@
-from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
-
-from index.models import Apartment, Category, SubCategory, PhotoGallery
+from django.contrib.sitemaps import Sitemap
+from index.models import Apartment, Category, SubCategory
 
 
 class StaticSitemap(Sitemap):

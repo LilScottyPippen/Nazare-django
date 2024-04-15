@@ -236,7 +236,7 @@ function getGuestFormData(guestForm) {
 function resendCode(){
     $.ajax({
         type: "GET",
-        url: `/send_confirmation_code/${document.getElementById('client_mail').value}`,
+        url: `/api/send_confirmation_code/${document.getElementById('client_mail').value}`,
         contentType: "application/json",
         success: function(response) {
             openEmailModal()
@@ -274,7 +274,7 @@ function handleBookingForm(method) {
     }else{
         $.ajax({
             type: "GET",
-            url: `/send_confirmation_code/${data.clientData.client_mail}`,
+            url: `/api/send_confirmation_code/${data.clientData.client_mail}`,
             contentType: "application/json",
             success: function(response) {
                 openEmailModal()
@@ -302,7 +302,7 @@ function handleBookingConfirmForm(method, csrf_token){
         }else{
             $.ajax({
                 type: "GET",
-                url: `/confirm_email/${code}`,
+                url: `/api/confirm_email/${code}`,
                 contentType: "application/json",
 
                 success: function() {

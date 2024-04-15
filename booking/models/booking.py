@@ -1,9 +1,9 @@
-from django.core.exceptions import ValidationError
 from django.db import models
 from index.models import Apartment
 from utils.constants import ERROR_MESSAGES
-from utils.is_valid_date import is_valid_date_booking
 from utils.is_valid_phone import is_valid_phone
+from django.core.exceptions import ValidationError
+from utils.is_valid_date import is_valid_date_booking
 
 PAYMENT_METHOD_CHOICES = [
     ("ON", "Online"),

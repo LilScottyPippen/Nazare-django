@@ -1,10 +1,10 @@
 from django import forms
-from utils.constants import ERROR_MESSAGES
 from ..models.booking import Booking
+from utils.constants import ERROR_MESSAGES
+from utils.is_valid_name import is_valid_name
+from utils.is_valid_phone import is_valid_phone
 from ..models.guest import Guest, CITIZENSHIP_CHOICES
 from utils.is_valid_date import is_valid_date_booking
-from utils.is_valid_full_name import is_valid_full_name
-from utils.is_valid_phone import is_valid_phone
 
 
 class GuestsForm(forms.ModelForm):
@@ -20,10 +20,10 @@ class GuestsForm(forms.ModelForm):
         guest_citizenship = cleaned_data.get("citizenship")
 
         if guest_father_name:
-            if not is_valid_full_name(guest_name, guest_surname, guest_father_name):
+            if not is_valid_name(guest_name, guest_surname, guest_father_name):
                 raise forms.ValidationError(ERROR_MESSAGES['invalid_full_name'])
         else:
-            if not is_valid_full_name(guest_name, guest_surname):
+            if not is_valid_name(guest_name, guest_surname):
                 raise forms.ValidationError(ERROR_MESSAGES['invalid_full_name'])
 
         if guest_citizenship not in [choice[0] for choice in CITIZENSHIP_CHOICES]:
@@ -48,10 +48,10 @@ class BookingForm(forms.ModelForm):
             raise forms.ValidationError(ERROR_MESSAGES['unavailable_period'])
 
         if client_father_name:
-            if not is_valid_full_name(client_name, client_surname, client_father_name):
+            if not is_valid_name(client_name, client_surname, client_father_name):
                 raise forms.ValidationError(ERROR_MESSAGES['invalid_full_name'])
         else:
-            if not is_valid_full_name(client_name, client_surname):
+            if not is_valid_name(client_name, client_surname):
                 raise forms.ValidationError(ERROR_MESSAGES['invalid_full_name'])
 
         if not is_valid_phone(client_phone):
