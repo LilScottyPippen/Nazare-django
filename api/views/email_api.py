@@ -13,7 +13,7 @@ class SendConfirmationCodeAPIView(View):
         last_request_time_str = request.session.get('last_confirmation_code_request_time')
         if last_request_time_str:
             last_request_time = datetime.strptime(last_request_time_str, "%Y-%m-%d %H:%M:%S.%f")
-            if (timezone.now() - last_request_time).seconds < 60:
+            if (timezone.now() - last_request_time).seconds < 30:
                 return error_response(ERROR_MESSAGES['code_request_too_soon'])
 
         confirmation_code = ''.join(str(random.randint(0, 9)) for _ in range(6))

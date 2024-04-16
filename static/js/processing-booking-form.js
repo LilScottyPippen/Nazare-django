@@ -240,6 +240,7 @@ function resendCode(){
         contentType: "application/json",
         success: function(response) {
             openEmailModal()
+            startResendTimer(31, 'resendBtn')
             showNotification(response.status, response.message)
         },
         error: function(response) {
@@ -268,22 +269,57 @@ const formData = (method) => {
 }
 
 function handleBookingForm(method) {
+    startResendTimer(31, 'resendBtn')
     const data = formData(method)
     if (data.clientData === false || data.guestData[0] === false || data.clientData.is_privacy_policy === false){
         showNotification("error", ERROR_MESSAGES['invalid_form'])
     }else{
+        openEmailModal()
         $.ajax({
             type: "GET",
             url: `/api/send_confirmation_code/${data.clientData.client_mail}`,
             contentType: "application/json",
             success: function(response) {
-                openEmailModal()
                 showNotification(response.status, response.message)
             },
             error: function(response) {
                 showNotification(response.responseJSON.status, response.responseJSON.message)
             }
         })
+    }
+}
+
+let resendTimer
+
+function startResendTimer(interval, text_id) {
+    let duration = interval
+    let display = document.getElementById(text_id);
+
+    if (resendTimer) {
+        return;
+    }
+
+    updateDisplay();
+
+    resendTimer = setInterval(function() {
+        if (duration > 0) {
+            display.textContent = "Отправить код повторно через: " + duration + " секунд";
+            duration--;
+        } else {
+            clearInterval(resendTimer);
+            resendTimer = null;
+            display.textContent = "Запросить повторный код подтверждения";
+            display.style.textDecoration = "underline";
+            display.style.cursor = "pointer";
+            display.setAttribute("onclick", "resendCode()");
+        }
+    }, 1000);
+
+    function updateDisplay() {
+        display.textContent = "Отправить код повторно через: " + duration + " секунд";
+        display.style.textDecoration = "none"
+        display.removeAttribute("onclick")
+        display.style.cursor = "default"
     }
 }
 

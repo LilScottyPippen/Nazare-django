@@ -20,7 +20,8 @@ ERROR_MESSAGES = {
 
 SUCCESS_MESSAGES = {
     'success': 'Успех',
-    'success_booking': 'Апартамент успешно забронирован.',
+    # 'success_booking': 'Апартамент успешно забронирован.',
+    'success_booking': 'Заявка на бронирование успешно создана.',
     'success_callback': 'Заявка на звонок упешно создана.',
     'success_subscribed': 'Вы успешно подписались на рассылку.',
     'success_send_code': 'Код подтверждения отправлен на ваш e-mail.',

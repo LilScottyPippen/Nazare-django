@@ -11,3 +11,7 @@ function resetALlCaptcha(){
     for (let i = 0; i < recaptchaBlocks; i++)
         grecaptcha.reset(i)
 }
+
+function closeEmailModal() {
+    closeModal('emailModal');
+}

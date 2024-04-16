@@ -10,6 +10,7 @@ function getToStringDatepicker(date){
 }
 
 function getI18nDatepicker(){
+    moment.locale('ru')
     return {
         months: moment.months(),
         weekdays: moment.weekdaysShort(),
