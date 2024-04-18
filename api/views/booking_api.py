@@ -37,7 +37,7 @@ class BookingListAPIView(View):
 
 class GuestMaxAPIView(View):
     def get(self, request):
-        guest_max = get_max_guest_count()
+        guest_max = int(get_max_guest_count())
 
         if not guest_max:
             return error_response(ERROR_MESSAGES['bad_request'])
@@ -58,7 +58,7 @@ class CheckInTimeAPIView(View):
         check_in_time = os.getenv('CHECK_IN_TIME')
 
         if not check_in_time:
-            check_in_time = "14:00"
+            return error_response(ERROR_MESSAGES['bad_request'])
         return JsonResponse({'check_in_time': check_in_time}, safe=False, status=200)
 
 
@@ -67,5 +67,14 @@ class CheckOutTimeAPIView(View):
         check_out_time = os.getenv('CHECK_OUT_TIME')
 
         if not check_out_time:
-            check_out_time = "12:00"
+            return error_response(ERROR_MESSAGES['bad_request'])
         return JsonResponse({'check_out_time': check_out_time}, safe=False, status=200)
+
+
+class MaxBookingPeriodAPIView(View):
+    def get(self, request):
+        booking_period = int(os.getenv('MAX_BOOKING_PERIOD'))
+
+        if not booking_period:
+            return error_response(ERROR_MESSAGES['bad_request'])
+        return JsonResponse({'booking_period': booking_period}, safe=False, status=200)

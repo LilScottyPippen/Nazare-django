@@ -1,5 +1,5 @@
 function makeAjaxRequest(options) {
-    let result;
+    let result
 
     $.ajax({
         type: options.type,
@@ -7,10 +7,10 @@ function makeAjaxRequest(options) {
         url: options.url,
         dataType: 'json',
         success: function(response) {
-            result = response;
+            result = response
         },
         error: function() {
-            result = null;
+            result = null
         }
     });
 
@@ -32,7 +32,7 @@ function getGuestMax() {
         url: '/api/get-guest-max'
     });
 
-    return result ? result.guest_max : null;
+    return result ? result.guest_max : null
 }
 
 function getGuestMaxApartment(apartment_id) {
@@ -42,7 +42,7 @@ function getGuestMaxApartment(apartment_id) {
         url: `/api/get-guest-max/${apartment_id}`
     });
 
-    return result ? result.guest_max : null;
+    return result ? result.guest_max : null
 }
 
 function getCheckInTime() {
@@ -52,7 +52,7 @@ function getCheckInTime() {
         url: '/api/get-check-in-time'
     });
 
-    return result ? result.check_in_time : null;
+    return result ? result.check_in_time : null
 }
 
 function getCheckOutTime() {
@@ -62,5 +62,15 @@ function getCheckOutTime() {
         url: '/api/get-check-out-time'
     });
 
-    return result ? result.check_in_time : null;
+    return result ? result.check_in_time : null
+}
+
+function getMaxBookingPeriod(){
+    let result = makeAjaxRequest({
+        type: "GET",
+        async: false,
+        url: '/api/get-max-booking-period'
+    })
+
+    return result ? result.booking_period : null
 }

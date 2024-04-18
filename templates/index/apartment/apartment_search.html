@@ -5,8 +5,8 @@
 {% block title %}Поиск апартамента{% endblock title %}
 
 {% block link %}
-    <link rel="stylesheet" href="{% static 'css/apartment-search.css' %}">
-    <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/apartment-search.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}?v=1">
     
     <script src="{% static 'js/guest-counter.js' %}"></script>
     <script src="{% static 'js/datepicker-constants.js' %}"></script>
@@ -150,6 +150,6 @@
 {% endblock main %}
 
 {% block script %}
-    <script src="{% static 'js/datepicker.js' %}"></script>
-    <script src="{% static 'js/search-apartment.js' %}"></script>
+    <script src="{% static 'js/datepicker.js' %}?v=1"></script>
+    <script src="{% static 'js/search-apartment.js' %}?v=1"></script>
 {% endblock script %}

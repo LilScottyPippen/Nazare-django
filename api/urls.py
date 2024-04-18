@@ -10,6 +10,7 @@ urlpatterns = [
     path('get-guest-max/<int:apartment_id>', GuestMaxApartmentAPIView.as_view(), name='get_guest_max_apartment'),
     path('get-check-in-time', CheckInTimeAPIView.as_view(), name='get_check_in_time'),
     path('get-check-out-time', CheckOutTimeAPIView.as_view(), name='get_check_out_time'),
+    path('get-max-booking-period', MaxBookingPeriodAPIView.as_view(), name='get_max_booking_period'),
     path('send_confirmation_code/<str:mail>', SendConfirmationCodeAPIView.as_view(), name='send_confirmation_code'),
     path('confirm_email/<str:confirmation_code>', ConfirmEmailAPIView.as_view(), name='confirm_email'),
     path('callback', CallbackAPIView.as_view(), name="callback"),

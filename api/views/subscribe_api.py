@@ -11,8 +11,11 @@ class SubscriberAPIView(View):
         client_mail = request.POST.get('mail')
         captcha_response = request.POST.get('captcha')
 
-        if not client_mail or not captcha_response:
+        if not client_mail:
             return error_response(ERROR_MESSAGES['invalid_form'])
+
+        if not captcha_response:
+            return error_response(ERROR_MESSAGES['invalid_captcha'])
 
         captcha_result = is_valid_captcha(captcha_response)
 

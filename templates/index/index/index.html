@@ -3,16 +3,16 @@
 {% load static %}
 
 {% block link %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/card.css' %}">
-    <link rel="stylesheet" href="{% static 'css/grid-cards.css' %}">
-    <link rel="stylesheet" href="{% static 'css/slider.css' %}">
-    <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'css/card.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'css/grid-cards.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}?v=1">
     
-    <script src="{% static 'js/processing-search-apartment-form.js' %}"></script>
-    <script src="{% static 'js/datepicker-constants.js' %}"></script>
-    <script src="{% static 'js/datepicker-calculate.js' %}"></script>
-    <script src="{% static 'pikaday/pikaday.js' %}"></script>
+    <script src="{% static 'js/processing-search-apartment-form.js' %}?v=1"></script>
+    <script src="{% static 'js/datepicker-constants.js' %}?v=1"></script>
+    <script src="{% static 'js/datepicker-calculate.js' %}?v=1"></script>
+    <script src="{% static 'pikaday/pikaday.js' %}?v=1"></script>
     <script>
         document.documentElement.style.setProperty('--bg-image', 'url(' + '{% static 'img/backgrounds/background-image.jpg' %}' + ')');
     </script>
@@ -261,7 +261,7 @@
 {% endblock main %}
 
 {% block script %}
-    <script src="{% static 'js/guest-counter.js' %}"></script>
-    <script src="{% static 'js/datepicker.js' %}"></script>
-    <script src="{% static 'js/slider.js' %}"></script>
+    <script src="{% static 'js/guest-counter.js' %}?v=1"></script>
+    <script src="{% static 'js/datepicker.js' %}?v=1"></script>
+    <script src="{% static 'js/slider.js' %}?v=1"></script>
 {% endblock script %}

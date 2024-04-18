@@ -1,10 +1,10 @@
 import datetime
 from django.http import Http404
-from utils.constants import ERROR_MESSAGES
 from booking.models.booking import Booking
 from django.views.generic import TemplateView
 from utils.booking import get_booking_in_range_date
 from utils.is_valid_date import is_valid_date_booking
+from utils.constants import ERROR_MESSAGES, DATE_FORMAT
 from index.models import Apartment, ApartmentPhotoGallery, ApartmentMenu
 from utils.guest_count import get_max_guest_count, check_correct_guest_count
 
@@ -53,8 +53,8 @@ class ApartmentSearchView(TemplateView):
             total_guests = adult_count + children_count
 
         try:
-            check_in_date_formatted = datetime.datetime.strptime(check_in_date, "%Y-%m-%d")
-            check_out_date_formatted = datetime.datetime.strptime(check_out_date, "%Y-%m-%d")
+            check_in_date_formatted = datetime.datetime.strptime(check_in_date, DATE_FORMAT['YYYY-MM-DD'])
+            check_out_date_formatted = datetime.datetime.strptime(check_out_date, DATE_FORMAT['YYYY-MM-DD'])
         except ValueError:
             raise Http404(ERROR_MESSAGES['invalid_date'])
 

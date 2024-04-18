@@ -1,4 +1,5 @@
 let captchaCallbackInput, captchaCallbackResponse
+const regexString = /^[\p{L}]+$/u
 
 function handleCallbackCaptcha(response){
     captchaCallbackResponse = response
@@ -19,7 +20,7 @@ function handleCallback(csrf_token) {
     let client_data = {
         'client_data': {
             'name': client_name,
-            'phone': client_phone
+            'phone': client_phone,
         }
     }
 
@@ -43,10 +44,14 @@ function handleCallback(csrf_token) {
             }
         }
 
-        if(key === 'name' && value.length < 3){
-            hasError = true
-            if (input) {
-                input.style.borderColor = 'red'
+        if(key === 'name'){
+            if(value.length < 3 || !regexString.test(value)){
+                hasError = true
+                if (input) {
+                    input.style.borderColor = 'red'
+                }
+            }else{
+                input.style.borderColor = ''
             }
         }
     }

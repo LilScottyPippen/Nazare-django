@@ -5,12 +5,12 @@
 {% block title %}Бронирование{% endblock title %}
 
 {% block link %}
-    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
-    <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}">
-    <script src="{% static 'js/datepicker-constants.js' %}"></script>
-    <script src="{% static 'js/datepicker-calculate.js' %}"></script>
-    <script src="{% static 'pikaday/pikaday.js' %}"></script>
-    <script src="{% static 'js/guest-counter.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'css/form-search-apartment.css' %}?v=1">
+    <script src="{% static 'js/datepicker-constants.js' %}?v=1"></script>
+    <script src="{% static 'js/datepicker-calculate.js' %}?v=1"></script>
+    <script src="{% static 'pikaday/pikaday.js' %}?v=1"></script>
+    <script src="{% static 'js/guest-counter.js' %}?v=1"></script>
 {% endblock link %}
 {% block main %}
     {% include 'base/email-confirm.html' %}
@@ -185,8 +185,8 @@
 {% endblock main %}
 
 {% block script %}
-    <script src="{% static 'js/booking-active-items.js' %}"></script>
-    <script src="{% static 'js/generate-guest-form.js' %}"></script>
-    <script src="{% static 'js/datepicker-booking.js' %}"></script>
-    <script src="{% static 'js/processing-booking-form.js' %}"></script>
+    <script src="{% static 'js/booking-active-items.js' %}?v=1"></script>
+    <script src="{% static 'js/generate-guest-form.js' %}?v=1"></script>
+    <script src="{% static 'js/datepicker-booking.js' %}?v=1"></script>
+    <script src="{% static 'js/processing-booking-form.js' %}?v=1"></script>
 {% endblock script %}

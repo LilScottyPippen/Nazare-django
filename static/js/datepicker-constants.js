@@ -19,5 +19,5 @@ function getI18nDatepicker(){
 }
 
 function getMaxDateDatepicker(){
-    return moment().add(180, 'days').toDate()
+    return moment().add(getMaxBookingPeriod(), 'days').toDate()
 }

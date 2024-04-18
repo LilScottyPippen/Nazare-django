@@ -22,6 +22,9 @@ class CallbackAPIView(View):
 
             client_data = data.get('client_data', {})
 
+            if 'captcha' not in client_data:
+                return error_response(ERROR_MESSAGES['invalid_captcha'])
+
             for client_key, client_value in client_data.items():
                 if client_key == 'name' and not is_valid_name(client_value):
                     return error_response(ERROR_MESSAGES['invalid_name'])

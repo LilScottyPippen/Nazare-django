@@ -47,7 +47,6 @@ class Booking(BaseBooking):
     confirmed = models.BooleanField(default=False, verbose_name='Подтверждение')
 
     def clean(self):
-        super().clean()
         if not is_valid_phone(self.client_phone):
             raise ValidationError({'client_phone': ERROR_MESSAGES['invalid_phone']})
 

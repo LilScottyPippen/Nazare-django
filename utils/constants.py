@@ -11,7 +11,7 @@ ERROR_MESSAGES = {
     'incorrect_code': 'Код подтверждения неверный.',
     'code_request_too_soon': 'Вы уже запрашивали код подтверждения менее минуты назад.',
     'invalid_captcha': 'Пройдите reCaptcha.',
-    'apartment_not_found': 'Апартамента не существует.',
+    'apartment_not_found': 'Апартамент не существует.',
     'invalid_full_name': 'ФИО некорректно.',
     'invalid_name': 'Имя неккорректно.',
     'invalid_citizenship': 'Неверное гражданство.',
@@ -32,4 +32,9 @@ MAILING_SUBJECTS = {
     'booking_client': 'Заявка на бронирование NA ZARE',
     'booking_admin': 'Заявка на бронирование',
     'callback_admin': 'Заявка на звонок',
+}
+
+DATE_FORMAT = {
+    'YYYY-MM-DD': '%Y-%m-%d',
+    'HH-MM': '%H:%M',
 }
