@@ -1,15 +1,11 @@
 let captchaCallbackInput, captchaCallbackResponse
-const regexString = /^[\p{L}]+$/u
 
 function handleCallbackCaptcha(response){
     captchaCallbackResponse = response
 }
 
 function is_valid_phone(phone) {
-    const belarus_pattern = /^(?:\+375|375)\d{9}$/
-    const russia_pattern = /^(?:\+7|7)\d{10}$/
-
-    return belarus_pattern.test(phone) || russia_pattern.test(phone)
+    return phoneRegex.test(phone)
 }
 
 function handleCallback(csrf_token) {
@@ -45,7 +41,7 @@ function handleCallback(csrf_token) {
         }
 
         if(key === 'name'){
-            if(value.length < 3 || !regexString.test(value)){
+            if(value.length < 3 || !stringRegex.test(value)){
                 hasError = true
                 if (input) {
                     input.style.borderColor = 'red'
@@ -61,7 +57,7 @@ function handleCallback(csrf_token) {
     const is_checked = privacy_policy.checked
 
     if (is_checked === false) {
-        privacy_policy_block.style.border = '2px solid red'
+        privacy_policy_block.style.border = errorBorderStyle
         hasError = true
     } else {
         privacy_policy_block.style.border = ''
@@ -74,7 +70,7 @@ function handleCallback(csrf_token) {
         client_data.client_data.captcha = captchaCallbackResponse
     }else{
         hasError = true
-        captchaCallbackInput.style.border = '2px solid red'
+        captchaCallbackInput.style.border = errorBorderStyle
         showNotification('error', ERROR_MESSAGES['invalid_captcha'])
     }
 

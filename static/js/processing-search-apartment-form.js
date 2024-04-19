@@ -4,8 +4,8 @@ function openSearchApartmentPage(){
     const guests_count = parseInt(document.getElementById('guests_count').innerText)
     const children_count = parseInt(document.getElementById('children_count').innerText)
     if (!isValidDate(check_in_date.innerText)) {
-         const parentElement = check_in_date.closest('.search-apartment-dropdown')
-        parentElement.style.border = '2px solid red'
+        const parentElement = check_in_date.closest('.search-apartment-dropdown')
+        parentElement.style.border = errorBorderStyle
     } else {
         check_in_date.closest('.search-apartment-dropdown').style.border = ''
     }
@@ -13,7 +13,7 @@ function openSearchApartmentPage(){
 
     if(!isValidDate(check_out_date.innerText)){
         const parentElement = check_out_date.closest('.search-apartment-dropdown')
-        parentElement.style.border = '2px solid red'
+        parentElement.style.border = errorBorderStyle
     }
 
     if(isValidDate(check_in_date.innerText) && isValidDate(check_out_date.innerText)){

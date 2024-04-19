@@ -1,5 +1,5 @@
 function getFormatDatepicker(){
-    return 'YYYY/MM/DD'
+    return dateFormat
 }
 
 function getToStringDatepicker(date){

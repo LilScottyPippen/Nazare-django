@@ -1,5 +1,5 @@
 let pickerCheckin, pickerCheckout, selectedStartDate, selectedEndDate, inputs, totalCostElement,
-    selectedInput, selectedPrice, bookedDates, dateFormat, defaultCheckInDate, defaultCheckOutDate,
+    selectedInput, selectedPrice, bookedDates, defaultCheckInDate, defaultCheckOutDate,
     titleElementCheckin, titleElementCheckout, checkInTime, minDate, booking_list, guest_max
 
 function getPikadayConfig(fieldId, defaultDate, onSelectHandler) {
@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let selectedInputDataId = selectedInput.getAttribute('data-id')
     selectedPrice = selectedInput ? parseFloat(selectedInput.getAttribute('data-price')) || 0 : 0
     bookedDates = booking_list[selectedInputDataId]
-    dateFormat = 'YYYY-MM-DD'
     defaultCheckInDate = moment(document.getElementById('check_in_date').innerText, dateFormat)
     defaultCheckOutDate = moment(document.getElementById('check_out_date').innerText, dateFormat)
     checkInTime = getCheckInTime()
@@ -145,10 +144,6 @@ function resetDates(minDate){
     pickerCheckout.setMaxDate(maxDate)
 
     updateTotalCost(totalCostElement)
-}
-
-function isDateRangeOverlap(range1, range2) {
-    return range1[0] <= range2[1] && range1[1] >= range2[0]
 }
 
 function handleDateSelection(date, calendarType, titleElement, pikadayInstance) {

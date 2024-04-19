@@ -1,13 +1,5 @@
 let captchaBookingInput, captchaBookingResponse
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const dateRegex = /^\d{4}\-\d{1,2}\-\d{1,2}$/
-const phoneRegex = /^(?:\+375|375)\d{9}$|^(?:\+7|7)\d{10}$/
-const stringRegex = /^[\p{L}]+$/u
-
-const errorBorderColor = 'red'
-const errorBorderStyle = '2px solid ' + errorBorderColor
-
 function getClientFormData(method){
     let hasError = false
     let apartment_id
@@ -233,22 +225,6 @@ function getGuestFormData(guestForm) {
     return formData
 }
 
-function resendCode(){
-    $.ajax({
-        type: "GET",
-        url: `/api/send_confirmation_code/${document.getElementById('client_mail').value}`,
-        contentType: "application/json",
-        success: function(response) {
-            openEmailModal()
-            startResendTimer(31, 'resendBtn')
-            showNotification(response.status, response.message)
-        },
-        error: function(response) {
-            showNotification(response.responseJSON.status, response.responseJSON.message)
-        }
-    })
-}
-
 const formData = (method) => {
     const clientData = getClientFormData(method)
     const guestData = []
@@ -269,11 +245,11 @@ const formData = (method) => {
 }
 
 function handleBookingForm(method) {
-    startResendTimer(31, 'resendBtn')
     const data = formData(method)
     if (data.clientData === false || data.guestData[0] === false || data.clientData.is_privacy_policy === false){
         showNotification("error", ERROR_MESSAGES['invalid_form'])
     }else{
+        startResendTimer(31, 'resendBtn')
         openEmailModal()
         $.ajax({
             type: "GET",
@@ -286,40 +262,6 @@ function handleBookingForm(method) {
                 showNotification(response.responseJSON.status, response.responseJSON.message)
             }
         })
-    }
-}
-
-let resendTimer
-
-function startResendTimer(interval, text_id) {
-    let duration = interval
-    let display = document.getElementById(text_id);
-
-    if (resendTimer) {
-        return;
-    }
-
-    updateDisplay();
-
-    resendTimer = setInterval(function() {
-        if (duration > 0) {
-            display.textContent = "Отправить код повторно через: " + duration + " секунд";
-            duration--;
-        } else {
-            clearInterval(resendTimer);
-            resendTimer = null;
-            display.textContent = "Запросить повторный код подтверждения";
-            display.style.textDecoration = "underline";
-            display.style.cursor = "pointer";
-            display.setAttribute("onclick", "resendCode()");
-        }
-    }, 1000);
-
-    function updateDisplay() {
-        display.textContent = "Отправить код повторно через: " + duration + " секунд";
-        display.style.textDecoration = "none"
-        display.removeAttribute("onclick")
-        display.style.cursor = "default"
     }
 }
 
