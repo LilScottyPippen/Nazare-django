@@ -6,14 +6,14 @@ from Nazare_django import settings
 from django.views.generic import TemplateView
 from index.models.apartments import Apartment
 from utils.is_valid_phone import is_valid_phone
-from utils.json_responses import error_response
 from utils.is_valid_captcha import is_valid_captcha
 from utils.booking import get_booking_in_range_date
 from django.core.exceptions import PermissionDenied
 from utils.guest_count import check_guest_count_limit
 from .forms.booking_form import BookingForm, GuestsForm
 from booking.models.booking import PAYMENT_METHOD_CHOICES
-from django.http import JsonResponse, Http404, RawPostDataException
+from utils.json_responses import error_response, success_response
+from django.http import Http404, RawPostDataException
 from utils.send_mail import send_mail_for_client, send_mail_for_admin
 from utils.is_valid_date import check_correct_booking_period, is_valid_date_booking
 from utils.constants import SUCCESS_MESSAGES, ERROR_MESSAGES, MAILING_SUBJECTS, DATE_FORMAT
@@ -106,8 +106,7 @@ class BookingView(TemplateView):
             for client_key, client_value in client_data.items():
                 if client_key == 'payment_method':
                     if client_value == PAYMENT_METHOD_CHOICES[0][0] and not settings.ONLINE_PAYMENT:
-                        return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_payment_method']},
-                                            status=500)
+                        return error_response(ERROR_MESSAGES['invalid_payment_method'])
                 if client_key == 'client_phone' and not is_valid_phone(client_value):
                     return error_response(ERROR_MESSAGES['invalid_phone'])
                 if client_key == 'captcha' and not is_valid_captcha(client_value):
@@ -120,9 +119,9 @@ class BookingView(TemplateView):
             guest_data = data.get('guestData', [])
             for guest in guest_data:
                 if not type(guest) is dict:
-                    return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
+                    return error_response(ERROR_MESSAGES['invalid_form'])
         except ValueError:
-            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
+            return error_response(ERROR_MESSAGES['invalid_form'])
 
         try:
             apartment = int(client_data['apartment'])
@@ -176,9 +175,9 @@ class BookingView(TemplateView):
                     guest_instance.booking = booking_instance
                     guest_instance.save()
 
-            return JsonResponse({'status': 'success', 'message': SUCCESS_MESSAGES['success_booking']}, status=200)
+            return success_response(SUCCESS_MESSAGES['success_booking'])
         else:
-            return JsonResponse({'status': 'error', 'message': ERROR_MESSAGES['invalid_form']}, status=500)
+            return error_response(ERROR_MESSAGES['invalid_form'])
 
     def send_mailing(self, booking_instance):
         base_context = {

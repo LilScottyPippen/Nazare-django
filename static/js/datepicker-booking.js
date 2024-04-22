@@ -80,20 +80,36 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 function setDateAfterLoadPage(){
-    const checkin_date_parts = titleElementCheckin.innerText.split('-')
-    const checkout_date_parts = titleElementCheckout.innerText.split('-')
+    let checkin_date = titleElementCheckin.innerText
+    let checkout_date = titleElementCheckout.innerText
 
-    const checkin_date_object = new Date(checkin_date_parts[0], checkin_date_parts[1] - 1, checkin_date_parts[2])
-    const checkout_date_object = new Date(checkout_date_parts[0], checkout_date_parts[1] - 1, checkout_date_parts[2])
+    if(isValidDate(checkin_date) && isValidDate(checkout_date)){
+        const checkin_date_parts = checkin_date.split('-')
+        const checkout_date_parts = checkout_date.split('-')
 
-    if(isValidDate(titleElementCheckin.innerText) && isValidDate(titleElementCheckout.innerText)){
-        pickerCheckin.setDate(checkin_date_object)
-        pickerCheckin.setMaxDate(checkout_date_object)
+        const checkin_date_object = new Date(checkin_date_parts[0], checkin_date_parts[1] - 1, checkin_date_parts[2])
+        const checkout_date_object = new Date(checkout_date_parts[0], checkout_date_parts[1] - 1, checkout_date_parts[2])
 
-        const disable_check_in_date = new Date(checkin_date_object)
-        disable_check_in_date.setDate(disable_check_in_date.getDate() + 1)
-        pickerCheckout.setDate(checkout_date_object)
-        pickerCheckout.setMinDate(disable_check_in_date)
+        const max_allowed_date = new Date();
+        max_allowed_date.setDate(max_allowed_date.getDate() + parseInt(getMaxBookingPeriod()))
+
+        if (checkin_date_object < max_allowed_date && checkout_date_object <= max_allowed_date) {
+            console.log(max_allowed_date)
+            console.log(checkout_date_object)
+            console.log(checkin_date_object < max_allowed_date && checkout_date_object <= max_allowed_date)
+
+            pickerCheckin.setDate(checkin_date_object)
+            pickerCheckin.setMaxDate(checkout_date_object)
+
+            const disable_check_in_date = new Date(checkin_date_object)
+            disable_check_in_date.setDate(disable_check_in_date.getDate() + 1)
+            pickerCheckout.setDate(checkout_date_object)
+            pickerCheckout.setMinDate(disable_check_in_date)
+        }else{
+            pickerCheckin.setDate(new Date())
+            pickerCheckout.setDate(new Date() + 1)
+            resetDates(minDate)
+        }
     }
 }
 
