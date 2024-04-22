@@ -27,5 +27,3 @@ class PhotoGalleryLoadMoreView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['photos'] = load_photos(self.request, kwargs['subcategory'], 6)
         return context
-
-

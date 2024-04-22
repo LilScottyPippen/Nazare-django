@@ -4,7 +4,7 @@ from datetime import datetime
 from index.models import Apartment
 from django.http import JsonResponse
 from booking.models.booking import Booking
-from utils.constants import ERROR_MESSAGES
+from utils.constants import ERROR_MESSAGES, DATE_FORMAT
 from utils.json_responses import error_response
 from utils.guest_count import get_max_guest_count
 
@@ -29,8 +29,8 @@ class BookingListAPIView(View):
             for booking in Booking.objects.filter(apartment=apartment.id):
                 if booking.check_out_date >= datetime.today().date() and booking.confirmed:
                     booking_list[apartment.id].append([
-                        booking.check_in_date.strftime("%Y-%m-%d"),
-                        booking.check_out_date.strftime("%Y-%m-%d")
+                        booking.check_in_date.strftime(DATE_FORMAT['YYYY-MM-DD']),
+                        booking.check_out_date.strftime(DATE_FORMAT['YYYY-MM-DD'])
                     ])
         return booking_list
 

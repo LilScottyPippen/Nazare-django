@@ -5,7 +5,7 @@ from django.views import View
 from django.utils import timezone
 from utils.send_mail import send_mail_for_client
 from utils.json_responses import error_response, success_response
-from utils.constants import ERROR_MESSAGES, MAILING_SUBJECTS, SUCCESS_MESSAGES
+from utils.constants import ERROR_MESSAGES, MAILING_SUBJECTS, SUCCESS_MESSAGES, RESET_CODE_TIMEOUT
 
 
 class SendConfirmationCodeAPIView(View):
@@ -13,7 +13,7 @@ class SendConfirmationCodeAPIView(View):
         last_request_time_str = request.session.get('last_confirmation_code_request_time')
         if last_request_time_str:
             last_request_time = datetime.strptime(last_request_time_str, "%Y-%m-%d %H:%M:%S.%f")
-            if (timezone.now() - last_request_time).seconds < 30:
+            if (timezone.now() - last_request_time).seconds < RESET_CODE_TIMEOUT:
                 return error_response(ERROR_MESSAGES['code_request_too_soon'])
 
         confirmation_code = ''.join(str(random.randint(0, 9)) for _ in range(6))

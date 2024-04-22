@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'admin_reorder',
+    'fontawesomefree',
     'api',
     'index',
     'booking',

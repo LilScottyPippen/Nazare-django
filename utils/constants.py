@@ -38,3 +38,5 @@ DATE_FORMAT = {
     'YYYY-MM-DD': '%Y-%m-%d',
     'HH-MM': '%H:%M',
 }
+
+RESET_CODE_TIMEOUT = 30
