@@ -182,8 +182,9 @@ function handleDateSelection(date, calendarType, titleElement, pikadayInstance) 
 
             if(overlappingRange){
                 showNotification("error", ERROR_MESSAGES['unavailable_period'])
-                document.getElementById('check_out_date').innerText = "ВЫЕЗД"
-                pickerCheckin.setMinDate(minDate)
+                selectedStartDate = null
+                selectedEndDate = null
+                resetDates(minDate)
                 updateTotalCost(totalCostElement)
             }
         }

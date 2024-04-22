@@ -334,6 +334,9 @@ function clearForm() {
         input.value = ''
     })
 
+    selectedStartDate = null
+    selectedEndDate = null
+
     resetDates(moment().toDate())
 
     generateGuestInformationBlocks()
