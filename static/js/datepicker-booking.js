@@ -94,10 +94,6 @@ function setDateAfterLoadPage(){
         max_allowed_date.setDate(max_allowed_date.getDate() + parseInt(getMaxBookingPeriod()))
 
         if (checkin_date_object < max_allowed_date && checkout_date_object <= max_allowed_date) {
-            console.log(max_allowed_date)
-            console.log(checkout_date_object)
-            console.log(checkin_date_object < max_allowed_date && checkout_date_object <= max_allowed_date)
-
             pickerCheckin.setDate(checkin_date_object)
             pickerCheckin.setMaxDate(checkout_date_object)
 
@@ -188,8 +184,6 @@ function handleDateSelection(date, calendarType, titleElement, pikadayInstance) 
                 showNotification("error", ERROR_MESSAGES['unavailable_period'])
                 document.getElementById('check_out_date').innerText = "ВЫЕЗД"
                 pickerCheckin.setMinDate(minDate)
-                pickerCheckin.setMaxDate(null)
-                pickerCheckout.setMaxDate(null)
                 updateTotalCost(totalCostElement)
             }
         }
