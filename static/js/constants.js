@@ -27,3 +27,9 @@ let resendCodeMessage = function(duration = null){
         return "Запросить повторный код подтверждения"
     }
 }
+
+const CAPTCHA_SUBJECTS = {
+    'callback_captcha': 'callback',
+    'subscribe_captcha': 'subscribe',
+    'booking_captcha': 'booking'
+}

@@ -17,7 +17,7 @@ function getClientFormData(method){
     if (!hasError) {
         const activeFields = document.querySelectorAll('.form-apartment-items .choose-input')
         activeFields.forEach((field) => {
-            field.style.borderColor = ''
+            field.style.borderColor = null
         })
     }
 
@@ -50,9 +50,9 @@ function getClientFormData(method){
                     }
                 }
             } else {
-                input.style.borderColor = ''
+                input.style.borderColor = null
                 if (parentElement) {
-                    parentElement.style.borderColor = ''
+                    parentElement.style.borderColor = null
                 }
             }
         } else if (key === 'client_phone' && !phoneRegex.test(formData[key])) {
@@ -71,9 +71,9 @@ function getClientFormData(method){
                     }
                 }
             } else {
-                input.style.borderColor = ''
+                input.style.borderColor = null
                 if (parentElement) {
-                    parentElement.style.borderColor = ''
+                    parentElement.style.borderColor = null
                 }
             }
 
@@ -82,7 +82,7 @@ function getClientFormData(method){
                     hasError = true
                     parentElement.style.borderColor = errorBorderColor
                 } else {
-                    parentElement.style.borderColor = ''
+                    parentElement.style.borderColor = null
                 }
             }
 
@@ -99,7 +99,7 @@ function getClientFormData(method){
                     hasError = true
                     parentElement.style.borderColor = errorBorderColor
                 } else {
-                    parentElement.style.borderColor = ''
+                    parentElement.style.borderColor = null
                 }
             }
 
@@ -108,7 +108,7 @@ function getClientFormData(method){
                     hasError = true
                     parentElement.style.borderColor = errorBorderColor
                 } else {
-                    parentElement.style.borderColor = ''
+                    parentElement.style.borderColor = null
                 }
             }
         }
@@ -119,7 +119,7 @@ function getClientFormData(method){
     if (!check_name(client_father_name_input.value)){
         client_father_name_input.style.border = errorBorderStyle
     }else{
-        client_father_name_input.style.border = ''
+        client_father_name_input.style.border = null
     }
 
     const privacy_policy_block = document.querySelector('.form-privacy-policy')
@@ -129,14 +129,13 @@ function getClientFormData(method){
     if (is_checked === false) {
         privacy_policy_block.style.border = errorBorderStyle
     } else {
-        privacy_policy_block.style.border = ''
+        privacy_policy_block.style.border = null
     }
 
     captchaBookingInput = document.getElementById('booking-recaptcha')
 
     if (checkCaptcha(captchaBookingResponse, captchaBookingInput)){
-        captchaBookingInput.style.border = 'none'
-        formData.captcha = captchaBookingResponse
+        captchaBookingInput.style.border = null
     }else{
         hasError = true
         captchaBookingInput.style.border = errorBorderStyle
@@ -174,7 +173,7 @@ function getGuestFormData(guestForm) {
     if (!hasError) {
         const activeFields = document.querySelectorAll('.form-guest-information-citizenship-items .choose-input')
         activeFields.forEach((field) => {
-            field.style.borderColor = ''
+            field.style.borderColor = null
         })
     }
 
@@ -194,7 +193,7 @@ function getGuestFormData(guestForm) {
             }
         } else {
             if (input) {
-                input.style.borderColor = ''
+                input.style.borderColor = null
             }
         }
 
@@ -203,7 +202,7 @@ function getGuestFormData(guestForm) {
                 hasError = true
                 input.style.borderColor = errorBorderColor
             } else{
-                input.style.borderColor = ''
+                input.style.borderColor = null
             }
         }
     }
@@ -214,7 +213,7 @@ function getGuestFormData(guestForm) {
         hasError = true
         guest_father_name_input.style.border = errorBorderStyle
     }else{
-        guest_father_name_input.style.border = '';
+        guest_father_name_input.style.border = null
     }
 
     if (hasError) {
@@ -295,8 +294,8 @@ function handleBookingConfirmForm(method, csrf_token){
                         success: function(response) {
                             clearForm()
                             resetALlCaptcha()
-                            captchaBookingResponse = ''
-                            code_input.style.borderColor = ''
+                            captchaBookingResponse = null
+                            code_input.style.borderColor = null
                             showNotification(response.status, response.message)
                         },
                         error: function(response) {
@@ -323,7 +322,7 @@ function clearForm() {
     document.getElementById('guests_count').innerText = 1
 
     formInputs.forEach(function(input) {
-        input.value = ''
+        input.value = null
     })
 
     formCheckboxes.forEach(function(checkbox) {
@@ -331,7 +330,7 @@ function clearForm() {
     })
 
     modalNumbers.forEach(function (input){
-        input.value = ''
+        input.value = null
     })
 
     selectedStartDate = null
@@ -346,6 +345,7 @@ function clearForm() {
 
 function handleBookingCaptcha(response){
     captchaBookingResponse = response
+    getValidityCaptcha(CAPTCHA_SUBJECTS['booking_captcha'], response)
 }
 
 function check_name(name){

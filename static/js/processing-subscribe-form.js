@@ -1,20 +1,21 @@
 function handleSubscriber(response) {
+    getValidityCaptcha(CAPTCHA_SUBJECTS['subscribe_captcha'], response)
+
     let hasError = false
     const form = document.getElementById('mailingForm')
     const mail = document.getElementById('input-mail').value
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     const captcha = document.getElementById('subscribe-recaptcha')
     const csrf_token = captcha.getAttribute('data-csrf')
 
     if (!emailRegex.test(mail)){
         hasError = true
         const errorField = document.getElementById('input-mail')
-        errorField.style.border = '2px solid red'
+        errorField.style.border = errorBorderStyle
     }
 
     if (!hasError) {
         const activeFields = document.getElementById('input-mail')
-        activeFields.style.border = 'none'
+        activeFields.style.border = null
     }
 
     $.ajax({
@@ -22,7 +23,6 @@ function handleSubscriber(response) {
         url: "/api/subscribe",
         data: {
             'mail': mail,
-            'captcha': response
         },
         contentType: "application/x-www-form-urlencoded",
         headers: {

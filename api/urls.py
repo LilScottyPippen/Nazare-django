@@ -15,4 +15,5 @@ urlpatterns = [
     path('confirm_email/<str:confirmation_code>', ConfirmEmailAPIView.as_view(), name='confirm_email'),
     path('callback', CallbackAPIView.as_view(), name="callback"),
     path('subscribe', SubscriberAPIView.as_view(), name="subscribe"),
+    path('get-validity-captcha/<str:subject>/<str:value>', CaptchaAPI.as_view(), name="validity_captcha"),
 ]

@@ -7,9 +7,9 @@ from utils.is_valid_name import is_valid_name
 from utils.is_valid_phone import is_valid_phone
 from utils.send_mail import send_mail_for_admin
 from index.forms.callback_form import CallbackForm
-from utils.is_valid_captcha import is_valid_captcha
+from utils.is_valid_captcha import is_valid_session_captcha
 from utils.json_responses import error_response, success_response
-from utils.constants import ERROR_MESSAGES, MAILING_SUBJECTS, SUCCESS_MESSAGES
+from utils.constants import ERROR_MESSAGES, MAILING_SUBJECTS, SUCCESS_MESSAGES, CAPTCHA_SUBJECT
 
 
 class CallbackAPIView(View):
@@ -22,7 +22,12 @@ class CallbackAPIView(View):
 
             client_data = data.get('client_data', {})
 
-            if 'captcha' not in client_data:
+            if is_valid_session_captcha(request, CAPTCHA_SUBJECT['callback_captcha']):
+                try:
+                    del request.session[f'{CAPTCHA_SUBJECT["callback_captcha"]}_captcha']
+                except KeyError:
+                    return error_response(ERROR_MESSAGES['invalid_captcha'])
+            else:
                 return error_response(ERROR_MESSAGES['invalid_captcha'])
 
             for client_key, client_value in client_data.items():
@@ -30,8 +35,6 @@ class CallbackAPIView(View):
                     return error_response(ERROR_MESSAGES['invalid_name'])
                 if client_key == 'phone' and not is_valid_phone(client_value):
                     return error_response(ERROR_MESSAGES['invalid_phone'])
-                if client_key == 'captcha' and not is_valid_captcha(client_value):
-                    return error_response(ERROR_MESSAGES['invalid_captcha'])
         except ValueError:
             return error_response(ERROR_MESSAGES['invalid_form'])
 

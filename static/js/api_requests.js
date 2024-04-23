@@ -74,3 +74,11 @@ function getMaxBookingPeriod(){
 
     return result ? result.booking_period : null
 }
+
+function getValidityCaptcha(subject, value){
+    return makeAjaxRequest({
+        type: "GET",
+        async: false,
+        url: `/api/get-validity-captcha/${subject}/${value}`
+    })
+}

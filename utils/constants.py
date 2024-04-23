@@ -40,3 +40,9 @@ DATE_FORMAT = {
 }
 
 RESET_CODE_TIMEOUT = 30
+
+CAPTCHA_SUBJECT = {
+    'callback_captcha': 'callback',
+    'subscribe_captcha': 'subscribe',
+    'booking_captcha': 'booking'
+}

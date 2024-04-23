@@ -11,3 +11,8 @@ def is_valid_captcha(response):
         }, verify=True
     ).json().get("success", False)
     return result
+
+
+def is_valid_session_captcha(request, subject):
+    session_captcha = request.session.get(f'{subject}_captcha')
+    return session_captcha is True

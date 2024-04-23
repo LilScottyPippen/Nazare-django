@@ -2,6 +2,7 @@ let captchaCallbackInput, captchaCallbackResponse
 
 function handleCallbackCaptcha(response){
     captchaCallbackResponse = response
+    getValidityCaptcha(CAPTCHA_SUBJECTS['callback_captcha'], response)
 }
 
 function is_valid_phone(phone) {
@@ -27,16 +28,16 @@ function handleCallback(csrf_token) {
         if (key === 'phone' && !is_valid_phone(value)) {
             hasError = true
             if (input) {
-                input.style.borderColor = 'red'
+                input.style.borderColor = errorBorderColor
             }
         } else if (!value) {
             hasError = true
             if (input) {
-                input.style.borderColor = 'red'
+                input.style.borderColor = errorBorderColor
             }
         } else {
             if (input) {
-                input.style.borderColor = ''
+                input.style.borderColor = null
             }
         }
 
@@ -44,10 +45,10 @@ function handleCallback(csrf_token) {
             if(value.length < 3 || !stringRegex.test(value)){
                 hasError = true
                 if (input) {
-                    input.style.borderColor = 'red'
+                    input.style.borderColor = errorBorderColor
                 }
             }else{
-                input.style.borderColor = ''
+                input.style.borderColor = null
             }
         }
     }
@@ -60,14 +61,13 @@ function handleCallback(csrf_token) {
         privacy_policy_block.style.border = errorBorderStyle
         hasError = true
     } else {
-        privacy_policy_block.style.border = ''
+        privacy_policy_block.style.border = null
     }
 
     captchaCallbackInput = document.getElementById('callback-recaptcha')
 
     if (checkCaptcha(captchaCallbackResponse, captchaCallbackInput)){
-        captchaCallbackInput.style.border = 'none'
-        client_data.client_data.captcha = captchaCallbackResponse
+        captchaCallbackInput.style.border = null
     }else{
         hasError = true
         captchaCallbackInput.style.border = errorBorderStyle
@@ -87,7 +87,7 @@ function handleCallback(csrf_token) {
             success: function (response) {
                 form.reset()
                 resetALlCaptcha()
-                captchaCallbackResponse = ''
+                captchaCallbackResponse = null
                 document.getElementById('callback-privacy_policy').checked = false
                 showNotification(response.status, response.message)
             },

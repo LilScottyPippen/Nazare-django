@@ -6,17 +6,17 @@ from Nazare_django import settings
 from django.views.generic import TemplateView
 from index.models.apartments import Apartment
 from utils.is_valid_phone import is_valid_phone
-from utils.is_valid_captcha import is_valid_captcha
 from utils.booking import get_booking_in_range_date
 from django.core.exceptions import PermissionDenied
+from django.http import Http404, RawPostDataException
 from utils.guest_count import check_guest_count_limit
 from .forms.booking_form import BookingForm, GuestsForm
 from booking.models.booking import PAYMENT_METHOD_CHOICES
+from utils.is_valid_captcha import is_valid_session_captcha
 from utils.json_responses import error_response, success_response
-from django.http import Http404, RawPostDataException
 from utils.send_mail import send_mail_for_client, send_mail_for_admin
 from utils.is_valid_date import check_correct_booking_period, is_valid_date_booking
-from utils.constants import SUCCESS_MESSAGES, ERROR_MESSAGES, MAILING_SUBJECTS, DATE_FORMAT
+from utils.constants import SUCCESS_MESSAGES, ERROR_MESSAGES, MAILING_SUBJECTS, DATE_FORMAT, CAPTCHA_SUBJECT
 
 
 class BookingView(TemplateView):
@@ -100,8 +100,13 @@ class BookingView(TemplateView):
             if client_data is None:
                 return error_response(ERROR_MESSAGES['bad_request'])
 
-            if 'captcha' not in client_data:
-                return error_response(ERROR_MESSAGES['invalid_captcha'], status=500)
+            if is_valid_session_captcha(request, CAPTCHA_SUBJECT['booking_captcha']):
+                try:
+                    del request.session[f'{CAPTCHA_SUBJECT["booking_captcha"]}_captcha']
+                except KeyError:
+                    return error_response(ERROR_MESSAGES['invalid_captcha'])
+            else:
+                return error_response(ERROR_MESSAGES['invalid_captcha'])
 
             for client_key, client_value in client_data.items():
                 if client_key == 'payment_method':
@@ -109,8 +114,6 @@ class BookingView(TemplateView):
                         return error_response(ERROR_MESSAGES['invalid_payment_method'])
                 if client_key == 'client_phone' and not is_valid_phone(client_value):
                     return error_response(ERROR_MESSAGES['invalid_phone'])
-                if client_key == 'captcha' and not is_valid_captcha(client_value):
-                    return error_response(ERROR_MESSAGES['invalid_captcha'])
                 if client_key == 'guests_count' and int(client_value) <= 0:
                     return error_response(ERROR_MESSAGES['invalid_form'])
                 if client_key == 'children_count' and int(client_value) < 0:
