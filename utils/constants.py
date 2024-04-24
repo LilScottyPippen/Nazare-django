@@ -15,7 +15,8 @@ ERROR_MESSAGES = {
     'invalid_full_name': 'ФИО некорректно.',
     'invalid_name': 'Имя неккорректно.',
     'invalid_citizenship': 'Неверное гражданство.',
-    'bad_request': 'Неправильный запрос.'
+    'bad_request': 'Неправильный запрос.',
+    'too_many_requests': 'Превышен лимит запросов.',
 }
 
 SUCCESS_MESSAGES = {

@@ -41,6 +41,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'admin_reorder.middleware.ModelAdminReorder',
+    'middleware.RatelimitMiddleware'
 ]
 
 ROOT_URLCONF = 'Nazare_django.urls'

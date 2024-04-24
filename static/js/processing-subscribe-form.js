@@ -1,5 +1,10 @@
 function handleSubscriber(response) {
-    getValidityCaptcha(CAPTCHA_SUBJECTS['subscribe_captcha'], response)
+    const result = getValidityCaptcha(CAPTCHA_SUBJECTS['subscribe_captcha'], response)
+
+    if (result === null){
+        closeModal(modals.subscribeModal.id)
+        return;
+    }
 
     let hasError = false
     const form = document.getElementById('mailingForm')

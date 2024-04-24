@@ -9,8 +9,9 @@ function makeAjaxRequest(options) {
         success: function(response) {
             result = response
         },
-        error: function() {
+        error: function(response) {
             result = null
+            showNotification(response.responseJSON.status, response.responseJSON.message)
         }
     });
 

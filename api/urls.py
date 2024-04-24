@@ -5,6 +5,7 @@ from django.urls import path
 app_name = 'api'
 
 urlpatterns = [
+    path('booking', BookingAPIView.as_view(), name='booking'),
     path('get-booking-list', BookingListAPIView.as_view(), name='get_booking_list'),
     path('get-guest-max', GuestMaxAPIView.as_view(), name='get_guest_max'),
     path('get-guest-max/<int:apartment_id>', GuestMaxApartmentAPIView.as_view(), name='get_guest_max_apartment'),
@@ -15,5 +16,5 @@ urlpatterns = [
     path('confirm_email/<str:confirmation_code>', ConfirmEmailAPIView.as_view(), name='confirm_email'),
     path('callback', CallbackAPIView.as_view(), name="callback"),
     path('subscribe', SubscriberAPIView.as_view(), name="subscribe"),
-    path('get-validity-captcha/<str:subject>/<str:value>', CaptchaAPI.as_view(), name="validity_captcha"),
+    path('get-validity-captcha/<str:subject>/<str:value>', CaptchaAPIView.as_view(), name="validity_captcha"),
 ]

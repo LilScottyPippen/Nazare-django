@@ -15,4 +15,8 @@ def is_valid_captcha(response):
 
 def is_valid_session_captcha(request, subject):
     session_captcha = request.session.get(f'{subject}_captcha')
-    return session_captcha is True
+
+    if session_captcha:
+        del session_captcha
+        return True
+    return False

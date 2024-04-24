@@ -285,7 +285,7 @@ function handleBookingConfirmForm(method, csrf_token){
                 success: function() {
                     $.ajax({
                         type: "POST",
-                        url: "/booking",
+                        url: "/api/booking",
                         data: JSON.stringify(data),
                         contentType: "application/json",
                         headers: {
