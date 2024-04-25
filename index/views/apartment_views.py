@@ -1,8 +1,7 @@
 import datetime
 from django.http import Http404
-from booking.models.booking import Booking
 from django.views.generic import TemplateView
-from utils.booking import get_booking_in_range_date
+from utils.booking import check_available_apartment
 from utils.is_valid_date import is_valid_date_booking
 from utils.constants import ERROR_MESSAGES, DATE_FORMAT
 from index.models import Apartment, ApartmentPhotoGallery, ApartmentMenu
@@ -95,22 +94,12 @@ class ApartmentSearchView(TemplateView):
         return available_apartments
 
     def get_available_apartments_for_date_availability(self, apartment_dict, check_in_date, check_out_date):
-        apartments_list, available_apartments = {}, []
+        available_apartments = []
 
-        for apartment in apartment_dict:
-            apartments_list[apartment.id] = 0
         if not is_valid_date_booking(check_in_date, check_out_date):
             return False
-        booking_dict = get_booking_in_range_date(check_in_date, check_out_date)
-        if booking_dict is not False:
-            for booking in booking_dict:
-                if booking.confirmed:
-                    apartment_from_booking = Apartment.objects.filter(id=Booking.objects.get(id=booking.id).apartment.id)
-                    apartments_list[apartment_from_booking.get().id] += 1
 
-            for apartment in apartments_list:
-                if apartments_list[apartment] == 0:
-                    available_apartments.append(apartment)
-            return available_apartments
-        else:
-            return False
+        for apartment in apartment_dict:
+            if check_available_apartment(apartment.id, check_in_date, check_out_date):
+                available_apartments.append(apartment.id)
+        return available_apartments

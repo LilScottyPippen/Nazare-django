@@ -7,17 +7,17 @@ from Nazare_django import settings
 from index.models import Apartment
 from utils.is_valid_phone import is_valid_phone
 from django_ratelimit.decorators import ratelimit
-from utils.booking import get_booking_in_range_date
 from django.utils.decorators import method_decorator
+from booking.models.booking import PAYMENT_METHOD_CHOICES
 from django.http import JsonResponse, RawPostDataException
 from utils.is_valid_captcha import is_valid_session_captcha
 from utils.is_valid_date import check_correct_booking_period
 from booking.forms.booking_form import BookingForm, GuestsForm
 from utils.json_responses import error_response, success_response
-from booking.models.booking import Booking, PAYMENT_METHOD_CHOICES
 from utils.send_mail import send_mail_for_admin, send_mail_for_client
+from utils.booking import check_available_apartment, creating_booking_list
 from utils.guest_count import get_max_guest_count, check_guest_count_limit
-from utils.constants import ERROR_MESSAGES, DATE_FORMAT, CAPTCHA_SUBJECT, SUCCESS_MESSAGES, MAILING_SUBJECTS
+from utils.constants import ERROR_MESSAGES, DATE_FORMAT, SUCCESS_MESSAGES, MAILING_SUBJECTS, CAPTCHA_SUBJECT
 
 
 class BookingAPIView(View):
@@ -79,7 +79,7 @@ class BookingAPIView(View):
         if form.is_valid():
             booking_instance = form.save(commit=False)
 
-            if not self.check_available_date(apartment_id, check_in_date, check_out_date):
+            if not check_available_apartment(apartment_id, check_in_date, check_out_date):
                 return error_response(ERROR_MESSAGES['unavailable_period'])
 
             if not check_correct_booking_period(check_in_date, check_out_date):
@@ -146,28 +146,6 @@ class BookingAPIView(View):
                              args=(MAILING_SUBJECTS['booking_client'], booking_instance.client_mail,
                                    'mailing/client_booking_online.html', client_context)).start()
 
-    def check_available_date(self, apartment_id, check_in_date, check_out_date):
-        try:
-            if type(check_in_date) is not datetime:
-                check_in_date = datetime.strptime(check_in_date, DATE_FORMAT['YYYY-MM-DD'])
-
-            if type(check_out_date) is not datetime:
-                check_out_date = datetime.strptime(check_out_date, DATE_FORMAT['YYYY-MM-DD'])
-        except TypeError:
-            return False
-
-        if not check_correct_booking_period(check_in_date, check_out_date):
-            return False
-
-        booking_dict = get_booking_in_range_date(check_in_date, check_out_date)
-        if booking_dict is not False:
-            for booking in booking_dict:
-                if booking.confirmed and int(apartment_id) == booking.apartment.id:
-                    return False
-        else:
-            return False
-        return True
-
     def check_price(self, apartment_id, check_in_date, check_out_date, total_sum):
         if type(check_in_date) is not datetime and type(check_out_date) is not datetime:
             return False
@@ -191,27 +169,11 @@ class BookingAPIView(View):
 class BookingListAPIView(View):
     def get(self, request):
         apartment_dict = Apartment.objects.all()
-        booking_list = self.creating_booking_list(apartment_dict)
+        booking_list = creating_booking_list(apartment_dict)
 
         if not booking_list:
             return error_response(ERROR_MESSAGES['bad_request'])
         return JsonResponse(booking_list, safe=False, status=200)
-
-    def creating_booking_list(self, apartment_dict):
-        booking_list = {}
-
-        for apartment in apartment_dict:
-            try:
-                booking_list[apartment.id] = []
-            except (Apartment.DoesNotExist, AttributeError):
-                return False
-            for booking in Booking.objects.filter(apartment=apartment.id):
-                if booking.check_out_date >= datetime.today().date() and booking.confirmed:
-                    booking_list[apartment.id].append([
-                        booking.check_in_date.strftime(DATE_FORMAT['YYYY-MM-DD']),
-                        booking.check_out_date.strftime(DATE_FORMAT['YYYY-MM-DD'])
-                    ])
-        return booking_list
 
 
 class GuestMaxAPIView(View):

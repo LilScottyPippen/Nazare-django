@@ -100,9 +100,9 @@
                     <script src="{% static 'js/apartment-dropdown-active.js' %}"></script>
                     {% if apartments %}
                         {% for apartment in apartments %}
-                            <div class="content-item shadow-normal-blur">
+                            <div class="content-item shadow-normal-blur" onclick='window.location="{% url 'index:apartment' apartment.apartment.slug %}"'>
                                 <div class="content-item-container apartment-image" style="background-image: url('{{ apartment.apartment_main_photo.url }}')"></div>
-                                <div class="content-item-container" onclick='window.location="{% url 'index:apartment' apartment.apartment.slug %}"'>
+                                <div class="content-item-container">
                                     <div class="content-item-header">
                                         <span>ДОМ {{ apartment.apartment.title.upper }}</span>
                                         <span>{{ apartment.apartment.daily_price | floatformat }} BYN / сутки</span>

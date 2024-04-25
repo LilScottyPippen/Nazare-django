@@ -5,7 +5,7 @@ from utils.constants import DATE_FORMAT
 from .forms.booking_form import BookingForm
 from django.views.generic import TemplateView
 from index.models.apartments import Apartment
-from utils.booking import get_booking_in_range_date
+from utils.booking import check_available_apartment
 from django.core.exceptions import PermissionDenied
 from utils.guest_count import check_guest_count_limit
 from utils.is_valid_date import is_valid_date_booking
@@ -61,15 +61,7 @@ class BookingView(TemplateView):
                 check_in_date = check_in_date.strftime(DATE_FORMAT['YYYY-MM-DD'])
                 check_out_date = check_out_date.strftime(DATE_FORMAT['YYYY-MM-DD'])
 
-                bookings = get_booking_in_range_date(check_in_date, check_out_date)
-
-                isBooked = False
-
-                for booking in bookings:
-                    if booking.apartment.id == int(apartment_id) and booking.confirmed:
-                        isBooked = True
-
-                if not isBooked:
+                if check_available_apartment(apartment.id, check_in_date, check_out_date):
                     context['check_in_date'] = check_in_date
                     context['check_out_date'] = check_out_date
 
