@@ -6,7 +6,7 @@ function checkCaptcha(value, captcha){
     }
 }
 
-function resetALlCaptcha(){
+function resetAllCaptcha(){
     const recaptchaBlocks = document.querySelectorAll('.g-recaptcha').length
     for (let i = 0; i < recaptchaBlocks; i++)
         grecaptcha.reset(i)

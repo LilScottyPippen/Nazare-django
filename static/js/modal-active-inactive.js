@@ -42,6 +42,6 @@ function openEmailModal(){
 }
 
 function openSubscribeModal(){
-    resetALlCaptcha()
+    resetAllCaptcha()
     openModal(modals.subscribeModal)
 }

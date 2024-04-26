@@ -43,7 +43,8 @@ function showImage(n) {
 function findIndex(imgSrc) {
     images = document.querySelectorAll('.grid-gallery-image')
     for (let i = 0; i < images.length; i++) {
-        if (images[i].style.backgroundImage.slice(5, -2) === imgSrc) {
+        const cleanedUrl = images[i].querySelector('img').src.replace(/^(?:\/\/|[^\/]+)*\//, "/");
+        if (cleanedUrl === imgSrc) {
             return i
         }
     }

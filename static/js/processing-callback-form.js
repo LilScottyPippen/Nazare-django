@@ -86,7 +86,7 @@ function handleCallback(csrf_token) {
             },
             success: function (response) {
                 form.reset()
-                resetALlCaptcha()
+                resetAllCaptcha()
                 captchaCallbackResponse = null
                 document.getElementById('callback-privacy_policy').checked = false
                 showNotification(response.status, response.message)

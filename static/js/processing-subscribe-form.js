@@ -43,5 +43,5 @@ function handleSubscriber(response) {
     })
 
     closeModal(modals.subscribeModal.id)
-    resetALlCaptcha()
+    resetAllCaptcha()
 }

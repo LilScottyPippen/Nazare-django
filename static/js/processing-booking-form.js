@@ -293,7 +293,7 @@ function handleBookingConfirmForm(method, csrf_token){
                         },
                         success: function(response) {
                             clearForm()
-                            resetALlCaptcha()
+                            resetAllCaptcha()
                             captchaBookingResponse = null
                             code_input.style.borderColor = null
                             showNotification(response.status, response.message)
