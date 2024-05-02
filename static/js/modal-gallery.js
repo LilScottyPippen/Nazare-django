@@ -12,7 +12,7 @@ function openImageModal(backgroundImage) {
     document.body.style.overflow = "hidden"
     modal.style.display = "flex"
 
-    modalImg.src = backgroundImage
+    modalImg.src = backgroungedImage
     slideIndex = findIndex(backgroundImage)
 
     updateCaption()
@@ -43,7 +43,7 @@ function showImage(n) {
 function findIndex(imgSrc) {
     images = document.querySelectorAll('.grid-gallery-image')
     for (let i = 0; i < images.length; i++) {
-        const cleanedUrl = images[i].querySelector('img').src.replace(/^(?:\/\/|[^\/]+)*\//, "/");
+        const cleanedUrl = images[i].querySelector('img').src.replace(/^(?:\/\/|[^\/]+)*\//, "/")
         if (cleanedUrl === imgSrc) {
             return i
         }
